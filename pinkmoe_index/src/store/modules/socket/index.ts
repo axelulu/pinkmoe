@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-29 19:46:40
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 15:28:40
+ * @LastEditTime: 2022-08-07 16:00:45
  * @FilePath: /xanaduCms/pinkmoe_index/src/store/modules/socket/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -56,7 +56,9 @@ export const useSocketStore = defineStore({
       }, this.heartCheck.timeout);
     },
     closeSocket() {
-      this.socket.close();
+      if (this.socket) {
+        this.socket.close();
+      }
     },
     reconnect() {
       if (this.lockReconnect) {
