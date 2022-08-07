@@ -60,4 +60,4 @@
 
 管理员账户:izhaicy@163.com
 
-管理员密码:admin123
+管理员密码:Admin123

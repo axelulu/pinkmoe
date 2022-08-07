@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:28:28
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:05:19
- * @FilePath: /pinkmoe_index/src/pages/post/:id.vue
+ * @LastEditTime: 2022-08-07 17:49:09
+ * @FilePath: /xanaduCms/pinkmoe_index/src/pages/post/:id.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -63,9 +63,9 @@
       />
       <div class="w-9/12 pr-2" style="min-height: 800px">
         <div
-          class="bg-white min-h-68 dark:bg-gray-700 dark:text-gray-200 text-gray-500 dark:text-gray-200 rounded-md overflow-hidden animate-fadeIn30"
+          class="bg-white min-h-68 dark:bg-gray-700 text-gray-500 dark:text-gray-200 rounded-md overflow-hidden animate-fadeIn30"
         >
-          <div class="text-center text-2xl pt-4 pb-4 px-4">
+          <div v-if="postItem?.post?.title" class="text-center text-2xl pt-4 pb-4 px-4">
             {{ postItem?.post?.title }}
           </div>
           <div

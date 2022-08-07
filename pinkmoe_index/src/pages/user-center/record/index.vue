@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:52
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:06:04
- * @FilePath: /pinkmoe_index/src/pages/user-center/record/index.vue
+ * @LastEditTime: 2022-08-07 18:03:23
+ * @FilePath: /xanaduCms/pinkmoe_index/src/pages/user-center/record/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -58,7 +58,7 @@
               <div
                 v-for="(item, index) in authorRecordList?.list"
                 :key="index"
-                class="w-full text-xs w-full text-gray-500 dark:hover:bg-gray-800 dark:text-gray-200 py-2 px-2 duration-300 cursor-pointer hover:bg-pink-100"
+                class="w-full text-xs text-gray-500 dark:hover:bg-gray-800 dark:text-gray-200 py-2 px-2 duration-300 cursor-pointer hover:bg-pink-100"
               >
                 <div v-if="item.type === 'publishPost'" class="flex justify-between items-center">
                   <div class="flex flex-row justify-center items-center">
@@ -76,13 +76,23 @@
                   </div>
                   <div>{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
-                <div v-else-if="item.type === 'checkIn'" class="flex justify-between items-center">
+                <div v-else-if="item.type === 'checkIn_credit'" class="flex justify-between items-center">
                   <div class="flex flex-row justify-center items-center">
                     <div class="text-xl text-green-600">{{
                       item.credit > 0 ? `+${item.credit}` : item.credit
                     }}</div>
                     <font-awesome-icon class="text-xl px-4" :icon="['fas', 'map-marker']" />
-                    <div>您获取了签到奖励。</div>
+                    <div>您获取了{{ item.credit }}积分签到奖励。</div>
+                  </div>
+                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                </div>
+                <div v-else-if="item.type === 'checkIn_cash'" class="flex justify-between items-center">
+                  <div class="flex flex-row justify-center items-center">
+                    <div class="text-xl text-green-600">{{
+                      item.credit > 0 ? `+${item.credit}` : item.credit
+                    }}</div>
+                    <font-awesome-icon class="text-xl px-4" :icon="['fas', 'gem']" />
+                    <div>您获取了{{ item.cash }}现金签到奖励。</div>
                   </div>
                   <div>{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>

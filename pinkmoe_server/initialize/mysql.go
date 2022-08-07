@@ -11,6 +11,7 @@
 package initialize
 
 import (
+	"fmt"
 	"os"
 	"server/global"
 
@@ -24,6 +25,7 @@ func DbInit() *gorm.DB {
 		os.Exit(0)
 		return nil
 	}
+	fmt.Printf("%s", m.Host)
 	mysqlConfig := mysql.Config{
 		DSN:                       m.User + ":" + m.Password + "@tcp(" + m.Host + ":" + m.Port + ")/" + m.Dbname + "?" + m.Config, // DSN data source name
 		DefaultStringSize:         191,                                                                                            // string 类型字段的默认长度

@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-22 11:13:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:01:33
- * @FilePath: /pinkmoe_server/dao/mysql/user.go
+ * @LastEditTime: 2022-08-07 17:59:52
+ * @FilePath: /xanaduCms/pinkmoe_server/dao/mysql/user.go
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -75,7 +75,7 @@ func UserCheckInStatusGet(uuid uuid.UUID) (err error, status bool) {
 	return err, false
 }
 
-func UpdateUserCheckIn(uuid uuid.UUID, ip string, credit int) (err error, crt int) {
+func UpdateUserCheckIn(uuid uuid.UUID, ip string, credit int, checkType string) (err error, crt int) {
 	var checkIn []model.XdCheckIn
 	now := time.Now()
 	isToday := false
@@ -91,6 +91,7 @@ func UpdateUserCheckIn(uuid uuid.UUID, ip string, credit int) (err error, crt in
 			XD_MODEL:        global.XD_MODEL{},
 			Uuid:            uuid,
 			Credit:          credit,
+			CheckType:       checkType,
 			Status:          1,
 			LastLoginIp:     ip,
 			LastCheckinTime: global.XdTime{Time: time.Now()},
@@ -102,8 +103,14 @@ func UpdateUserCheckIn(uuid uuid.UUID, ip string, credit int) (err error, crt in
 		if err = tx.Model(&model.XdUser{}).Where("uuid = ?", uuid).First(&user).Error; err != nil {
 			return response.ErrorCheckIn
 		}
-		if err = tx.Model(&model.XdUser{}).Where("uuid = ?", uuid).Update("credit", user.Credit+credit).Error; err != nil {
-			return response.ErrorCheckIn
+		if checkType == "cash" {
+			if err = tx.Model(&model.XdUser{}).Where("uuid = ?", uuid).Update("cash", user.Cash+credit).Error; err != nil {
+				return response.ErrorCheckIn
+			}
+		} else {
+			if err = tx.Model(&model.XdUser{}).Where("uuid = ?", uuid).Update("credit", user.Credit+credit).Error; err != nil {
+				return response.ErrorCheckIn
+			}
 		}
 		return err
 	}); err != nil {

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-22 11:13:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 16:56:09
+ * @LastEditTime: 2022-08-07 18:03:16
  * @FilePath: /xanaduCms/pinkmoe_server/logic/admin/user.go
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -212,19 +212,17 @@ func UpdateUserCheckIn(uuid uuid.UUID, ip string) (err error, credit int) {
 	}
 	credit = rand.Intn(reward.CheckInCreditFoot-reward.CheckInCreditHead) + reward.CheckInCreditHead
 	// 随机获取20-100积分
-	err, credit = mysql.UpdateUserCheckIn(uuid, ip, credit)
+	err, credit = mysql.UpdateUserCheckIn(uuid, ip, credit, reward.CheckInType)
 	if err != nil {
 		return err, 0
 	}
 	if reward.CheckInType == "cash" {
-		err = mysql.UpdateUserCash(credit, uuid)
 		if err == nil {
-			CreateNotification(uuid, "", "", 0, credit, 0, "checkIn", "")
+			CreateNotification(uuid, "", "", 0, credit, 0, "checkIn_cash", "")
 		}
 	} else {
-		err = mysql.UpdateUserCredit(credit, uuid)
 		if err == nil {
-			CreateNotification(uuid, "", "", credit, 0, 0, "checkIn", "")
+			CreateNotification(uuid, "", "", credit, 0, 0, "checkIn_credit", "")
 		}
 	}
 	return err, credit

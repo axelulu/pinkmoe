@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:04:04
- * @FilePath: /pinkmoe_index/src/store/modules/app/index.ts
+ * @LastEditTime: 2022-08-07 18:31:10
+ * @FilePath: /xanaduCms/pinkmoe_index/src/store/modules/app/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -24,6 +24,7 @@ export const useAppStore = defineStore(
         siteFooter: <any>null,
         userLevel: <any>null,
         userShop: <any>null,
+        userSearch: <any>null,
         userReward: <any>null,
         theme: 'dark',
       };
@@ -41,6 +42,7 @@ export const useAppStore = defineStore(
         this.siteFooter = JSON.parse(siteSetting.footer?.value);
         this.userLevel = JSON.parse(siteSetting.user_level?.value);
         this.userShop = JSON.parse(siteSetting.user_shop?.value);
+        this.userSearch = JSON.parse(siteSetting.user_search?.value);
         this.userReward = JSON.parse(siteSetting.user_reward?.value);
       },
       // Update app settings

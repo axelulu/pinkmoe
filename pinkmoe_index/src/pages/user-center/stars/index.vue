@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:12:20
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 16:06:30
+ * @LastEditTime: 2022-08-07 17:51:31
  * @FilePath: /xanaduCms/pinkmoe_index/src/pages/user-center/stars/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -82,7 +82,7 @@
                       :to="'/post/' + item?.PostIdRelation?.postId"
                       class="cursor-pointer hover:bg-pink-400 hover:text-white duration-300 py-1.5 font-normal"
                     >
-                      <span>{{ item?.PostIdRelation?.title }}</span>
+                      <span>{{ item?.PostIdRelation?.type === 'active' ? item?.PostIdRelation?.content : item?.PostIdRelation?.title }}</span>
                     </router-link>
                   </th>
                   <th class="px-2 py-3 font-normal"

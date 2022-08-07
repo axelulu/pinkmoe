@@ -28,6 +28,8 @@ func GetSiteSetting() (err error, item map[string]interface{}) {
 	err, item["user_shop"] = mysql.GetSettingItem(p)
 	p.Slug = "user_level"
 	err, item["user_level"] = mysql.GetSettingItem(p)
+	p.Slug = "user_search"
+	err, item["user_search"] = mysql.GetSettingItem(p)
 	return
 }
 

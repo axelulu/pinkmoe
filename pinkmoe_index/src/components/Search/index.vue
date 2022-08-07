@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 09:38:14
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:11:20
- * @FilePath: /pinkmoe_index/src/components/Search/index.vue
+ * @LastEditTime: 2022-08-07 18:32:41
+ * @FilePath: /xanaduCms/pinkmoe_index/src/components/Search/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -21,7 +21,7 @@
       default: null,
     },
   });
-  const { jumpTo, keyword, dialog } = useSearchDia(props);
+  const { jumpTo, keyword, dialog, userSearch } = useSearchDia(props);
 </script>
 
 <template>
@@ -39,11 +39,11 @@
         />
         <div class="flex flex-wrap my-2 justify-center">
           <span
-            v-for="(item, index) in 13"
+            v-for="(item, index) in userSearch"
             :key="index"
-            @click="jumpTo('测试')"
+            @click="jumpTo(item.searchWord)"
             class="py-1.5 px-4 cursor-pointer hover:bg-pink-400 hover:text-white dark:hover:bg-pink-400 dark:hover:text-white dark:bg-gray-700 dark:text-gray-200 duration-300 bg-gray-200 text-xs m-1.5"
-            >关键词一</span
+            >{{ item.searchWord }}</span
           >
         </div>
       </div>

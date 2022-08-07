@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-22 11:13:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 14:56:51
+ * @LastEditTime: 2022-08-07 17:45:41
  * @FilePath: /xanaduCms/pinkmoe_server/initialize/initDB/user.go
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -29,7 +29,7 @@ func (u *user) TableName() string {
 }
 
 func (u *user) Initialize() error {
-	password, _ := bcrypt.GenerateFromPassword([]byte("admin123"), bcrypt.DefaultCost) //加密处理
+	password, _ := bcrypt.GenerateFromPassword([]byte("Admin123"), bcrypt.DefaultCost) //加密处理
 	entities := []model.XdUser{
 		{UUID: uuid.NewV4(), Username: "admin", Email: "izhaicy@163.com", Password: string(password), NickName: "超级管理员", HeaderImg: "uploads/file/default/background.jpeg", Avatar: "uploads/file/default/avatar.png", AuthorityId: "9527"},
 	}

@@ -56,13 +56,14 @@ func (m *menu) Initialize() error {
 		{Hidden: false, ParentId: 24, Path: "reward", Name: "reward", Component: "/setting/reward/reward", Sort: 1, Meta: model.Meta{Title: "用户奖励", Icon: ""}},
 		{Hidden: false, ParentId: 24, Path: "level", Name: "level", Component: "/setting/level/level", Sort: 2, Meta: model.Meta{Title: "用户等级", Icon: ""}},
 		{Hidden: false, ParentId: 24, Path: "userShop", Name: "userShop", Component: "/setting/shop/shop", Sort: 2, Meta: model.Meta{Title: "用户商城", Icon: ""}},
-		{Hidden: false, ParentId: 24, Path: "homeMod", Name: "homeMod", Component: "/setting/homeMod/homeMod", Sort: 3, Meta: model.Meta{Title: "首页模块", Icon: ""}},
-		{Hidden: false, ParentId: 24, Path: "footer", Name: "footer", Component: "/setting/footer/footer", Sort: 4, Meta: model.Meta{Title: "底部内容", Icon: ""}},
+		{Hidden: false, ParentId: 24, Path: "search", Name: "search", Component: "/setting/search/search", Sort: 3, Meta: model.Meta{Title: "网站搜索", Icon: ""}},
+		{Hidden: false, ParentId: 24, Path: "homeMod", Name: "homeMod", Component: "/setting/homeMod/homeMod", Sort: 4, Meta: model.Meta{Title: "首页模块", Icon: ""}},
+		{Hidden: false, ParentId: 24, Path: "footer", Name: "footer", Component: "/setting/footer/footer", Sort: 5, Meta: model.Meta{Title: "底部内容", Icon: ""}},
 		{Hidden: false, ParentId: 0, Path: "/log", Name: "log", Component: "LAYOUT", Sort: 8, Meta: model.Meta{Title: "登陆管理", Icon: "LogInOutline"}},
 		{Hidden: false, ParentId: 0, Path: "/style", Name: "style", Component: "LAYOUT", Sort: 9, Meta: model.Meta{Title: "主题外观", Icon: "ColorPaletteOutline"}},
 		{Hidden: false, ParentId: 0, Path: "/extension", Name: "extension", Component: "LAYOUT", Sort: 10, Meta: model.Meta{Title: "扩展插件", Icon: "ExtensionPuzzleOutline"}},
-		{Hidden: false, ParentId: 33, Path: "plugin", Name: "plugin", Component: "/extension/plugin/plugin", Sort: 0, Meta: model.Meta{Title: "我的插件", Icon: ""}},
-		{Hidden: false, ParentId: 33, Path: "pluginShop", Name: "pluginShop", Component: "/extension/pluginShop/pluginShop", Sort: 1, Meta: model.Meta{Title: "插件商店", Icon: ""}},
+		{Hidden: false, ParentId: 34, Path: "plugin", Name: "plugin", Component: "/extension/plugin/plugin", Sort: 0, Meta: model.Meta{Title: "我的插件", Icon: ""}},
+		{Hidden: false, ParentId: 34, Path: "pluginShop", Name: "pluginShop", Component: "/extension/pluginShop/pluginShop", Sort: 1, Meta: model.Meta{Title: "插件商店", Icon: ""}},
 	}
 	if err := global.XD_DB.Create(&entities).Error; err != nil { // 创建 model.User 初始化数据
 		return errors.Wrap(err, m.TableName()+"表数据初始化失败!")

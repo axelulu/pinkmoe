@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-10 22:11:30
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 08:55:37
- * @FilePath: /pinkmoe_server/model/xd_check_in.go
+ * @LastEditTime: 2022-08-07 17:59:07
+ * @FilePath: /xanaduCms/pinkmoe_server/model/xd_check_in.go
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -20,6 +20,7 @@ type XdCheckIn struct {
 	global.XD_MODEL
 	Uuid            uuid.UUID     `json:"uuid" gorm:"comment:用户ID"`              // 用户ID
 	Credit          int           `json:"credit" gorm:"comment:奖励积分"`            // 奖励积分
+	CheckType       string        `json:"checkType" gorm:"comment:奖励类型"`         // 奖励类型
 	Status          int           `json:"status" gorm:"comment:状态"`              // 状态
 	LastLoginIp     string        `json:"type" gorm:"comment:登陆ip"`              // 登陆ip
 	LastCheckinTime global.XdTime `json:"lastCheckinTime" gorm:"comment:上次签到时间"` // 上次签到时间

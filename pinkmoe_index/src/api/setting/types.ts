@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:59:50
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:09:16
- * @FilePath: /pinkmoe_index/src/api/setting/types.ts
+ * @LastEditTime: 2022-08-07 18:31:31
+ * @FilePath: /xanaduCms/pinkmoe_index/src/api/setting/types.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -15,6 +15,7 @@ export interface ResSiteSetting {
   footer?: ResSetting<any>;
   user_level?: ResSetting<any>;
   user_shop?: ResSetting<any>;
+  user_search?: ResSetting<any>;
   user_reward?: ResSetting<any>;
 }
 

@@ -27,44 +27,8 @@
             </template>
             <template #default="{ value }">
               <div style="display: flex; align-items: start; width: 100%">
-                <div class="w-1/2 pr-4">
-                  <n-select v-model:value="value.shopType" :options="[
-                {
-                  'label': '购买积分',
-                  'value': 'credit',
-                },
-                {
-                  'label': '充值现金',
-                  'value': 'cash',
-                }
-              ]" />
-                </div>
-                <n-input v-model:value="value.shopName"
-                         class="mr-4 w-1/2" type="text" placeholder="商品名称" />
-                <n-input-number v-model:value="value.shopValue"
-                         class="mr-4 w-1/2" type="text" placeholder="商品值" />
-                <n-input v-model:value="value.shopDesc"
-                         class="mr-4 w-full" type="textarea" placeholder="商品描述" />
-                <div class="w-1/2 pr-4">
-                  <n-select v-model:value="value.priceType" :options="[
-                {
-                  'label': '现金',
-                  'value': 'cash',
-                },{
-                  'label': '积分',
-                  'value': 'credit',
-                },{
-                  'label': '卡密',
-                  'value': 'key',
-                }
-              ]" />
-                </div>
-                <n-input-number
-                  v-if="value.priceType === 'cash' || value.priceType === 'credit'"
-                  v-model:value="value.shopCredit"
-                  class="w-1/2"
-                  placeholder="商品价格"
-                />
+                <n-input v-model:value="value.searchWord"
+                         class="mr-4 w-1/2" type="text" placeholder="搜索词" />
               </div>
             </template>
           </n-dynamic-input>
@@ -101,9 +65,7 @@
   });
   function onCreate(){
     return {
-      shopCredit: '',
-      shopDesc: '',
-      shopName: '',
+      searchWord: '',
     }
   }
 
@@ -123,7 +85,7 @@
   async function handleSubmit() {
     const v = JSON.stringify(formParams.value);
     const { code, message: msg } = await updateSetting({
-      slug: 'user_shop',
+      slug: 'user_search',
       value: v,
     });
     message.destroyAll();
@@ -140,7 +102,7 @@
       message: msg,
       result,
     } = await getSetting({
-      slug: 'user_shop',
+      slug: 'user_search',
     });
     message.destroyAll();
     if (code != ResultEnum.SUCCESS) {

@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 10:35:44
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:09:42
- * @FilePath: /pinkmoe_index/src/components/Article/index.vue
+ * @LastEditTime: 2022-08-07 18:04:58
+ * @FilePath: /xanaduCms/pinkmoe_index/src/components/Article/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -59,7 +59,7 @@
       <router-link
         :to="'/post/' + post.postId"
         class="text-ellipsis text-xs p-2 line-clamp-2 h-10 cursor-pointer hover:text-pink-400 dark:text-gray-200 duration-300"
-        >{{ post.title }}
+        >{{ post.type === 'active' ? post.content : post.title }}
       </router-link>
       <div class="flex flex-row justify-between pl-2 pr-2 pt-1 pb-2 text-xs">
         <router-link
