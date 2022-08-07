@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:05:07
- * @FilePath: /pinkmoe_index/src/pages/index/index.vue
+ * @LastEditTime: 2022-08-07 21:00:24
+ * @FilePath: /xanaduCms/pinkmoe_index/src/pages/index/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -116,10 +116,10 @@
           <div class="text-lg">{{ item.name }}</div>
           <div class="flex flex-row ml-6 flex-1 justify-start items-center">
             <router-link
-              v-for="(topic, v) in item.topic"
+              v-for="(topic, v) in item?.topic"
               :key="v"
               :to="'/topic/' + topic.value"
-              class="h-6 border-2 border-gray-200 dark:border-gray-600 dark:text-gray-200 text-xs px-2 py-0.5 mx-0.5 cursor-pointer text-gray-500 hover:text-black hover:border-gray-300 duration-300"
+              class="h-6 border-2 border-gray-200 dark:hover:border-gray-800 dark:hover:text-gray-200 dark:border-gray-600 dark:text-gray-200 text-xs px-2 py-0.5 mx-0.5 cursor-pointer text-gray-500 hover:text-black hover:border-gray-300 duration-300"
             >
               {{ topic.label }}
             </router-link>

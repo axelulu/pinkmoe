@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-24 08:40:11
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 11:09:04
- * @FilePath: /pinkmoe_index/src/hooks/bbs/bbs.ts
+ * @LastEditTime: 2022-08-07 21:30:20
+ * @FilePath: /xanaduCms/pinkmoe_index/src/hooks/bbs/bbs.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -179,13 +179,7 @@ export const useBbs = () => {
       });
       return;
     }
-    if (
-      checkForm(
-        postFormParams.content,
-        '[\u4e00-\u9fa5]{1,50}$|^[\\dA-Za-z_]{1,50}$',
-        '请输入正确的内容格式',
-      )
-    ) {
+    if (checkForm(postFormParams.content, '[\\s\\S]{1,50}$', '请输入正确的内容格式')) {
       const { code, message } = await createPost(postFormParams);
       if (code === 200) {
         proxy.$message({

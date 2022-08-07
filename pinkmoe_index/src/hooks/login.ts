@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 14:58:27
+ * @LastEditTime: 2022-08-07 21:29:42
  * @FilePath: /xanaduCms/pinkmoe_index/src/hooks/login.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -103,7 +103,11 @@ export const useLogin = (props) => {
         '请输入正确的邮箱格式',
       ) &&
       checkForm(formParams.captchaCode.toString(), '[0-9]{5,6}$', '请输入正确的验证码格式') &&
-      checkForm(formParams.password, '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$', '请输入正确的密码格式')
+      checkForm(
+        formParams.password,
+        '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$',
+        '请输入正确的密码格式',
+      )
     ) {
       formParams.captchaId = captcha.value.captchaId;
       formParams.captchaCode = formParams.captchaCode.toString();
@@ -135,8 +139,16 @@ export const useLogin = (props) => {
         '请输入正确的邮箱格式',
       ) &&
       checkForm(regFormParams.captchaCode?.toString(), '[0-9]{5,6}$', '请输入正确的验证码格式') &&
-      checkForm(regFormParams.password, '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$', '请输入正确的密码格式') &&
-      checkForm(regFormParams.rePassword, '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$', '请输入正确的密码格式')
+      checkForm(
+        regFormParams.password,
+        '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$',
+        '请输入正确的密码格式',
+      ) &&
+      checkForm(
+        regFormParams.rePassword,
+        '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$',
+        '请输入正确的密码格式',
+      )
     ) {
       regFormParams.captchaCode = regFormParams.captchaCode?.toString();
       const { code, message } = await auth.reg(regFormParams);
@@ -166,8 +178,16 @@ export const useLogin = (props) => {
         '请输入正确的邮箱格式',
       ) &&
       checkForm(regFormParams.captchaCode?.toString(), '[0-9]{5,6}$', '请输入正确的验证码格式') &&
-      checkForm(regFormParams.password, '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$', '请输入正确的密码格式') &&
-      checkForm(regFormParams.rePassword, '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$', '请输入正确的密码格式')
+      checkForm(
+        regFormParams.password,
+        '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$',
+        '请输入正确的密码格式',
+      ) &&
+      checkForm(
+        regFormParams.rePassword,
+        '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$',
+        '请输入正确的密码格式',
+      )
     ) {
       regFormParams.captchaCode = regFormParams.captchaCode?.toString();
       regFormParams.captchaType = 'forget';

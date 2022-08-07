@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 14:33:05
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 11:13:17
- * @FilePath: /pinkmoe_index/src/hooks/user-center/publish.ts
+ * @LastEditTime: 2022-08-07 21:27:57
+ * @FilePath: /xanaduCms/pinkmoe_index/src/hooks/user-center/publish.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -151,21 +151,9 @@ export const useUserCenterPublish = () => {
 
   async function publishPost() {
     if (
-      checkForm(
-        formParams.title,
-        '[\u4e00-\u9fa5]{1,50}$|^[\\dA-Za-z_]{1,50}$',
-        '请输入正确的文章标题格式',
-      ) &&
-      checkForm(
-        formParams.exerpt,
-        '[\u4e00-\u9fa5]{1,120}$|^[\\dA-Za-z_]{1,120}$',
-        '请输入正确的文章摘要格式',
-      ) &&
-      checkForm(
-        formParams.content,
-        '[\u4e00-\u9fa5]{1,120}$|^[\\dA-Za-z_]{1,120000}$',
-        '请输入正确的文章内容格式',
-      )
+      checkForm(formParams.title, '[\\s\\S]{2,50}$', '请输入正确的文章标题格式') &&
+      checkForm(formParams.exerpt, '[\\s\\S]{2,120}$', '请输入正确的文章摘要格式') &&
+      checkForm(formParams.content, '[\\s\\S]{2,120000}$', '请输入正确的文章内容格式')
     ) {
       const { code, message } = await createPost(formParams);
       if (code === 200) {

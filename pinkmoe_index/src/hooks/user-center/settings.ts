@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 14:24:31
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 14:59:27
+ * @LastEditTime: 2022-08-07 21:30:47
  * @FilePath: /xanaduCms/pinkmoe_index/src/hooks/user-center/settings.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -63,16 +63,8 @@ export const useUserCenterSettings = () => {
 
   async function updateDetail() {
     if (
-      checkForm(
-        detailFormParams.nickName?.toString(),
-        '[\u4e00-\u9fa5]{1,7}$|^[\\dA-Za-z_]{1,14}$',
-        '请输入正确的昵称格式',
-      ) &&
-      checkForm(
-        detailFormParams.desc?.toString(),
-        '[\u4e00-\u9fa5]{3,100}$|^[\\dA-Za-z_]{3,100}$',
-        '请输入正确的描述格式',
-      )
+      checkForm(detailFormParams.nickName?.toString(), '[\\s\\S]{1,7}$', '请输入正确的昵称格式') &&
+      checkForm(detailFormParams.desc?.toString(), '[\\s\\S]{3,100}$', '请输入正确的描述格式')
     ) {
       const { code, message } = await updateUserDetail(detailFormParams);
       if (code === 200) {
@@ -168,9 +160,21 @@ export const useUserCenterSettings = () => {
 
   async function updatePwd() {
     if (
-      checkForm(pwdFormParams.oldPassword, '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$', '请输入正确的密码格式') &&
-      checkForm(pwdFormParams.password, '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$', '请输入正确的密码格式') &&
-      checkForm(pwdFormParams.reNewPwd, '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$', '请输入正确的密码格式')
+      checkForm(
+        pwdFormParams.oldPassword,
+        '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$',
+        '请输入正确的密码格式',
+      ) &&
+      checkForm(
+        pwdFormParams.password,
+        '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$',
+        '请输入正确的密码格式',
+      ) &&
+      checkForm(
+        pwdFormParams.reNewPwd,
+        '(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,20}$',
+        '请输入正确的密码格式',
+      )
     ) {
       if (pwdFormParams.password !== pwdFormParams.reNewPwd) {
         proxy.$message({

@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 10:47:46
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 11:00:56
- * @FilePath: /pinkmoe_index/src/hooks/commentPublish.ts
+ * @LastEditTime: 2022-08-07 21:29:01
+ * @FilePath: /xanaduCms/pinkmoe_index/src/hooks/commentPublish.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -55,13 +55,7 @@ export const useCommentPublish = (props, emit) => {
   });
 
   const submitComment = async () => {
-    if (
-      checkForm(
-        commentContent.value,
-        '[\u4e00-\u9fa5]{1,100}$|^[\\dA-Za-z_]{1,100}$',
-        '请输入正确的评论内容',
-      )
-    ) {
+    if (checkForm(commentContent.value, '[\\s\\S]{1,100}$', '请输入正确的评论内容')) {
       formParams.content = commentContent.value;
       formParams.toUid = commentMetas.value ? commentMetas.value.FormUidRelation.uuid : null;
       formParams.parentId = commentMetas.value ? commentMetas.value.ID : 0;
