@@ -1,0 +1,68 @@
+version: "3.5"
+
+networks:
+  network:
+    ipam:
+      driver: default
+      config:
+        - subnet: '223.3.3.0/16'
+
+services:
+  mysql:
+    image: "mysql:5.7"
+    container_name: pinkmoe_mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci #设置utf8字符集
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pinkmoe
+      MYSQL_DATABASE: pinkMoe
+      MYSQL_PASSWORD: pinkmoe
+    ports:
+      - "3306:3306"
+    networks:
+      network:
+        ipv4_address: 223.3.3.10
+
+  redis:
+    image: redis:6.0.6
+    container_name: pinkmoe_redis # 容器名
+    restart: always
+    ports:
+      - '6379:6379'
+    networks:
+      network:
+        ipv4_address: 223.3.3.11
+
+  server:
+      build:
+        context: ./pinkmoe_server
+        dockerfile: ./Dockerfile
+      container_name: pinkmoe_server
+      restart: always
+      ports:
+        - '9527:9527'
+      depends_on:
+        - mysql
+        - redis
+      links:
+        - mysql
+        - redis
+      networks:
+        network:
+          ipv4_address: 223.3.3.12
+
+  index_admin:
+      build:
+        context: ./
+        dockerfile: ./Dockerfile
+      container_name: pinkmoe_index_admin
+      restart: always
+      ports:
+        - '80:80'
+        - '443:443'
+      depends_on:
+        - server
+      command: [ 'nginx-debug', '-g', 'daemon off;' ]
+      networks:
+        network:
+          ipv4_address: 223.3.3.13

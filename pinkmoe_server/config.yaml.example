@@ -1,0 +1,99 @@
+version: "v1.0.1"
+name: "pinkMoe"
+# 分为dev模式与release模式
+mode: "dev"
+port: 9527
+oss_type: local
+# 文件上传
+video_size: 100
+pic_size: 1
+# 雪花算法
+start_time: "2006-01-02"
+machine_id: 1
+# 每几秒钟放多少令牌
+rate_limit_time: 1
+rate_limit_num: 10000
+
+captcha:
+  img_height: 50
+  img_width: 200
+  key_long: 6
+
+casbin:
+  model_path: ./util/rbac_model.conf
+
+auth:
+  # 三小时
+  jwt_expire: 168
+  issuer: "PinkMoe"
+  auth_secret: "PinkMoe"
+
+log:
+  level: "debug"
+  filename: "logs/pinkMoe.log"
+  max_size: 100
+  max_age: 30
+  max_backups: 10
+
+mysql:
+  host: "223.3.3.10"
+  port: 3306
+  user: "root"
+  password: "pinkmoe"
+  dbname: "pinkMoe"
+  config: "charset=utf8mb4&parseTime=True&loc=Local"
+  max_open_conns: 0
+  max_idle_conns: 0
+
+redis:
+  host: "223.3.3.11"
+  port: 6379
+  password: ""
+  db: 0
+  pool_size: 200
+
+aliyun_oss:
+  endpoint: ""
+  access_key_id: ""
+  access_key_secret: ""
+  bucket_name: ""
+  bucket_point: ""
+
+hua_wei_obs:
+  path: you-path
+  bucket: you-bucket
+  endpoint: you-endpoint
+  access_key: you-access-key
+  secret_key: you-secret-key
+
+qiniu:
+  zone: ZoneHuaDong
+  bucket: ""
+  img_path: ""
+  use_https: false
+  access_key: ""
+  secret_key: ""
+  use_cdn_domains: false
+
+tencent_cos:
+  bucket: xxxxx-10005608
+  region: ap-shanghai
+  secret_id: xxxxxxxx
+  secret_key: xxxxxxxx
+  base_url: https://gin.vue.admin
+  path_prefix: github.com/flipped-aurora/gin-vue-admin/server
+
+local:
+  path: uploads/file
+
+email:
+  user: ""
+  username: ""
+  password: ""
+  host: "smtpdm.aliyun.com"
+  port: 465
+  is_ssl: true
+  reply_email: "izhaicy@163.com"
+
+plugin:
+  serverUrl: "https://plugins.bossshell.com"
