@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:12:20
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:06:16
- * @FilePath: /pinkmoe_index/src/pages/user-center/stars/index.vue
+ * @LastEditTime: 2022-08-07 16:06:30
+ * @FilePath: /xanaduCms/pinkmoe_index/src/pages/user-center/stars/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -100,7 +100,8 @@
                         ? '文章'
                         : item?.PostIdRelation?.type === 'music'
                         ? '音乐'
-                        : '视频'
+                        : item?.PostIdRelation?.type === 'video'
+                        ? '视频' : '动态'
                     }}
                   </th>
                   <th class="px-2 py-3 font-normal">{{
