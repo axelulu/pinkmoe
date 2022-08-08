@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 17:44:00
+ * @LastEditTime: 2022-08-08 22:43:59
  * @FilePath: /pinkmoe_index/src/components/Header/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -39,7 +39,7 @@
   <!--	Header-->
   <div
     class="h-48 bg-blue-200 w-full flex justify-end items-center flex-col bg-cover"
-    :style="'background-image: url(/' + appStore.siteBasic?.background + ');'"
+    :style="'background-image: url(' + appStore.siteBasic?.background + ');'"
   >
     <div class="w-full z-10 h-full">
       <div class="mb-2 lg:w-3/4 xl:w-5/12 h-32 m-auto animate-fadeIn30">
@@ -84,7 +84,7 @@
           <router-link to="/">
             <img
               class="hover:animate-swing30 animate-lazyloaded w-full h-full object-cover"
-              v-lazy="appStore.siteBasic?.logo ? '/' + appStore.siteBasic?.logo : ''"
+              v-lazy="appStore.siteBasic?.logo"
               alt=""
             />
           </router-link>
@@ -190,7 +190,7 @@
                 <div class="flex justify-center items-center px-2 h-full cursor-pointer">
                   <img
                     class="hover:animate-fadeIn30 animate-lazyloaded h-10 w-10 rounded-full z-10 object-cover"
-                    v-lazy="auth.userInfo?.avatar ? '/' + auth.userInfo?.avatar : ''"
+                    v-lazy="auth.userInfo?.avatar"
                     alt=""
                   />
                 </div>

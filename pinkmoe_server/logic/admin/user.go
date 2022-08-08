@@ -48,12 +48,12 @@ func PwdForget(p request.PwdForget) (err error) {
 				return response.ErrorUserUpdate
 			}
 			if reward.ForgetPwdType == "cash" {
-				err = mysql.UpdateUserCredit(reward.ForgetPwdCredit, user.UUID)
+				err = mysql.UpdateUserCash(reward.ForgetPwdCredit, user.UUID)
 				if err == nil {
 					CreateNotification(user.UUID, "", "", 0, reward.ForgetPwdCredit, 0, "forgetPwd", "")
 				}
 			} else {
-				err = mysql.UpdateUserCash(reward.ForgetPwdCredit, user.UUID)
+				err = mysql.UpdateUserCredit(reward.ForgetPwdCredit, user.UUID)
 				if err == nil {
 					CreateNotification(user.UUID, "", "", reward.ForgetPwdCredit, 0, 0, "forgetPwd", "")
 				}
@@ -86,12 +86,12 @@ func Reg(p request.Reg) (user model.XdUser, err error) {
 				return user, response.ErrorUserCreate
 			}
 			if reward.RegType == "cash" {
-				err = mysql.UpdateUserCredit(reward.RegCredit, user.UUID)
+				err = mysql.UpdateUserCash(reward.RegCredit, user.UUID)
 				if err == nil {
 					CreateNotification(user.UUID, "", "", 0, reward.RegCredit, 0, "reg", "")
 				}
 			} else {
-				err = mysql.UpdateUserCash(reward.RegCredit, user.UUID)
+				err = mysql.UpdateUserCredit(reward.RegCredit, user.UUID)
 				if err == nil {
 					CreateNotification(user.UUID, "", "", reward.RegCredit, 0, 0, "reg", "")
 				}
@@ -229,9 +229,6 @@ func UpdateUserCheckIn(uuid uuid.UUID, ip string) (err error, credit int) {
 }
 
 func UpdateUserAvatar(avatar string, uuid uuid.UUID) (err error) {
-	if err = mysql.UpdateUserAvatar(avatar, uuid); err != nil {
-		return err
-	}
 	// 初始化积分通知
 	err, userReward := mysql.GetSettingItem(model.XdSetting{
 		Slug: "user_reward",
@@ -240,13 +237,16 @@ func UpdateUserAvatar(avatar string, uuid uuid.UUID) (err error) {
 	if err = json.Unmarshal([]byte(userReward.Value), &reward); err != nil {
 		return response.ErrorUserUpdate
 	}
+	if err = mysql.UpdateUserAvatar(avatar, uuid); err != nil {
+		return response.ErrorUserUpdate
+	}
 	if reward.UpdateAvatarType == "cash" {
-		err = mysql.UpdateUserCredit(reward.UpdateAvatarCredit, uuid)
+		err = mysql.UpdateUserCash(reward.UpdateAvatarCredit, uuid)
 		if err == nil {
 			CreateNotification(uuid, "", "", 0, reward.UpdateAvatarCredit, 0, "updateAvatar", "")
 		}
 	} else {
-		err = mysql.UpdateUserCash(reward.UpdateAvatarCredit, uuid)
+		err = mysql.UpdateUserCredit(reward.UpdateAvatarCredit, uuid)
 		if err == nil {
 			CreateNotification(uuid, "", "", reward.UpdateAvatarCredit, 0, 0, "updateAvatar", "")
 		}
@@ -399,12 +399,12 @@ func UpdateUserEmail(email string, emailCaptcha string, uuid uuid.UUID) (err err
 				return response.ErrorUserUpdate
 			}
 			if reward.UpdateEmailType == "cash" {
-				err = mysql.UpdateUserCredit(reward.UpdateEmailCredit, uuid)
+				err = mysql.UpdateUserCash(reward.UpdateEmailCredit, uuid)
 				if err == nil {
 					CreateNotification(uuid, "", "", 0, reward.UpdateEmailCredit, 0, "updateEmail", "")
 				}
 			} else {
-				err = mysql.UpdateUserCash(reward.UpdateEmailCredit, uuid)
+				err = mysql.UpdateUserCredit(reward.UpdateEmailCredit, uuid)
 				if err == nil {
 					CreateNotification(uuid, "", "", reward.UpdateEmailCredit, 0, 0, "updateEmail", "")
 				}
@@ -427,12 +427,12 @@ func UpdateUserPwd(password string, oldPassword string, uuid uuid.UUID) (err err
 		return response.ErrorUserUpdate
 	}
 	if reward.UpdatePwdType == "cash" {
-		err = mysql.UpdateUserCredit(reward.UpdatePwdCredit, uuid)
+		err = mysql.UpdateUserCash(reward.UpdatePwdCredit, uuid)
 		if err == nil {
 			CreateNotification(uuid, "", "", 0, reward.UpdatePwdCredit, 0, "updatePwd", "")
 		}
 	} else {
-		err = mysql.UpdateUserCash(reward.UpdatePwdCredit, uuid)
+		err = mysql.UpdateUserCredit(reward.UpdatePwdCredit, uuid)
 		if err == nil {
 			CreateNotification(uuid, "", "", reward.UpdatePwdCredit, 0, 0, "updatePwd", "")
 		}

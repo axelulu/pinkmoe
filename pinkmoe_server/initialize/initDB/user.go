@@ -31,7 +31,7 @@ func (u *user) TableName() string {
 func (u *user) Initialize() error {
 	password, _ := bcrypt.GenerateFromPassword([]byte("Admin123"), bcrypt.DefaultCost) //加密处理
 	entities := []model.XdUser{
-		{UUID: uuid.NewV4(), Username: "admin", Email: "izhaicy@163.com", Password: string(password), NickName: "超级管理员", HeaderImg: "uploads/file/default/background.jpeg", Avatar: "uploads/file/default/avatar.png", AuthorityId: "9527"},
+		{UUID: uuid.NewV4(), Username: "admin", Email: "izhaicy@163.com", Password: string(password), NickName: "超级管理员", HeaderImg: "/uploads/file/default/background.jpeg", Avatar: "/uploads/file/default/avatar.png", AuthorityId: "9527"},
 	}
 	if err := global.XD_DB.Create(&entities).Error; err != nil {
 		return errors.Wrap(err, u.TableName()+"表数据初始化失败!")

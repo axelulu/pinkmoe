@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 14:33:05
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 10:54:25
+ * @LastEditTime: 2022-08-08 22:37:47
  * @FilePath: /pinkmoe_index/src/hooks/user-center/publish.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -125,7 +125,7 @@ export const useUserCenterPublish = () => {
   }
 
   function insertPostImg(img: any) {
-    wangEditor.value.insertCover('/' + img.url);
+    wangEditor.value.insertCover(img.url);
   }
 
   async function deletePostImg(index: any) {

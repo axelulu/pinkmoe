@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:28:28
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 20:56:47
+ * @LastEditTime: 2022-08-08 22:16:54
  * @FilePath: /pinkmoe_index/src/pages/post/:id.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -194,7 +194,7 @@
         >
           <div class="rounded-full overflow-hidden mr-2">
             <img
-              v-lazy="user.isLogin ? '/' + user.userInfo?.avatar : avatar"
+              v-lazy="user.isLogin ? user.userInfo?.avatar : avatar"
               class="h-8 w-8 object-cover animate-lazyloaded"
               alt="登陆"
             />

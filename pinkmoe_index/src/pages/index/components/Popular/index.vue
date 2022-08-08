@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 09:47:06
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 11:14:31
+ * @LastEditTime: 2022-08-08 22:16:36
  * @FilePath: /pinkmoe_index/src/pages/index/components/Popular/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -35,7 +35,7 @@
       >
         <img
           class="h-60 max-w-full min-w-full object-cover animate-lazyloaded"
-          v-lazy="item.cover ? '/' + item.cover : ''"
+          v-lazy="item.cover"
           alt=""
         />
         <div

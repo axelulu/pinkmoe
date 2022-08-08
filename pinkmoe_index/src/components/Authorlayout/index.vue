@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 17:34:13
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:09:46
+ * @LastEditTime: 2022-08-08 22:43:55
  * @FilePath: /pinkmoe_index/src/components/Authorlayout/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -21,13 +21,13 @@
   <div class="flex flex-col lg:w-3/4 xl:w-5/12 m-auto">
     <div
       class="bg-cover min-h-43 w-full relative"
-      :style="`background-image: url(/${userInfo?.headerImg});`"
+      :style="`background-image: url(${userInfo?.headerImg});`"
     >
       <div :style="`backdrop-filter: blur(6px);`" class="pb-4 pt-4 h-full h-full">
         <div class="flex justify-center items-center">
           <img
             class="w-24 h-24 animate-lazyloaded rounded-full border-4 border-white dark:border-gray-700 shadow-lg object-cover"
-            v-lazy="userInfo?.avatar ? '/' + userInfo?.avatar : ''"
+            v-lazy="userInfo?.avatar"
             alt=""
           />
           <span class="text-xl text-gray-500 dark:text-gray-200 mx-2">{{

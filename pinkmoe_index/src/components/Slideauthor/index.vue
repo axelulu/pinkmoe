@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:48:20
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:11:33
+ * @LastEditTime: 2022-08-08 22:44:04
  * @FilePath: /pinkmoe_index/src/components/Slideauthor/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -45,17 +45,13 @@
   <div class="flex flex-row justify-center relative animate-fadeIn30">
     <div
       class="absolute w-full h-30 bg-cover"
-      :style="`background-image: url(/${author?.headerImg});`"
+      :style="`background-image: url(${author?.headerImg});`"
     ></div>
     <router-link
       :to="'/author/' + author.uuid + '/userInfo'"
       class="w-36 h-36 rounded-full absolute mt-14 border-4 border-white shadow-2xl cursor-pointer overflow-hidden"
     >
-      <img
-        class="w-36 h-36 object-cover animate-lazyloaded"
-        v-lazy="author.avatar ? '/' + author.avatar : ''"
-        alt=""
-      />
+      <img class="w-36 h-36 object-cover animate-lazyloaded" v-lazy="author.avatar" alt="" />
     </router-link>
     <div
       class="w-full bg-white dark:bg-gray-700 pt-24 mt-30 text-center rounded-md overflow-hidden"

@@ -80,7 +80,7 @@ func (*Local) UploadFile(file *multipart.FileHeader) (string, string, error) {
 		global.XD_LOG.Error("function io.Copy() Filed", zap.Any("err", copyErr.Error()))
 		return "", "", errors.New("function io.Copy() Filed, err:" + copyErr.Error())
 	}
-	return p, filename, nil
+	return "/" + p, filename, nil
 }
 
 //@author: [piexlmax](https://github.com/piexlmax)

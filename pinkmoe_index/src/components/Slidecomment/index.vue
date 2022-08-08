@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:50:06
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:11:36
+ * @LastEditTime: 2022-08-08 22:16:08
  * @FilePath: /pinkmoe_index/src/components/Slidecomment/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -39,7 +39,7 @@
       >
         <img
           class="rounded-full animate-lazyloaded border-2 border-transparent hover:border-pink-400 duration-300 w-12 h-12 object-cover"
-          v-lazy="item.FormUidRelation.avatar ? '/' + item.FormUidRelation.avatar : ''"
+          v-lazy="item.FormUidRelation.avatar"
           alt=""
         />
       </router-link>

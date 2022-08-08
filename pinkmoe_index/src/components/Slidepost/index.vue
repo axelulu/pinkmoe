@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:50:47
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:11:39
+ * @LastEditTime: 2022-08-08 22:16:13
  * @FilePath: /pinkmoe_index/src/components/Slidepost/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -28,7 +28,7 @@
           <div class="bg-white dark:bg-gray-700 rounded-md overflow-hidden">
             <img
               class="h-28 w-full animate-lazyloaded object-cover cursor-pointer object-cover"
-              v-lazy="item.cover ? '/' + item.cover : ''"
+              v-lazy="item.cover"
               alt=""
             />
             <div

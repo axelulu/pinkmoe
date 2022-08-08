@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 17:31:32
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:04:43
+ * @LastEditTime: 2022-08-08 22:16:24
  * @FilePath: /pinkmoe_index/src/pages/author/:author/fans.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -50,7 +50,7 @@
             <router-link :to="'/author/' + item.formUidRelation?.uuid + '/userInfo'">
               <img
                 class="rounded-full animate-lazyloaded h-20 w-20 border-2 border-transparent hover:border-pink-400 duration-300 object-cover"
-                v-lazy="item.formUidRelation?.avatar ? '/' + item.formUidRelation?.avatar : ''"
+                v-lazy="item.formUidRelation?.avatar"
                 alt=""
               />
               <div class="text-xs mt-1">{{ item.formUidRelation?.nickName }}</div>

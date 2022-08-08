@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:42
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:06:02
+ * @LastEditTime: 2022-08-08 22:13:33
  * @FilePath: /pinkmoe_index/src/pages/user-center/publish/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -388,7 +388,7 @@
               :key="index"
               class="flex flex-row w-full"
             >
-              <img class="w-16 h-16 mt-2 mr-2 object-cover" :src="'/' + item.url" alt="" />
+              <img class="w-16 h-16 mt-2 mr-2 object-cover" :src="item.url" alt="" />
               <div class="flex flex-col flex-1">
                 <TextareaInput class="w-full text-xs h-8" :value="item.name" />
                 <div class="flex flex-row justify-between">

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:10:55
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:05:47
+ * @LastEditTime: 2022-08-08 22:17:00
  * @FilePath: /pinkmoe_index/src/pages/user-center/im/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -91,7 +91,7 @@
                 >
                   <img
                     class="w-6 h-6 rounded-full mr-2 ml-1 my-0.5"
-                    v-lazy="`/${chatRelation?.sendIdRelation?.avatar}`"
+                    v-lazy="`${chatRelation?.sendIdRelation?.avatar}`"
                     alt=""
                   />
                   <span class="text-xs flex-1">{{ chatRelation?.sendIdRelation?.nickName }}</span>
@@ -115,7 +115,7 @@
                   <router-link :to="`/author/${k.userIdRelation?.uuid}/userInfo`">
                     <img
                       class="w-12 h-12 rounded-full m-2"
-                      v-lazy="`/${k.userIdRelation?.avatar}`"
+                      v-lazy="`${k.userIdRelation?.avatar}`"
                       alt=""
                     />
                   </router-link>
@@ -158,7 +158,7 @@
                   </div>
                   <img
                     class="w-12 h-12 rounded-full m-2"
-                    v-lazy="`/${k.userIdRelation?.avatar}`"
+                    v-lazy="`${k.userIdRelation?.avatar}`"
                     alt=""
                   />
                 </div>

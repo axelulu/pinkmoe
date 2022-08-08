@@ -45,20 +45,20 @@ type PwdForget struct {
 // ReqUser 创建新用户
 type ReqUser struct {
 	global.XD_MODEL
-	UUID        string              `json:"uuid" form:"uuid" gorm:"comment:用户UUID"`                                                 // 用户UUID
-	Username    string              `json:"userName" form:"userName" gorm:"comment:用户登录名"`                                          // 用户登录名
-	Password    string              `json:"password" form:"password" gorm:"comment:用户登录密码"`                                         // 用户登录密码
-	NickName    string              `json:"nickName" form:"nickName" gorm:"default:系统用户;comment:用户昵称"`                              // 用户昵称
-	Desc        string              `json:"desc" form:"desc" gorm:"comment:用户描述"`                                                   // 用户描述
-	Avatar      string              `json:"avatar" form:"avatar" gorm:"default:uploads/file/default/avatar.png;comment:用户头像"`       // 用户头像
-	HeaderImg   string              `json:"headerImg" form:"headerImg" gorm:"default:uploads/file/default/avatar.png;comment:用户背景"` // 用户头像
-	Sex         string              `json:"sex" form:"sex" gorm:"comment:用户性别default:0"`                                            // 用户性别
-	Cash        int                 `json:"cash" form:"cash" gorm:"comment:用户现金default:0"`                                          // 用户现金
-	Credit      int                 `json:"credit" form:"credit" gorm:"comment:用户积分default:0"`                                      // 用户积分
-	Exp         int                 `json:"exp" form:"exp" gorm:"comment:用户经验default:0"`                                            // 用户经验
-	Phone       string              `json:"phone" form:"phone" gorm:"comment:用户手机号"`                                                // 用户手机号
-	Email       string              `json:"email" form:"email" gorm:"comment:用户邮箱"`                                                 // 用户邮箱
-	AuthorityId string              `json:"authorityId" form:"authorityId" gorm:"default:2333;comment:用户角色ID;size:90"`              // 用户角色ID
+	UUID        string              `json:"uuid" form:"uuid" gorm:"comment:用户UUID"`                                                  // 用户UUID
+	Username    string              `json:"userName" form:"userName" gorm:"comment:用户登录名"`                                           // 用户登录名
+	Password    string              `json:"password" form:"password" gorm:"comment:用户登录密码"`                                          // 用户登录密码
+	NickName    string              `json:"nickName" form:"nickName" gorm:"default:系统用户;comment:用户昵称"`                               // 用户昵称
+	Desc        string              `json:"desc" form:"desc" gorm:"comment:用户描述"`                                                    // 用户描述
+	Avatar      string              `json:"avatar" form:"avatar" gorm:"default:/uploads/file/default/avatar.png;comment:用户头像"`       // 用户头像
+	HeaderImg   string              `json:"headerImg" form:"headerImg" gorm:"default:/uploads/file/default/avatar.png;comment:用户背景"` // 用户头像
+	Sex         string              `json:"sex" form:"sex" gorm:"comment:用户性别default:0"`                                             // 用户性别
+	Cash        int                 `json:"cash" form:"cash" gorm:"comment:用户现金default:0"`                                           // 用户现金
+	Credit      int                 `json:"credit" form:"credit" gorm:"comment:用户积分default:0"`                                       // 用户积分
+	Exp         int                 `json:"exp" form:"exp" gorm:"comment:用户经验default:0"`                                             // 用户经验
+	Phone       string              `json:"phone" form:"phone" gorm:"comment:用户手机号"`                                                 // 用户手机号
+	Email       string              `json:"email" form:"email" gorm:"comment:用户邮箱"`                                                  // 用户邮箱
+	AuthorityId string              `json:"authorityId" form:"authorityId" gorm:"default:2333;comment:用户角色ID;size:90"`               // 用户角色ID
 	Authority   model.XdAuthority   `json:"authority" gorm:"comment:用户角色"`
 	Authorities []model.XdAuthority `json:"authorities" gorm:"many2many:xd_user_authority;"`
 }

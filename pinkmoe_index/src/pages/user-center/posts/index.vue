@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:34
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 17:50:49
- * @FilePath: /xanaduCms/pinkmoe_index/src/pages/user-center/posts/index.vue
+ * @LastEditTime: 2022-08-08 22:17:14
+ * @FilePath: /pinkmoe_index/src/pages/user-center/posts/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -73,7 +73,7 @@
                 <tr v-for="(item, index) in userPostList?.list" :key="index">
                   <th class="px-2 py-3 flex justify-center items-center">
                     <img
-                      v-lazy="item.cover ? '/' + item.cover : ''"
+                      v-lazy="item.cover"
                       class="w-10 h-10 animate-lazyloaded object-cover"
                       alt=""
                     />

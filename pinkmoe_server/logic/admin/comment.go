@@ -42,7 +42,7 @@ func CreateComment(p model.XdComment) (err error) {
 			return response.ErrorCommentUpdate
 		}
 		if reward.UpdatePwdType == "cash" {
-			err = mysql.UpdateUserCredit(reward.CommentCredit, p.FormUid)
+			err = mysql.UpdateUserCash(reward.CommentCredit, p.FormUid)
 			if err == nil {
 				if p.Type == "post" {
 					CreateNotification(p.FormUid, "", p.PostId, 0, reward.CommentCredit, 0, "commentPost", "")
@@ -51,7 +51,7 @@ func CreateComment(p model.XdComment) (err error) {
 				}
 			}
 		} else {
-			err = mysql.UpdateUserCash(reward.CommentCredit, p.FormUid)
+			err = mysql.UpdateUserCredit(reward.CommentCredit, p.FormUid)
 			if err == nil {
 				if p.Type == "post" {
 					CreateNotification(p.FormUid, "", p.PostId, reward.CommentCredit, 0, 0, "commentPost", "")
