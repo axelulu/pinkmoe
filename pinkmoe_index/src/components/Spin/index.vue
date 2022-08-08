@@ -23,7 +23,7 @@
     <div
       v-if="show"
       :class="show ? 'animate-spinlazyloaded' : ''"
-      class="absolute top-0 left-0 w-full h-full justify-center items-center flex z-10 duration-300"
+      class="absolute top-0 left-0 w-full h-full justify-center items-center flex z-1 duration-300"
     >
       <font-awesome-icon class="animate-rotating" :icon="['fas', 'circle-notch']" />
     </div>

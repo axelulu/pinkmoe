@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 17:31:23
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:04:41
+ * @LastEditTime: 2022-08-08 21:05:58
  * @FilePath: /pinkmoe_index/src/pages/author/:author/comment.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -54,9 +54,11 @@
               class="text-sm text-gray-500 hover:text-pink-400 dark:text-gray-200 duration-300"
               >{{ item?.postRelation?.title }}
             </router-link>
-            <div
-              v-html="item.content"
-              class="text-xs text-gray-500 dark:text-gray-200 dark:bg-gray-800 bg-gray-100 px-2 py-1 mt-2"
+            <div class="mt-2"
+              ><span
+                class="text-xs text-gray-500 dark:text-gray-200 dark:bg-gray-800 bg-gray-100 px-2 py-1"
+                v-html="item.content"
+              ></span
             ></div>
           </div>
           <div class="text-xs">{{ formatDate(item?.UpdatedAt) }}</div>

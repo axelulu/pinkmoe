@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 11:41:28
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:10:07
+ * @LastEditTime: 2022-08-08 17:25:02
  * @FilePath: /pinkmoe_index/src/components/Footer/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -24,7 +24,7 @@
             <div class="text-xs mt-6">快速导航</div>
             <ul class="text-xs mt-2">
               <li
-                v-for="(item, index) in appStore.siteFooter.friendsLinks"
+                v-for="(item, index) in appStore.siteFooter.links"
                 :key="index"
                 class="pt-1 pb-0.5"
               >
@@ -69,9 +69,9 @@
       </div>
     </div>
     <div
-      class="h-14 text-gray-500 dark:text-gray-200 items-center text-xs justify-center flex underline"
+      class="mb-8 h-14 text-gray-500 dark:text-gray-200 items-center text-xs justify-center flex underline"
     >
-      © XanaduCms 2022
+      © {{ appStore.siteBasic?.title }} 2022
     </div>
     <div
       style="backdrop-filter: blur(2px)"

@@ -11,14 +11,13 @@
 package mysql
 
 import (
+	uuid "github.com/satori/go.uuid"
 	"server/global"
 	"server/model"
 	"server/model/request"
 	"server/model/response"
 	"strconv"
 	"strings"
-
-	uuid "github.com/satori/go.uuid"
 )
 
 func GetCommentList(info request.SearchCommentParams) (err error, list interface{}, total int64) {
@@ -64,8 +63,6 @@ func GetCommentList(info request.SearchCommentParams) (err error, list interface
 }
 
 func GetCommentTreeList(info request.SearchCommentParams) (err error, list interface{}, total int64) {
-	limit := info.PageSize
-	offset := info.PageSize * (info.Page - 1)
 	db := global.XD_DB.Model(&model.XdComment{})
 	if info.Content != "" {
 		db = db.Where("content LIKE ?", "%"+info.Content+"%")
@@ -95,31 +92,87 @@ func GetCommentTreeList(info request.SearchCommentParams) (err error, list inter
 		return response.ErrorCommentListGet, nil, 0
 	}
 	var comment []model.XdComment
-	if err = db.Limit(limit).Offset(offset).Preload("FormUidRelation").Preload("FormUidRelation.Authority").Preload("ToUidRelation").Find(&comment).Error; err != nil {
+	if err = db.Preload("FormUidRelation").Preload("FormUidRelation.Authority").Preload("ToUidRelation").Find(&comment).Error; err != nil {
 		return response.ErrorCommentListGet, nil, 0
 	}
-	// 替换smile表情
-	var commentSmile []model.XdCommentSmile
-	if err = global.XD_DB.Model(&model.XdCommentSmile{}).Find(&commentSmile).Error; err != nil {
-		return response.ErrorCommentListGet, nil, 0
-	}
-	for i, _ := range comment {
-		for _, smile := range commentSmile {
-			if strings.Contains(comment[i].Content, "["+smile.Name+"]") {
-				comment[i].Content = strings.Replace(comment[i].Content, "["+smile.Name+"]", "<img src='"+smile.Url+"' class='w-12 h-12 mx-1' />", -1)
-			}
-		}
-	}
-	// 生成评论树
+	// 生成评论列表
 	treeMap := make(map[string][]model.XdComment)
+	treeComm := make([]model.XdComment, 0)
+	treeOffsetComm := make([]model.XdComment, 0)
 	for _, v := range comment {
 		treeMap[strconv.Itoa(int(v.ParentId))] = append(treeMap[strconv.Itoa(int(v.ParentId))], v)
 	}
 	commentList := treeMap["0"]
 	for i := 0; i < len(commentList); i++ {
-		err = getCommentTree(&commentList[i], treeMap)
+		if commentList[i].ParentId == 0 {
+			treeComm = append(treeComm, commentList[i])
+			err = getCommentOffsetLimitList(&commentList[i], &treeComm, treeMap)
+		}
 	}
-	return err, commentList, total
+
+	// 评论分页处理
+	limit := info.PageSize
+	offset := info.PageSize * (info.Page - 1)
+	offset2 := len(treeComm) % limit
+	if info.Page*info.PageSize-limit >= len(treeComm) {
+		return err, nil, total
+	}
+	if offset2 == 0 || info.Page != len(treeComm)/limit+1 {
+		treeOffsetComm = treeComm[offset : offset+limit]
+	} else {
+		treeOffsetComm = treeComm[offset : offset+offset2]
+	}
+
+	// 替换smile表情
+	var commentSmile []model.XdCommentSmile
+	if err = global.XD_DB.Model(&model.XdCommentSmile{}).Find(&commentSmile).Error; err != nil {
+		return response.ErrorCommentListGet, nil, 0
+	}
+	for i, _ := range treeOffsetComm {
+		for _, smile := range commentSmile {
+			if strings.Contains(treeOffsetComm[i].Content, "["+smile.Name+"]") {
+				treeOffsetComm[i].Content = strings.Replace(treeOffsetComm[i].Content, "["+smile.Name+"]", "<img src='"+smile.Url+"' class='w-12 h-12 mx-1' />", -1)
+			}
+		}
+	}
+
+	// 获取最终分页后的评论树
+	treeMapOffset := make(map[string][]model.XdComment)
+	for _, v := range treeOffsetComm {
+		treeMapOffset[strconv.Itoa(int(v.ParentId))] = append(treeMapOffset[strconv.Itoa(int(v.ParentId))], v)
+	}
+	commentOffsetLimitList := treeMapOffset["0"]
+	for i := 0; i < len(commentOffsetLimitList); i++ {
+		if commentOffsetLimitList[i].ParentId == 0 {
+			treeComm = append(treeComm, commentOffsetLimitList[i])
+			err = getCommentOffsetLimitTree(&commentOffsetLimitList[i], treeMapOffset)
+		}
+	}
+	return err, commentOffsetLimitList, int64(len(treeComm))
+}
+
+func getCommentOffsetLimitTree(menu *model.XdComment, treeMap map[string][]model.XdComment) (err error) {
+	menu.Children = treeMap[strconv.Itoa(int(menu.ID))]
+	for i := 0; i < len(menu.Children); i++ {
+		err = getCommentOffsetLimitTree(&menu.Children[i], treeMap)
+	}
+	if err != nil {
+		return response.ErrorCommentListGet
+	}
+	return err
+}
+
+func getCommentOffsetLimitList(menu *model.XdComment, treeComm *[]model.XdComment, treeMap map[string][]model.XdComment) (err error) {
+	*treeComm = append(*treeComm, treeMap[strconv.Itoa(int(menu.ID))]...)
+	for i := 0; i < len(*treeComm); i++ {
+		if (*treeComm)[i].ParentId == menu.ID {
+			err = getCommentOffsetLimitList(&(*treeComm)[i], treeComm, treeMap)
+		}
+	}
+	if err != nil {
+		return response.ErrorCommentListGet
+	}
+	return err
 }
 
 func getCommentTree(menu *model.XdComment, treeMap map[string][]model.XdComment) (err error) {

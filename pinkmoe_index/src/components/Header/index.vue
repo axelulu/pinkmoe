@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 09:14:13
+ * @LastEditTime: 2022-08-08 17:44:00
  * @FilePath: /pinkmoe_index/src/components/Header/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -141,7 +141,7 @@
                 <div class="text-shadow-bg-white">{{ category.name }}</div>
               </router-link>
               <ul
-                class="group-hover:flex dark:bg-gray-600 flex-col pt-3 pb-3 bg-white absolute top-full left-0 hidden shadow-xl animate-fadeIn30 hover:flex"
+                class="group-hover:flex dark:bg-gray-600 bg-opacity-90 flex-col pt-3 pb-3 bg-white absolute top-full left-0 hidden shadow-xl animate-fadeIn30 hover:flex"
               >
                 <div class="relative">
                   <li

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 10:59:57
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 10:55:54
+ * @LastEditTime: 2022-08-08 17:44:09
  * @FilePath: /pinkmoe_index/src/components/Headerrecategory/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -49,7 +49,7 @@
   <ul
     v-if="item"
     :style="index === 0 ? `top: -12px` : `top: ${32 * index - 12}px`"
-    class="flex-col dark:bg-gray-600 -top-3 childrenCategory pt-3 pb-3 bg-white absolute left-32 shadow-xl animate-fadeIn30 hover:flex"
+    class="flex-col dark:bg-gray-600 bg-opacity-90 -top-3 childrenCategory pt-3 pb-3 bg-white absolute left-32 shadow-xl animate-fadeIn30 hover:flex"
   >
     <div class="relative">
       <li

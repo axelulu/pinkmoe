@@ -2,14 +2,14 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 10:52:08
+ * @LastEditTime: 2022-08-08 20:56:58
  * @FilePath: /pinkmoe_index/src/hooks/post.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 import { getPostItem, postView } from '/@/api/post';
-import { ReqPostItem, ResPostItem } from '/@/api/post/types';
+import { ReqPostItem, ResComment, ResPostItem } from '/@/api/post/types';
 import { useAppStore, useUserStore } from '/@/store';
 import { getAuthorPostList } from '/@/api/author';
 import { ResPost } from '/@/api/home/types';
@@ -78,8 +78,13 @@ export const usePostItem = () => {
 
   const nextPage = async () => {
     loading.value = true;
-    commentFormParams.pageSize! += 12;
-    getComment();
+    commentFormParams.page! += 1;
+    const res = await getCommentList(commentFormParams);
+    if (!res.list || res.list?.length <= 0) {
+      hasMore.value = false;
+    } else {
+      commentList.value?.list?.push(...(res?.list as Array<ResComment>));
+    }
     setTimeout(() => {
       loading.value = false;
     }, 300);
@@ -101,6 +106,7 @@ export const usePostItem = () => {
     comment,
     commentList,
     hasMore,
+    loading,
     nextPage,
     getComment,
     showComment,
