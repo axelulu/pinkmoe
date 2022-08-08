@@ -14,6 +14,7 @@ import (
 	"encoding/json"
 	"server/dao/mysql"
 	"server/model"
+	"server/model/request"
 	"server/model/response"
 )
 
@@ -26,8 +27,8 @@ func GetHomeList() (err error, list response.Home) {
 	if err != nil {
 		return err, list
 	}
-	err, list.Popular = mysql.GetPostByPostIds(homeConfig.Popular)
-	err, list.Recommend = mysql.GetPostByPostIds(homeConfig.Recommend)
+	_, list.Popular = mysql.GetPostByPostIds(homeConfig.Popular)
+	_, list.Recommend = mysql.GetPostByPostIds(homeConfig.Recommend)
 	for _, cm := range homeConfig.Cms {
 		var categoryPosts response.Content
 		_, categoryPost := mysql.GetCategoryById(cm.Category)
@@ -38,7 +39,15 @@ func GetHomeList() (err error, list response.Home) {
 		categoryPosts.Sort = categoryPost.Sort
 		categoryPosts.Style = cm.Style
 		_, categoryPosts.Topic = mysql.GetTopicByTopicValues(cm.Topic)
-		_, categoryPosts.Post = mysql.GetPostByCategoryId(cm.Category)
+		_, categoryPosts.Post, _ = mysql.GetCategoryPostList(request.SearchPostParams{
+			PageInfo: request.PageInfo{
+				Page:     1,
+				PageSize: 12,
+			},
+			Category: cm.Category,
+			OrderKey: "updated_at",
+			Desc:     false,
+		})
 		list.Content = append(list.Content, categoryPosts)
 	}
 	return

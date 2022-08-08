@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 09:47:06
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:05:11
+ * @LastEditTime: 2022-08-08 11:14:31
  * @FilePath: /pinkmoe_index/src/pages/index/components/Popular/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -31,7 +31,7 @@
         v-for="(item, index) in popular"
         :key="index"
         :to="'/post/' + item.postId"
-        class="popular-item hover:after:opacity-0! after:duration-500 flex-grow flex-initial relative cursor-pointer after:opacity-30"
+        class="popular-item after:duration-500 flex-grow flex-initial relative cursor-pointer after:opacity-30"
       >
         <img
           class="h-60 max-w-full min-w-full object-cover animate-lazyloaded"
@@ -50,4 +50,22 @@
   </div>
 </template>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+  .popular:hover .popular-item:after {
+    opacity: 0.5;
+  }
+
+  .popular-item:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #000;
+    opacity: 0;
+  }
+  .popular-item:hover:after {
+    opacity: 0 !important;
+  }
+</style>

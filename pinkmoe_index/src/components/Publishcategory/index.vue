@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 17:43:49
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:11:09
+ * @LastEditTime: 2022-08-08 08:59:27
  * @FilePath: /pinkmoe_index/src/components/Publishcategory/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -99,7 +99,7 @@
             <font-awesome-icon :icon="['fas', 'times']" />
           </div>
         </div>
-        <div class="flex flex-row py-6 px-4" v-if="categoryList">
+        <div class="flex flex-row py-6 px-4 overflow-x-auto" v-if="categoryList">
           <div class="bg-gray-200">
             <div
               v-for="(item, index) in categoryList.list"
@@ -111,7 +111,7 @@
                   ? 'text-white bg-pink-400 dark:bg-pink-400'
                   : 'text-gray-500'
               "
-              class="text-xs select-none text-center w-26 px-16 py-2 dark:bg-gray-800 dark:hover:bg-pink-400 hover:bg-pink-400 dark:text-gray-200 hover:text-white px-2 py-1 duration-300 cursor-pointer"
+              class="text-xs select-none text-center w-26 py-2 dark:bg-gray-800 dark:hover:bg-pink-400 hover:bg-pink-400 dark:text-gray-200 hover:text-white px-2 py-1 duration-300 cursor-pointer"
             >
               {{ item.name }}
               <font-awesome-icon v-if="item.children" class="mr-1" :icon="['fas', 'caret-right']" />

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:10:29
+ * @LastEditTime: 2022-08-08 09:14:13
  * @FilePath: /pinkmoe_index/src/components/Header/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -26,6 +26,7 @@
     isShow,
     children,
     headerReCategory,
+    categoryIndex,
     showSearchDialog,
     checkInUser,
     showLogin,
@@ -151,13 +152,19 @@
                   >
                     <router-link
                       :to="'/category/' + item.slug"
-                      class="px-4 py-2 w-32 hover:bg-pink-400 hover:text-white cursor-pointer duration-300"
+                      class="pl-4 py-2 w-32 hover:bg-pink-400 hover:text-white cursor-pointer duration-300"
                     >
                       <font-awesome-icon :icon="[item.iconType, item.icon]" />
-                      <span class="ml-1">{{ item.name }}</span>
+                      <span class="ml-1 mr-4">{{ item.name }}</span>
+                      <font-awesome-icon v-if="item.children" :icon="['fas', 'caret-right']" />
                     </router-link>
                   </li>
-                  <HeaderReCategory ref="headerReCategory" v-if="isShow" :item="children" />
+                  <HeaderReCategory
+                    ref="headerReCategory"
+                    v-if="isShow"
+                    :item="children"
+                    :index="categoryIndex"
+                  />
                 </div>
               </ul>
             </li>

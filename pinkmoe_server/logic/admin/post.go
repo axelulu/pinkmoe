@@ -204,12 +204,12 @@ func UpdatePostStatus(p request.CreatePostParams) (err error) {
 		if reward.PublishPostType == "cash" {
 			err = mysql.UpdateUserCredit(reward.PublishPostCredit, p.Author)
 			if err == nil {
-				CreateNotification(p.Author, "", "", 0, reward.PublishPostCredit, 0, "publishPost", "")
+				CreateNotification(p.Author, "", p.PostId, 0, reward.PublishPostCredit, 0, "publishPost", "")
 			}
 		} else {
 			err = mysql.UpdateUserCash(reward.PublishPostCredit, p.Author)
 			if err == nil {
-				CreateNotification(p.Author, "", "", reward.PublishPostCredit, 0, 0, "publishPost", "")
+				CreateNotification(p.Author, "", p.PostId, reward.PublishPostCredit, 0, 0, "publishPost", "")
 			}
 		}
 	}

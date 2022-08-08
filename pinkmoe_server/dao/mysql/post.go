@@ -68,7 +68,7 @@ func GetCategoryPostList(info request.SearchPostParams) (err error, list []model
 	} else {
 		order = info.OrderKey + " ASC"
 	}
-	if info.Category == "all" {
+	if info.Category == "0" || info.Category == "" {
 		if err = db.Where("status = ?", "published").Preload("AuthorRelation").Preload("CategoryRelation").Order(order).Limit(limit).Offset(offset).Find(&list).Error; err != nil {
 			return response.ErrorPostListGet, list, 0
 		}
@@ -193,8 +193,6 @@ func GetPostList(info request.SearchPostParams, userId string) (err error, post 
 		return response.ErrorPostListGet, nil, 0
 	}
 	if err = db.Limit(limit).Offset(offset).Order(order).Preload("CollectRelation", func(db *gorm.DB) *gorm.DB {
-		println("用户ID：")
-		println(userId)
 		return db.Where("uuid = ?", userId)
 	}).Preload("AuthorRelation").Preload("AuthorRelation.Authority").Preload("TopicRelations").Preload("CategoryRelation").Preload("PostImg").Preload("MusicRelation", func(db *gorm.DB) *gorm.DB {
 		return db.Select("post_id", "price", "price_type", "name")

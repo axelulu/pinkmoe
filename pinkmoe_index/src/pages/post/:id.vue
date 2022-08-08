@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:28:28
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 17:49:09
+ * @LastEditTime: 2022-08-07 22:24:13
  * @FilePath: /xanaduCms/pinkmoe_index/src/pages/post/:id.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -57,7 +57,11 @@
   <div class="flex flex-col items-center">
     <div class="flex justify-start flex-wrap lg:w-3/4 xl:w-5/12 mt-4">
       <PostVideo
-        v-if="postItem?.post?.videoRelation && postItem?.post?.videoRelation.length > 0"
+        v-if="
+          postItem?.post?.type === 'video' &&
+          postItem?.post?.videoRelation &&
+          postItem?.post?.videoRelation.length > 0
+        "
         :post-id="postItem.post.postId"
         :cover="(postItem.post.cover as string)"
       />
@@ -95,7 +99,11 @@
             </div>
           </div>
           <PostMusic
-            v-if="postItem?.post?.musicRelation && postItem?.post?.musicRelation.length > 0"
+            v-if="
+              postItem?.post?.type === 'music' &&
+              postItem?.post?.musicRelation &&
+              postItem?.post?.musicRelation.length > 0
+            "
             :nick-name="postItem.post.AuthorRelation?.nickName"
             :post-id="postItem.post.postId"
           />

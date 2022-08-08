@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-24 08:22:26
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:09:52
+ * @LastEditTime: 2022-08-08 11:16:41
  * @FilePath: /pinkmoe_index/src/components/Bbsarticle/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -109,7 +109,7 @@
             >
               <img
                 style="cursor: zoom-in"
-                class="h-full w-full mx-2 animate-lazyloaded overflow-hidden"
+                class="h-full w-full mx-2 animate-lazyloaded object-cover overflow-hidden"
                 v-lazy="'/' + src.url"
                 :alt="src.name"
               />

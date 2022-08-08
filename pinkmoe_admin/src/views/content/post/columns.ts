@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-04 15:45:21
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:22:57
+ * @LastEditTime: 2022-08-08 11:02:19
  * @FilePath: /pinkmoe_admin/src/views/content/post/columns.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -44,7 +44,7 @@ export const columns = [
           tertiary: true
         },
         {
-          default: () => (row.type === "post" ? "文章" : row.type === "music" ? "音乐" : "视频")
+          default: () => (row.type === "post" ? "文章" : row.type === "music" ? "音乐" : row.type === "active" ? "动态" : "视频")
         }
       );
     }
