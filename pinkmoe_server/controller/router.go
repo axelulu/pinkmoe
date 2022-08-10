@@ -38,7 +38,7 @@ type Route struct {
 var Routes []Route
 
 func InitRouter() *gin.Engine {
-	mode := global.XD_CONFIG.Mode
+	mode := global.XD_CONFIG.BasicConfig.Mode
 	if mode == gin.ReleaseMode {
 		gin.SetMode(gin.ReleaseMode)
 	}
@@ -48,8 +48,8 @@ func InitRouter() *gin.Engine {
 	//socket
 	r.GET("/ws", socket.InitSocket)
 
-	r.StaticFS(global.XD_CONFIG.LocalConfig.Path, http.Dir(global.XD_CONFIG.LocalConfig.Path)) // 为用户头像和文件提供静态地址
-	r.Use(util.GinLogger(), util.GinRecovery(true), middleware.RateLimitMiddleware(time.Duration(global.XD_CONFIG.RateLimitTime)*time.Second, global.XD_CONFIG.RateLimitNum))
+	r.StaticFS(global.XD_CONFIG.UploadConfig.LocalConfig.Path, http.Dir(global.XD_CONFIG.UploadConfig.LocalConfig.Path)) // 为用户头像和文件提供静态地址
+	r.Use(util.GinLogger(), util.GinRecovery(true), middleware.RateLimitMiddleware(time.Duration(global.XD_CONFIG.BasicConfig.RateLimitTime)*time.Second, global.XD_CONFIG.BasicConfig.RateLimitNum))
 
 	// swagger文档地址
 	r.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler))

@@ -12,133 +12,141 @@ package config
 
 // AppConfig 全局配置
 type AppConfig struct {
-	Name          string `mapstructure:"name"`
-	Mode          string `mapstructure:"mode"`
-	Version       string `mapstructure:"version"`
-	VideoSize     int64  `mapstructure:"video_size"`
-	PicSize       int64  `mapstructure:"pic_size"`
-	StartTime     string `mapstructure:"start_time"`
-	MachineId     int64  `mapstructure:"machine_id"`
-	RateLimitTime int64  `mapstructure:"rate_limit_time"`
-	RateLimitNum  int64  `mapstructure:"rate_limit_num"`
-	Port          int    `mapstructure:"port"`
-	OssType       string `mapstructure:"oss_type"`
+	*BasicConfig  `mapstructure:"basicConfig" json:"basicConfig"`
+	*UploadConfig `mapstructure:"uploadConfig" json:"uploadConfig"`
+	*MySqlConfig  `mapstructure:"mySqlConfig" json:"mySqlConfig"`
+	*RedisConfig  `mapstructure:"redisConfig" json:"redisConfig"`
+	*EmailConfig  `mapstructure:"emailConfig" json:"emailConfig"`
+}
 
-	*Casbin           `mapstructure:"casbin"`
-	*Captcha          `mapstructure:"captcha"`
-	*AuthConfig       `mapstructure:"auth"`
-	*LogConfig        `mapstructure:"log"`
-	*MySqlConfig      `mapstructure:"mysql"`
-	*RedisConfig      `mapstructure:"redis"`
-	*AliyunOssConfig  `mapstructure:"aliyun_oss"`
-	*HuaWeiObsConfig  `mapstructure:"hua_wei_obs"`
-	*QiniuConfig      `mapstructure:"qiniu"`
-	*TencentCOSConfig `mapstructure:"tencent_cos"`
-	*LocalConfig      `mapstructure:"local"`
-	*EmailConfig      `mapstructure:"email"`
+// BasicConfig 上传配置
+type BasicConfig struct {
+	Name          string `mapstructure:"name" json:"name"`
+	Mode          string `mapstructure:"mode" json:"mode"`
+	Version       string `mapstructure:"version" json:"version"`
+	VideoSize     int64  `mapstructure:"videoSize" json:"videoSize"`
+	PicSize       int64  `mapstructure:"picSize" json:"picSize"`
+	StartTime     string `mapstructure:"startTime" json:"startTime"`
+	MachineId     int64  `mapstructure:"machineId" json:"machineId"`
+	RateLimitTime int64  `mapstructure:"rateLimitTime" json:"rateLimitTime"`
+	RateLimitNum  int64  `mapstructure:"rateLimitNum" json:"rateLimitNum"`
+	Port          int    `mapstructure:"port" json:"port"`
+	*Casbin       `mapstructure:"casbin" json:"casbin"`
+	*Captcha      `mapstructure:"captcha" json:"captcha"`
+	*AuthConfig   `mapstructure:"authConfig" json:"authConfig"`
+	*LogConfig    `mapstructure:"logConfig" json:"logConfig"`
+}
+
+// UploadConfig 上传配置
+type UploadConfig struct {
+	OssType           string `mapstructure:"ossType" json:"basicConfig"`
+	*AliyunOssConfig  `mapstructure:"aliyunOssConfig" json:"aliyunOssConfig"`
+	*HuaWeiObsConfig  `mapstructure:"huaWeiObsConfig" json:"huaWeiObsConfig"`
+	*QiniuConfig      `mapstructure:"qiniuConfig" json:"qiniuConfig"`
+	*TencentCOSConfig `mapstructure:"tencentCOSConfig" json:"tencentCOSConfig"`
+	*LocalConfig      `mapstructure:"localConfig" json:"localConfig"`
 }
 
 // Casbin jwt配置
 type Casbin struct {
-	ModelPath string `mapstructure:"model_path"`
+	ModelPath string `mapstructure:"modelPath" json:"modelPath"`
 }
 
 // Captcha jwt配置
 type Captcha struct {
-	ImgHeight int `mapstructure:"img_height"`
-	ImgWidth  int `mapstructure:"img_width"`
-	KeyLong   int `mapstructure:"key_long"`
+	ImgHeight int `mapstructure:"imgHeight" json:"imgHeight"`
+	ImgWidth  int `mapstructure:"imgWidth" json:"imgWidth"`
+	KeyLong   int `mapstructure:"keyLong" json:"keyLong"`
 }
 
 // AuthConfig jwt配置
 type AuthConfig struct {
-	JwtExpire  int    `mapstructure:"jwt_expire"`
-	AuthSecret string `mapstructure:"auth_secret"`
-	Issuer     string `mapstructure:"issuer"`
+	JwtExpire  int    `mapstructure:"jwtExpire" json:"jwtExpire"`
+	AuthSecret string `mapstructure:"authSecret" json:"authSecret"`
+	Issuer     string `mapstructure:"issuer" json:"issuer"`
 }
 
 // LogConfig 日志配置
 type LogConfig struct {
-	Level             string `mapstructure:"level"`
-	Filename          string `mapstructure:"filename"`
-	UserClickFilename string `mapstructure:"userClickFileName"`
-	MaxSize           int    `mapstructure:"max_size"`
-	MaxAge            int    `mapstructure:"max_age"`
-	MaxBackups        int    `mapstructure:"max_backups"`
+	Level      string `mapstructure:"level" json:"level"`
+	Filename   string `mapstructure:"filename" json:"filename"`
+	MaxSize    int    `mapstructure:"maxSize" json:"maxSize"`
+	MaxAge     int    `mapstructure:"maxAge" json:"maxAge"`
+	MaxBackups int    `mapstructure:"maxBackups" json:"maxBackups"`
 }
 
 // MySqlConfig mysql配置
 type MySqlConfig struct {
-	Host         string `mapstructure:"host"`
-	Port         string `mapstructure:"port"`
-	User         string `mapstructure:"user"`
-	Password     string `mapstructure:"password"`
-	Dbname       string `mapstructure:"dbname"`
-	Config       string `mapstructure:"config"`
-	MaxIdleConns int    `mapstructure:"max_idle_conns"`
-	MaxOpenConns int    `mapstructure:"max_open_conns"`
+	Host         string `mapstructure:"host" json:"host"`
+	Port         string `mapstructure:"port" json:"port"`
+	User         string `mapstructure:"user" json:"user"`
+	Password     string `mapstructure:"password" json:"password"`
+	Dbname       string `mapstructure:"dbname" json:"dbname"`
+	Config       string `mapstructure:"config" json:"config"`
+	MaxIdleConns int    `mapstructure:"maxIdleConns" json:"maxIdleConns"`
+	MaxOpenConns int    `mapstructure:"maxOpenConns" json:"maxOpenConns"`
 }
 
 // RedisConfig redis配置
 type RedisConfig struct {
-	Host     string `mapstructure:"host"`
-	Port     int    `mapstructure:"port"`
-	Password string `mapstructure:"password"`
-	Db       int    `mapstructure:"db"`
-	PoolSize int    `mapstructure:"pool_size"`
+	Host     string `mapstructure:"host" json:"host"`
+	Port     int    `mapstructure:"port" json:"port"`
+	Password string `mapstructure:"password" json:"password"`
+	Db       int    `mapstructure:"db" json:"db"`
+	PoolSize int    `mapstructure:"poolSize" json:"poolSize"`
 }
 
 // AliyunOssConfig oss配置
 type AliyunOssConfig struct {
-	Endpoint        string `mapstructure:"endpoint"`
-	AccessKeyId     string `mapstructure:"access_key_id"`
-	AccessKeySecret string `mapstructure:"access_key_secret"`
-	BucketName      string `mapstructure:"bucket_name"`
-	BucketPoint     string `mapstructure:"bucket_point"`
+	Endpoint        string `mapstructure:"endpoint" json:"endpoint"`
+	AccessKeyId     string `mapstructure:"accessKeyId" json:"accessKeyId"`
+	AccessKeySecret string `mapstructure:"accessKeySecret" json:"accessKeySecret"`
+	BucketName      string `mapstructure:"bucketName" json:"bucketName"`
+	BucketPoint     string `mapstructure:"bucketPoint" json:"bucketPoint"`
 }
 
 // HuaWeiObsConfig oss配置
 type HuaWeiObsConfig struct {
-	Path      string `mapstructure:"path"`
-	Bucket    string `mapstructure:"bucket"`
-	Endpoint  string `mapstructure:"endpoint"`
-	AccessKey string `mapstructure:"access_key"`
-	SecretKey string `mapstructure:"secret_key"`
+	Path      string `mapstructure:"path" json:"path"`
+	Bucket    string `mapstructure:"bucket" json:"bucket"`
+	Endpoint  string `mapstructure:"endpoint" json:"endpoint"`
+	AccessKey string `mapstructure:"accessKey" json:"accessKey"`
+	SecretKey string `mapstructure:"secretKey" json:"secretKey"`
 }
 
 // QiniuConfig oss配置
 type QiniuConfig struct {
-	Zone          string `mapstructure:"zone"`
-	Bucket        string `mapstructure:"bucket"`
-	ImgPath       string `mapstructure:"img_path"`
-	UseHTTPS      bool   `mapstructure:"use_https"`
-	AccessKey     string `mapstructure:"access_key"`
-	SecretKey     string `mapstructure:"secret_key"`
-	UseCdnDomains bool   `mapstructure:"use_cdn_domains"`
+	Zone          string `mapstructure:"zone" json:"zone"`
+	Bucket        string `mapstructure:"bucket" json:"bucket"`
+	ImgPath       string `mapstructure:"imgPath" json:"imgPath"`
+	UseHTTPS      bool   `mapstructure:"useHttps" json:"useHttps"`
+	AccessKey     string `mapstructure:"accessKey" json:"accessKey"`
+	SecretKey     string `mapstructure:"secretKey" json:"secretKey"`
+	UseCdnDomains bool   `mapstructure:"useCdnDomains" json:"useCdnDomains"`
 }
 
 // TencentCOSConfig oss配置
 type TencentCOSConfig struct {
-	Bucket     string `mapstructure:"bucket"`
-	Region     string `mapstructure:"region"`
-	SecretID   string `mapstructure:"secret_id"`
-	SecretKey  string `mapstructure:"secret_key"`
-	BaseURL    string `mapstructure:"base_url"`
-	PathPrefix string `mapstructure:"path_prefix"`
+	Bucket     string `mapstructure:"bucket" json:"bucket"`
+	Region     string `mapstructure:"region" json:"region"`
+	SecretID   string `mapstructure:"secretId" json:"secretId"`
+	SecretKey  string `mapstructure:"secretKey" json:"secretKey"`
+	BaseURL    string `mapstructure:"baseUrl" json:"baseUrl"`
+	PathPrefix string `mapstructure:"pathPrefix" json:"pathPrefix"`
 }
 
 // LocalConfig oss配置
 type LocalConfig struct {
-	Path string `mapstructure:"path"`
+	Path string `mapstructure:"path" json:"path"`
 }
 
 // EmailConfig oss配置
 type EmailConfig struct {
-	User       string `mapstructure:"user"`
-	Username   string `mapstructure:"username"`
-	Password   string `mapstructure:"password"`
-	Host       string `mapstructure:"host"`
-	Port       int    `mapstructure:"port"`
-	IsSSL      bool   `mapstructure:"is_ssl"`
-	ReplyEmail string `mapstructure:"reply_email"`
+	User       string `mapstructure:"user" json:"user"`
+	Username   string `mapstructure:"username" json:"username"`
+	Password   string `mapstructure:"password" json:"password"`
+	Host       string `mapstructure:"host" json:"host"`
+	Port       int    `mapstructure:"port" json:"port"`
+	IsSSL      bool   `mapstructure:"isSsl" json:"isSsl"`
+	ReplyEmail string `mapstructure:"replyEmail" json:"replyEmail"`
 }

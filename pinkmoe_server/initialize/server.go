@@ -39,7 +39,7 @@ func RunWindowsServer() {
 
 	// 6. 启动服务（优雅关机）
 	srv := &http.Server{
-		Addr:    fmt.Sprintf(":%d", global.XD_CONFIG.Port),
+		Addr:    fmt.Sprintf(":%d", global.XD_CONFIG.BasicConfig.Port),
 		Handler: r,
 	}
 
@@ -47,7 +47,7 @@ func RunWindowsServer() {
 	fmt.Printf("\t\033[1;34;42m  \033[0m  \033[1;36;40m欢迎使用 XanaduCms\033[0m                                             \033[1;34;42m  \033[0m\n")
 	fmt.Printf("\t\033[1;34;42m  \033[0m  \033[1;36;40m当前版本:V1.0.1\033[0m                                                \033[1;34;42m  \033[0m\n")
 	fmt.Printf("\t\033[1;34;42m  \033[0m  \033[1;36;40m加群方式:微信号：coder-zhaolu QQ：2419857357\033[0m                   \033[1;34;42m  \033[0m\n")
-	fmt.Printf("\t\033[1;34;42m  \033[0m  \033[1;36;40m默认自动化文档地址:http://127.0.0.1:%d/swagger/index.html\033[0m    \033[1;34;42m  \033[0m\n", global.XD_CONFIG.Port)
+	fmt.Printf("\t\033[1;34;42m  \033[0m  \033[1;36;40m默认自动化文档地址:http://127.0.0.1:%d/swagger/index.html\033[0m    \033[1;34;42m  \033[0m\n", global.XD_CONFIG.BasicConfig.Port)
 	fmt.Printf("\t\033[1;34;42m  \033[0m  \033[1;36;40m默认前端文件运行地址:http://127.0.0.1:8080\033[0m                     \033[1;34;42m  \033[0m\n")
 	fmt.Printf("\t\033[1;34;42m                                                                     \033[0m\n")
 

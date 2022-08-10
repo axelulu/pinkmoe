@@ -66,6 +66,10 @@ func (a *authoritiesMenus) Initialize() error {
 		{BaseMenuId: 34, AuthorityId: "9527"},
 		{BaseMenuId: 35, AuthorityId: "9527"},
 		{BaseMenuId: 36, AuthorityId: "9527"},
+		{BaseMenuId: 37, AuthorityId: "9527"},
+		{BaseMenuId: 38, AuthorityId: "9527"},
+		{BaseMenuId: 39, AuthorityId: "9527"},
+		{BaseMenuId: 40, AuthorityId: "9527"},
 	}
 	if err := global.XD_DB.Create(&entities).Error; err != nil {
 		return errors.Wrap(err, a.TableName()+"表数据初始化失败!")

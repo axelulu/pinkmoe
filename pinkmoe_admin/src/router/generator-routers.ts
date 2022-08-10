@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-04-30 14:50:33
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:20:17
+ * @LastEditTime: 2022-08-09 19:38:43
  * @FilePath: /pinkmoe_admin/src/router/generator-routers.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -18,7 +18,7 @@ const Iframe = () => import('@/views/iframe/index.vue');
 const LayoutMap = new Map<string, () => Promise<typeof import('*.vue')>>();
 
 LayoutMap.set('LAYOUT', Layout);
-LayoutMap.set('PRENT_LAYOUT', ParentLayout);
+LayoutMap.set('PARENT_LAYOUT', ParentLayout);
 LayoutMap.set('IFRAME', Iframe);
 
 /**

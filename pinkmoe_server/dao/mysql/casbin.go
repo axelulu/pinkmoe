@@ -77,7 +77,7 @@ var (
 func Casbin() *casbin.SyncedEnforcer {
 	once.Do(func() {
 		a, _ := gormadapter.NewAdapterByDB(global.XD_DB)
-		syncedEnforcer, _ = casbin.NewSyncedEnforcer(global.XD_CONFIG.Casbin.ModelPath, a)
+		syncedEnforcer, _ = casbin.NewSyncedEnforcer(global.XD_CONFIG.BasicConfig.Casbin.ModelPath, a)
 	})
 	_ = syncedEnforcer.LoadPolicy()
 	return syncedEnforcer

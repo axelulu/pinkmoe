@@ -38,17 +38,17 @@ func (*TencentCOS) UploadFile(file *multipart.FileHeader) (string, string, error
 	defer f.Close() // 创建文件 defer 关闭
 	fileKey := fmt.Sprintf("%d%s", time.Now().Unix(), file.Filename)
 
-	_, err := client.Object.Put(context.Background(), global.XD_CONFIG.TencentCOSConfig.PathPrefix+"/"+fileKey, f, nil)
+	_, err := client.Object.Put(context.Background(), global.XD_CONFIG.UploadConfig.TencentCOSConfig.PathPrefix+"/"+fileKey, f, nil)
 	if err != nil {
 		panic(err)
 	}
-	return global.XD_CONFIG.TencentCOSConfig.BaseURL + "/" + global.XD_CONFIG.TencentCOSConfig.PathPrefix + "/" + fileKey, fileKey, nil
+	return global.XD_CONFIG.UploadConfig.TencentCOSConfig.BaseURL + "/" + global.XD_CONFIG.UploadConfig.TencentCOSConfig.PathPrefix + "/" + fileKey, fileKey, nil
 }
 
 // DeleteFile delete file form COS
 func (*TencentCOS) DeleteFile(key string) error {
 	client := NewClient()
-	name := global.XD_CONFIG.TencentCOSConfig.PathPrefix + "/" + key
+	name := global.XD_CONFIG.UploadConfig.TencentCOSConfig.PathPrefix + "/" + key
 	_, err := client.Object.Delete(context.Background(), name)
 	if err != nil {
 		global.XD_LOG.Error("function bucketManager.Delete() Filed", zap.Any("err", err.Error()))
@@ -59,12 +59,12 @@ func (*TencentCOS) DeleteFile(key string) error {
 
 // NewClient init COS client
 func NewClient() *cos.Client {
-	urlStr, _ := url.Parse("https://" + global.XD_CONFIG.TencentCOSConfig.Bucket + ".cos." + global.XD_CONFIG.TencentCOSConfig.Region + ".myqcloud.com")
+	urlStr, _ := url.Parse("https://" + global.XD_CONFIG.UploadConfig.TencentCOSConfig.Bucket + ".cos." + global.XD_CONFIG.UploadConfig.TencentCOSConfig.Region + ".myqcloud.com")
 	baseURL := &cos.BaseURL{BucketURL: urlStr}
 	client := cos.NewClient(baseURL, &http.Client{
 		Transport: &cos.AuthorizationTransport{
-			SecretID:  global.XD_CONFIG.TencentCOSConfig.SecretID,
-			SecretKey: global.XD_CONFIG.TencentCOSConfig.SecretKey,
+			SecretID:  global.XD_CONFIG.UploadConfig.TencentCOSConfig.SecretID,
+			SecretKey: global.XD_CONFIG.UploadConfig.TencentCOSConfig.SecretKey,
 		},
 	})
 	return client

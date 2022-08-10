@@ -50,7 +50,7 @@ func RandUp(n int) []byte {
 		arc = x & 63
 		b[i] = longLetters[arc]
 	}
-	s1 := global.XD_CONFIG.Name + "_"
+	s1 := global.XD_CONFIG.BasicConfig.Name + "_"
 	return append([]byte(s1), b...)
 }
 

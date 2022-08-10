@@ -48,7 +48,7 @@ func (user *User) EmailCaptcha(c *gin.Context) {
 }
 
 func (user *User) CaptchaGet(c *gin.Context) {
-	driver := base64Captcha.NewDriverDigit(global.XD_CONFIG.Captcha.ImgHeight, global.XD_CONFIG.Captcha.ImgWidth, global.XD_CONFIG.Captcha.KeyLong, 0.9, 80)
+	driver := base64Captcha.NewDriverDigit(global.XD_CONFIG.BasicConfig.Captcha.ImgHeight, global.XD_CONFIG.BasicConfig.Captcha.ImgWidth, global.XD_CONFIG.BasicConfig.Captcha.KeyLong, 0.9, 80)
 	captcha := base64Captcha.NewCaptcha(driver, base64Captcha.DefaultMemStore)
 	if id, b64s, err := captcha.Generate(); err != nil {
 		zap.L().Error("base64Captcha.NewCaptcha err", zap.Error(err))

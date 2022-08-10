@@ -12,12 +12,14 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"go.uber.org/zap"
 	"os"
+	"server/dao/mysql"
 	"server/global"
 	"server/initialize"
-
-	"go.uber.org/zap"
+	"server/model"
 )
 
 // @title 这里写标题
@@ -41,15 +43,26 @@ func main() {
 		return
 	}
 
-	// 1. 加载配置
+	// 加载mysql配置
 	global.XD_VIPER = initialize.ViperInit(os.Args[1])
 
-	// 2. 初始化日志
-	global.XD_LOG = initialize.ZapInit()
-	defer zap.L().Sync()
+	// 使用config文件配置
+	if global.XD_DB == nil {
+		// 初始化日志
+		global.XD_LOG = initialize.ZapInit()
+		defer zap.L().Sync()
+	}
 
-	// 3. 初始化Sql连接
+	// 初始化Sql连接
 	global.XD_DB = initialize.DbInit()
+
+	// 使用数据库配置
+	if global.XD_DB != nil {
+		// 初始化日志
+		global.XD_LOG = initialize.ZapInit()
+		defer zap.L().Sync()
+	}
+
 	if global.XD_DB != nil {
 		initialize.RegisterTables(global.XD_DB) // 初始化表
 		initialize.InitMysqlData()              //初始化数据
@@ -58,11 +71,18 @@ func main() {
 		defer db.Close()
 	}
 
-	// 4. 初始化Redis连接
+	_, oss := mysql.GetSettingItem(model.XdSetting{Slug: "system_oss"})
+	json.Unmarshal([]byte(oss.Value), &global.XD_CONFIG.UploadConfig)
+	_, site := mysql.GetSettingItem(model.XdSetting{Slug: "system_site"})
+	json.Unmarshal([]byte(site.Value), &global.XD_CONFIG.BasicConfig)
+	_, email := mysql.GetSettingItem(model.XdSetting{Slug: "system_email"})
+	json.Unmarshal([]byte(email.Value), &global.XD_CONFIG.EmailConfig)
+
+	// 初始化Redis连接
 	global.XD_REDIS = initialize.RedisInit()
 	defer global.XD_REDIS.Close()
 
-	// 5. 初始化雪花算法
+	// 初始化雪花算法
 	global.XD_SNOWFLAKE = initialize.SnowflakeInit(global.XD_CONFIG.StartTime, global.XD_CONFIG.MachineId)
 
 	initialize.RunWindowsServer()

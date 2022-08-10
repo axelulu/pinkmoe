@@ -26,7 +26,7 @@
 
 #### 6. 下载本程序到您服务器的root目录中
 
-1. 直接在您网站运行`yum install git -y && git clone https://github.com/Coder-ZhaoLu/pinkmoe && cd pinkmoe/ && cp ./pinkmoe_server/config.yaml.example ./pinkmoe_server/config.yaml && ls`（此方法克隆到您网站之后需要使用sftp等软件进行下面步骤的文件修改）
+1. 直接在您网站运行`yum install git -y && git clone https://github.com/Coder-ZhaoLu/pinkmoe && cd pinkmoe/ && ls`（此方法克隆到您网站之后需要使用sftp等软件进行下面步骤的文件修改）
 
 2. 直接下载文件到您本地，然后进行下面步骤文件修改后上传到您网站服务器
 

@@ -1,0 +1,27 @@
+# 仅仅初始化server使用
+basicConfig:
+  mode: "dev"
+  logConfig:
+    level: "debug"
+    filename: "logs/pinkMoe.log"
+    maxSize: 100
+    maxAge: 30
+    maxBackups: 10
+
+# 本站数据库配置
+mysqlConfig:
+  host: "localhost"
+  port: 3306
+  user: "root"
+  password: "pinkmoe"
+  dbname: "pinkMoe"
+  config: "charset=utf8mb4&parseTime=True&loc=Local"
+  maxOpenConns: 0
+  maxIdleConns: 0
+
+redisConfig:
+  host: "localhost"
+  port: 6379
+  password: ""
+  db: 0
+  poolSize: 200

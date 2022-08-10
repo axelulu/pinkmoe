@@ -28,7 +28,7 @@ type OSS interface {
 // Author [SliverHorn](https://github.com/SliverHorn)
 // Author [ccfish86](https://github.com/ccfish86)
 func NewOss() OSS {
-	switch global.XD_CONFIG.OssType {
+	switch global.XD_CONFIG.UploadConfig.OssType {
 	case "local":
 		return &Local{}
 	case "qiniu":

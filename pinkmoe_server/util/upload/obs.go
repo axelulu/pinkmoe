@@ -24,7 +24,7 @@ var HuaWeiObs = new(_obs)
 type _obs struct{}
 
 func NewHuaWeiObsClient() (client *obs.ObsClient, err error) {
-	return obs.New(global.XD_CONFIG.HuaWeiObsConfig.AccessKey, global.XD_CONFIG.HuaWeiObsConfig.SecretKey, global.XD_CONFIG.HuaWeiObsConfig.Endpoint)
+	return obs.New(global.XD_CONFIG.UploadConfig.HuaWeiObsConfig.AccessKey, global.XD_CONFIG.UploadConfig.HuaWeiObsConfig.SecretKey, global.XD_CONFIG.UploadConfig.HuaWeiObsConfig.Endpoint)
 }
 
 func (o *_obs) UploadFile(file *multipart.FileHeader) (filename string, filepath string, err error) {
@@ -37,7 +37,7 @@ func (o *_obs) UploadFile(file *multipart.FileHeader) (filename string, filepath
 	input := &obs.PutObjectInput{
 		PutObjectBasicInput: obs.PutObjectBasicInput{
 			ObjectOperationInput: obs.ObjectOperationInput{
-				Bucket: global.XD_CONFIG.HuaWeiObsConfig.Bucket,
+				Bucket: global.XD_CONFIG.UploadConfig.HuaWeiObsConfig.Bucket,
 				Key:    filename,
 			},
 			ContentType: file.Header.Get("content-type"),
@@ -55,7 +55,7 @@ func (o *_obs) UploadFile(file *multipart.FileHeader) (filename string, filepath
 	if err != nil {
 		return filepath, filename, errors.Wrap(err, "文件上传失败!")
 	}
-	filepath = global.XD_CONFIG.HuaWeiObsConfig.Path + "/" + filename
+	filepath = global.XD_CONFIG.UploadConfig.HuaWeiObsConfig.Path + "/" + filename
 	return filepath, filename, err
 }
 
@@ -65,7 +65,7 @@ func (o *_obs) DeleteFile(key string) error {
 		return errors.Wrap(err, "获取华为对象存储对象失败!")
 	}
 	input := &obs.DeleteObjectInput{
-		Bucket: global.XD_CONFIG.HuaWeiObsConfig.Bucket,
+		Bucket: global.XD_CONFIG.UploadConfig.HuaWeiObsConfig.Bucket,
 		Key:    key,
 	}
 	var output *obs.DeleteObjectOutput

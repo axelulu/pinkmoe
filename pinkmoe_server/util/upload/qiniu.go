@@ -37,8 +37,8 @@ type Qiniu struct{}
 //@return: string, string, error
 
 func (*Qiniu) UploadFile(file *multipart.FileHeader) (string, string, error) {
-	putPolicy := storage.PutPolicy{Scope: global.XD_CONFIG.QiniuConfig.Bucket}
-	mac := qbox.NewMac(global.XD_CONFIG.QiniuConfig.AccessKey, global.XD_CONFIG.QiniuConfig.SecretKey)
+	putPolicy := storage.PutPolicy{Scope: global.XD_CONFIG.UploadConfig.QiniuConfig.Bucket}
+	mac := qbox.NewMac(global.XD_CONFIG.UploadConfig.QiniuConfig.AccessKey, global.XD_CONFIG.UploadConfig.QiniuConfig.SecretKey)
 	upToken := putPolicy.UploadToken(mac)
 	cfg := qiniuConfig()
 	formUploader := storage.NewFormUploader(cfg)
@@ -58,7 +58,7 @@ func (*Qiniu) UploadFile(file *multipart.FileHeader) (string, string, error) {
 		global.XD_LOG.Error("function formUploader.Put() Filed", zap.Any("err", putErr.Error()))
 		return "", "", errors.New("function formUploader.Put() Filed, err:" + putErr.Error())
 	}
-	return global.XD_CONFIG.QiniuConfig.ImgPath + "/" + ret.Key, ret.Key, nil
+	return global.XD_CONFIG.UploadConfig.QiniuConfig.ImgPath + "/" + ret.Key, ret.Key, nil
 }
 
 //@author: [piexlmax](https://github.com/piexlmax)
@@ -71,10 +71,10 @@ func (*Qiniu) UploadFile(file *multipart.FileHeader) (string, string, error) {
 //@return: error
 
 func (*Qiniu) DeleteFile(key string) error {
-	mac := qbox.NewMac(global.XD_CONFIG.QiniuConfig.AccessKey, global.XD_CONFIG.QiniuConfig.SecretKey)
+	mac := qbox.NewMac(global.XD_CONFIG.UploadConfig.QiniuConfig.AccessKey, global.XD_CONFIG.UploadConfig.QiniuConfig.SecretKey)
 	cfg := qiniuConfig()
 	bucketManager := storage.NewBucketManager(mac, cfg)
-	if err := bucketManager.Delete(global.XD_CONFIG.QiniuConfig.Bucket, key); err != nil {
+	if err := bucketManager.Delete(global.XD_CONFIG.UploadConfig.QiniuConfig.Bucket, key); err != nil {
 		global.XD_LOG.Error("function bucketManager.Delete() Filed", zap.Any("err", err.Error()))
 		return errors.New("function bucketManager.Delete() Filed, err:" + err.Error())
 	}
@@ -89,10 +89,10 @@ func (*Qiniu) DeleteFile(key string) error {
 
 func qiniuConfig() *storage.Config {
 	cfg := storage.Config{
-		UseHTTPS:      global.XD_CONFIG.QiniuConfig.UseHTTPS,
-		UseCdnDomains: global.XD_CONFIG.QiniuConfig.UseCdnDomains,
+		UseHTTPS:      global.XD_CONFIG.UploadConfig.QiniuConfig.UseHTTPS,
+		UseCdnDomains: global.XD_CONFIG.UploadConfig.QiniuConfig.UseCdnDomains,
 	}
-	switch global.XD_CONFIG.QiniuConfig.Zone { // 根据配置文件进行初始化空间对应的机房
+	switch global.XD_CONFIG.UploadConfig.QiniuConfig.Zone { // 根据配置文件进行初始化空间对应的机房
 	case "ZoneHuadong":
 		cfg.Zone = &storage.ZoneHuadong
 	case "ZoneHuabei":

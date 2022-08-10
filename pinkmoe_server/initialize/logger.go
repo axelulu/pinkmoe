@@ -22,8 +22,8 @@ import (
 
 // ZapInit InitLogger 初始化Logger
 func ZapInit() *zap.Logger {
-	cfg := global.XD_CONFIG.LogConfig
-	mode := global.XD_CONFIG.Mode
+	cfg := global.XD_CONFIG.BasicConfig.LogConfig
+	mode := global.XD_CONFIG.BasicConfig.Mode
 	writeSyncer := getLogWriter(
 		cfg.Filename,
 		cfg.MaxSize,
