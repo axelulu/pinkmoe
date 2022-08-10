@@ -22,21 +22,6 @@ import (
 	"server/model"
 )
 
-// @title 这里写标题
-// @version 1.0
-// @description 这里写描述信息
-// @termsOfService http://swagger.io/terms/
-
-// @contact.name 这里写联系人信息
-// @contact.url http://www.swagger.io/support
-// @contact.email support@swagger.io
-
-// @license.name Apache 2.0
-// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
-
-// @host 这里写接口服务的host
-// @BasePath 这里写base path
-// GO Web开发比较通用的脚手架模版
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Print("请指定config文件！")
@@ -71,6 +56,7 @@ func main() {
 		defer db.Close()
 	}
 
+	// 初始化数据库config配置项
 	_, oss := mysql.GetSettingItem(model.XdSetting{Slug: "system_oss"})
 	json.Unmarshal([]byte(oss.Value), &global.XD_CONFIG.UploadConfig)
 	_, site := mysql.GetSettingItem(model.XdSetting{Slug: "system_site"})
