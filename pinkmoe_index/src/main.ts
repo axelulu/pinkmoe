@@ -2,11 +2,11 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:03:13
+ * @LastEditTime: 2022-08-10 20:44:48
  * @FilePath: /pinkmoe_index/src/main.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
- * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 import 'virtual:windi-base.css';
 import 'virtual:windi-components.css';
@@ -43,6 +43,7 @@ import { useAppStore, useUserStore } from './store';
 import { ViteSSG } from 'vite-ssg';
 import VueAPlayer from 'vue3-aplayer';
 import NPlayer from '@nplayer/vue';
+import dragScroll from 'drag-scroll-vue3';
 
 // vitessg模式
 ViteSSG(
@@ -94,6 +95,7 @@ ViteSSG(
         loading: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', //加载中显示的图片
         attempt: 1, // 图片加载失败，最多重试的次数
       })
+      .directive('drag-scroll', dragScroll)
       .use(NPlayer)
       .use(vueI18n)
       .use(vue3PhotoPreview)

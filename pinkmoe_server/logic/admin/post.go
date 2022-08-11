@@ -141,15 +141,29 @@ func GetPostByPostId(p request.SearchPostParams, userId uuid.UUID) (err error, l
 			Page:     1,
 			PageSize: 9,
 		},
-		UUID:        "",
-		Username:    "",
-		NickName:    "",
-		Sex:         "",
-		Phone:       "",
-		Email:       "",
-		AuthorityId: "",
-		OrderKey:    "credit",
-		Desc:        false,
+		OrderKey: "credit",
+		Desc:     false,
+	})
+	err, list["comments"], _ = mysql.GetCommentList(request.SearchCommentParams{
+		PageInfo: request.PageInfo{
+			Page:     1,
+			PageSize: 5,
+		},
+		OrderKey: "",
+		Desc:     false,
+	})
+	return
+}
+
+func GetBbsSilder() (err error, list map[string]interface{}) {
+	list = make(map[string]interface{})
+	err, list["users"], _ = mysql.GetUserInfoList(request.SearchUserParams{
+		PageInfo: request.PageInfo{
+			Page:     1,
+			PageSize: 9,
+		},
+		OrderKey: "credit",
+		Desc:     false,
 	})
 	err, list["comments"], _ = mysql.GetCommentList(request.SearchCommentParams{
 		PageInfo: request.PageInfo{

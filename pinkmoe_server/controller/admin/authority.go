@@ -36,8 +36,8 @@ func (authority *Authority) AuthAuthorityListGet(c *gin.Context) {
 		response.FailWithMessage(response.CodeInvalidParam.Msg(), c)
 		return
 	}
-	if err, list, total := adminLogic.GetAuthorityList(p); err != nil {
-		zap.L().Error("adminLogic.GetAuthorityList err", zap.Error(err))
+	if err, list, total := adminLogic.GetAdminAuthorityList(p); err != nil {
+		zap.L().Error("adminLogic.GetAdminAuthorityList err", zap.Error(err))
 		response.FailWithMessage(err.Error(), c)
 		return
 	} else {

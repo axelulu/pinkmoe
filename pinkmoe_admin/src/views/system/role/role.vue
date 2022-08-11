@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-10 20:11:03
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:25:58
+ * @LastEditTime: 2022-08-10 19:07:21
  * @FilePath: /pinkmoe_admin/src/views/system/role/role.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -149,6 +149,7 @@ const original = () => {
   return {
     authorityName: "",
     authorityWeight: 10,
+    vipStart: 1,
     authorityId: "",
     authorityColor: '',
     authorityParams: [

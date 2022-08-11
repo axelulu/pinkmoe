@@ -20,6 +20,7 @@ type XdAuthority struct {
 	DeletedAt       *global.XdTime      `sql:"index"`
 	AuthorityId     string              `json:"authorityId" gorm:"not null;unique;primary_key;comment:角色ID;size:90"` // 角色ID
 	AuthorityWeight int                 `json:"authorityWeight" gorm:"comment:角色权重"`                                 // 角色权重
+	VipStart        int                 `json:"vipStart" gorm:"comment:允许开通会员"`                                      // 允许开通会员
 	AuthorityName   string              `json:"authorityName" gorm:"comment:角色名"`                                    // 角色名
 	AuthorityColor  string              `json:"authorityColor" gorm:"comment:角色颜色标识"`                                // 角色颜色标识
 	DataAuthorityId []XdAuthority       `json:"dataAuthorityId" gorm:"many2many:xd_data_authority_id"`

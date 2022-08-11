@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-24 08:40:11
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 08:55:13
+ * @LastEditTime: 2022-08-10 19:36:48
  * @FilePath: /pinkmoe_index/src/hooks/bbs/bbs.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -12,12 +12,13 @@ import { useI18n } from 'vue-i18n';
 import { useUtil } from '../util';
 import { ResPage } from '/@/api/common/types';
 import { ResPost } from '/@/api/home/types';
-import { createPost, getPostList } from '/@/api/post';
-import { ReqBbsActive, ReqBbsPost } from '/@/api/post/types';
+import { createPost, getBbsSilder, getPostList } from '/@/api/post';
+import { ReqBbsActive, ReqBbsPost, ResBbsSilder } from '/@/api/post/types';
 import { useUserStore } from '/@/store';
 
 export const useBbs = () => {
   const postList = ref<ResPage<Array<ResPost>>>();
+  const bbsSilder = ref<ResBbsSilder>();
   const { proxy } = getCurrentInstance();
   const { t } = useI18n();
   const sort = ref<any>([
@@ -106,6 +107,11 @@ export const useBbs = () => {
     setTimeout(() => {
       loading.value = false;
     }, 300);
+  };
+
+  // 获取分类文章列表
+  const getSilder = async () => {
+    bbsSilder.value = await getBbsSilder();
   };
 
   const sortPost = (type) => {
@@ -198,6 +204,7 @@ export const useBbs = () => {
 
   onMounted(() => {
     getPost();
+    getSilder();
   });
 
   return {
@@ -216,6 +223,7 @@ export const useBbs = () => {
     formPublishRef,
     nextPage,
     auth,
+    bbsSilder,
     showLogin,
     t,
   };

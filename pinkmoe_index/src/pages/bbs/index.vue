@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:32:24
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:05:00
+ * @LastEditTime: 2022-08-10 19:37:20
  * @FilePath: /pinkmoe_index/src/pages/bbs/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -14,6 +14,8 @@
   import MoreBtn from '/@/components/Morebtn/index.vue';
   import Spin from '/@/components/Spin/index.vue';
   import { useBbs } from '/@/hooks/bbs/bbs';
+  import SlideUser from '/@/components/Slideuser/index.vue';
+  import SlideComment from '/@/components/Slidecomment/index.vue';
   import TextareaInput from '/@/components/TextareaInput/index.vue';
   import BasicInput from '/@/components/Basicinput/index.vue';
   import GreenBtn from '/@/components/Greenbtn/index.vue';
@@ -34,6 +36,7 @@
     loading,
     isTitle,
     auth,
+    bbsSilder,
     showLogin,
     publishPost,
     formPublishRef,
@@ -160,24 +163,8 @@
         </Spin>
       </form>
       <div class="w-100">
-        <div v-for="(_, v) in 2" :key="v" class="mb-6">
-          <div class="flex flex-row justify-between mx-1 animate-fadeIn30 mb-2">
-            <div class="text-xs text-gray-500 dark:text-gray-200">
-              <font-awesome-icon class="mr-1" :icon="['fas', 'newspaper']" />
-              <span>{{ $t('bbs.popularPosts') }}</span>
-            </div>
-            <router-link
-              :to="'/author//post'"
-              class="text-xs text-gray-500 dark:text-gray-200 hover:text-pink-400 cursor-pointer duration-300"
-            >
-              <span class="mr-1">{{ $t('more') }}</span>
-              <font-awesome-icon :icon="['fas', 'caret-right']" />
-            </router-link>
-          </div>
-          <div
-            class="flex py-10 flex-row dark:bg-gray-700 dark:text-gray-200 text-gray-500 bg-white rounded-md mb-3"
-          ></div>
-        </div>
+        <SlideUser :users="bbsSilder?.users" />
+        <SlideComment :comments="bbsSilder?.comments" />
       </div>
     </div>
   </div>

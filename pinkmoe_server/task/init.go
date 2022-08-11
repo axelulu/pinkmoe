@@ -21,7 +21,7 @@ func Init() {
 	c := cron.New()
 
 	_, err := c.AddJob("* */10 * * *", checkUserOnline{})
-	_, err = c.AddJob("* * */10 * *", updateUserVip{})
+	_, err = c.AddJob("* * */1 * *", updateUserVip{})
 	if err != nil {
 		zap.L().Info("开启定时失败")
 		return

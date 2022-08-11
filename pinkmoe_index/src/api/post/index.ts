@@ -2,15 +2,15 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 13:22:29
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:09:02
+ * @LastEditTime: 2022-08-10 19:37:07
  * @FilePath: /pinkmoe_index/src/api/post/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
- * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 // 权限问题后期增加
 import { get, post } from '/@/utils/http/axios';
-import { ReqPostItem, ResPostItem } from '/@/api/post/types';
+import { ReqPostItem, ResBbsSilder, ResPostItem } from '/@/api/post/types';
 import { ReqPage, ResPage } from '/@/api/common/types';
 import { IResponse } from '/@/utils/http/axios/type';
 import { ResPost } from '../home/types';
@@ -18,6 +18,7 @@ import { ResPost } from '../home/types';
 enum URL {
   item = '/api/Post/PostItem',
   list = '/api/Post/PostList',
+  bbsSilder = '/api/Bbs/BbsSilder',
   userList = '/api/Post/UserPostList',
   create = '/api/Post/PostCreate',
   view = '/api/Post/PostViewUpdate',
@@ -42,6 +43,11 @@ const getPostList = async (params: ReqPage) =>
   get<ResPage<Array<ResPost>>>({
     url: URL.list,
     params,
+  });
+
+const getBbsSilder = async () =>
+  get<ResBbsSilder>({
+    url: URL.bbsSilder,
   });
 
 const getCollectPostList = async (params: ReqPage) =>
@@ -149,4 +155,5 @@ export {
   buyPostMusic,
   getPostVideo,
   buyPostVideo,
+  getBbsSilder,
 };

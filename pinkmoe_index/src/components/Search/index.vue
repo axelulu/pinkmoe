@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 09:38:14
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 18:32:41
- * @FilePath: /xanaduCms/pinkmoe_index/src/components/Search/index.vue
+ * @LastEditTime: 2022-08-11 07:19:43
+ * @FilePath: /pinkmoe_index/src/components/Search/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -21,7 +21,7 @@
       default: null,
     },
   });
-  const { jumpTo, keyword, dialog, userSearch } = useSearchDia(props);
+  const { jumpTo, scrollMenu, shopMenu, keyword, dialog, userSearch } = useSearchDia(props);
 </script>
 
 <template>
@@ -46,9 +46,79 @@
             >{{ item.searchWord }}</span
           >
         </div>
+        <div class="mt-4 flex flex-nowrap justify-center items-center">
+          <div
+            @click="scrollMenu(false)"
+            class="hover:text-pink-400 dark:hover:text-pink-400 duration-300 mr-3 cursor-pointer text-xl"
+          >
+            <font-awesome-icon :icon="['fas', 'angle-left']" />
+          </div>
+          <div
+            v-drag-scroll.options="{ speed: 80, direction: 'x' }"
+            ref="shopMenu"
+            class="scrollCat flex flex-nowrap overflow-x-auto justify-start items-center"
+          >
+            <div
+              class="m-2 cursor-pointer"
+              style="background-image: url('/uploads/file/default/background.jpeg')"
+              v-for="(k, v) in 11"
+              :key="v"
+            >
+              <div
+                class="w-30 h-15 select-none flex-shrink-0 flex justify-center items-center text-white text-shadow-bg-white"
+                style="backdrop-filter: blur(6px)"
+              >
+                分类一
+              </div>
+            </div>
+          </div>
+          <div
+            @click="scrollMenu(true)"
+            class="hover:text-pink-400 dark:hover:text-pink-400 duration-300 ml-3 cursor-pointer text-xl"
+          >
+            <font-awesome-icon :icon="['fas', 'angle-right']"
+          /></div>
+        </div>
       </div>
     </div>
   </Dialog>
 </template>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+  .scrollCat::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .swiper {
+    width: 100%;
+    height: 240px;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

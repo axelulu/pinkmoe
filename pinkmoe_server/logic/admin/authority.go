@@ -17,8 +17,13 @@ import (
 	"server/model/response"
 )
 
+func GetAdminAuthorityList(p request.PageInfo) (err error, list interface{}, total int64) {
+	err, list, total = mysql.GetAuthorityList(p, false)
+	return
+}
+
 func GetAuthorityList(p request.PageInfo) (err error, list interface{}, total int64) {
-	err, list, total = mysql.GetAuthorityList(p)
+	err, list, total = mysql.GetAuthorityList(p, true)
 	return
 }
 
@@ -51,7 +56,7 @@ func UpdateMenuAuthority(p request.UpdateMenuAuthorityInfo) (err error) {
 }
 
 func UpdateAuthority(p model.XdAuthority) (err error) {
-	u := model.XdAuthority{AuthorityName: p.AuthorityName, AuthorityWeight: p.AuthorityWeight, AuthorityColor: p.AuthorityColor}
+	u := model.XdAuthority{AuthorityName: p.AuthorityName, VipStart: p.VipStart, AuthorityWeight: p.AuthorityWeight, AuthorityColor: p.AuthorityColor}
 	mysql.DeleteAuthorityParams(p.AuthorityId)
 	for _, param := range p.AuthorityParams {
 		mysql.CreateAuthorityParams(&model.XdAuthorityParams{

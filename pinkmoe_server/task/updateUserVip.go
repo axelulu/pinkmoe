@@ -23,23 +23,21 @@ type updateUserVip struct{}
 // Run 检查在线用户
 func (t updateUserVip) Run() {
 	zap.L().Info("更新用户会员状态定时更新任务:")
-	for {
-		var (
-			tasks []model.XdTask
-			err   error
-		)
-		err, tasks = mysql.GetTaskList()
-		if err != nil {
-			break
-		}
-		if tasks == nil {
-			break
-		}
-		for _, task := range tasks {
-			if task.TimeOut.Unix() < time.Now().Unix() && task.Slug == "vip" {
-				mysql.UpdateUserAuthority("2333", task.Uuid)
-				mysql.DeleteTask(&task)
-			}
+	var (
+		tasks []model.XdTask
+		err   error
+	)
+	err, tasks = mysql.GetTaskList()
+	if err != nil {
+		return
+	}
+	if tasks == nil {
+		return
+	}
+	for _, task := range tasks {
+		if task.TimeOut.Unix() < time.Now().Unix() && task.Slug == "vip" {
+			mysql.UpdateUserAuthority("2333", task.Uuid)
+			mysql.DeleteTask(&task)
 		}
 	}
 }

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:13:05
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:11:54
+ * @LastEditTime: 2022-08-11 10:07:42
  * @FilePath: /pinkmoe_index/src/components/Usercenterlayout/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -80,28 +80,28 @@
       ],
     },
     {
-      icon: 'circle-notch',
+      icon: 'bag-shopping',
       iconType: 'fas',
-      name: '我的圈子',
+      name: '商城论坛',
       children: [
         {
-          icon: 'circle',
+          icon: 'address-card',
           iconType: 'fas',
-          name: '我的首页',
+          name: '收货地址',
           url: '/user-center/home',
           func: null,
         },
         {
-          icon: 'users',
+          icon: 'basket-shopping',
           iconType: 'fas',
-          name: '我的关注',
+          name: '订单记录',
           url: '/user-center/follow',
           func: null,
         },
         {
-          icon: 'users',
+          icon: 'people-group',
           iconType: 'fas',
-          name: '我的粉丝',
+          name: '关注圈子',
           url: '/user-center/fans',
           func: null,
         },

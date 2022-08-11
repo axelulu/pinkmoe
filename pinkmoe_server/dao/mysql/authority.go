@@ -21,10 +21,15 @@ import (
 	"gorm.io/gorm"
 )
 
-func GetAuthorityList(info request.PageInfo) (err error, list interface{}, total int64) {
+func GetAuthorityList(info request.PageInfo, isVip bool) (err error, list interface{}, total int64) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	db := global.XD_DB.Model(&model.XdAuthority{})
+
+	if isVip {
+		db = db.Where("vip_start = 1")
+	}
+
 	if err = db.Count(&total).Error; err != nil {
 		return response.ErrorAuthorityListGet, nil, 0
 	}

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-04-30 12:02:13
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:25:56
+ * @LastEditTime: 2022-08-10 19:22:17
  * @FilePath: /pinkmoe_admin/src/views/system/role/CreateEditForm.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -36,6 +36,9 @@
       </n-form-item>
       <n-form-item label="角色权重" path="authorityName">
         <n-input-number placeholder="请输入角色权重" v-model:value="formParams.authorityWeight" />
+      </n-form-item>
+      <n-form-item label="允许开通会员" path="authorityName">
+        <n-switch placeholder="请选择是否允许开通会员" v-model:value="formParams.vipStart" />
       </n-form-item>
       <n-form-item label="角色颜色" path="authorityColor">
         <n-color-picker placeholder="请输入角色颜色" v-model:value="formParams.authorityColor" />
@@ -107,6 +110,7 @@
       const defaultValueRef = () => ({
         authorityName: '',
         authorityWeight: 10,
+        vipStart: 1,
         authorityId: '',
         authorityColor: '',
         authorityParams: [
@@ -138,7 +142,7 @@
         formBtnLoading.value = true;
         formRef.value.validate(async (errors) => {
           if (!errors) {
-            console.log(state.formParams)
+            state.formParams.vipStart = state.formParams.vipStart ? 1 : 0
             const { code, message: msg } =
               props.formType === 'create'
                 ? await createAuthority(state.formParams)
@@ -163,6 +167,7 @@
 
       function openForm(record) {
         if (record !== null) {
+          record.vipStart = record.vipStart === 1 ? true : false
           state.formParams = record;
         }
         state.showForm = true;
