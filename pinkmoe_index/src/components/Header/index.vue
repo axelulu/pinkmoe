@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 22:43:59
+ * @LastEditTime: 2022-08-16 00:10:24
  * @FilePath: /pinkmoe_index/src/components/Header/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -14,7 +14,6 @@
   import i18n from '/@/locales';
   const {
     data,
-    status,
     auth,
     categoryList,
     toggleTheme,
@@ -74,7 +73,7 @@
                 ? theme === 'light'
                   ? '白天'
                   : '黑夜'
-                : i18n.global.locale === 'zh'
+                : i18n.global.locale.value === 'zh'
                 ? '中文'
                 : '日文'
             }}</span>
@@ -180,11 +179,11 @@
             <div v-else class="flex flex-row">
               <div
                 @click="checkInUser"
-                :class="status ? 'opacity-30 cursor-not-allowed' : ''"
+                :class="auth.checkInStatus ? 'opacity-30 cursor-not-allowed' : ''"
                 class="text-xs hover:animate-jello100 flex justify-center items-center w-16 px-3 bg-pink-400 text-white cursor-pointer select-none"
               >
                 <font-awesome-icon :icon="['fas', 'map-marker']" />
-                <span class="ml-1 font-normal">{{ status ? '已签' : '签到' }}</span>
+                <span class="ml-1 font-normal">{{ auth.checkInStatus ? '已签' : '签到' }}</span>
               </div>
               <div class="relative userMenu h-full w-14">
                 <div class="flex justify-center items-center px-2 h-full cursor-pointer">

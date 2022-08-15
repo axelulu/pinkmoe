@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:22:01
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-15 10:11:05
+ * @LastEditTime: 2022-08-15 22:52:18
  * @FilePath: /pinkmoe_index/src/components/Postdownload/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -29,7 +29,7 @@
       <span class="mr-1">下载链接</span>
     </div>
     <div
-      class="bg-white dark:bg-gray-700 dark:text-gray-200 rounded-md overflow-hidden animate-fadeIn30 p-4"
+      class="bg-white mt-2 dark:bg-gray-700 dark:text-gray-200 rounded-md overflow-hidden animate-fadeIn30 p-4"
     >
       <div v-if="!auth.isLogin">
         <GreenBtn

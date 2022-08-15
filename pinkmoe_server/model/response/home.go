@@ -24,6 +24,10 @@ type Cms struct {
 	Style    int      `json:"style"`
 }
 
+type Settings struct {
+	ParsingUrl string `json:"parsingUrl"`
+}
+
 type Content struct {
 	Slug     string          `json:"slug"`     // 菜单标识
 	Name     string          `json:"name"`     // 菜单名称

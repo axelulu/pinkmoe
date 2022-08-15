@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-05-06 22:25:04
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-15 14:57:20
+ * @LastEditTime: 2022-08-15 15:37:27
  * @FilePath: /pinkmoe_admin/src/views/system/settings/upload/upload.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -24,9 +24,6 @@
             maxWidth: '640px',
           }"
         >
-          <n-form-item path="parsingUrl" label="视频解析地址">
-            <n-input class="w-80" v-model:value="formParams.parsingUrl" />
-          </n-form-item>
           <n-form-item path="ossType" label="文件上传类型">
             <n-select class="w-80" v-model:value="formParams.ossType" :options="options" />
           </n-form-item>
@@ -164,7 +161,6 @@
   };
 
   let formParams = ref<any>({
-    parsingUrl: '',
     ossType: 'local',
     localConfig: {
       path: 'uploads/file'

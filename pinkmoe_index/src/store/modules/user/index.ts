@@ -2,11 +2,11 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 17:46:51
- * @FilePath: /xanaduCms/pinkmoe_index/src/store/modules/user/index.ts
+ * @LastEditTime: 2022-08-16 00:14:23
+ * @FilePath: /pinkmoe_index/src/store/modules/user/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
- * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 import { defineStore } from 'pinia';
 import {
@@ -17,6 +17,7 @@ import {
   RegData,
   reg,
   forget,
+  checkInStatus,
 } from '/@/api/user/index';
 import { setToken, clearToken, isLogin } from '/@/utils/auth';
 import { UserState } from '/@/store/modules/user/types';
@@ -27,6 +28,7 @@ export const useUserStore = defineStore('user', {
   state: (): UserState => ({
     userInfo: <any>undefined,
     isLogin: isLogin(),
+    checkInStatus: false,
   }),
   getters: {
     userProfile(state: UserState): UserState {
@@ -34,6 +36,10 @@ export const useUserStore = defineStore('user', {
     },
   },
   actions: {
+    async checkIn() {
+      const { result } = await checkInStatus();
+      this.checkInStatus = result;
+    },
     // 设置用户的信息
     setInfo(userInfo: ResAuthor) {
       this.userInfo = userInfo;
@@ -59,6 +65,7 @@ export const useUserStore = defineStore('user', {
         setToken(token);
         this.setLogin(true);
       }
+      await this.checkIn();
       return { result, code, message };
     },
     async reg(regForm: RegData) {

@@ -2,11 +2,11 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 09:02:31
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:07:29
+ * @LastEditTime: 2022-08-15 22:34:25
  * @FilePath: /pinkmoe_index/src/hooks/category.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
- * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 import { useAppStore } from '../store/modules/app';
 import { getCategoryPostList } from '/@/api/category';
@@ -54,7 +54,7 @@ export const useCategory = () => {
     if (!res.list?.post || res.list?.post.length <= 0) {
       hasMore.value = false;
     } else {
-      categoryPostList.value?.list?.post?.push(...(res?.list?.post as Array<ResPost>));
+      categoryPostList.value?.list?.post?.push(...res?.list?.post);
     }
     setTimeout(() => {
       loading.value = false;

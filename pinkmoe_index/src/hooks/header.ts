@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-11 10:07:29
+ * @LastEditTime: 2022-08-16 00:12:35
  * @FilePath: /pinkmoe_index/src/hooks/header.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -12,9 +12,8 @@ import { getCategoryList } from '/@/api/category';
 import { ResCategory } from '/@/api/category/types';
 import { useAppStore, useUserStore } from '/@/store';
 import { useDark, useToggle } from '@vueuse/core';
-import { checkIn, checkInStatus } from '/@/api/user';
+import { checkIn } from '/@/api/user';
 import i18n from '../locales';
-import { useSocketStore } from '../store/modules/socket';
 
 export const useHeader = () => {
   const categoryList = ref<Array<ResCategory>>();
@@ -203,7 +202,6 @@ export const useHeader = () => {
       type: 'lang',
     },
   ]);
-  const status = ref(false);
   const appStore = useAppStore();
   const auth = useUserStore();
   const children = ref();
@@ -265,18 +263,13 @@ export const useHeader = () => {
         type: 'success',
         msg: '签到成功',
       });
-      checkInStatusCheck();
+      await auth.checkIn();
     } else {
       proxy.$message({
         type: 'warning',
         msg: message || '签到失败',
       });
     }
-  };
-
-  const checkInStatusCheck = async () => {
-    const { result } = await checkInStatus();
-    status.value = result;
   };
 
   const mouseenter = (item, index) => {
@@ -293,11 +286,11 @@ export const useHeader = () => {
     if (locale === 'zh') {
       const idx = ['zh', 'jp'][1] || navigator.language.slice(0, 2);
       localStorage.setItem('locale', idx);
-      i18n.global.locale = idx;
+      i18n.global.locale.value = idx;
     } else {
       const idx = ['zh', 'jp'][0] || navigator.language.slice(0, 2);
       localStorage.setItem('locale', idx);
-      i18n.global.locale = idx;
+      i18n.global.locale.value = idx;
     }
   }
 
@@ -333,13 +326,12 @@ export const useHeader = () => {
   onMounted(async () => {
     scrollHandler();
     getCategory();
-    checkInStatusCheck();
+    await auth.checkIn();
     window.addEventListener('onmessageWS', getSocketData);
   });
 
   return {
     data,
-    status,
     headerBarLeft,
     headerBarRight,
     headerReCategory,

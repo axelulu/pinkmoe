@@ -27,7 +27,7 @@ func GetHomeList() (err error, list response.Home) {
 	if err != nil {
 		return err, list
 	}
-	_, list.Popular = mysql.GetPopularByPostIds(homeConfig.Popular)
+	_, list.Popular = mysql.GetPostByPostIds(homeConfig.Popular)
 	_, list.Recommend = mysql.GetPostByPostIds(homeConfig.Recommend)
 	for _, cm := range homeConfig.Cms {
 		var categoryPosts response.Content

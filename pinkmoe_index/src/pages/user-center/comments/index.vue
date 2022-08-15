@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:10:18
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:05:33
+ * @LastEditTime: 2022-08-15 22:47:06
  * @FilePath: /pinkmoe_index/src/pages/user-center/comments/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -60,16 +60,17 @@
                 :key="index"
                 class="flex justify-between flex-row items-center text-xs w-full text-gray-500 dark:text-gray-200 dark:hover:bg-gray-800 py-2 px-2 duration-300 cursor-pointer hover:bg-pink-100"
               >
-                <div class="flex flex-row justify-start"
-                  >您对
-                  <router-link class="text-pink-400" :to="'/post/' + item.postRelation.postId"
-                    >《{{ item.postRelation.title }}》
-                  </router-link>
-                  进行了一次吐槽：
-                  <div class="flex flex-row justify-start items-center" v-html="item.content">
-                  </div>
+                <div class="flex flex-row justify-center items-center">
+                  <div
+                    >您对
+                    <router-link class="text-pink-400" :to="'/post/' + item.postRelation.postId"
+                      >《{{ item.postRelation.title }}》
+                    </router-link>
+                    进行了一次吐槽：
+                    <span v-html="item.content"> </span
+                  ></div>
                 </div>
-                <div>{{ formatDate(item.UpdatedAt) }}</div>
+                <div class="ml-4 min-w-16">{{ formatDate(item.UpdatedAt) }}</div>
               </div>
             </div>
             <NotFound v-else />

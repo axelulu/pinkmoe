@@ -7,9 +7,9 @@
     <list default="true" id="c9c06589-a528-4508-af15-feb6e80b09c9" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/category.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/category.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/mysql/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logic/admin/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/admin/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/admin/home.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/admin/home.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/response/home.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/response/home.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

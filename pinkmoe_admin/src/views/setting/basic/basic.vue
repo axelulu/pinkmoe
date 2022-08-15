@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-05-07 03:02:16
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 16:12:46
+ * @LastEditTime: 2022-08-15 15:37:49
  * @FilePath: /pinkmoe_admin/src/views/setting/basic/basic.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -24,6 +24,9 @@
             maxWidth: '640px',
           }"
         >
+          <n-form-item path="parsingUrl" label="视频解析地址">
+            <n-input class="w-80" v-model:value="formParams.parsingUrl" />
+          </n-form-item>
           <n-form-item path="url" label="网站url">
             <n-input v-model:value="formParams.url" />
           </n-form-item>
@@ -163,6 +166,7 @@ const rules = {
 };
 
 let formParams = ref({
+  parsingUrl: "",
   url: "",
   title: "",
   keyword: "",

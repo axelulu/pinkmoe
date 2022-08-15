@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:52
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 10:22:55
+ * @LastEditTime: 2022-08-15 22:41:41
  * @FilePath: /pinkmoe_index/src/pages/user-center/record/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -87,7 +87,7 @@
                     <font-awesome-icon class="text-xl px-4" :icon="['fas', 'map-marker']" />
                     <div>您获取了{{ item.credit }}积分签到奖励。</div>
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div
                   v-else-if="item.type === 'checkIn_cash'"
@@ -100,7 +100,7 @@
                     <font-awesome-icon class="text-xl px-4" :icon="['fas', 'gem']" />
                     <div>您获取了{{ item.cash }}现金签到奖励。</div>
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div v-else-if="item.type === 'reg'" class="flex justify-between items-center">
                   <div class="flex flex-row justify-center items-center">
@@ -110,7 +110,7 @@
                     <font-awesome-icon class="text-xl px-4" :icon="['fas', 'user']" />
                     <div>恭喜您注册成功！</div>
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div
                   v-else-if="item.type === 'updateAvatar'"
@@ -123,7 +123,7 @@
                     <font-awesome-icon class="text-xl px-4" :icon="['fas', 'image']" />
                     <div>恭喜您更新头像成功！</div>
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div
                   v-else-if="item.type === 'updateEmail'"
@@ -136,7 +136,7 @@
                     <font-awesome-icon class="text-xl px-4" :icon="['fas', 'envelope']" />
                     <div>恭喜您更新邮箱成功！</div>
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div
                   v-else-if="item.type === 'updatePwd'"
@@ -149,7 +149,7 @@
                     <font-awesome-icon class="text-xl px-4" :icon="['fas', 'key']" />
                     <div>恭喜您更新密码成功！</div>
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div
                   v-else-if="item.type === 'buyDownload'"
@@ -168,7 +168,7 @@
                       >的下载链接！</div
                     >
                   </div>
-                  <div>{{ moment(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div v-else-if="item.type === 'buyVideo'" class="flex justify-between items-center">
                   <div class="flex flex-row justify-center items-center">
@@ -184,7 +184,7 @@
                       >的下载链接！</div
                     >
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div v-else-if="item.type === 'buyMusic'" class="flex justify-between items-center">
                   <div class="flex flex-row justify-center items-center">
@@ -200,7 +200,7 @@
                       >的下载链接！</div
                     >
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div
                   v-else-if="item.type === 'shopCash_key'"
@@ -213,7 +213,7 @@
                     <font-awesome-icon class="text-xl px-4" :icon="['fas', 'gem']" />
                     <div>恭喜您成功使用卡密充值了{{ item?.cash }}现金！</div>
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div
                   v-else-if="item.type === 'shopCredit_key'"
@@ -226,7 +226,7 @@
                     <font-awesome-icon class="text-xl px-4" :icon="['fas', 'gem']" />
                     <div>恭喜您成功使用卡密充值了{{ item?.cash }}现金！</div>
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div
                   v-else-if="item.type === 'shopCredit_cash'"
@@ -239,7 +239,7 @@
                     <font-awesome-icon class="text-xl px-4" :icon="['fas', 'gem']" />
                     <div>恭喜您使用{{ item?.cash }}现金成功购买了{{ item?.credit }}积分！</div>
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
                 <div
                   v-else-if="item.type === 'comment' || item.type === 'commentPost'"
@@ -262,7 +262,7 @@
                       >发表的评论进行了回复。</div
                     >
                   </div>
-                  <div>{{ formatDate(item?.UpdatedAt) }}</div>
+                  <div class="ml-4 min-w-16">{{ formatDate(item?.UpdatedAt) }}</div>
                 </div>
               </div>
             </div>

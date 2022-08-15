@@ -11,6 +11,7 @@
 package mysql
 
 import (
+	"encoding/json"
 	"errors"
 	"server/global"
 	"server/model"
@@ -247,32 +248,10 @@ func GetUserPostList(info request.SearchPostParams, userId uuid.UUID) (err error
 }
 
 func GetPostByPostIds(postIds []string) (err error, list []model.XdPost) {
-	for _, postId := range postIds {
-		var post model.XdPost
-		if err := global.XD_DB.Where("post_id = ?", postId).Preload("AuthorRelation").Preload("CategoryRelation").First(&post).Error; err != nil {
-			return response.ErrorPostListGet, nil
-		}
-		list = append(list, post)
-	}
-	return err, list
-}
-
-func GetPopularByPostIds(postIds []string) (err error, list []model.XdPost) {
-	for _, postId := range postIds {
-		var post model.XdPost
-		if err := global.XD_DB.Where("post_id = ?", postId).First(&post).Error; err != nil {
-			return response.ErrorPostListGet, nil
-		}
-		list = append(list, post)
-	}
-	return err, list
-}
-
-func GetPostByCategoryId(categorySlug string) (err error, posts []model.XdPost) {
-	if err := global.XD_DB.Where("status = ?", "published").Where("category = ?", categorySlug).Preload("CategoryRelation").Preload("AuthorRelation").Find(&posts).Error; err != nil {
+	if err := global.XD_DB.Where("post_id IN ?", postIds).Preload("AuthorRelation").Preload("CategoryRelation").Find(&list).Error; err != nil {
 		return response.ErrorPostListGet, nil
 	}
-	return err, posts
+	return err, list
 }
 
 func GetPostByPostId(postId string) (err error, posts response.XdPost) {
@@ -489,9 +468,12 @@ func GetPostVideoByPostId(postId string, uuid uuid.UUID) (err error, postVideo [
 	if err := global.XD_DB.Where("post_id = ?", postId).Find(&postVideo).Error; err != nil {
 		return response.ErrorPostListGet, postVideo
 	}
+	err, settings := GetSettingItem(model.XdSetting{Slug: "website_basic"})
+	var setting response.Settings
+	json.Unmarshal([]byte(settings.Value), &setting)
 	for i := 0; i < len(postVideo); i++ {
 		postVideo[i].Buy = 1
-		postVideo[i].Url = global.XD_CONFIG.ParsingUrl + postVideo[i].Url
+		postVideo[i].Url = setting.ParsingUrl + postVideo[i].Url
 		var order model.XdOrder
 		if errors.Is(global.XD_DB.Where(map[string]interface{}{
 			"post_id":       postId,
