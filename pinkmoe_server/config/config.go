@@ -39,6 +39,7 @@ type BasicConfig struct {
 
 // UploadConfig 上传配置
 type UploadConfig struct {
+	ParsingUrl        string `mapstructure:"parsingUrl" json:"parsingUrl"`
 	OssType           string `mapstructure:"ossType" json:"ossType"`
 	*AliyunOssConfig  `mapstructure:"aliyunOssConfig" json:"aliyunOssConfig"`
 	*HuaWeiObsConfig  `mapstructure:"huaWeiObsConfig" json:"huaWeiObsConfig"`

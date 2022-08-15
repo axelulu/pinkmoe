@@ -102,12 +102,22 @@ func getAllChildCategoryBySlug(slug string) (err error, treeMap []model.XdCatego
 			break
 		}
 	}
+	getAllChildCategory(allMenus, parentsId, &treeMap)
+	return err, treeMap
+}
+
+func getAllChildCategory(allMenus []model.XdCategory, parentsId uint, treeMap *[]model.XdCategory) {
 	for _, v := range allMenus {
 		if v.ParentId == parentsId {
-			treeMap = append(treeMap, v)
+			*treeMap = append(*treeMap, v)
+			for _, menu := range allMenus {
+				if menu.ParentId == v.ID {
+					getAllChildCategory(allMenus, v.ID, treeMap)
+					break
+				}
+			}
 		}
 	}
-	return err, treeMap
 }
 
 func getCategoryList(menu *model.XdCategory, treeMap map[string][]model.XdCategory) (err error) {

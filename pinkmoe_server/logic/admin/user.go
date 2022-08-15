@@ -329,8 +329,6 @@ func UserBuyVip(p request.XdAuthorityParams, uuid uuid.UUID) (err error) {
 	if err != nil {
 		return response.ErrorBuyVip
 	}
-	println(user.Authority.AuthorityWeight)
-	println(authority.AuthorityWeight)
 	if user.Authority.AuthorityWeight <= authority.AuthorityWeight {
 		return response.ErrorUserLevel
 	}

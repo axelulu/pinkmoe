@@ -352,7 +352,7 @@ func GetPostDownloadByPostId(postId string, uuid uuid.UUID) (err error, postDown
 			"uuid":          uuid,
 			"payment_state": "paid",
 			"goods_id":      postDownload[i].ID,
-		}).First(&order).Error, gorm.ErrRecordNotFound) {
+		}).First(&order).Error, gorm.ErrRecordNotFound) && postDownload[i].Price != 0 {
 			postDownload[i].Buy = 0
 			postDownload[i].Url = ""
 			postDownload[i].ExtractPwd = ""
@@ -426,7 +426,7 @@ func GetPostMusicByPostId(postId string, uuid uuid.UUID) (err error, postMusic [
 			"uuid":          uuid,
 			"payment_state": "paid",
 			"goods_id":      postMusic[i].ID,
-		}).First(&order).Error, gorm.ErrRecordNotFound) {
+		}).First(&order).Error, gorm.ErrRecordNotFound) && postMusic[i].Price != 0 {
 			postMusic[i].Buy = 0
 			postMusic[i].Url = ""
 		}
@@ -491,6 +491,7 @@ func GetPostVideoByPostId(postId string, uuid uuid.UUID) (err error, postVideo [
 	}
 	for i := 0; i < len(postVideo); i++ {
 		postVideo[i].Buy = 1
+		postVideo[i].Url = global.XD_CONFIG.ParsingUrl + postVideo[i].Url
 		var order model.XdOrder
 		if errors.Is(global.XD_DB.Where(map[string]interface{}{
 			"post_id":       postId,
@@ -498,7 +499,7 @@ func GetPostVideoByPostId(postId string, uuid uuid.UUID) (err error, postVideo [
 			"uuid":          uuid,
 			"payment_state": "paid",
 			"goods_id":      postVideo[i].ID,
-		}).First(&order).Error, gorm.ErrRecordNotFound) {
+		}).First(&order).Error, gorm.ErrRecordNotFound) && postVideo[i].Price != 0 {
 			postVideo[i].Buy = 0
 			postVideo[i].Url = ""
 		}
