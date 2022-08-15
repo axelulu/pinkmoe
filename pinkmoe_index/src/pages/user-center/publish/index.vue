@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:42
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 22:13:33
+ * @LastEditTime: 2022-08-15 14:55:32
  * @FilePath: /pinkmoe_index/src/pages/user-center/publish/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -172,7 +172,7 @@
             <div class="w-2/12 flex flex-row items-center">
               <div
                 @click="
-                  formParams.videoRelation?.length! > 5
+                  formParams.videoRelation?.length! > 24
                     ? ''
                     : formParams.videoRelation?.push({
                         name: '',
@@ -183,7 +183,7 @@
                       })
                 "
                 :class="
-                  formParams.videoRelation?.length! > 5
+                  formParams.videoRelation?.length! > 24
                     ? 'opacity-60 cursor-not-allowed'
                     : 'cursor-pointer'
                 "
@@ -270,7 +270,7 @@
             <div class="w-2/12 flex flex-row items-center">
               <div
                 @click="
-                  formParams.musicRelation?.length! > 5
+                  formParams.musicRelation?.length! > 24
                     ? ''
                     : formParams.musicRelation?.push({
                         name: '',
@@ -280,7 +280,7 @@
                       })
                 "
                 :class="
-                  formParams.musicRelation?.length! > 5
+                  formParams.musicRelation?.length! > 24
                     ? 'opacity-60 cursor-not-allowed'
                     : 'cursor-pointer'
                 "
@@ -560,7 +560,7 @@
               <div class="w-2/12 flex flex-row items-center">
                 <div
                   @click="
-                    formParams.downloadRelation?.length! > 5
+                    formParams.downloadRelation?.length! > 24
                       ? ''
                       : formParams.downloadRelation?.push({
                           name: '',
@@ -572,7 +572,7 @@
                         })
                   "
                   :class="
-                    formParams.downloadRelation.length > 5
+                    formParams.downloadRelation.length > 24
                       ? 'opacity-60 cursor-not-allowed'
                       : 'cursor-pointer'
                   "
