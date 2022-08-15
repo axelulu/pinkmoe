@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 09:47:06
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 22:16:36
+ * @LastEditTime: 2022-08-15 10:55:00
  * @FilePath: /pinkmoe_index/src/pages/index/components/Popular/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -42,7 +42,7 @@
           class="absolute top-1/2 left-0 bottom-0 ring-0 w-full"
           style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.65))"
         ></div>
-        <div class="absolute bottom-1 px-8 w-full text-center text-white text-md"
+        <div class="absolute mb-1 text-sm bottom-1 px-8 w-full text-center text-white text-md"
           >{{ item.title }}
         </div>
       </router-link>

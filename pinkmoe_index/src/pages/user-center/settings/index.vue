@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:59
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 22:17:19
+ * @LastEditTime: 2022-08-15 10:54:18
  * @FilePath: /pinkmoe_index/src/pages/user-center/settings/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -66,7 +66,7 @@
         </div>
         <div class="flex flex-row items-center px-4 pb-4">
           <img
-            class="w-28 h-28 rounded-full animate-lazyloaded cursor-pointer object-cover"
+            class="w-28 h-28 object-cover rounded-full animate-lazyloaded cursor-pointer object-cover"
             v-lazy="avatarFormParams.avatar"
             alt=""
           />
