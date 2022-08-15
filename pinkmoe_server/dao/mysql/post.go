@@ -249,7 +249,18 @@ func GetUserPostList(info request.SearchPostParams, userId uuid.UUID) (err error
 func GetPostByPostIds(postIds []string) (err error, list []model.XdPost) {
 	for _, postId := range postIds {
 		var post model.XdPost
-		if err := global.XD_DB.Where("post_id = ?", postId).Preload("AuthorRelation").Preload("TopicRelations").Preload("CategoryRelation").Preload("PostImg").Preload("DownloadRelation").Preload("MusicRelation").Preload("VideoRelation").First(&post).Error; err != nil {
+		if err := global.XD_DB.Where("post_id = ?", postId).Preload("AuthorRelation").Preload("CategoryRelation").First(&post).Error; err != nil {
+			return response.ErrorPostListGet, nil
+		}
+		list = append(list, post)
+	}
+	return err, list
+}
+
+func GetPopularByPostIds(postIds []string) (err error, list []model.XdPost) {
+	for _, postId := range postIds {
+		var post model.XdPost
+		if err := global.XD_DB.Where("post_id = ?", postId).First(&post).Error; err != nil {
 			return response.ErrorPostListGet, nil
 		}
 		list = append(list, post)

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:22:01
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:11:01
+ * @LastEditTime: 2022-08-15 10:11:05
  * @FilePath: /pinkmoe_index/src/components/Postdownload/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -23,7 +23,7 @@
 
 <template>
   <!-- PostDownload -->
-  <div v-if="postDownload && postDownload.length > 0">
+  <div>
     <div class="text-xs text-gray-500 dark:text-gray-200 mr-4 mt-4">
       <font-awesome-icon class="text-gray-700 dark:text-gray-200 mr-1" icon="cloud-download-alt" />
       <span class="mr-1">下载链接</span>
@@ -53,9 +53,9 @@
               <span class="ml-1">提取密码</span>
             </div>
             <div
-              class="text-xs py-1 w-9/12 border-2 dark:bg-gray-700 dark:hover:border-pink-400 dark:border-gray-800 border-gray-200 text-center bg-white cursor-text duration-300 hover:border-pink-400"
+              class="text-xs py-1 w-9/12 h-7 border-2 dark:bg-gray-700 dark:hover:border-pink-400 dark:border-gray-800 border-gray-200 text-center bg-white cursor-text duration-300 hover:border-pink-400"
             >
-              {{ item.extractPwd }}
+              {{ item.extractPwd ? item.extractPwd : '无' }}
             </div>
             <GreenBtn
               @click="copyText(item.extractPwd)"
@@ -70,9 +70,9 @@
               <span class="ml-1">解压密码</span>
             </div>
             <div
-              class="text-xs py-1 w-9/12 border-2 dark:bg-gray-700 dark:hover:border-pink-400 dark:border-gray-800 border-gray-200 text-center bg-white cursor-text duration-300 hover:border-pink-400"
+              class="text-xs py-1 h-7 w-9/12 border-2 dark:bg-gray-700 dark:hover:border-pink-400 dark:border-gray-800 border-gray-200 text-center bg-white cursor-text duration-300 hover:border-pink-400"
             >
-              {{ item.unpackPwd }}
+              {{ item.unpackPwd ? item.unpackPwd : '无' }}
             </div>
             <GreenBtn
               @click="copyText(item.unpackPwd)"
@@ -82,9 +82,9 @@
             />
           </div>
           <div class="flex flex-row">
-            <router-link class="w-11/12" :to="item.url">
+            <a class="w-11/12" :href="item.url" target="_blank">
               <GreenBtn value="下载" :icon="['fas', 'cloud-download-alt']" />
-            </router-link>
+            </a>
             <GreenBtn
               @click="copyText(item.url)"
               classes="w-1/12"

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 20:56:58
+ * @LastEditTime: 2022-08-15 10:14:12
  * @FilePath: /pinkmoe_index/src/hooks/post.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -57,6 +57,7 @@ export const usePostItem = () => {
   };
 
   const showComment = (commentMeta) => {
+    commentFormParams.page = 1;
     if (auth.isLogin) {
       comment.value.show(commentMeta);
     } else {
