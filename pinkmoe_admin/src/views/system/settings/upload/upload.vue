@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-05-06 22:25:04
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-15 14:46:25
+ * @LastEditTime: 2022-08-15 14:57:20
  * @FilePath: /pinkmoe_admin/src/views/system/settings/upload/upload.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -170,11 +170,11 @@
       path: 'uploads/file'
     },
     aliyunOssConfig: {
-      endpoint: 'https://oss-cn-hangzhou.aliyuncs.com',
-      accessKeyId: 'LTAI5t7XaNgEBpr6AEW6Juwo',
-      accessKeySecret: '99qQlsknQTc9QGw4kESmzD2l45Etet',
+      endpoint: '',
+      accessKeyId: '',
+      accessKeySecret: '',
       bucketName: 'pinkmoe',
-      bucketPoint: 'https://pinkmoe.coderzhaolu.com',
+      bucketPoint: '',
     },
     tencentCOSConfig: {
       bucket: '',
