@@ -32,16 +32,16 @@ func (a *authorityParams) Initialize() error {
 		{AuthorityId: "2333", AuthorityParamId: "weekPrice", AuthorityParamKey: "周会员", AuthorityParamValue: 7, AuthorityParamDay: 7},
 		{AuthorityId: "2333", AuthorityParamId: "monthPrice", AuthorityParamKey: "月会员", AuthorityParamValue: 30, AuthorityParamDay: 30},
 		{AuthorityId: "2333", AuthorityParamId: "yearPrice", AuthorityParamKey: "年会员", AuthorityParamValue: 365, AuthorityParamDay: 365},
-		{AuthorityId: "2333", AuthorityParamId: "download", AuthorityParamKey: "下载折扣", AuthorityParamValue: 100, AuthorityParamDay: 0},
-		{AuthorityId: "2333", AuthorityParamId: "music", AuthorityParamKey: "音乐折扣", AuthorityParamValue: 100, AuthorityParamDay: 0},
-		{AuthorityId: "2333", AuthorityParamId: "video", AuthorityParamKey: "视频折扣", AuthorityParamValue: 100, AuthorityParamDay: 0},
+		{AuthorityId: "2333", AuthorityParamId: "downloadDiscounts", AuthorityParamKey: "下载折扣", AuthorityParamValue: 100, AuthorityParamDay: 0},
+		{AuthorityId: "2333", AuthorityParamId: "musicDiscounts", AuthorityParamKey: "音乐折扣", AuthorityParamValue: 100, AuthorityParamDay: 0},
+		{AuthorityId: "2333", AuthorityParamId: "videoDiscounts", AuthorityParamKey: "视频折扣", AuthorityParamValue: 100, AuthorityParamDay: 0},
 		{AuthorityId: "9527", AuthorityParamId: "dayPrice", AuthorityParamKey: "日会员", AuthorityParamValue: 10, AuthorityParamDay: 1},
 		{AuthorityId: "9527", AuthorityParamId: "weekPrice", AuthorityParamKey: "周会员", AuthorityParamValue: 60, AuthorityParamDay: 7},
 		{AuthorityId: "9527", AuthorityParamId: "monthPrice", AuthorityParamKey: "月会员", AuthorityParamValue: 100, AuthorityParamDay: 30},
 		{AuthorityId: "9527", AuthorityParamId: "yearPrice", AuthorityParamKey: "年会员", AuthorityParamValue: 400, AuthorityParamDay: 365},
-		{AuthorityId: "9527", AuthorityParamId: "download", AuthorityParamKey: "下载折扣", AuthorityParamValue: 80, AuthorityParamDay: 0},
-		{AuthorityId: "9527", AuthorityParamId: "music", AuthorityParamKey: "音乐折扣", AuthorityParamValue: 80, AuthorityParamDay: 0},
-		{AuthorityId: "9527", AuthorityParamId: "video", AuthorityParamKey: "视频折扣", AuthorityParamValue: 80, AuthorityParamDay: 0},
+		{AuthorityId: "9527", AuthorityParamId: "downloadDiscounts", AuthorityParamKey: "下载折扣", AuthorityParamValue: 80, AuthorityParamDay: 0},
+		{AuthorityId: "9527", AuthorityParamId: "musicDiscounts", AuthorityParamKey: "音乐折扣", AuthorityParamValue: 80, AuthorityParamDay: 0},
+		{AuthorityId: "9527", AuthorityParamId: "videoDiscounts", AuthorityParamKey: "视频折扣", AuthorityParamValue: 80, AuthorityParamDay: 0},
 	}
 	if err := global.XD_DB.Create(&entities).Error; err != nil {
 		return errors.Wrapf(err, "%s表数据初始化失败!", a.TableName())

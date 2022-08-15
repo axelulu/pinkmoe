@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9c06589-a528-4508-af15-feb6e80b09c9" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/pinkmoe_server.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/admin/goods_category.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dao/mysql/goods_category.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logic/admin/goods_category.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/request/goods_category.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/xd_goods.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/xd_goods_category.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/xd_goods_size.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/xd_goods_size_val.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/xd_goods_star.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/server.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logic/admin/home.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/admin/home.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/response/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/response/errors.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/initialize/initDB/authority_params.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/initDB/authority_params.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
