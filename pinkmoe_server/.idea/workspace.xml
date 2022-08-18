@@ -5,49 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9c06589-a528-4508-af15-feb6e80b09c9" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/admin/goods.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/cms/goods.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/cms/shop.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/cms/shopCategory.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dao/mysql/goods.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logic/admin/goods.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logic/admin/shop.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/request/goods.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/response/shop.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_admin/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_admin/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_admin/src/components/UploadPostImg/src/PostImgUpload.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_admin/src/components/UploadPostImg/src/PostImgUpload.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_admin/src/views/content/post/CreateEditForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_admin/src/views/content/post/CreateEditForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_admin/src/views/content/post/post.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_admin/src/views/content/post/post.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_admin/src/views/setting/shop/shop.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/api/category/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/api/category/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/components/Goods/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/components/Goods/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/post.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/postVideo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/postVideo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/shop/shop.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/shop/shop.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/post/:id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/post/:id.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/shop/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/shop/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/components/Slideauthor/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/components/Slideauthor/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/slideAuthor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/slideAuthor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/shop/goods/:id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/shop/goods/:id.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/admin/goods_category.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/admin/goodsCategory.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/admin/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/admin/upload.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/cms/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/cms/upload.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/category.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/category.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/goods_category.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/goods_category.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/upload.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialize/gorm.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/gorm.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialize/initDB/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/initDB/api.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialize/initDB/authority.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/initDB/authority.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialize/initDB/authority_menu.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/initDB/authority_menu.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialize/initDB/casbin.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/initDB/casbin.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialize/initDB/menu.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/initDB/menu.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/initialize/initDB/setting.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/initDB/setting.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logic/admin/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/admin/upload.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/response/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/response/errors.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/response/xd_setting.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/response/xd_setting.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/xd_goods.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/xd_goods.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/xd_goods_size.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/xd_goods_size.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/xd_goods_size_val.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/xd_goods_size_val.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/xd_upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/xd_upload.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

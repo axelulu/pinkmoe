@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:48:20
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 22:44:04
+ * @LastEditTime: 2022-08-18 13:47:03
  * @FilePath: /pinkmoe_index/src/components/Slideauthor/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -48,34 +48,34 @@
       :style="`background-image: url(${author?.headerImg});`"
     ></div>
     <router-link
-      :to="'/author/' + author.uuid + '/userInfo'"
+      :to="'/author/' + author?.uuid + '/userInfo'"
       class="w-36 h-36 rounded-full absolute mt-14 border-4 border-white shadow-2xl cursor-pointer overflow-hidden"
     >
-      <img class="w-36 h-36 object-cover animate-lazyloaded" v-lazy="author.avatar" alt="" />
+      <img class="w-36 h-36 object-cover animate-lazyloaded" v-lazy="author?.avatar" alt="" />
     </router-link>
     <div
       class="w-full bg-white dark:bg-gray-700 pt-24 mt-30 text-center rounded-md overflow-hidden"
     >
       <router-link
-        :to="'/author/' + author.uuid + '/userInfo'"
+        :to="'/author/' + author?.uuid + '/userInfo'"
         class="text-lg text-pink-400 mb-2 hover:text-white hover:bg-pink-400 px-1 py-0.5 duration-300 cursor-pointer"
       >
-        {{ author.nickName }}
+        {{ author?.nickName }}
       </router-link>
       <div class="p-1">
         <span class="text-xs text-white bg-green-500 px-1 py-0.5"
-          ><font-awesome-icon class="mr-1" :icon="['fas', 'paw']" />{{ author.credit }}</span
+          ><font-awesome-icon class="mr-1" :icon="['fas', 'paw']" />{{ author?.credit }}</span
         >
         <span
-          :style="`background-color: ${author.authority.authorityColor};`"
+          :style="`background-color: ${author?.authority?.authorityColor};`"
           class="text-xs text-white px-1 py-0.5"
-          >{{ author.authority.authorityName }}</span
+          >{{ author?.authority?.authorityName }}</span
         >
         <span :style="`background-color: ${lev?.color};`" class="text-xs text-white px-1 py-0.5">{{
           lev?.levelName
         }}</span>
       </div>
-      <div class="text-xs text-gray-500 dark:text-gray-200 pt-1">{{ author.desc }}</div>
+      <div class="text-xs text-gray-500 dark:text-gray-200 pt-1">{{ author?.desc }}</div>
       <div class="pb-4 pt-3">
         <span
           @click="!status ? unFollow() : follow()"
@@ -96,28 +96,28 @@
         class="flex flex-row text-xs text-gray-500 dark:text-gray-200 bg-gray-50 dark:bg-gray-700"
       >
         <router-link
-          :to="'/author/' + author.uuid + '/follow'"
+          :to="'/author/' + author?.uuid + '/follow'"
           class="py-2 flex-1 border-r border-t border-gray-100 dark:border-gray-600 cursor-pointer hover:bg-pink-400 hover:border-pink-400 hover:text-white duration-300"
         >
           <div>{{ followCount }}</div>
           <div>关注</div>
         </router-link>
         <router-link
-          :to="'/author/' + author.uuid + '/fans'"
+          :to="'/author/' + author?.uuid + '/fans'"
           class="py-2 flex-1 border-r border-t border-gray-100 dark:border-gray-600 cursor-pointer hover:bg-pink-400 hover:border-pink-400 hover:text-white duration-300"
         >
           <div>{{ fansCount }}</div>
           <div>粉丝</div>
         </router-link>
         <router-link
-          :to="'/author/' + author.uuid + '/post'"
+          :to="'/author/' + author?.uuid + '/post'"
           class="py-2 flex-1 border-r border-t border-gray-100 dark:border-gray-600 cursor-pointer hover:bg-pink-400 hover:border-pink-400 hover:text-white duration-300"
         >
           <div>{{ postCount }}</div>
           <div>帖子</div>
         </router-link>
         <router-link
-          :to="'/author/' + author.uuid + '/comment'"
+          :to="'/author/' + author?.uuid + '/comment'"
           class="py-2 flex-1 border-r border-t border-gray-100 dark:border-gray-600 cursor-pointer hover:bg-pink-400 hover:border-pink-400 hover:text-white duration-300"
         >
           <div>{{ commentCount }}</div>

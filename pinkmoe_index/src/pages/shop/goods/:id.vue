@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-08-11 15:03:50
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-18 13:34:08
+ * @LastEditTime: 2022-08-18 13:48:40
  * @FilePath: /pinkmoe_index/src/pages/shop/goods/:id.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -15,6 +15,10 @@
   import { useUtil } from '/@/hooks/util';
   import GreenBtn from '/@/components/Greenbtn/index.vue';
   import BasicInput from '/@/components/Basicinput/index.vue';
+  import SlideAuthor from '/@/components/Slideauthor/index.vue';
+  import avatar from '/@/assets/images/avatar.jpeg';
+  import PublishComment from '/@/components/Publishcomment/index.vue';
+  import PostComment from '/@/components/Postcomment/index.vue';
   const { formatDate } = useUtil();
 
   const {
@@ -24,7 +28,6 @@
     nextPage,
     commentList,
     showComment,
-    share,
     refreshComment,
     user,
     stock,
@@ -84,8 +87,7 @@
             <div class="flex flex-row w-full justify-between items-center">
               <div class="text-red-500 text-xl min-w-20">¥{{ saleAmount }}</div>
               <div class="text-xs mr-4">
-                <font-awesome-icon class="mr-1" :icon="['fas', 'eye']" />
-                <span>{{ goodsItem?.goods?.view }}</span>
+                {{ formatDate(goodsItem?.goods?.UpdatedAt) }}
               </div>
             </div>
           </div>
@@ -140,8 +142,8 @@
               <GreenBtn @click="num++" classes="w-10 h-8" value="" :icon="['fas', 'add']" />
             </div>
           </div>
-          <div class="flex flex-row justify-between mt-6">
-            <div class="flex flex-row">
+          <div class="flex flex-row justify-between mt-6 items-center">
+            <div class="flex flex-row items-center">
               <GreenBtn
                 @click="publishPost"
                 classes="w-20 mr-2"
@@ -165,20 +167,51 @@
         </div>
       </div>
       <div class="w-full flex flex-row">
-        <div class="w-9/12 pr-1 pt-2">
+        <div class="w-9/12 pr-2 pt-4">
           <div
             class="bg-white w-full p-4 dark:bg-gray-700 dark:text-gray-200 rounded-md shadow-sm animate-fadeIn30"
           >
             <div class="pb-4 text-sm">产品简介</div>
             <div v-html="goodsItem?.goods?.content"></div>
           </div>
-        </div>
-        <div class="w-3/12 pl-1 pt-2">
           <div
-            class="bg-white w-full dark:bg-gray-700 dark:text-gray-200 rounded-md shadow-sm animate-fadeIn30"
-            >12</div
+            @click="showComment(null)"
+            class="bg-pink-400 rounded-md border-2 border-transparent hover:border-pink-500 hover:opacity-80 flex flex-row items-center p-2 cursor-pointer duration-300 mt-4"
           >
+            <div class="rounded-full overflow-hidden mr-2">
+              <img
+                v-lazy="user.isLogin ? user.userInfo?.avatar : avatar"
+                class="h-8 w-8 object-cover animate-lazyloaded"
+                alt="登陆"
+              />
+            </div>
+            <div class="text-lg text-white">{{
+              user.isLogin ? '参与讨论聊一聊～' : '登陆后才能评论哦～'
+            }}</div>
+          </div>
+          <PostComment
+            @showComment="showComment"
+            :has-more="hasMore"
+            :next-page="nextPage"
+            :loading="loading"
+            :post-comment="commentList?.list"
+          />
         </div>
+        <div class="w-3/12 pl-2 pt-4">
+          <SlideAuthor
+            :author="goodsItem?.goods?.AuthorRelation"
+            :comment-count="goodsItem?.commentCount"
+            :fans-count="goodsItem?.fansCount"
+            :follow-count="goodsItem?.followCount"
+            :post-count="goodsItem?.postCount"
+            :follow-status="goodsItem?.followStatus"
+          />
+        </div>
+        <PublishComment
+          ref="comment"
+          @getPostComment="refreshComment"
+          :postId="(route.params.id as string)"
+        />
       </div>
     </div>
   </div>
