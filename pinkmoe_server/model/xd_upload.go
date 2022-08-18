@@ -18,11 +18,12 @@ import (
 
 type XdUploadFile struct {
 	global.XD_MODEL
-	Name   string    `json:"name" gorm:"comment:文件名"`                 // 文件名
-	Url    string    `json:"url" gorm:"comment:文件地址"`                 // 文件地址
-	Tag    string    `json:"tag" gorm:"comment:文件标签"`                 // 文件标签
-	Key    string    `json:"key" gorm:"comment:编号"`                   // 编号
-	PostId string    `json:"postId" gorm:"comment:文章ID;default:null"` // 文章ID
-	Type   string    `json:"type" gorm:"comment:图片类型;default:'post'"` // 图片类型
-	Uuid   uuid.UUID `json:"uuid" gorm:"comment:用户ID"`                // 用户ID
+	Name    string    `json:"name" gorm:"comment:文件名"`                  // 文件名
+	Url     string    `json:"url" gorm:"comment:文件地址"`                  // 文件地址
+	Tag     string    `json:"tag" gorm:"comment:文件标签"`                  // 文件标签
+	Key     string    `json:"key" gorm:"comment:编号"`                    // 编号
+	PostId  string    `json:"postId" gorm:"comment:文章ID;default:null"`  // 文章ID
+	GoodsId string    `json:"goodsId" gorm:"comment:商品ID;default:null"` // 商品ID
+	Type    string    `json:"type" gorm:"comment:图片类型;default:'post'"`  // 图片类型
+	Uuid    uuid.UUID `json:"uuid" gorm:"comment:用户ID"`                 // 用户ID
 }

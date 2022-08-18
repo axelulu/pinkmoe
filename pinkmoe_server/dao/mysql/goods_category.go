@@ -22,15 +22,19 @@ import (
 	"gorm.io/gorm"
 )
 
-func GetGoodsCategoryList(p request.SearchGoodsCategoryParams) (err error, list interface{}, total int64) {
+func GetGoodsCategoryList(p request.SearchGoodsCategoryParams) (err error, list []model.XdGoodsCategory, total int64) {
 	var menuList []model.XdGoodsCategory
 	err, treeMap := getGoodsCategoryTreeMap(p)
+	db := global.XD_DB.Model(&model.XdGoodsCategory{})
 	menuList = treeMap["0"]
 	for i := 0; i < len(menuList); i++ {
 		err = getGoodsCategoryList(&menuList[i], treeMap)
 	}
 	if err != nil {
 		return response.ErrorMenuGet, nil, 0
+	}
+	if err = db.Count(&total).Error; err != nil {
+		return response.ErrorCommentListGet, nil, 0
 	}
 	return err, menuList, total
 }
@@ -160,7 +164,7 @@ func DeleteGoodsCategory(p model.XdGoodsCategory) (err error) {
 	if !errors.Is(global.XD_DB.Where("parent_id = ?", p.ID).First(&model.XdGoodsCategory{}).Error, gorm.ErrRecordNotFound) {
 		return response.ErrorGoodsCategoryDelBychild
 	}
-	if !errors.Is(global.XD_DB.Where("category = ?", p.ID).First(&model.XdPost{}).Error, gorm.ErrRecordNotFound) {
+	if !errors.Is(global.XD_DB.Where("category = ?", p.Slug).First(&model.XdPost{}).Error, gorm.ErrRecordNotFound) {
 		return response.ErrorGoodsCategoryDelByPost
 	}
 	if err = global.XD_DB.Delete(&p).Error; err != nil {

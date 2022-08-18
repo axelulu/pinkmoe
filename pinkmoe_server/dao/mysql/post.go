@@ -248,7 +248,7 @@ func GetUserPostList(info request.SearchPostParams, userId uuid.UUID) (err error
 }
 
 func GetPostByPostIds(postIds []string) (err error, list []model.XdPost) {
-	if err := global.XD_DB.Where("post_id IN ?", postIds).Preload("AuthorRelation").Preload("CategoryRelation").Find(&list).Error; err != nil {
+	if err := global.XD_DB.Where("status = ?", "published").Where("post_id IN ?", postIds).Preload("AuthorRelation").Preload("CategoryRelation").Find(&list).Error; err != nil {
 		return response.ErrorPostListGet, nil
 	}
 	return err, list

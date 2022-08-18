@@ -13,6 +13,8 @@ package response
 type ResUserReward struct {
 	PublishPostType    string `json:"publishPostType" form:"publishPostType"`       // 话题标识
 	PublishPostCredit  int    `json:"publishPostCredit" form:"publishPostCredit"`   // 话题标识
+	PublishGoodsType   string `json:"publishGoodsType" form:"publishGoodsType"`     // 话题标识
+	PublishGoodsCredit int    `json:"publishGoodsCredit" form:"publishGoodsCredit"` // 话题标识
 	CommentType        string `json:"commentType" form:"commentType"`               // 话题标识
 	CommentCredit      int    `json:"commentCredit" form:"commentCredit"`           // 话题标识
 	RegType            string `json:"regType" form:"regType"`                       // 话题标识

@@ -32,6 +32,7 @@ type XdGoods struct {
 	Status           string           `json:"status" form:"status" gorm:"comment:商品状态"`                               // 商品状态
 	AuthorRelation   XdUser           `gorm:"foreignKey:Author;references:UUID;"`
 	CategoryRelation XdGoodsCategory  `gorm:"foreignKey:Category;references:Slug"`
-	SizeRelation     []XdGoodsSize    `json:"starRelation" gorm:"foreignKey:GoodsId;references:GoodsId;"`
-	SizeValRelation  []XdGoodsSizeVal `json:"collectRelation" gorm:"foreignKey:GoodsId;references:GoodsId;"`
+	SizeRelation     []XdGoodsSize    `json:"sizeRelation" gorm:"foreignKey:GoodsId;references:GoodsId;"`
+	SizeValRelation  []XdGoodsSizeVal `json:"sizeValRelation" gorm:"foreignKey:GoodsId;references:GoodsId;"`
+	GoodsImg         []XdUploadFile   `json:"goodsImg" gorm:"foreignKey:GoodsId;references:GoodsId;"`
 }

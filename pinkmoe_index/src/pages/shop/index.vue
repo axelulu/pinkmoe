@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:32:40
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-11 08:08:06
+ * @LastEditTime: 2022-08-18 09:47:10
  * @FilePath: /pinkmoe_index/src/pages/shop/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -22,7 +22,7 @@
 
   import { useShop } from '/@/hooks/shop/shop';
 
-  const { loading, hasMore, nextPage, formParams, scrollMenu, shopMenu } = useShop();
+  const { content, popular, shopCategory, scrollMenu, shopMenu, loading } = useShop();
 </script>
 
 <template>
@@ -38,11 +38,10 @@
       :modules="[FreeMode, Pagination]"
       class="mySwiper"
     >
-      <swiper-slide v-for="(k, v) in 10" :key="v" class="cursor-pointer"
-        ><img
-          src="https://shijiechao.oss-cn-hangzhou.aliyuncs.com/wp-content/uploads/2020/10/e94c4202009291149327589.jpeg"
-          alt=""
-        />
+      <swiper-slide v-for="(k, v) in popular" :key="v" class="cursor-pointer">
+        <router-link :to="'/shop/category/' + k.category">
+          <img :src="k.cover" alt="" />
+        </router-link>
       </swiper-slide>
     </swiper>
     <div class="text-gray-500 w-full">
@@ -58,19 +57,20 @@
           ref="shopMenu"
           class="scrollCat flex flex-nowrap overflow-x-auto justify-start items-center"
         >
-          <div
+          <router-link
+            :to="'/shop/category/' + k.slug"
             class="m-2 cursor-pointer"
             style="background-image: url('/uploads/file/default/background.jpeg')"
-            v-for="(k, v) in 11"
+            v-for="(k, v) in shopCategory"
             :key="v"
           >
             <div
               class="w-30 h-15 select-none flex-shrink-0 flex justify-center items-center text-white text-shadow-bg-white"
               style="backdrop-filter: blur(6px)"
             >
-              分类一
+              {{ k.name }}
             </div>
-          </div>
+          </router-link>
         </div>
         <div
           @click="scrollMenu(true)"
@@ -79,18 +79,18 @@
           <font-awesome-icon :icon="['fas', 'angle-right']"
         /></div>
       </div>
-      <div class="mt-4" v-for="(k, v) in 4" :key="v">
+      <div class="mt-4" v-for="(k, v) in content" :key="v">
         <div v-if="v !== 2" class="lg:w-3/4 xl:w-5/12 m-auto">
           <div class="ml-2 flex flex-row">
             <div
               class="w-7 h-7 bg-sky-400 rounded-full flex justify-center items-center text-white mr-1"
             >
-              <font-awesome-icon :icon="['fas', 'home']" />
+              <font-awesome-icon :icon="[k.iconType, k.icon]" />
             </div>
-            <div class="text-lg">商品</div>
+            <div class="text-lg">{{ k.name }}</div>
             <div class="flex-1"></div>
             <router-link
-              :to="'/category/' + 1"
+              :to="'/shop/category/' + k.slug"
               class="text-xs text-gray-500 mr-2 flex items-center hover:text-pink-400 dark:text-gray-200 cursor-pointer duration-300"
             >
               更多
@@ -98,12 +98,12 @@
             </router-link>
           </div>
           <Spin :show="loading">
-            <div v-if="true" class="w-full flex justify-start flex-wrap mt-4 animate-fadeIn30">
-              <div v-for="(post, v) in 8" :key="v" class="w-1/5 p-1.5">
-                <Goods :post="post" imgHeight="h-60" />
-              </div>
-              <div class="w-full p-1.5 text-gray-500">
-                <MoreBtn v-if="hasMore" @click="nextPage" />
+            <div
+              v-if="k.goods?.length"
+              class="w-full flex justify-start flex-wrap mt-4 animate-fadeIn30"
+            >
+              <div v-for="(post, v) in k.goods" :key="v" class="w-1/5 p-1.5">
+                <Goods :goods="post" imgHeight="h-60" />
               </div>
             </div>
             <NotFound v-else />

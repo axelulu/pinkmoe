@@ -2,53 +2,36 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-24 08:40:11
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-11 07:21:23
+ * @LastEditTime: 2022-08-18 09:18:44
  * @FilePath: /pinkmoe_index/src/hooks/shop/shop.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
-import { ResPage } from '/@/api/common/types';
+import { ResCategory } from '/@/api/category/types';
 import { ResPost } from '/@/api/home/types';
-import { ReqBbsPost } from '/@/api/post/types';
-import { useUserStore } from '/@/store';
+import { getShopList } from '/@/api/shop';
+import { ResContent } from '/@/api/shop/types';
 
 export const useShop = () => {
-  const postList = ref<ResPage<Array<ResPost>>>();
-  const { proxy } = getCurrentInstance();
+  const content = ref<Array<ResContent>>();
+  const popular = ref<Array<ResPost>>();
+  const shopCategory = ref<Array<ResCategory>>();
+  const loading = ref(false);
+
+  // 获取首页
+  const getHome = async () => {
+    loading.value = true;
+    const homeList = await getShopList();
+    content.value = homeList.content;
+    popular.value = homeList.popular;
+    shopCategory.value = homeList.shopCategory;
+    setTimeout(() => {
+      loading.value = false;
+    }, 300);
+  };
+
   const shopMenu = ref();
-  const sort = ref<any>([
-    {
-      title: '按最新',
-      type: 'updated_at',
-    },
-    {
-      title: '按标题',
-      type: 'title',
-    },
-    {
-      title: '按作者',
-      type: 'author',
-    },
-    {
-      title: '按查看',
-      type: 'view',
-    },
-  ]);
-  const auth = useUserStore();
-  const formParams: ReqBbsPost = reactive({
-    userId: auth?.userInfo?.uuid,
-    category: '',
-    type: '',
-    page: 1,
-    pageSize: 12,
-    orderKey: 'updated_at',
-    desc: true,
-  });
-
-  const loading = ref<boolean>(false);
-  const hasMore = ref<boolean>(true);
-
   const scrollMenu = (isRight) => {
     shopMenu.value.scrollTo({
       // y方向坐标800px（代码中不需要写明单位）
@@ -58,14 +41,16 @@ export const useShop = () => {
     });
   };
 
+  onMounted(() => {
+    getHome();
+  });
+
   return {
-    postList,
-    sort,
-    formParams,
-    hasMore,
-    loading,
-    auth,
     scrollMenu,
     shopMenu,
+    content,
+    popular,
+    shopCategory,
+    loading,
   };
 };

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-04 15:47:44
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:23:02
+ * @LastEditTime: 2022-08-17 13:46:37
  * @FilePath: /pinkmoe_admin/src/views/content/post/post.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -123,31 +123,6 @@ const schemas = [
     }
   },
   {
-    field: "commentStatus",
-    component: "NSelect",
-    label: "评论状态",
-    componentProps: {
-      placeholder: "请选择状态",
-      options: [
-        {
-          label: "全部",
-          value: ""
-        },
-        {
-          label: "开启",
-          value: true
-        },
-        {
-          label: "关闭",
-          value: false
-        }
-      ],
-      onUpdateValue: (e: any) => {
-        formParams.commentStatus = e;
-      }
-    }
-  },
-  {
     field: "content",
     component: "NInput",
     label: "内容",
@@ -182,7 +157,6 @@ let formParams = reactive({
   downloadRelation: [],
   topic: [],
   status: "",
-  commentStatus: true
 });
 
 const params = ref({
@@ -261,7 +235,6 @@ function reloadPostTable() {
     downloadRelation: [],
     topic: [],
     status: "",
-    commentStatus: true
   };
   actionRef.value.reload();
 }
@@ -308,12 +281,10 @@ function handleSubmit(values: Recordable) {
 }
 
 function handleReset(values: Recordable) {
-  console.log(values);
   formParams.title = "";
   formParams.content = "";
   formParams.status = "";
   formParams.type = "";
-  formParams.commentStatus = true;
 }
 </script>
 

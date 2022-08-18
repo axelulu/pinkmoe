@@ -10,14 +10,11 @@
  */
 package model
 
-import (
-	"server/global"
-)
+import "server/global"
 
 type XdGoodsSize struct {
-	CreatedAt global.XdTime  // 创建时间
-	UpdatedAt global.XdTime  // 更新时间
-	DeletedAt *global.XdTime `gorm:"index" json:"-"`                                                         // 删除时间
-	Value     string         `json:"value" form:"value" gorm:"comment:规格配置"`                                 // 规格配置
-	GoodsId   string         `json:"goodsId" form:"goodsId" gorm:"not null;unique;primary_key;comment:商品ID"` // 商品ID
+	global.XD_MODEL
+	Key     string `json:"key" form:"key" gorm:"comment:规格名称"`                  // 规格名称
+	Value   string `json:"value" form:"value" gorm:"comment:规格配置"`              // 规格配置
+	GoodsId string `json:"goodsId" form:"goodsId" gorm:"not null;comment:商品ID"` // 商品ID
 }

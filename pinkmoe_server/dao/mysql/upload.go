@@ -57,7 +57,7 @@ func GetFileList(info request.XdUploadFileParams) (err error, list interface{}, 
 	return err, file, total
 }
 
-func UploadFile(header *multipart.FileHeader, noSave string, postId string, uuids string, uploadType string) (err error, file model.XdUploadFile) {
+func UploadFile(header *multipart.FileHeader, noSave string, postId string, goodsId string, uuids string, uploadType string) (err error, file model.XdUploadFile) {
 	oss := upload.NewOss()
 	filePath, key, uploadErr := oss.UploadFile(header)
 	uuidd, err := uuid.FromString(uuids)
@@ -69,7 +69,29 @@ func UploadFile(header *multipart.FileHeader, noSave string, postId string, uuid
 	}
 	if noSave == "0" {
 		s := strings.Split(header.Filename, ".")
-		if len(postId) < 19 {
+		if len(postId) >= 19 {
+			f := model.XdUploadFile{
+				Url:    filePath,
+				Name:   header.Filename,
+				PostId: postId,
+				Tag:    s[len(s)-1],
+				Key:    key,
+				Uuid:   uuidd,
+				Type:   uploadType,
+			}
+			return Upload(f), f
+		} else if len(goodsId) >= 19 {
+			f := model.XdUploadFile{
+				Url:     filePath,
+				Name:    header.Filename,
+				GoodsId: goodsId,
+				Tag:     s[len(s)-1],
+				Key:     key,
+				Uuid:    uuidd,
+				Type:    uploadType,
+			}
+			return Upload(f), f
+		} else {
 			f := model.XdUploadFile{
 				Url:  filePath,
 				Name: header.Filename,
@@ -77,17 +99,6 @@ func UploadFile(header *multipart.FileHeader, noSave string, postId string, uuid
 				Key:  key,
 				Uuid: uuidd,
 				Type: uploadType,
-			}
-			return Upload(f), f
-		} else {
-			f := model.XdUploadFile{
-				Url:    filePath,
-				Name:   header.Filename,
-				Tag:    s[len(s)-1],
-				Key:    key,
-				PostId: postId,
-				Uuid:   uuidd,
-				Type:   uploadType,
 			}
 			return Upload(f), f
 		}

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:28:28
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-15 22:22:24
+ * @LastEditTime: 2022-08-16 13:33:47
  * @FilePath: /pinkmoe_index/src/pages/post/:id.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -33,7 +33,7 @@
     nextPage,
     commentList,
     showComment,
-    getComment,
+    share,
     refreshComment,
     user,
     route,
@@ -126,21 +126,25 @@
             </div>
             <div class="pl-4 pb-4 flex flex-row flex-1">
               <div
+                @click="share('weibo')"
                 class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
               >
                 <font-awesome-icon :icon="['fab', 'weibo']" />
               </div>
               <div
+                @click="share('qq')"
                 class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
               >
                 <font-awesome-icon :icon="['fab', 'qq']" />
               </div>
               <div
+                @click="share('weixin')"
                 class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
               >
                 <font-awesome-icon :icon="['fab', 'weixin']" />
               </div>
               <div
+                @click="share('bold')"
                 class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
               >
                 <font-awesome-icon :icon="['fas', 'bold']" />

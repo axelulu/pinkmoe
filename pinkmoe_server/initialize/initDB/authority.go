@@ -28,8 +28,8 @@ func (a *authority) TableName() string {
 
 func (a *authority) Initialize() error {
 	entities := []model.XdAuthority{
-		{AuthorityId: "2333", AuthorityName: "普通用户", AuthorityWeight: 9999, AuthorityColor: "rgba(255, 0, 0, 1)"},
-		{AuthorityId: "9527", AuthorityName: "管理员", AuthorityWeight: 1, AuthorityColor: "rgba(255, 157, 0, 1)"},
+		{AuthorityId: "2333", AuthorityName: "普通用户", AuthorityWeight: 9999, AuthorityColor: "rgba(255, 0, 0, 1)", VipStart: 1},
+		{AuthorityId: "9527", AuthorityName: "管理员", AuthorityWeight: 1, AuthorityColor: "rgba(255, 157, 0, 1)", VipStart: 0},
 	}
 	if err := global.XD_DB.Create(&entities).Error; err != nil {
 		return errors.Wrapf(err, "%s表数据初始化失败!", a.TableName())

@@ -90,6 +90,17 @@ func (a *api) Initialize() error {
 		{ApiGroup: "话题", Method: "POST", Path: "/api/v1/Admin/Topic/TopicUpdate", Description: "更新话题"},
 		{ApiGroup: "话题", Method: "POST", Path: "/api/v1/Admin/Topic/TopicDelete", Description: "删除话题"},
 
+		{ApiGroup: "商品", Method: "GET", Path: "/api/v1/Admin/Goods/GoodsList", Description: "获取商品列表"},
+		{ApiGroup: "商品", Method: "POST", Path: "/api/v1/Admin/Goods/GoodsCreate", Description: "创建商品"},
+		{ApiGroup: "商品", Method: "POST", Path: "/api/v1/Admin/Goods/GoodsUpdate", Description: "更新商品"},
+		{ApiGroup: "商品", Method: "POST", Path: "/api/v1/Admin/Goods/GoodsUpdateStatus", Description: "更新商品状态"},
+		{ApiGroup: "商品", Method: "POST", Path: "/api/v1/Admin/Goods/GoodsDelete", Description: "删除商品"},
+
+		{ApiGroup: "商品分类", Method: "GET", Path: "/api/v1/Admin/GoodsCategory/GoodsCategoryList", Description: "获取商品分类列表"},
+		{ApiGroup: "商品分类", Method: "POST", Path: "/api/v1/Admin/GoodsCategory/GoodsCategoryCreate", Description: "创建商品分类"},
+		{ApiGroup: "商品分类", Method: "POST", Path: "/api/v1/Admin/GoodsCategory/GoodsCategoryUpdate", Description: "更新商品分类"},
+		{ApiGroup: "商品分类", Method: "POST", Path: "/api/v1/Admin/GoodsCategory/GoodsCategoryDelete", Description: "删除商品分类"},
+
 		{ApiGroup: "卡密", Method: "GET", Path: "/api/v1/Admin/Key/KeyList", Description: "获取卡密列表"},
 		{ApiGroup: "卡密", Method: "POST", Path: "/api/v1/Admin/Key/KeyCreate", Description: "创建卡密"},
 		{ApiGroup: "卡密", Method: "POST", Path: "/api/v1/Admin/Key/KeyDelete", Description: "删除卡密"},

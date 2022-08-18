@@ -86,6 +86,17 @@ func (c *casbin) Initialize() error {
 		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/Category/CategoryUpdate", V2: "POST"},
 		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/Category/CategoryDelete", V2: "POST"},
 
+		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/Goods/GoodsList", V2: "GET"},
+		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/Goods/GoodsCreate", V2: "POST"},
+		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/Goods/GoodsUpdate", V2: "POST"},
+		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/Goods/GoodsUpdateStatus", V2: "POST"},
+		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/Goods/GoodsDelete", V2: "POST"},
+
+		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/GoodsCategory/GoodsCategoryList", V2: "GET"},
+		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/GoodsCategory/GoodsCategoryCreate", V2: "POST"},
+		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/GoodsCategory/GoodsCategoryUpdate", V2: "POST"},
+		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/GoodsCategory/GoodsCategoryDelete", V2: "POST"},
+
 		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/Topic/TopicList", V2: "GET"},
 		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/Topic/TopicCreate", V2: "POST"},
 		{Ptype: "p", V0: "9527", V1: "/api/v1/Admin/Topic/TopicUpdate", V2: "POST"},

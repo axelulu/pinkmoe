@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-15 22:22:04
+ * @LastEditTime: 2022-08-16 13:44:46
  * @FilePath: /pinkmoe_index/src/hooks/post.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -96,6 +96,42 @@ export const usePostItem = () => {
     }, 300);
   };
 
+  const share = (type) => {
+    console.log(route);
+    switch (type) {
+      case 'qq':
+        window.open(
+          `https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=/${postItem.value?.post?.postId}&title=${postItem.value?.post?.title}&pics=${postItem.value?.post?.cover}&desc=&summary=&site=`,
+          '_blank',
+        );
+        break;
+      case 'weibo':
+        window.open(
+          `https://service.weibo.com/share/share.php?url=/${postItem.value?.post?.postId}&title=${postItem.value?.post?.title}&pic=${postItem.value?.post?.cover}&searchPic=true`,
+          '_blank',
+        );
+        break;
+      case 'weixin':
+        window.open(
+          `https://service.weibo.com/share/share.php?url=/${postItem.value?.post?.postId}&title=${postItem.value?.post?.title}&pic=${postItem.value?.post?.cover}&searchPic=true`,
+          '_blank',
+        );
+        break;
+      case 'bold':
+        window.open(
+          `http://tieba.baidu.com/f/commit/share/openShareApi?url=/${postItem.value?.post?.postId}&title=${postItem.value?.post?.title}&desc=&comment=&pic=${postItem.value?.post?.cover}&red_tag=j2697365826`,
+          '_blank',
+        );
+        break;
+      default:
+        window.open(
+          `https://service.weibo.com/share/share.php?url=/${postItem.value?.post?.postId}&title=${postItem.value?.post?.title}&pic=${postItem.value?.post?.cover}&searchPic=true`,
+          '_blank',
+        );
+        break;
+    }
+  };
+
   onMounted(() => {
     postView({ postId: route.params.id });
     getPost();
@@ -113,6 +149,7 @@ export const usePostItem = () => {
     commentList,
     hasMore,
     loading,
+    share,
     nextPage,
     getComment,
     showComment,

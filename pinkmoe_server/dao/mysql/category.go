@@ -26,11 +26,15 @@ func GetCategoryList(p request.SearchCategoryParams) (err error, list interface{
 	var menuList []model.XdCategory
 	err, treeMap := getCategoryTreeMap(p)
 	menuList = treeMap["0"]
+	db := global.XD_DB.Model(&model.XdCategory{})
 	for i := 0; i < len(menuList); i++ {
 		err = getCategoryList(&menuList[i], treeMap)
 	}
 	if err != nil {
 		return response.ErrorMenuGet, nil, 0
+	}
+	if err = db.Count(&total).Error; err != nil {
+		return response.ErrorCommentListGet, nil, 0
 	}
 	return err, menuList, total
 }
@@ -170,7 +174,7 @@ func DeleteCategory(p model.XdCategory) (err error) {
 	if !errors.Is(global.XD_DB.Where("parent_id = ?", p.ID).First(&model.XdCategory{}).Error, gorm.ErrRecordNotFound) {
 		return response.ErrorCategoryDelBychild
 	}
-	if !errors.Is(global.XD_DB.Where("category = ?", p.ID).First(&model.XdPost{}).Error, gorm.ErrRecordNotFound) {
+	if !errors.Is(global.XD_DB.Where("category = ?", p.Slug).First(&model.XdPost{}).Error, gorm.ErrRecordNotFound) {
 		return response.ErrorCategoryDelByPost
 	}
 	if err = global.XD_DB.Delete(&p).Error; err != nil {

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:24:03
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:10:26
+ * @LastEditTime: 2022-08-18 13:15:03
  * @FilePath: /pinkmoe_index/src/components/Greenbtn/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -36,7 +36,7 @@
     class="w-full flex justify-center items-center select-none py-1.5 cursor-pointer hover:bg-green-600 duration-300 active:bg-green-500 bg-green-500 border-0 border-green-600 text-xs text-white text-center"
   >
     <font-awesome-icon :icon="icon" />
-    <span class="ml-1">{{ value }}</span>
+    <span :class="value ? 'ml-1' : ''">{{ value }}</span>
   </div>
 </template>
 

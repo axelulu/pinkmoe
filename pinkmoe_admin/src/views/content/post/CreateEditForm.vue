@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-04 15:46:56
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:23:00
+ * @LastEditTime: 2022-08-17 14:07:43
  * @FilePath: /pinkmoe_admin/src/views/content/post/CreateEditForm.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -38,7 +38,7 @@
           ref="postImgUpload"
           :action="`${uploadUrl}/api/Admin/Upload/FileUpload`"
           :headers="uploadHeaders"
-          :data="{'postId': formParams.postId, 'uuid': userMeta.uuid, 'type': 'post'}"
+          :data="{'post_id': formParams.postId, 'uuid': userMeta.uuid, 'type': 'post'}"
           max-size="1"
           max-number="12"
           height="170"
@@ -396,7 +396,6 @@ export default defineComponent({
       downloadRelation: [],
       status: "draft",
       topic: [] as string[],
-      commentStatus: true
     });
     const renderAuthorSelectTag: SelectRenderTag = ({ option }) => {
       return h(

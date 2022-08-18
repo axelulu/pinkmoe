@@ -38,7 +38,7 @@ func (upload *Upload) FileUpload(c *gin.Context) {
 		response.FailWithMessage(response.CodeInvalidParam.Msg(), c)
 		return
 	}
-	if err, p := adminLogic.UploadFile(header, noSave, postId, uuid, uploadType); err != nil {
+	if err, p := adminLogic.UploadFile(header, noSave, postId, "", uuid, uploadType); err != nil {
 		zap.L().Error("adminLogic.UploadFile err", zap.Error(err))
 		response.FailWithMessage(err.Error(), c)
 		return

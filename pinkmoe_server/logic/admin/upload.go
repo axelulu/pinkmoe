@@ -17,8 +17,8 @@ import (
 	"server/model/request"
 )
 
-func UploadFile(header *multipart.FileHeader, noSave string, postId string, uuid string, uploadType string) (err error, file model.XdUploadFile) {
-	err, file = mysql.UploadFile(header, noSave, postId, uuid, uploadType)
+func UploadFile(header *multipart.FileHeader, noSave string, postId string, goodsId string, uuid string, uploadType string) (err error, file model.XdUploadFile) {
+	err, file = mysql.UploadFile(header, noSave, postId, goodsId, uuid, uploadType)
 	return
 }
 

@@ -2,11 +2,11 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-27 22:05:52
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:07:53
+ * @LastEditTime: 2022-08-16 09:37:09
  * @FilePath: /pinkmoe_index/src/hooks/postVideo.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
- * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 import { useUserStore } from '/@/store';
 import { buyPostVideo, getPostVideo } from '/@/api/post';
@@ -84,8 +84,8 @@ export const usePostVideo = (props) => {
     postVideo.value = await getPostVideo({ postId: props.postId });
     currentVideo.value = postVideo.value?.[0];
     options.src = postVideo.value?.[0]?.url;
-    videoRef.value.player.updateOptions(options);
-    videoRef.value.player.play();
+    videoRef.value?.player?.updateOptions(options);
+    videoRef.value?.player?.play();
   };
 
   const changeVideo = async (video) => {
@@ -102,9 +102,9 @@ export const usePostVideo = (props) => {
     }
     options.src = video.url;
     currentVideo.value = video;
-    videoRef.value.player.updateOptions(options);
-    videoRef.value.player.pause();
-    videoRef.value.player.play();
+    videoRef.value?.player?.updateOptions(options);
+    videoRef.value?.player?.pause();
+    videoRef.value?.player?.play();
   };
 
   const showLogin = () => {

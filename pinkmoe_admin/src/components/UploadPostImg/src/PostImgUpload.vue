@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-02 21:34:55
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:17:45
+ * @LastEditTime: 2022-08-17 14:10:37
  * @FilePath: /pinkmoe_admin/src/components/UploadPostImg/src/PostImgUpload.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -208,6 +208,7 @@ export default defineComponent({
         let imgUrl: string = getImgUrl(result.file.url);
         state.imgList.push({
           "url": imgUrl,
+          "uuid": result.file.uuid,
           "name": result.file.name
         });
         emit("uploadChange", state.imgList);

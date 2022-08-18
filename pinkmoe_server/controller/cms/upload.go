@@ -61,6 +61,7 @@ func (upload *Upload) AuthFileUpload(c *gin.Context) {
 	noSave := c.DefaultQuery("noSave", "0")
 	_, header, err := c.Request.FormFile("file")
 	post_id := c.Request.FormValue("post_id")
+	goods_id := c.Request.FormValue("goods_id")
 	uuid := c.Request.FormValue("uuid")
 	uploadType := c.Request.FormValue("type")
 	if err != nil {
@@ -69,7 +70,7 @@ func (upload *Upload) AuthFileUpload(c *gin.Context) {
 		response.FailWithMessage(response.CodeInvalidParam.Msg(), c)
 		return
 	}
-	if err, p := adminLogic.UploadFile(header, noSave, post_id, uuid, uploadType); err != nil {
+	if err, p := adminLogic.UploadFile(header, noSave, post_id, goods_id, uuid, uploadType); err != nil {
 		zap.L().Error("adminLogic.UploadFile err", zap.Error(err))
 		response.FailWithMessage(err.Error(), c)
 		return

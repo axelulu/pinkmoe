@@ -10,15 +10,12 @@
  */
 package model
 
-import (
-	"server/global"
-)
+import "server/global"
 
 type XdGoodsSizeVal struct {
-	CreatedAt  global.XdTime  // 创建时间
-	UpdatedAt  global.XdTime  // 更新时间
-	DeletedAt  *global.XdTime `gorm:"index" json:"-"`                                                         // 删除时间
-	Stock      string         `json:"stock" form:"stock" gorm:"comment:商品库存"`                                 // 商品库存
-	SaleAmount string         `json:"saleAmount" form:"saleAmount" gorm:"comment:商品零售价"`                      // 商品零售价
-	GoodsId    string         `json:"goodsId" form:"goodsId" gorm:"not null;unique;primary_key;comment:商品ID"` // 商品ID
+	global.XD_MODEL
+	Stock      int    `json:"stock" form:"stock" gorm:"comment:商品库存"`              // 商品库存
+	Value      string `json:"value" form:"value" gorm:"comment:商品值"`               // 商品值
+	SaleAmount int    `json:"saleAmount" form:"saleAmount" gorm:"comment:商品零售价"`   // 商品零售价
+	GoodsId    string `json:"goodsId" form:"goodsId" gorm:"not null;comment:商品ID"` // 商品ID
 }
