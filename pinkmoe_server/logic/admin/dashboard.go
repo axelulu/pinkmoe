@@ -10,21 +10,61 @@
  */
 package adminLogic
 
-import "server/model/response"
+import (
+	"server/dao/mysql"
+	"server/model/response"
+)
 
 func ConsoleGet() (console response.Console, err error) {
+	day := mysql.GetLoginLogByTime(1)
+	twoDay := mysql.GetLoginLogByTime(2)
+	week := mysql.GetLoginLogByTime(7)
+	twoWeek := mysql.GetLoginLogByTime(14)
+	amount := mysql.GetLoginLogByTime(9999)
+
 	// 访问量
-	console.Visits = response.Visits{
-		Amount:    13555,
-		DayVisits: 15,
-		Decline:   452,
-		Rise:      546456,
+	if week == 0 || day == 0 {
+		if day == 0 {
+			console.Visits = response.Visits{
+				Amount:    int(amount),
+				DayVisits: int(day),
+				Decline:   float64((twoWeek - week) / week),
+				Rise:      float64((twoDay - day) / 1),
+			}
+		}
+		if week == 0 {
+			console.Visits = response.Visits{
+				Amount:    int(amount),
+				DayVisits: int(day),
+				Decline:   float64((twoWeek - week) / 1),
+				Rise:      float64((twoDay - day) / day),
+			}
+		}
+	} else {
+		console.Visits = response.Visits{
+			Amount:    int(amount),
+			DayVisits: int(day),
+			Decline:   float64((twoWeek - week) / week),
+			Rise:      float64((twoDay - day) / day),
+		}
 	}
+
+	_, WeekSale := mysql.GetOrderByTime(7, "download")
+	_, TwoWeekSale := mysql.GetOrderByTime(14, "download")
+	_, Amount := mysql.GetOrderByTime(9999, "download")
 	// 销售额
-	console.Saleroom = response.Saleroom{
-		Amount:       546,
-		Degree:       345,
-		WeekSaleroom: 234,
+	if WeekSale == 0 {
+		console.Saleroom = response.Saleroom{
+			Amount:       Amount,
+			Degree:       float64((TwoWeekSale - WeekSale) / 1),
+			WeekSaleroom: WeekSale,
+		}
+	} else {
+		console.Saleroom = response.Saleroom{
+			Amount:       Amount,
+			Degree:       float64((TwoWeekSale - WeekSale) / WeekSale),
+			WeekSaleroom: WeekSale,
+		}
 	}
 	// 订单量
 	console.OrderLarge = response.OrderLarge{
@@ -39,6 +79,13 @@ func ConsoleGet() (console response.Console, err error) {
 		Decline:   111,
 		Rise:      1111,
 		WeekLarge: 1111,
+	}
+
+	today, yesterday := mysql.GetLoginLogTrend()
+	// 流量趋势
+	console.FluxTrend = response.FluxTrend{
+		Today:     today,
+		Yesterday: yesterday,
 	}
 	return
 }

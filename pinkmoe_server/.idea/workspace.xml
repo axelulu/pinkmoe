@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9c06589-a528-4508-af15-feb6e80b09c9" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/components/Slideauthor/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/components/Slideauthor/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/slideAuthor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/slideAuthor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/shop/goods/:id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/shop/goods/:id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dao/mysql/order.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_admin/src/api/system/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_admin/src/api/system/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_admin/src/store/modules/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_admin/src/store/modules/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialize/initDB/setting.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/initDB/setting.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/mysql/loginLog.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/loginLog.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/initialize/gorm.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/gorm.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/admin/dashboard.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/admin/dashboard.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/response/dashboard.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/response/dashboard.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,16 +47,16 @@
     "WebServerToolWindowFactoryState": "false",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/zhaolu/Desktop/project/go_vue_gin/pinkmoe/pinkmoe_server/controller/cms",
+    "last_opened_file_path": "/Users/zhaolu/Desktop/project/go_vue_gin/pinkmoe/pinkmoe_server/dao/mysql",
     "settings.editor.selected.configurable": "AtomConfig"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dao/mysql" />
       <recent name="$PROJECT_DIR$/controller/cms" />
       <recent name="$PROJECT_DIR$/model/response" />
       <recent name="$PROJECT_DIR$/logic/admin" />
-      <recent name="$PROJECT_DIR$/dao/mysql" />
       <recent name="$PROJECT_DIR$/model/request" />
     </key>
   </component>

@@ -18,16 +18,16 @@ type OrderLarge struct {
 }
 
 type Saleroom struct {
-	Amount       int `json:"amount"`
-	Degree       int `json:"degree"`
-	WeekSaleroom int `json:"weekSaleroom"`
+	Amount       int     `json:"amount"`
+	Degree       float64 `json:"degree"`
+	WeekSaleroom int     `json:"weekSaleroom"`
 }
 
 type Visits struct {
-	Amount    int `json:"amount"`
-	DayVisits int `json:"dayVisits"`
-	Decline   int `json:"decline"`
-	Rise      int `json:"rise"`
+	Amount    int     `json:"amount"`
+	DayVisits int     `json:"dayVisits"`
+	Decline   float64 `json:"decline"`
+	Rise      float64 `json:"rise"`
 }
 
 type Volume struct {
@@ -37,9 +37,15 @@ type Volume struct {
 	WeekLarge int `json:"weekLarge"`
 }
 
+type FluxTrend struct {
+	Today     []int `json:"today"`
+	Yesterday []int `json:"yesterday"`
+}
+
 type Console struct {
 	OrderLarge `json:"orderLarge"`
 	Saleroom   `json:"saleroom"`
 	Visits     `json:"visits"`
 	Volume     `json:"volume"`
+	FluxTrend  `json:"fluxTrend"`
 }

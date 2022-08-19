@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-05-02 02:49:15
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:20:59
+ * @LastEditTime: 2022-08-18 21:47:17
  * @FilePath: /pinkmoe_admin/src/store/modules/user.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -102,7 +102,14 @@ export const useUserStore = defineStore({
       return new Promise((resolve, reject) => {
         getUserInfo()
           .then((res) => {
-            const result = res;
+            const { result, code } = res;
+            if (code == -1) {
+              this.setPermissions([]);
+              this.setUserInfo('');
+              storage.remove(ACCESS_TOKEN);
+              storage.remove(CURRENT_USER);
+              return 
+            }
             if (result.userMenu && result.userMenu.length) {
               const permissionsList = result.userMenu;
               that.setPermissions(permissionsList);

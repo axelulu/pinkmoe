@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-16 13:44:46
+ * @LastEditTime: 2022-08-19 08:05:24
  * @FilePath: /pinkmoe_index/src/hooks/post.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -26,6 +26,7 @@ export const usePostItem = () => {
   const commentList = ref<ResPage<Array<ResPost>>>();
   const user = useUserStore();
   const loading = ref<boolean>(false);
+  const loadingPost = ref<boolean>(false);
   const hasMore = ref<boolean>(true);
   const auth = useUserStore();
   const { siteBasic } = useAppStore();
@@ -48,7 +49,11 @@ export const usePostItem = () => {
 
   // 获取文章信息
   const getPost = async () => {
+    loadingPost.value = true;
     postItem.value = await getPostItem(formParams);
+    setTimeout(() => {
+      loadingPost.value = false;
+    }, 300);
   };
 
   // 获取推荐文章列表
@@ -149,6 +154,7 @@ export const usePostItem = () => {
     commentList,
     hasMore,
     loading,
+    loadingPost,
     share,
     nextPage,
     getComment,

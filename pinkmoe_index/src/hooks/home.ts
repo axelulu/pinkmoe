@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 09:10:50
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 10:06:43
+ * @LastEditTime: 2022-08-19 07:55:40
  * @FilePath: /pinkmoe_index/src/hooks/home.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -15,16 +15,66 @@ export const useHomeList = () => {
   const content = ref<Array<ResContent>>();
   const popular = ref<Array<ResPost>>();
   const recommend = ref<Array<ResPost>>();
+  const contentRef = ref();
+  const loading = ref(false);
 
   // 获取首页
   const getHome = async () => {
+    loading.value = true;
     const homeList = await getHomeList();
     content.value = homeList.content;
     popular.value = homeList.popular;
     recommend.value = homeList.recommend;
+    setTimeout(() => {
+      loading.value = false;
+    }, 300);
   };
 
+  const data = reactive<any>({
+    showBar: false,
+    showIndex: 0,
+  });
+
+  function jump(i: any) {
+    data.showIndex = i;
+    document.documentElement.scrollTop = contentRef.value.children[i].offsetTop;
+  }
+
+  function scrollHandler() {
+    // 当前滚动高度
+    const scrollY = document.documentElement.scrollTop;
+    if (scrollY > 700) {
+      data.showBar = true;
+      data.showIndex = -1;
+    } else {
+      data.showBar = false;
+    }
+    for (let i = 0; i < contentRef.value.children.length; i++) {
+      if (scrollY + 50 > contentRef.value.children[i].offsetTop) {
+        data.showIndex = i;
+      }
+    }
+  }
+
+  watchEffect(() => {
+    nextTick(() => {
+      if (content.value) {
+        if (typeof window !== 'undefined') {
+          window.removeEventListener('scroll', scrollHandler);
+          window.addEventListener('scroll', scrollHandler);
+        }
+      }
+    });
+  });
+
+  onUnmounted(() => {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('scroll', scrollHandler);
+    }
+  });
+
   onMounted(() => {
+    scrollHandler();
     getHome();
   });
 
@@ -32,5 +82,9 @@ export const useHomeList = () => {
     content,
     popular,
     recommend,
+    contentRef,
+    jump,
+    loading,
+    data,
   };
 };

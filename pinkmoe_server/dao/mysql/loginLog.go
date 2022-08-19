@@ -43,6 +43,85 @@ func GetLoginLogList(info *request.SearchLoginLogParams) (err error, list interf
 	return err, comment, total
 }
 
+func GetLoginLogByTime(days int) (total int64) {
+	db := global.XD_DB.Model(&model.XdLoginLog{})
+
+	db = db.Where("to_days(now()) - to_days(updated_at) <= ?", days)
+
+	if err := db.Count(&total).Error; err != nil {
+		return 0
+	}
+	return total
+}
+
+func GetLoginLogTrend() (today []int, yesterday []int) {
+	db := global.XD_DB.Model(&model.XdLoginLog{})
+
+	db = db.Where("to_days(now()) - to_days(updated_at) <= ?", 1)
+
+	var logs []model.XdLoginLog
+	if err := db.Find(&logs).Error; err != nil {
+		return today, yesterday
+	}
+
+	db2 := global.XD_DB.Model(&model.XdLoginLog{})
+
+	db2 = db2.Where("to_days(now()) - to_days(updated_at) <= ?", 1)
+
+	var logs2 []model.XdLoginLog
+	if err := db2.Find(&logs).Error; err != nil {
+		return today, yesterday
+	}
+	today = append(today, getTrendNum(0, 6, logs))
+	today = append(today, getTrendNum(6, 7, logs))
+	today = append(today, getTrendNum(7, 8, logs))
+	today = append(today, getTrendNum(8, 9, logs))
+	today = append(today, getTrendNum(9, 10, logs))
+	today = append(today, getTrendNum(10, 11, logs))
+	today = append(today, getTrendNum(11, 12, logs))
+	today = append(today, getTrendNum(12, 13, logs))
+	today = append(today, getTrendNum(13, 14, logs))
+	today = append(today, getTrendNum(14, 15, logs))
+	today = append(today, getTrendNum(15, 16, logs))
+	today = append(today, getTrendNum(16, 17, logs))
+	today = append(today, getTrendNum(17, 18, logs))
+	today = append(today, getTrendNum(18, 19, logs))
+	today = append(today, getTrendNum(19, 20, logs))
+	today = append(today, getTrendNum(20, 21, logs))
+	today = append(today, getTrendNum(21, 22, logs))
+	today = append(today, getTrendNum(22, 23, logs))
+
+	yesterday = append(yesterday, getTrendNum(0, 6, logs2))
+	yesterday = append(yesterday, getTrendNum(6, 7, logs2))
+	yesterday = append(yesterday, getTrendNum(7, 8, logs2))
+	yesterday = append(yesterday, getTrendNum(8, 9, logs2))
+	yesterday = append(yesterday, getTrendNum(9, 10, logs2))
+	yesterday = append(yesterday, getTrendNum(10, 11, logs2))
+	yesterday = append(yesterday, getTrendNum(11, 12, logs2))
+	yesterday = append(yesterday, getTrendNum(12, 13, logs2))
+	yesterday = append(yesterday, getTrendNum(13, 14, logs2))
+	yesterday = append(yesterday, getTrendNum(14, 15, logs2))
+	yesterday = append(yesterday, getTrendNum(15, 16, logs2))
+	yesterday = append(yesterday, getTrendNum(16, 17, logs2))
+	yesterday = append(yesterday, getTrendNum(17, 18, logs2))
+	yesterday = append(yesterday, getTrendNum(18, 19, logs2))
+	yesterday = append(yesterday, getTrendNum(19, 20, logs2))
+	yesterday = append(yesterday, getTrendNum(20, 21, logs2))
+	yesterday = append(yesterday, getTrendNum(21, 22, logs2))
+	yesterday = append(yesterday, getTrendNum(22, 23, logs2))
+	return today, yesterday
+}
+
+func getTrendNum(start int, end int, logs []model.XdLoginLog) (num int) {
+	num = 0
+	for _, log := range logs {
+		if log.UpdatedAt.Hour() > start && log.UpdatedAt.Hour() <= end {
+			num++
+		}
+	}
+	return num
+}
+
 func CreateLoginLog(p *model.XdLoginLog) (err error) {
 	if err = global.XD_DB.Create(&p).Error; err != nil {
 		return response.ErrorLoginLogCreate

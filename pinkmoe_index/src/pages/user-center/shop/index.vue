@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:12:12
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:06:13
+ * @LastEditTime: 2022-08-19 08:11:37
  * @FilePath: /pinkmoe_index/src/pages/user-center/shop/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -16,7 +16,7 @@
   import { useUserCenterShop } from '/@/hooks/user-center/shop';
 
   const { siteBasic } = useAppStore();
-  const { auth, currentIndex, userShop, buyShop } = useUserCenterShop();
+  const { auth, currentIndex, userShop, loading, buyShop } = useUserCenterShop();
   useHead({
     title: `商城 - 用户中心`,
     meta: [
@@ -72,25 +72,27 @@
               >
             </p>
           </div>
-          <div class="w-full py-4 flex flex-wrap">
-            <div v-for="(shop, v) in userShop" :key="v" class="w-1/2 p-1">
-              <div
-                @click="currentIndex = v"
-                :class="
-                  currentIndex === v
-                    ? 'dark:bg-gray-900 bg-gray-100 border-pink-400 hover:bg-gray-200 dark:hover:bg-gray-900'
-                    : ' dark:bg-gray-800 bg-gray-50 border-gray-200 dark:border-gray-900 hover:bg-gray-100 dark:hover:bg-gray-900'
-                "
-                class="flex flex-row items-center border-2 cursor-pointer duration-300 rounded-md"
-              >
-                <font-awesome-icon class="text-4xl p-5" :icon="['fas', 'gift']" />
-                <div class="p-2">
-                  <div class="text-base pb-1">{{ shop.shopName }}</div>
-                  <div class="text-xs">{{ shop.shopDesc }}</div>
+          <Spin :show="loading" class="flex flex-wrap">
+            <div class="w-full py-4 flex flex-wrap">
+              <div v-for="(shop, v) in userShop" :key="v" class="w-1/2 p-1">
+                <div
+                  @click="currentIndex = v"
+                  :class="
+                    currentIndex === v
+                      ? 'dark:bg-gray-900 bg-gray-100 border-pink-400 hover:bg-gray-200 dark:hover:bg-gray-900'
+                      : ' dark:bg-gray-800 bg-gray-50 border-gray-200 dark:border-gray-900 hover:bg-gray-100 dark:hover:bg-gray-900'
+                  "
+                  class="flex flex-row items-center border-2 cursor-pointer duration-300 rounded-md"
+                >
+                  <font-awesome-icon class="text-4xl p-5" :icon="['fas', 'gift']" />
+                  <div class="p-2">
+                    <div class="text-base pb-1">{{ shop.shopName }}</div>
+                    <div class="text-xs">{{ shop.shopDesc }}</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Spin>
           <GreenBtn
             @click="buyShop"
             classes="w-full mt-2"

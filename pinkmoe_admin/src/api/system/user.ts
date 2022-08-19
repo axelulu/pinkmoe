@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-05-06 19:19:28
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:14:32
+ * @LastEditTime: 2022-08-18 21:11:43
  * @FilePath: /pinkmoe_admin/src/api/system/user.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -18,6 +18,9 @@ export function getUserInfo() {
   return http.request({
     url: '/Admin/User/User',
     method: 'get',
+  },
+  {
+    isTransformResponse: false,
   });
 }
 

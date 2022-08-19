@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 14:33:05
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 22:37:47
+ * @LastEditTime: 2022-08-19 08:10:10
  * @FilePath: /pinkmoe_index/src/hooks/user-center/publish.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -21,6 +21,7 @@ export const useUserCenterPublish = () => {
   const wangEditor = ref();
   const message = ref();
   const formPublish = ref();
+  const loading = ref(false);
   const publishCategory = ref();
   const { checkForm } = useUtil();
   const auth = useUserStore();
@@ -86,7 +87,11 @@ export const useUserCenterPublish = () => {
   }
 
   async function getImgList() {
+    loading.value = true;
     formParams.postImg = (await fileList(fileFormParams)).list;
+    setTimeout(() => {
+      loading.value = false;
+    }, 300);
   }
 
   onMounted(() => {
@@ -180,6 +185,7 @@ export const useUserCenterPublish = () => {
     wangEditor,
     message,
     formParams,
+    loading,
     getCategory,
     publishPost,
     chooseCategory,

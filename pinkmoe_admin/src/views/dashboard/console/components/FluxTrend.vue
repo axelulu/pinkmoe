@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-04-21 22:34:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:23:19
+ * @LastEditTime: 2022-08-18 22:44:48
  * @FilePath: /pinkmoe_admin/src/views/dashboard/console/components/FluxTrend.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -15,16 +15,25 @@
   import { defineComponent, onMounted, ref, Ref } from 'vue';
 
   import { useECharts } from '@/hooks/web/useECharts';
-
-  import { basicProps } from './props';
+import { getConsoleInfo } from '@/api/dashboard/console';
 
   export default defineComponent({
-    props: basicProps,
+    props: {
+      width: {
+        type: String as PropType<string>,
+        default: '100%',
+      },
+      height: {
+        type: String as PropType<string>,
+        default: '280px',
+      },
+    },
     setup() {
       const chartRef = ref<HTMLDivElement | null>(null);
       const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);
 
-      onMounted(() => {
+      onMounted(async () => {
+        const { result } = await getConsoleInfo();
         setOptions({
           tooltip: {
             trigger: 'axis',
@@ -73,7 +82,7 @@
           yAxis: [
             {
               type: 'value',
-              max: 80000,
+              max: Math.max(...result.fluxTrend.today) > Math.max(...result.fluxTrend.yesterday) ? Math.max(...result.fluxTrend.today) : Math.max(...result.fluxTrend.yesterday),
               splitNumber: 4,
               axisTick: {
                 show: false,
@@ -90,10 +99,7 @@
           series: [
             {
               smooth: true,
-              data: [
-                111, 222, 4000, 18000, 33333, 55555, 66666, 33333, 14000, 36000, 66666, 44444,
-                22222, 11111, 4000, 2000, 500, 333, 222, 111,
-              ],
+              data: result.fluxTrend.today,
               type: 'line',
               areaStyle: {},
               itemStyle: {
@@ -102,10 +108,7 @@
             },
             {
               smooth: true,
-              data: [
-                33, 66, 88, 333, 3333, 5000, 18000, 3000, 1200, 13000, 22000, 11000, 2221, 1201,
-                390, 198, 60, 30, 22, 11,
-              ],
+              data:result.fluxTrend.yesterday,
               type: 'line',
               areaStyle: {},
               itemStyle: {

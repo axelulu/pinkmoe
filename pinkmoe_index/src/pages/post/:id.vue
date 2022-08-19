@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:28:28
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-16 13:33:47
+ * @LastEditTime: 2022-08-19 08:07:35
  * @FilePath: /pinkmoe_index/src/pages/post/:id.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -38,6 +38,7 @@
     user,
     route,
     comment,
+    loadingPost,
   } = usePostItem();
 
   const { siteBasic } = useAppStore();
@@ -68,116 +69,118 @@
         :cover="(postItem.post.cover as string)"
       />
       <div class="w-9/12 pr-2" style="min-height: 800px">
-        <div
-          class="bg-white min-h-68 dark:bg-gray-700 text-gray-500 dark:text-gray-200 rounded-md overflow-hidden animate-fadeIn30"
-        >
-          <div v-if="postItem?.post?.title" class="text-center text-2xl pt-4 pb-4 px-4">
-            {{ postItem?.post?.title }}
-          </div>
+        <Spin :show="loadingPost" class="flex flex-wrap">
           <div
-            class="flex flex-row justify-center pt-3 pb-3 border-y border-gray-100 bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+            class="bg-white min-h-68 dark:bg-gray-700 text-gray-500 dark:text-gray-200 rounded-md overflow-hidden animate-fadeIn30"
           >
-            <router-link
-              :to="'/category/' + postItem?.post?.CategoryRelation?.slug"
-              class="text-xs mr-4 cursor-pointer hover:bg-pink-50 hover:text-pink-400 dark:hover:bg-gray-800 dark:hover:text-pink-400 duration-300"
-            >
-              <font-awesome-icon class="mr-1" icon="folder-open" />
-              <span class="mr-1">{{ postItem?.post?.CategoryRelation?.name }}</span>
-            </router-link>
-            <div class="text-xs mr-4">
-              <font-awesome-icon class="mr-1" icon="clock" />
-              <span>{{ formatDate(postItem?.post?.UpdatedAt) }}</span>
+            <div v-if="postItem?.post?.title" class="text-center text-2xl pt-4 pb-4 px-4">
+              {{ postItem?.post?.title }}
             </div>
-            <router-link
-              :to="'/author/' + postItem?.post?.author + '/userInfo'"
-              class="text-xs mr-4 cursor-pointer hover:bg-pink-50 hover:text-pink-400 dark:hover:bg-gray-800 dark:hover:text-pink-400 duration-300"
+            <div
+              class="flex flex-row justify-center pt-3 pb-3 border-y border-gray-100 bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
             >
-              <font-awesome-icon class="mr-1" icon="user-circle" />
-              <span>{{ postItem?.post?.AuthorRelation?.nickName }}</span>
-            </router-link>
-            <div class="text-xs mr-4">
-              <font-awesome-icon class="mr-1" icon="play-circle" />
-              <span>{{ postItem?.post?.view }}</span>
-            </div>
-          </div>
-          <PostMusic
-            v-if="
-              postItem?.post?.type === 'music' &&
-              postItem?.post?.musicRelation &&
-              postItem?.post?.musicRelation.length > 0
-            "
-            :nick-name="postItem.post.AuthorRelation?.nickName"
-            :post-id="postItem.post.postId"
-          />
-          <div
-            class="p-4 break-words text-gray-500 dark:text-gray-200 text-sm"
-            v-html="postItem?.post?.content"
-          ></div>
-          <div class="flex flex-row">
-            <div class="pl-4 pb-4 flex flex-row">
               <router-link
-                :to="'/topic/' + topicItem.value"
-                v-for="(topicItem, v) in postItem?.post?.topic"
-                :key="v"
-                class="border border-pink-400 text-xs text-pink-400 p-1 hover:bg-pink-400 hover:text-white duration-300 cursor-pointer mr-2"
+                :to="'/category/' + postItem?.post?.CategoryRelation?.slug"
+                class="text-xs mr-4 cursor-pointer hover:bg-pink-50 hover:text-pink-400 dark:hover:bg-gray-800 dark:hover:text-pink-400 duration-300"
               >
-                {{ topicItem.value }}
+                <font-awesome-icon class="mr-1" icon="folder-open" />
+                <span class="mr-1">{{ postItem?.post?.CategoryRelation?.name }}</span>
               </router-link>
+              <div class="text-xs mr-4">
+                <font-awesome-icon class="mr-1" icon="clock" />
+                <span>{{ formatDate(postItem?.post?.UpdatedAt) }}</span>
+              </div>
+              <router-link
+                :to="'/author/' + postItem?.post?.author + '/userInfo'"
+                class="text-xs mr-4 cursor-pointer hover:bg-pink-50 hover:text-pink-400 dark:hover:bg-gray-800 dark:hover:text-pink-400 duration-300"
+              >
+                <font-awesome-icon class="mr-1" icon="user-circle" />
+                <span>{{ postItem?.post?.AuthorRelation?.nickName }}</span>
+              </router-link>
+              <div class="text-xs mr-4">
+                <font-awesome-icon class="mr-1" icon="play-circle" />
+                <span>{{ postItem?.post?.view }}</span>
+              </div>
             </div>
-            <div class="pl-4 pb-4 flex flex-row flex-1">
-              <div
-                @click="share('weibo')"
-                class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
-              >
-                <font-awesome-icon :icon="['fab', 'weibo']" />
+            <PostMusic
+              v-if="
+                postItem?.post?.type === 'music' &&
+                postItem?.post?.musicRelation &&
+                postItem?.post?.musicRelation.length > 0
+              "
+              :nick-name="postItem.post.AuthorRelation?.nickName"
+              :post-id="postItem.post.postId"
+            />
+            <div
+              class="p-4 break-words text-gray-500 dark:text-gray-200 text-sm"
+              v-html="postItem?.post?.content"
+            ></div>
+            <div class="flex flex-row">
+              <div class="pl-4 pb-4 flex flex-row">
+                <router-link
+                  :to="'/topic/' + topicItem.value"
+                  v-for="(topicItem, v) in postItem?.post?.topic"
+                  :key="v"
+                  class="border border-pink-400 text-xs text-pink-400 p-1 hover:bg-pink-400 hover:text-white duration-300 cursor-pointer mr-2"
+                >
+                  {{ topicItem.value }}
+                </router-link>
+              </div>
+              <div class="pl-4 pb-4 flex flex-row flex-1">
+                <div
+                  @click="share('weibo')"
+                  class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
+                >
+                  <font-awesome-icon :icon="['fab', 'weibo']" />
+                </div>
+                <div
+                  @click="share('qq')"
+                  class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
+                >
+                  <font-awesome-icon :icon="['fab', 'qq']" />
+                </div>
+                <div
+                  @click="share('weixin')"
+                  class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
+                >
+                  <font-awesome-icon :icon="['fab', 'weixin']" />
+                </div>
+                <div
+                  @click="share('bold')"
+                  class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
+                >
+                  <font-awesome-icon :icon="['fas', 'bold']" />
+                </div>
               </div>
               <div
-                @click="share('qq')"
-                class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
+                class="mr-4 w-16 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
               >
-                <font-awesome-icon :icon="['fab', 'qq']" />
-              </div>
-              <div
-                @click="share('weixin')"
-                class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
-              >
-                <font-awesome-icon :icon="['fab', 'weixin']" />
-              </div>
-              <div
-                @click="share('bold')"
-                class="w-6 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
-              >
-                <font-awesome-icon :icon="['fas', 'bold']" />
+                <font-awesome-icon class="mr-1" :icon="['fas', 'flag']" />
+                <span>报告</span>
               </div>
             </div>
             <div
-              class="mr-4 w-16 h-6 bg-gray-500 text-white flex justify-center items-center text-xs hover:bg-pink-400 hover:text-white duration-300 cursor-pointer"
+              class="px-4 py-3 border-t border-gray-100 dark:border-gray-600 text-gray-500 dark:bg-gray-700 dark:text-gray-200 bg-gray-50"
             >
-              <font-awesome-icon class="mr-1" :icon="['fas', 'flag']" />
-              <span>报告</span>
+              <ul class="text-xs list-disc ml-4">
+                <li
+                  >本作品是由 粉萌次元 会员
+                  <router-link
+                    class="text-pink-400"
+                    :to="'/author/' + postItem?.post?.AuthorRelation?.uuid + '/userInfo'"
+                  >
+                    {{ postItem?.post?.AuthorRelation?.nickName }}</router-link
+                  >
+                  的投递作品。</li
+                >
+                <li>转载请务请署名并注明出处</li>
+                <li>
+                  禁止再次修改后发布；任何商业用途均须联系作者。如未经授权用作他处，作者将保留追究侵权者法律责任的权利。
+                </li>
+              </ul>
             </div>
           </div>
-          <div
-            class="px-4 py-3 border-t border-gray-100 dark:border-gray-600 text-gray-500 dark:bg-gray-700 dark:text-gray-200 bg-gray-50"
-          >
-            <ul class="text-xs list-disc ml-4">
-              <li
-                >本作品是由 粉萌次元 会员
-                <router-link
-                  class="text-pink-400"
-                  :to="'/author/' + postItem?.post?.AuthorRelation?.uuid + '/userInfo'"
-                >
-                  {{ postItem?.post?.AuthorRelation?.nickName }}</router-link
-                >
-                的投递作品。</li
-              >
-              <li>转载请务请署名并注明出处</li>
-              <li>
-                禁止再次修改后发布；任何商业用途均须联系作者。如未经授权用作他处，作者将保留追究侵权者法律责任的权利。
-              </li>
-            </ul>
-          </div>
-        </div>
+        </Spin>
         <PostDownload
           v-if="postItem?.post?.downloadRelation && postItem?.post?.downloadRelation.length > 0"
           :post-id="postItem.post.postId"

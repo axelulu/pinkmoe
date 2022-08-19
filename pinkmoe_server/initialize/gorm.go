@@ -70,6 +70,7 @@ func RegisterTables(db *gorm.DB) {
 		model.XdGoodsCategory{},
 		model.XdGoodsSize{},
 		model.XdGoodsSizeVal{},
+		model.XdGoodsStar{},
 		model.XdChat{},
 		model.XdChatRelation{},
 		model.XdAddress{},

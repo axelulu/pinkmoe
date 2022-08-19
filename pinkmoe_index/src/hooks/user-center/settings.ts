@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 14:24:31
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 21:30:47
- * @FilePath: /xanaduCms/pinkmoe_index/src/hooks/user-center/settings.ts
+ * @LastEditTime: 2022-08-19 08:15:22
+ * @FilePath: /pinkmoe_index/src/hooks/user-center/settings.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -30,6 +30,7 @@ export const useUserCenterSettings = () => {
   const formUserDetail = ref();
   const formUserEmail = ref();
   const formUserPwd = ref();
+  const loading = ref(false);
   const { checkForm } = useUtil();
   const sendCaptcha = ref<boolean>(true);
   const captchaTimer = ref<number>(60);
@@ -216,7 +217,15 @@ export const useUserCenterSettings = () => {
     event.target.value = '';
   }
 
+  onMounted(() => {
+    loading.value = true;
+    setTimeout(() => {
+      loading.value = false;
+    }, 300);
+  });
+
   return {
+    loading,
     auth,
     sendCaptcha,
     captchaTimer,
