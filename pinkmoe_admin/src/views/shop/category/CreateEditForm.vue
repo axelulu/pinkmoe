@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-05-07 23:37:51
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 16:32:06
+ * @LastEditTime: 2022-08-21 17:00:01
  * @FilePath: /pinkmoe_admin/src/views/shop/category/CreateEditForm.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -78,8 +78,8 @@
     icon: {
       required: true,
       trigger: 'blur',
-      message: '请输入2到30位（字母）',
-      pattern: /^[a-zA-Z_-]{2,30}$/, //验证图标 2到30位（字母）
+      message: '请输入2到80位（字母）',
+      pattern: /^[a-zA-Z0-9:_-]{2,80}$/, //验证图标 2到30位（字母）
     },
     parentId: {
       required: true,

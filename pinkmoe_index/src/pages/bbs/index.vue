@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:32:24
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 15:22:49
+ * @LastEditTime: 2022-08-21 17:01:21
  * @FilePath: /pinkmoe_index/src/pages/bbs/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -111,21 +111,21 @@ useHead({
               :placeholder="t('bbs.pleaseEnterContent')"
               class="w-full text-xs h-18"
             />
-            <div class="mb-3 mt-1">
+            <div class="mb-3 mt-1 flex justify-start items-center">
               <span
                 :class="
                   isTitle
                     ? 'bg-pink-400 border-pink-500 active:bg-pink-500 active:border-pink-500 hover:bg-pink-600 hover:border-pink-600 border-pink-500'
                     : 'bg-gray-500 border-gray-500 active:bg-gray-500 active:border-gray-500 hover:bg-gray-600 hover:border-gray-600 border-gray-500'
                 "
-                class="mr-2 select-none duration-300 py-1 px-2 cursor-pointer text-xs text-white border-2"
+                class="mr-2 select-none flex justify-center items-center duration-300 py-1 px-2 cursor-pointer text-xs text-white border-2"
                 @click="isTitle = !isTitle"
               >
                 <i class="mr-1 inline-block i-ic:baseline-insert-drive-file" />
                 <span>{{ $t('bbs.openTitle') }}</span>
               </span>
               <span
-                class="bg-gray-500 mr-2 select-none active:bg-gray-500 active:border-gray-500 hover:bg-gray-600 hover:border-gray-600 duration-300 py-1 px-2 cursor-pointer text-xs text-white border-2 border-gray-500"
+                class="bg-gray-500 flex justify-center items-center mr-2 select-none active:bg-gray-500 active:border-gray-500 hover:bg-gray-600 hover:border-gray-600 duration-300 py-1 px-2 cursor-pointer text-xs text-white border-2 border-gray-500"
               >
                 <i class="mr-1 inline-block i-uiw:tags" />
                 <span>{{ $t('bbs.addTopic') }}</span>
