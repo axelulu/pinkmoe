@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 08:18:03
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 21:07:20
- * @FilePath: /pinkmoe_vitesse/src/components/Basicinput/index.vue
+ * @LastEditTime: 2022-08-21 14:48:00
+ * @FilePath: /pinkmoe_index/src/components/Basicinput/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -57,7 +57,7 @@ defineProps({
   <!-- Basicinput -->
   <div class="relative my-1.5 flex flex-row justify-center items-center">
     <i
-      v-if="isIcon" :class="`border-gray-100 text-center absolute left-0 top-0 m-2 p-2 text-gray-500 dark:text-gray-200 dark:bg-gray-800 i-${icon}`"
+      v-if="isIcon" :class="`border-gray-100 text-center absolute left-0 top-0 m-2 p-2 text-gray-500 inline-block dark:text-gray-200 ${icon}`"
     />
     <input
       :max="max"

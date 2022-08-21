@@ -38,7 +38,6 @@ func GetShopList() (err error, list response.Shop) {
 		var categoryPosts response.ShopContent
 		_, categoryPost := mysql.GetGoodsCategoryById(cm.Category)
 		categoryPosts.Name = categoryPost.Name
-		categoryPosts.IconType = categoryPost.IconType
 		categoryPosts.Icon = categoryPost.Icon
 		categoryPosts.Slug = categoryPost.Slug
 		categoryPosts.Sort = categoryPost.Sort

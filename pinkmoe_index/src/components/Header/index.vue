@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 11:54:24
- * @FilePath: /pinkmoe_vitesse/src/components/Header/index.vue
+ * @LastEditTime: 2022-08-21 16:39:40
+ * @FilePath: /pinkmoe_index/src/components/Header/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -64,7 +64,8 @@ const {
             class="bg-white cursor-pointer select-none flex justify-center items-center dark:hover:bg-opacity-50 dark:bg-gray-700 dark:bg-opacity-30 bg-opacity-30 text-xs px-2 py-0.5 hover:bg-opacity-50 duration-300"
             @click="k.type === 'theme' ? toggleTheme() : seleLanguage()"
           >
-            <i :class="`text-gray-700 dark:text-gray-200 inline-block ${k.type === 'theme' ? (theme === 'light' ? 'i-material-symbols:wb-sunny' : 'i-ion:ios-moon') : k.icon}`" />
+            <i v-if="k.type === 'theme'" :class="`text-gray-700 dark:text-gray-200 inline-block ${theme === 'light' ? 'i-material-symbols:wb-sunny' : 'i-ion:ios-moon'}`" />
+            <i v-else :class="`text-gray-700 dark:text-gray-200 inline-block ${k.icon}`" />
             <span class="ml-1">{{
               k.type === 'theme'
                 ? theme === 'light'
@@ -129,7 +130,7 @@ const {
                 <div
                   class="bg-white bg-opacity-40 rounded-full w-6 h-6 flex justify-center items-center text-shadow-bg-white"
                 >
-                  <i :class="`text-gray-700 dark:text-gray-200 ${category.icon}`" />
+                  <i :class="`text-gray-700 dark:text-gray-200 inline-block ${category.icon}`" />
                 </div>
                 <div class="text-shadow-bg-white">
                   {{ category.name }}
@@ -204,8 +205,10 @@ const {
                       :key="index"
                       class="flex flex-col border-r border-gray-100 dark:border-gray-800 dark:text-gray-200 my-3 group hover:text-pink-400 text-gray-500"
                     >
-                      <div class="flex flex-col justify-center items-center duration-300">
-                        <i :class="`text-xs p-1.5 rounded-full group-hover:bg-pink-400 duration-300 bg-gray-500 text-white dark:bg-gray-800 ${item.icon}`" />
+                      <div class="flex flex-col duration-300 justify-center items-center">
+                        <div class="p-1 w-5 h-5 rounded-full flex justify-center items-center group-hover:bg-pink-400 duration-300 bg-gray-500 text-white dark:bg-gray-800">
+                          <i :class="`text-xs inline-block ${item.icon}`" />
+                        </div>
                         <div class="py-2 text-xs">
                           {{ item.name }}
                         </div>
@@ -237,7 +240,7 @@ const {
               class="flex justify-center items-center px-2.5 cursor-pointer text-shadow-bg-white hover:bg-black hover:bg-opacity-10 duration-300"
               @click="showSearchDialog"
             >
-              <i class="text-gray-700 dark:text-gray-200 text-2xl i-ic:round-search" />
+              <i class="text-gray-700 dark:text-gray-200 text-2xl i-fluent:search-12-filled" />
             </div>
           </div>
         </div>

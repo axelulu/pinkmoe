@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:10:55
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 21:04:51
- * @FilePath: /pinkmoe_vitesse/src/pages/user-center/im/index.vue
+ * @LastEditTime: 2022-08-21 16:16:25
+ * @FilePath: /pinkmoe_index/src/pages/user-center/im/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -54,7 +54,7 @@ const { formatDate } = useUtil()
         class="w-full mt-3 mb-2 inline-block bg-white dark:bg-gray-700 rounded-md shadow-sm relative"
       >
         <div class="absolute flex justify-center items-center -top-3 text-xs bg-sky-600 px-1.5 py-1 text-white ml-4 cursor-pointer">
-          <i class="inline-block i-ph:paint-brush-broad-fill" />
+          <i class="inline-block i-jam:envelope-f" />
           <span class="ml-1 select-none">即时通讯</span>
         </div>
         <div class="p-4">
@@ -69,7 +69,7 @@ const { formatDate } = useUtil()
             <BasicInput
               v-model:value="relationChat"
               class="w-full text-xs"
-              icon="ph:user-plus-fill"
+              icon="i-ph:user-plus-fill"
               type="text"
               placeholder="输入用户 UID 以对话"
               @keyup.enter="addChatRelation"
@@ -97,7 +97,7 @@ const { formatDate } = useUtil()
                   <span class="text-xs flex-1">{{ chatRelation?.sendIdRelation?.nickName }}</span>
                 </div>
                 <div
-                  class="px-2 hover:bg-pink-400 h-6 hover:text-white duration-300 cursor-pointer"
+                  class="p-2 hover:bg-pink-400 h-6 hover:text-white duration-300 cursor-pointer flex justify-center items-center"
                   @click="deleteChatRelation(chatRelation?.sendIdRelation?.uuid)"
                 >
                   <i class="inline-block i-clarity:times-circle-solid" />
@@ -181,13 +181,15 @@ const { formatDate } = useUtil()
                 <BasicInput
                   v-model:value="msg"
                   class="text-xs"
-                  icon="uis:comment-dots"
+                  icon="i-uis:comment-dots"
                   type="text"
                   placeholder="输入对话消息"
                   @keyup.enter="sendMsg"
                 />
               </div>
-              <GreenBtn classes="w-1/12" value="发送" icon="material-symbols:check-circle" @click="sendMsg" />
+              <div class="w-2/12">
+                <GreenBtn value="发送" icon="i-material-symbols:check-circle" @click="sendMsg" />
+              </div>
             </div>
           </div>
         </div>

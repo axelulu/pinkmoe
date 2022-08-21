@@ -28,13 +28,12 @@ type ShopSettings struct {
 }
 
 type ShopContent struct {
-	Slug     string          `json:"slug"`     // 菜单标识
-	Name     string          `json:"name"`     // 菜单名称
-	Icon     string          `json:"icon"`     // 菜单图标
-	IconType string          `json:"iconType"` // 菜单图标类型
-	Sort     int             `json:"sort"`     // 排序标记
-	Style    int             `json:"style"`    // 分类模块显示类型
-	Goods    []model.XdGoods `json:"goods"`    // 文章
+	Slug  string          `json:"slug"`  // 菜单标识
+	Name  string          `json:"name"`  // 菜单名称
+	Icon  string          `json:"icon"`  // 菜单图标
+	Sort  int             `json:"sort"`  // 排序标记
+	Style int             `json:"style"` // 分类模块显示类型
+	Goods []model.XdGoods `json:"goods"` // 文章
 }
 
 type Shop struct {

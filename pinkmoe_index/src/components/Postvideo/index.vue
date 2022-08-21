@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-27 22:00:40
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 10:10:30
- * @FilePath: /pinkmoe_vitesse/src/components/Postvideo/index.vue
+ * @LastEditTime: 2022-08-21 16:51:36
+ * @FilePath: /pinkmoe_index/src/components/Postvideo/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -36,12 +36,15 @@ const { postVideo, buyVideo, videoRef, showLogin, currentVideo, auth, options, c
       v-if="!auth.isLogin"
       class="absolute top-0 flex justify-center items-center w-full h-full z-10"
     >
-      <GreenBtn
-        classes="w-2/12 h-8 mb-2"
-        value="登陆观看"
-        icon="material-symbols:check-circle"
-        @click="showLogin"
-      />
+      <div
+        class="w-2/12 h-8 mb-2"
+      >
+        <GreenBtn
+          value="登陆观看"
+          icon="i-material-symbols:check-circle"
+          @click="showLogin"
+        />
+      </div>
     </div>
     <div class="flex flex-row w-full" :style="auth.isLogin ? '' : 'filter: blur(6px)'">
       <div class="w-19/24 h-112">
@@ -69,7 +72,7 @@ const { postVideo, buyVideo, videoRef, showLogin, currentVideo, auth, options, c
               <GreenBtn
                 classes="w-full h-10"
                 value="购买"
-                icon="bi:cart-plus-fill"
+                icon="i-bi:cart-plus-fill"
                 @click="buyVideo(video)"
               />
             </div>

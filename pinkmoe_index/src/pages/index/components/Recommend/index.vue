@@ -30,7 +30,7 @@ const { t } = useI18n()
   <div class="lg:w-2/3 xl:w-5/12 mt-4 justify-center items-center animate-fadeIn30">
     <div class="flex flex-row justify-center mb-2">
       <div class="w-7 h-7 bg-sky-400 rounded-full flex justify-center items-center text-white mr-1">
-        <i class="inline-block i-material-symbols:not-started" />
+        <i class="inline-block i-material-symbols:recommend" />
       </div>
       <div class="text-lg">
         {{ t('home.recommendedBar') }}

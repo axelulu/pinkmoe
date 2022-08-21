@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-08-04 07:40:06
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 20:55:43
- * @FilePath: /pinkmoe_vitesse/src/components/Shopconfirm/index.vue
+ * @LastEditTime: 2022-08-21 16:05:06
+ * @FilePath: /pinkmoe_index/src/components/Shopconfirm/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -56,7 +56,7 @@ const { showAnimate, dialog, num, submitShop, key, currentVip } = useShopConfirm
             <span class="ml-1">确定{{ authorShop.shopName }}规格</span>
           </div>
           <div
-            class="text-sm px-4 py-1.5 bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer hover:text-white hover:bg-pink-400 duration-300 rounded-bl-md"
+            class="text-sm px-4 py-2 flex justify-center items-center bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer hover:text-white hover:bg-pink-400 duration-300 rounded-bl-md"
             @click="dialog.hide()"
           >
             <i class="inline-block i-clarity:times-circle-solid" />
@@ -67,7 +67,7 @@ const { showAnimate, dialog, num, submitShop, key, currentVip } = useShopConfirm
             <BasicInput
               v-model:value="num"
               class="w-full text-xs"
-              icon="material-symbols:calendar-month"
+              icon="i-material-symbols:calendar-month"
               :max="100"
               type="number"
               placeholder="输入开通数量"
@@ -82,7 +82,7 @@ const { showAnimate, dialog, num, submitShop, key, currentVip } = useShopConfirm
             <BasicInput
               v-model:value="key"
               class="w-full text-xs"
-              icon="material-symbols:key"
+              icon="i-material-symbols:key"
               :max="100"
               type="text"
               placeholder="输入充值卡密"
@@ -100,7 +100,7 @@ const { showAnimate, dialog, num, submitShop, key, currentVip } = useShopConfirm
               }
             "
           />
-          <GreenBtn classes="w-6/12" icon="material-symbols:check-circle" value="开通" @click="submitShop" />
+          <GreenBtn classes="w-6/12" icon="i-material-symbols:check-circle" value="开通" @click="submitShop" />
         </div>
       </form>
     </div>

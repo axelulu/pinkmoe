@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:42
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 11:46:11
- * @FilePath: /pinkmoe_vitesse/src/pages/user-center/publish/index.vue
+ * @LastEditTime: 2022-08-21 15:50:30
+ * @FilePath: /pinkmoe_index/src/pages/user-center/publish/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -129,7 +129,7 @@ useHead({
                 <BasicInput
                   v-model:value="item.name"
                   class="w-full text-xs"
-                  icon="ic:round-videocam"
+                  icon="i-ic:round-videocam"
                   type="text"
                   placeholder="视频名称"
                 />
@@ -138,7 +138,7 @@ useHead({
                 <BasicInput
                   v-model:value="item.url"
                   class="w-full text-xs"
-                  icon="material-symbols:link-rounded"
+                  icon="i-material-symbols:link-rounded"
                   type="text"
                   placeholder="视频链接"
                 />
@@ -147,7 +147,7 @@ useHead({
                 <BasicInput
                   v-model:value="item.subtitles"
                   class="w-full text-xs"
-                  icon="material-symbols:link-rounded"
+                  icon="i-material-symbols:link-rounded"
                   type="text"
                   placeholder="视频字幕地址"
                 />
@@ -172,7 +172,7 @@ useHead({
                 <BasicInput
                   v-model:value="item.price"
                   class="text-xs"
-                  icon="la:cloud-download-alt"
+                  icon="i-material-symbols:cloud-download"
                   type="number"
                   placeholder="下载所需"
                 />
@@ -238,7 +238,7 @@ useHead({
                 <BasicInput
                   v-model:value="item.name"
                   class="w-full text-xs"
-                  icon="ic:round-music-note"
+                  icon="i-ic:round-music-note"
                   type="text"
                   placeholder="音乐名称"
                 />
@@ -247,7 +247,7 @@ useHead({
                 <BasicInput
                   v-model:value="item.url"
                   class="w-full text-xs"
-                  icon="material-symbols:link-rounded"
+                  icon="i-material-symbols:link-rounded"
                   type="text"
                   placeholder="音乐页面地址（网易云音乐或文件直连）"
                 />
@@ -272,7 +272,7 @@ useHead({
                 <BasicInput
                   v-model:value="item.price"
                   class="text-xs"
-                  icon="la:cloud-download-alt"
+                  icon="i-material-symbols:cloud-download"
                   type="number"
                   placeholder="下载所需"
                 />
@@ -330,7 +330,7 @@ useHead({
             <BasicInput
               v-model:value="formParams.title"
               class="w-full text-xs"
-              icon="ic:baseline-insert-drive-file"
+              icon="i-ic:baseline-insert-drive-file"
               :required="true"
               pattern="[\u4e00-\u9fa5]{1,50}$|^[\dA-Za-z_]{1,50}$"
               type="text"
@@ -411,21 +411,21 @@ useHead({
                       <GreenBtn
                         classes="w-2/12"
                         value="插入到文章"
-                        icon="ant-design:plus-circle-filled"
+                        icon="i-ant-design:plus-circle-filled"
                         @click="insertPostImg(item)"
                       />
                       <GreenBtn
                         v-if="formParams.cover === item.url"
                         classes="w-2/12"
                         value="设为封面"
-                        icon="material-symbols:not-started"
+                        icon="i-gis:landcover-map"
                         @click="formParams.cover = item.url"
                       />
                       <WhiteBtn
                         v-else
                         class="w-2/12"
                         value="设为封面"
-                        icon="material-symbols:not-started"
+                        icon="i-gis:landcover-map"
                         @click="formParams.cover = item.url"
                       />
                     </div>
@@ -487,7 +487,7 @@ useHead({
                         ? 'text-gray-500 dark:text-gray-300'
                         : 'text-gray-300 dark:text-gray-500 cursor-not-allowed'
                     "
-                    class="i-ion:md-trash absolute right-0 top-0 p-2.5 cursor-pointer dark:active:bg-gray-600 active:bg-gray-100 duration-300"
+                    class="i-ion:md-trash absolute right-1 top-2 p-2 cursor-pointer dark:active:bg-gray-600 active:bg-gray-100 duration-300"
                     @click="formParams.topic?.length! > 1 ? formParams.topic?.splice(index, 1) : ''"
                   />
                 </div>
@@ -508,7 +508,7 @@ useHead({
           <div
             class="absolute flex justify-center items-center -top-3 text-xs bg-sky-600 px-1.5 py-1 text-white ml-4 cursor-pointer"
           >
-            <i class="inline-block i-la:cloud-download-alt" />
+            <i class="inline-block i-material-symbols:cloud-download" />
             <span class="ml-1 select-none">下载链接</span>
           </div>
           <div class="flex flex-wrap items-center px-4 pb-4 mt-6">
@@ -522,7 +522,7 @@ useHead({
                   <BasicInput
                     v-model:value="item.name"
                     class="w-full text-xs"
-                    icon="la:cloud-download-alt"
+                    icon="i-material-symbols:cloud-download"
                     type="text"
                     pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$"
                     placeholder="下载名称"
@@ -532,7 +532,7 @@ useHead({
                   <BasicInput
                     v-model:value="item.url"
                     class="w-full text-xs"
-                    icon="material-symbols:link-rounded"
+                    icon="i-material-symbols:link-rounded"
                     type="text"
                     placeholder="下载链接"
                   />
@@ -541,7 +541,7 @@ useHead({
                   <BasicInput
                     v-model:value="item.extractPwd"
                     class="w-full text-xs"
-                    icon="material-symbols:key"
+                    icon="i-material-symbols:key"
                     type="text"
                     placeholder="提取密码"
                   />
@@ -550,7 +550,7 @@ useHead({
                   <BasicInput
                     v-model:value="item.unpackPwd"
                     class="w-full text-xs"
-                    icon="uis:unlock-alt"
+                    icon="i-uis:unlock-alt"
                     type="text"
                     placeholder="解压密码"
                   />
@@ -577,7 +577,7 @@ useHead({
                   <BasicInput
                     v-model:value="item.price"
                     class="text-xs"
-                    icon="la:cloud-download-alt"
+                    icon="i-material-symbols:cloud-download"
                     type="number"
                     placeholder="下载所需"
                   />

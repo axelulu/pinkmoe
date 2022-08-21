@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-08-08 16:34:38
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 13:21:23
- * @FilePath: /pinkmoe/pinkmoe_index/src/modules/i18n.ts
+ * @LastEditTime: 2022-08-21 14:57:26
+ * @FilePath: /pinkmoe_index/src/modules/i18n.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -27,7 +27,7 @@ const messages = Object.fromEntries(
 export const install: UserModule = ({ app, isClient }) => {
   const i18n = createI18n({
     legacy: false,
-    locale: isClient ? localStorage.getItem('locale') || navigator.language.slice(0, 2) : 'zh-CN',
+    locale: isClient ? localStorage.getItem('locale') ? localStorage.getItem('locale') || navigator.language.slice(0, 2) : 'zh-CN' : 'zh-CN',
     messages,
   })
 

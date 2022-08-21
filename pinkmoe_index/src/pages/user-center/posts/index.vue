@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:34
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 11:21:01
- * @FilePath: /pinkmoe_vitesse/src/pages/user-center/posts/index.vue
+ * @LastEditTime: 2022-08-21 16:14:42
+ * @FilePath: /pinkmoe_index/src/pages/user-center/posts/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -42,7 +42,7 @@ useHead({
         class="w-full mt-3 mb-2 inline-block bg-white dark:bg-gray-700 rounded-md shadow-sm relative"
       >
         <div class="absolute flex justify-center items-center -top-3 text-xs bg-sky-600 px-1.5 py-1 text-white ml-4 cursor-pointer">
-          <i class="inline-block i-ph:paint-brush-broad-fill" />
+          <i class="inline-block i-fluent:copy-24-filled" />
           <span class="ml-1 select-none">我的帖子</span>
         </div>
         <div class="p-4">
@@ -57,34 +57,34 @@ useHead({
             <table v-if="userPostList?.list && userPostList?.list?.length" class="w-full">
               <thead class="text-xs text-gray-500 bg-pink-200">
                 <tr>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     封面
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-6/24">
                     标题
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     操作
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     状态
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     类型
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     日期
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     评论
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     下载
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     查看数
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     帖子点赞
                   </th>
                 </tr>
@@ -109,8 +109,10 @@ useHead({
                     <div
                       class="cursor-pointer hover:bg-pink-400 hover:text-white duration-300 py-1.5"
                     >
-                      <i class="inline-block i-material-symbols:edit" />
-                      <span class="ml-1 font-normal">编辑</span>
+                      <div class="flex justify-center items-center">
+                        <i class="inline-block i-material-symbols:edit" />
+                        <span class="ml-1 font-normal">编辑</span>
+                      </div>
                     </div>
                   </th>
                   <th class="px-2 py-3 font-normal">
@@ -137,53 +139,61 @@ useHead({
                     {{ formatDate(item?.UpdatedAt) }}
                   </th>
                   <th class="px-2 py-3">
-                    <i class="inline-block i-uil:comments" />
-                    <span class="ml-1 font-normal">{{ item.commentRelation.length }}</span>
+                    <div class="flex justify-center items-center">
+                      <i class="inline-block i-fa6-solid:comment" />
+                      <span class="ml-1 font-normal">{{ item.commentRelation.length }}</span>
+                    </div>
                   </th>
                   <th class="px-2 py-3">
-                    <i class="inline-block i-la:cloud-download-alt" />
-                    <span class="ml-1 font-normal">{{ item.downloadRelation.length }}</span>
-                  </th>
-                  <th class="px-2 py-3 flex justify-center items-center">
-                    <i class="inline-block i-ant-design:eye-filled" />
-                    <span class="ml-1 font-normal">{{ item.view }}</span>
+                    <div class="flex justify-center items-center">
+                      <i class="inline-block i-material-symbols:cloud-download" />
+                      <span class="ml-1 font-normal">{{ item.downloadRelation.length }}</span>
+                    </div>
                   </th>
                   <th class="px-2 py-3">
-                    <i class="inline-block i-ion:ios-thumbs-up" />
-                    <span class="ml-1 font-normal">{{ item.starRelation.length }}</span>
+                    <div class="flex justify-center items-center">
+                      <i class="inline-block i-ant-design:eye-filled" />
+                      <span class="ml-1 font-normal">{{ item.view }}</span>
+                    </div>
+                  </th>
+                  <th class="px-2 py-3">
+                    <div class="flex justify-center items-center">
+                      <i class="inline-block i-ion:ios-thumbs-up" />
+                      <span class="ml-1 font-normal">{{ item.starRelation.length }}</span>
+                    </div>
                   </th>
                 </tr>
               </tbody>
               <tfoot class="text-xs text-gray-500 bg-pink-200">
                 <tr>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     封面
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-6/24">
                     标题
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     操作
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     状态
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     类型
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     日期
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     评论
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     下载
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     查看数
                   </th>
-                  <th class="px-2 py-3">
+                  <th class="px-2 py-3 w-2/24">
                     帖子点赞
                   </th>
                 </tr>

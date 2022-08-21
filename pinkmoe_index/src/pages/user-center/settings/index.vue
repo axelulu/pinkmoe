@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:59
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 21:05:17
- * @FilePath: /pinkmoe_vitesse/src/pages/user-center/settings/index.vue
+ * @LastEditTime: 2022-08-21 16:53:08
+ * @FilePath: /pinkmoe_index/src/pages/user-center/settings/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -117,7 +117,7 @@ useHead({
                   :required="true"
                   pattern="[\u4e00-\u9fa5]{1,7}$|^[\dA-Za-z_]{1,14}$"
                   class="w-10/12 text-xs"
-                  icon="bx:bxs-user-circle"
+                  icon="i-bx:bxs-user-circle"
                   type="text"
                   placeholder="请输入昵称"
                 />
@@ -140,7 +140,7 @@ useHead({
                 <GreenBtn
                   classes="w-10/12"
                   value="更新个人资料"
-                  icon="material-symbols:check-circle"
+                  icon="i-material-symbols:check-circle"
                   @click="updateDetail"
                 />
               </div>
@@ -172,7 +172,7 @@ useHead({
                   :required="true"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                   class="w-10/12 text-xs"
-                  icon="ic:baseline-email"
+                  icon="i-ic:baseline-email"
                   type="email"
                   placeholder="请输入邮箱"
                 />
@@ -186,14 +186,14 @@ useHead({
                   :required="true"
                   pattern="[0-9]{5,6}$"
                   class="w-6/12 text-xs"
-                  icon="material-symbols:lock"
+                  icon="i-material-symbols:lock"
                   type="number"
                   placeholder="请输入验证码"
                 />
                 <div class="w-4/12 pl-4 flex justify-center items-center">
                   <div
                     :class="sendCaptcha ? '' : 'opacity-50 cursor-not-allowed'"
-                    class="w-full select-none text-xs text-center cursor-pointer text-gray-500 dark:border-gray-800 dark:text-gray-200 border-2 border-gray-100 px-2 py-1.5"
+                    class="w-full select-none flex justify-center items-center text-xs text-center cursor-pointer text-gray-500 dark:border-gray-800 dark:text-gray-200 border-2 border-gray-100 px-2 py-1.5"
                     @click="getEmailCaptcha"
                   >
                     <i class="inline-block i-jam:envelope-f" />
@@ -205,7 +205,7 @@ useHead({
                 <GreenBtn
                   classes="w-10/12"
                   value="更新邮箱"
-                  icon="material-symbols:check-circle"
+                  icon="i-material-symbols:check-circle"
                   @click="updateEmail"
                 />
               </div>
@@ -237,7 +237,7 @@ useHead({
                   :required="true"
                   pattern="[a-zA-Z]\w{5,17}$"
                   class="w-10/12 text-xs"
-                  icon="material-symbols:lock"
+                  icon="i-material-symbols:lock"
                   type="password"
                   placeholder="请输入旧密码"
                 />
@@ -251,7 +251,7 @@ useHead({
                   :required="true"
                   pattern="[a-zA-Z]\w{5,17}$"
                   class="w-10/12 text-xs"
-                  icon="material-symbols:lock"
+                  icon="i-material-symbols:lock"
                   type="password"
                   placeholder="请输入新密码"
                 />
@@ -265,7 +265,7 @@ useHead({
                   :required="true"
                   pattern="[a-zA-Z]\w{5,17}$"
                   class="w-10/12 text-xs"
-                  icon="material-symbols:lock"
+                  icon="i-material-symbols:lock"
                   type="password"
                   placeholder="请确认新密码"
                 />
@@ -274,7 +274,7 @@ useHead({
                 <GreenBtn
                   classes="w-10/12"
                   value="更新密码"
-                  icon="material-symbols:check-circle"
+                  icon="i-material-symbols:check-circle"
                   @click="updatePwd"
                 />
               </div>

@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 21:22:44
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 23:17:48
- * @FilePath: /pinkmoe_vitesse/src/components/Commentfont/index.vue
+ * @LastEditTime: 2022-08-21 15:54:54
+ * @FilePath: /pinkmoe_index/src/components/Commentfont/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -96,7 +96,7 @@ defineExpose({
           </span>
         </div>
         <div
-          class="bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-700 text-center py-1 cursor-pointer hover:bg-gray-100 duration-300"
+          class="bg-gray-200 flex justify-center items-center py-2 dark:bg-gray-600 dark:hover:bg-gray-700 text-center py-1 cursor-pointer hover:bg-gray-100 duration-300"
           @click="dialog.hide()"
         >
           <i class="inline-block i-carbon:close-filled" />

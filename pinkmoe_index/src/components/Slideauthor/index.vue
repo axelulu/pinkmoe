@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:48:20
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 11:38:34
- * @FilePath: /pinkmoe_vitesse/src/components/Slideauthor/index.vue
+ * @LastEditTime: 2022-08-21 15:32:19
+ * @FilePath: /pinkmoe_index/src/components/Slideauthor/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -77,19 +77,19 @@ const { unFollow, follow, status, jump, lev } = useSlideAuthor(props)
       <div class="text-xs text-gray-500 dark:text-gray-200 pt-1">
         {{ author?.desc }}
       </div>
-      <div class="pb-4 pt-3">
+      <div class="pb-4 pt-3 flex justify-center items-center">
         <span
-          class="bg-green-500 select-none active:bg-green-500 active:border-green-500 hover:bg-green-600 hover:border-green-600 duration-300 py-1 px-2 cursor-pointer text-xs text-white border-2 border-green-500"
+          class="bg-green-500 select-none flex justify-center items-center active:bg-green-500 active:border-green-500 hover:bg-green-600 hover:border-green-600 duration-300 py-1 px-2 cursor-pointer text-xs text-white border-2 border-green-500"
           @click="!status ? unFollow() : follow()"
         >
-          <i :class="`mr-1 i-${status ? 'material-symbols:check-circle' : 'material-symbols:add'}`" />
+          <i :class="`mr-1 inline-block i-${status ? 'material-symbols:check-circle' : 'material-symbols:add'}`" />
           <span>{{ status ? '已关注' : '加关注' }}</span>
         </span>
         <span
-          class="bg-white-500 select-none dark:hover:bg-gray-600 hover:bg-gray-200 active:bg-gray-50 duration-300 py-1 px-2 cursor-pointer text-xs text-gray-500 dark:text-gray-200 border-2 border-gray-200 dark:border-gray-600"
+          class="bg-white-500 select-none flex justify-center items-center dark:hover:bg-gray-600 hover:bg-gray-200 active:bg-gray-50 duration-300 py-1 px-2 cursor-pointer text-xs text-gray-500 dark:text-gray-200 border-2 border-gray-200 dark:border-gray-600"
           @click="jump"
         >
-          <i class="mr-1 i-jam:envelope-f" />
+          <i class="mr-1 inline-block i-jam:envelope-f" />
           <span>站内信</span>
         </span>
       </div>

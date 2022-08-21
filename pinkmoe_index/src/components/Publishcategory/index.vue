@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 17:43:49
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 12:46:49
- * @FilePath: /pinkmoe_vitesse/src/components/Publishcategory/index.vue
+ * @LastEditTime: 2022-08-21 16:05:13
+ * @FilePath: /pinkmoe_index/src/components/Publishcategory/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -92,7 +92,7 @@ defineExpose({
             <span class="ml-1">单击查看子分类，双击选择分类</span>
           </div>
           <div
-            class="text-sm px-4 py-1.5 bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer hover:text-white hover:bg-pink-400 duration-300 rounded-bl-md"
+            class="text-sm px-4 py-2 flex justify-center items-center bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer hover:text-white hover:bg-pink-400 duration-300 rounded-bl-md"
             @click="dialog.hide()"
           >
             <i class="inline-block i-clarity:times-circle-solid" />

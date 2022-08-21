@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 20:55:56
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 12:48:44
- * @FilePath: /pinkmoe_vitesse/src/components/Publishcomment/index.vue
+ * @LastEditTime: 2022-08-21 16:05:10
+ * @FilePath: /pinkmoe_index/src/components/Publishcomment/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -73,7 +73,7 @@ defineExpose({
           <div
             class="flex flex-row justify-center items-center text-gray-500 dark:text-gray-200 text-xs ml-4 p-0 rounded-bl-md rounded-br-md overflow-hidden"
           >
-            <i class="inline-block i-uil:comments" />
+            <i class="inline-block i-fa6-solid:comment" />
             <router-link
               v-if="commentMetas !== null"
               :to="`/author/${commentMetas.FormUidRelation.uuid}/userInfo`"
@@ -85,7 +85,7 @@ defineExpose({
             <span v-else class="ml-1">发表评论</span>
           </div>
           <div
-            class="text-sm px-4 py-1.5 bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer hover:text-white hover:bg-pink-400 duration-300 rounded-bl-md"
+            class="text-sm px-4 py-2 flex justify-center items-center bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer hover:text-white hover:bg-pink-400 duration-300 rounded-bl-md"
             @click="dialog.hide()"
           >
             <i class="inline-block i-clarity:times-circle-solid" />
@@ -116,7 +116,7 @@ defineExpose({
           </div>
           <GreenBtn
             classes="w-8/12"
-            icon="material-symbols:check-circle"
+            icon="i-material-symbols:check-circle"
             value="我说完了"
             @click="submitComment"
           />

@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:59:50
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 17:41:27
- * @FilePath: /pinkmoe_vitesse/src/api/home/types.ts
+ * @LastEditTime: 2022-08-21 14:55:29
+ * @FilePath: /pinkmoe_index/src/api/home/types.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -21,7 +21,6 @@ export interface ResHomeList {
 
 export interface ResContent {
   icon?: string
-  iconType?: string
   name?: string
   slug?: string
   sort?: number

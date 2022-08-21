@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:45:21
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 19:10:26
- * @FilePath: /pinkmoe_vitesse/src/components/Postcomment/index.vue
+ * @LastEditTime: 2022-08-21 15:54:33
+ * @FilePath: /pinkmoe_index/src/components/Postcomment/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -46,7 +46,7 @@ function showComment(item) {
   <!-- Postcomment -->
   <div v-if="postComment" class="flex flex-col mt-4 animate-fadeIn30">
     <div class="text-xs text-gray-500 dark:text-gray-200 mr-4 mb-2">
-      <i class="mr-1 inline-block i-uil:comments" />
+      <i class="mr-1 inline-block i-fa6-solid:comment" />
       <span class="mr-1">评论</span>
     </div>
     <Spin :show="loading">

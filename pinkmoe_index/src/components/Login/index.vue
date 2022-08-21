@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 08:13:00
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 20:50:42
- * @FilePath: /pinkmoe_vitesse/src/components/Login/index.vue
+ * @LastEditTime: 2022-08-21 15:54:58
+ * @FilePath: /pinkmoe_index/src/components/Login/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -49,6 +49,7 @@ const {
   forget,
   getCaptchas,
   getEmailCaptcha,
+  changeType,
   showAnimate,
 } = useLogin(props)
 </script>
@@ -74,31 +75,31 @@ const {
           >
             <div
               :class="loginType === 'login' ? 'bg-pink-400 text-white' : ''"
-              class="text-sm px-4 py-1.5 cursor-pointer hover:text-white hover:bg-pink-400 duration-300"
-              @click="loginType = 'login'"
+              class="text-sm px-4 py-1.5 select-none cursor-pointer hover:text-white hover:bg-pink-400 duration-300"
+              @click="changeType('login')"
             >
               登陆
             </div>
             <div
               :class="loginType === 'reg' ? 'bg-pink-400 text-white' : ''"
-              class="text-sm px-4 py-1.5 cursor-pointer hover:text-white hover:bg-pink-400 duration-300"
-              @click="loginType = 'reg'"
+              class="text-sm px-4 py-1.5 select-none cursor-pointer hover:text-white hover:bg-pink-400 duration-300"
+              @click="changeType('reg')"
             >
               注册
             </div>
             <div
               :class="loginType === 'forgetPwd' ? 'bg-pink-400 text-white' : ''"
-              class="text-sm px-4 py-1.5 cursor-pointer hover:text-white hover:bg-pink-400 duration-300"
-              @click="loginType = 'forgetPwd'"
+              class="text-sm px-4 py-1.5 select-none cursor-pointer hover:text-white hover:bg-pink-400 duration-300"
+              @click="changeType('forgetPwd')"
             >
               丢失密码
             </div>
           </div>
           <div
-            class="text-sm dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-200 px-4 py-1.5 bg-gray-200 cursor-pointer hover:text-white hover:bg-pink-400 duration-300 rounded-bl-md"
+            class="text-sm dark:bg-gray-700 flex justify-center items-center py-2 dark:hover:bg-gray-800 dark:text-gray-200 px-4 py-1.5 bg-gray-200 cursor-pointer hover:text-white hover:bg-pink-400 duration-300 rounded-bl-md"
             @click="dialog.hide()"
           >
-            <i class="inline-block i-uil:times-circle" />
+            <i class="inline-block i-carbon:close-filled" />
           </div>
         </div>
         <form
@@ -111,7 +112,7 @@ const {
           <div v-if="loginType === 'login'" class="animate-fadeIn30">
             <BasicInput
               v-model:value="formParams.emailCode"
-              icon="material-symbols:adjust"
+              icon="i-ic:baseline-email"
               :required="true"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
               type="email"
@@ -119,7 +120,7 @@ const {
             />
             <BasicInput
               v-model:value="formParams.password"
-              icon="uis:unlock-alt"
+              icon="i-uis:unlock-alt"
               :required="true"
               pattern="[a-zA-Z]\w{5,17}$"
               type="password"
@@ -127,7 +128,7 @@ const {
             />
             <BasicInput
               v-model:value="formParams.captchaCode"
-              icon="dashicons:shield-alt"
+              icon="i-material-symbols:key"
               :required="true"
               pattern="[0-9]{5,6}$"
               type="number"
@@ -146,7 +147,7 @@ const {
           <div v-if="loginType === 'reg'" class="animate-fadeIn30">
             <BasicInput
               v-model:value="regFormParams.username"
-              icon="ph:user-plus-fill"
+              icon="i-ph:user-plus-fill"
               :required="true"
               pattern="[a-zA-Z0-9_-]{4,16}$"
               type="text"
@@ -154,7 +155,7 @@ const {
             />
             <BasicInput
               v-model:value="regFormParams.emailCode"
-              icon="material-symbols:adjust"
+              icon="i-ic:baseline-email"
               :required="true"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
               type="email"
@@ -162,7 +163,7 @@ const {
             />
             <BasicInput
               v-model:value="regFormParams.captchaCode"
-              icon="material-symbols:key"
+              icon="i-material-symbols:key"
               :required="true"
               pattern="[0-9]{5,6}$"
               type="number"
@@ -179,7 +180,7 @@ const {
             </BasicInput>
             <BasicInput
               v-model:value="regFormParams.password"
-              icon="material-symbols:lock-sharp"
+              icon="i-uis:unlock-alt"
               :required="true"
               pattern="[a-zA-Z]\w{5,17}$"
               type="password"
@@ -187,7 +188,7 @@ const {
             />
             <BasicInput
               v-model:value="regFormParams.rePassword"
-              icon="material-symbols:lock-sharp"
+              icon="i-uis:unlock-alt"
               :required="true"
               pattern="[a-zA-Z]\w{5,17}$"
               type="password"
@@ -197,7 +198,7 @@ const {
           <div v-if="loginType === 'forgetPwd'" class="animate-fadeIn30">
             <BasicInput
               v-model:value="regFormParams.emailCode"
-              icon="material-symbols:adjust"
+              icon="i-ic:baseline-email"
               :required="true"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
               type="email"
@@ -205,7 +206,7 @@ const {
             />
             <BasicInput
               v-model:value="regFormParams.captchaCode"
-              icon="material-symbols:key"
+              icon="i-material-symbols:key"
               :required="true"
               pattern="[0-9]{5,6}$"
               type="number"
@@ -222,7 +223,7 @@ const {
             </BasicInput>
             <BasicInput
               v-model:value="regFormParams.password"
-              icon="material-symbols:lock-sharp"
+              icon="i-uis:unlock-alt"
               :required="true"
               pattern="[a-zA-Z]\w{5,17}$"
               type="password"
@@ -230,7 +231,7 @@ const {
             />
             <BasicInput
               v-model:value="regFormParams.rePassword"
-              icon="material-symbols:lock-sharp"
+              icon="i-uis:unlock-alt"
               :required="true"
               pattern="[a-zA-Z]\w{5,17}$"
               type="password"
@@ -242,7 +243,7 @@ const {
           v-if="loginType === 'login'"
           classes="border-0"
           value="登陆"
-          icon="ic:sharp-arrow-circle-right"
+          icon="i-ic:sharp-arrow-circle-right"
           class="h-9"
           @click="loginUser"
         />
@@ -250,7 +251,7 @@ const {
           v-if="loginType === 'reg'"
           classes="border-0"
           value="注册"
-          icon="ph:user-plus-fill"
+          icon="i-ph:user-plus-fill"
           class="h-9"
           @click="reg"
         />
@@ -258,7 +259,7 @@ const {
           v-if="loginType === 'forgetPwd'"
           classes="border-0"
           value="忘记密码"
-          icon="mdi:sync-circle"
+          icon="i-mdi:sync-circle"
           class="h-9"
           @click="forget"
         />

@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:10:48
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 18:05:44
- * @FilePath: /pinkmoe_vitesse/src/pages/user-center/home/index.vue
+ * @LastEditTime: 2022-08-21 16:16:42
+ * @FilePath: /pinkmoe_index/src/pages/user-center/home/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -35,7 +35,7 @@ useHead({
         class="w-full mt-3 mb-2 inline-block bg-white dark:bg-gray-700 rounded-md shadow-sm relative"
       >
         <div class="absolute flex justify-center items-center -top-3 text-xs bg-sky-600 px-1.5 py-1 text-white ml-4 cursor-pointer">
-          <i class="inline-block i-ph:paint-brush-broad-fill" />
+          <i class="inline-block i-fa-solid:address-card" />
           <span class="ml-1 select-none">我的首页</span>
         </div>
         <div class="p-4">

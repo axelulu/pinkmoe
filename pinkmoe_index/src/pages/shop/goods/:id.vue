@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-08-11 15:03:50
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 21:01:47
- * @FilePath: /pinkmoe_vitesse/src/pages/shop/goods/:id.vue
+ * @LastEditTime: 2022-08-21 15:22:58
+ * @FilePath: /pinkmoe_index/src/pages/shop/goods/:id.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -147,18 +147,18 @@ useHead({
               <GreenBtn
                 classes="w-10 h-8"
                 value=""
-                icon="ic:baseline-minus"
+                icon="i-ic:baseline-minus"
                 @click="num > 0 ? num-- : null"
               />
               <BasicInput
                 v-model:value="num"
                 :is-icon="false"
                 class="w-20 text-xs"
-                icon="ic:round-videocam"
+                icon="i-ic:round-videocam"
                 type="number"
                 placeholder="请选择数量"
               />
-              <GreenBtn classes="w-10 h-8" value="" icon="material-symbols:add" @click="num++" />
+              <GreenBtn classes="w-10 h-8" value="" icon="i-material-symbols:add" @click="num++" />
             </div>
           </div>
           <div class="flex flex-row justify-between mt-6 items-center">
@@ -166,13 +166,13 @@ useHead({
               <GreenBtn
                 classes="w-20 mr-2"
                 value="购买"
-                icon="material-symbols:check-circle"
+                icon="i-material-symbols:check-circle"
                 @click="publishPost"
               />
               <GreenBtn
                 classes="w-20"
                 value="加购物车"
-                icon="ant-design:plus-circle-filled"
+                icon="i-ant-design:plus-circle-filled"
                 @click="publishPost"
               />
             </div>

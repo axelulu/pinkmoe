@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:12:20
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 11:21:06
- * @FilePath: /pinkmoe_vitesse/src/pages/user-center/stars/index.vue
+ * @LastEditTime: 2022-08-21 16:15:04
+ * @FilePath: /pinkmoe_index/src/pages/user-center/stars/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -42,7 +42,7 @@ useHead({
         class="w-full mt-3 mb-2 inline-block bg-white dark:bg-gray-700 rounded-md shadow-sm relative"
       >
         <div class="absolute flex justify-center items-center -top-3 text-xs bg-sky-600 px-1.5 py-1 text-white ml-4 cursor-pointer">
-          <i class="inline-block i-ph:paint-brush-broad-fill" />
+          <i class="inline-block i-mdi:cards-heart" />
           <span class="ml-1 select-none">我的收藏</span>
         </div>
         <div class="p-4">
@@ -131,7 +131,7 @@ useHead({
                     }}
                   </th>
                   <th class="px-2 py-3">
-                    <i class="inline-block i-la:cloud-download-alt" />
+                    <i class="inline-block i-material-symbols:cloud-download" />
                     <span class="ml-1 font-normal">{{
                       item?.PostIdRelation?.downloadRelation?.length
                     }}</span>

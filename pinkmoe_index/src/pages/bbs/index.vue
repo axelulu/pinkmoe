@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:32:24
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 21:04:32
- * @FilePath: /pinkmoe_vitesse/src/pages/bbs/index.vue
+ * @LastEditTime: 2022-08-21 15:22:49
+ * @FilePath: /pinkmoe_index/src/pages/bbs/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -85,7 +85,7 @@ useHead({
               <GreenBtn
                 class="w-full h-8 mb-2"
                 value="登陆"
-                icon="ic:sharp-arrow-circle-right"
+                icon="i-ic:sharp-arrow-circle-right"
                 @click="showLogin"
               />
             </div>
@@ -98,7 +98,7 @@ useHead({
               v-if="isTitle"
               v-model:value="postFormParams.title"
               class="w-full text-xs"
-              icon="ic:baseline-insert-drive-file"
+              icon="i-ic:baseline-insert-drive-file"
               :required="true"
               pattern="[\u4e00-\u9fa5]{1,50}$|^[\dA-Za-z_]{1,50}$"
               type="text"
@@ -134,7 +134,7 @@ useHead({
             <GreenBtn
               classes="w-full mb-2"
               :value="$t('bbs.releaseDynamic')"
-              icon="material-symbols:check-circle"
+              icon="i-material-symbols:check-circle"
               @click="publishPost"
             />
           </div>

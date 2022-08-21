@@ -33,7 +33,6 @@ func GetHomeList() (err error, list response.Home) {
 		var categoryPosts response.Content
 		_, categoryPost := mysql.GetCategoryById(cm.Category)
 		categoryPosts.Name = categoryPost.Name
-		categoryPosts.IconType = categoryPost.IconType
 		categoryPosts.Icon = categoryPost.Icon
 		categoryPosts.Slug = categoryPost.Slug
 		categoryPosts.Sort = categoryPost.Sort

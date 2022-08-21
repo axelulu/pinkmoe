@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:01:30
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 21:32:25
- * @FilePath: /pinkmoe_vitesse/src/pages/shop/category/:slug.vue
+ * @LastEditTime: 2022-08-21 15:29:30
+ * @FilePath: /pinkmoe_index/src/pages/shop/category/:slug.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -42,7 +42,7 @@ useHead({
       >
         <router-link
           to="/"
-          class="text-xs p-3 ml-1 hover:bg-pink-50 dark:hover:bg-gray-800 cursor-pointer hover:text-pink-400 duration-300"
+          class="text-xs p-3 ml-1 hover:bg-pink-50 dark:hover:bg-gray-800 cursor-pointer hover:text-pink-400 duration-300 flex justify-start items-center"
         >
           <i class="inline-block i-mdi:home-variant" />
         </router-link>

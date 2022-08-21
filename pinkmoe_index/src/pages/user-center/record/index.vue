@@ -42,7 +42,7 @@ useHead({
         class="w-full mt-3 mb-2 inline-block bg-white dark:bg-gray-700 rounded-md shadow-sm relative"
       >
         <div class="absolute flex justify-center items-center -top-3 text-xs bg-sky-600 px-1.5 py-1 text-white ml-4 cursor-pointer">
-          <i class="inline-block i-ph:paint-brush-broad-fill" />
+          <i class="inline-block i-ri:chat-history-fill" />
           <span class="ml-1 select-none">消费记录</span>
         </div>
         <div class="p-4">
@@ -190,7 +190,7 @@ useHead({
                         item.credit > 0 ? `+${item.credit}` : item.credit
                       }}
                     </div>
-                    <i class="inline-block text-xl px-4 i-la:cloud-download-alt" />
+                    <i class="inline-block text-xl px-4 i-material-symbols:cloud-download" />
                     <div>
                       恭喜您成功购买了文章<router-link
                         class="text-pink-400"

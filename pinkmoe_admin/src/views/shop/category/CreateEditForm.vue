@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-05-07 23:37:51
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-16 20:06:14
+ * @LastEditTime: 2022-08-21 16:32:06
  * @FilePath: /pinkmoe_admin/src/views/shop/category/CreateEditForm.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -23,9 +23,6 @@
       </n-form-item>
       <n-form-item label="标识" path="slug">
         <n-input placeholder="请输入标识" v-model:value="formParams.slug" />
-      </n-form-item>
-      <n-form-item label="图标类型" path="iconType">
-        <n-select v-model:value="formParams.iconType" :options="iconTypes" />
       </n-form-item>
       <n-form-item label="图标" path="icon">
         <n-input placeholder="请输入图标" v-model:value="formParams.icon" />
@@ -84,13 +81,6 @@
       message: '请输入2到30位（字母）',
       pattern: /^[a-zA-Z_-]{2,30}$/, //验证图标 2到30位（字母）
     },
-    iconType: {
-      type: 'enum',
-      enum: ['fas', 'fab', 'far'],
-      required: true,
-      trigger: 'blur',
-      message: '请输入图标类型',
-    },
     parentId: {
       required: true,
       trigger: 'blur',
@@ -119,26 +109,11 @@
       const formBtnLoading = ref(false);
       const formRef: any = ref(null);
       const options = ref([]);
-      const iconTypes = [
-        {
-          label: "fas",
-          value: 'fas',
-        },
-        {
-          label: "fab",
-          value: 'fab',
-        },
-        {
-          label: "far",
-          value: 'far',
-        },
-      ]
       const defaultValueRef = () => ({
         ID: 0,
         name: '',
         slug: '',
         icon: '',
-        iconType: 'fas',
         parentId: 0,
         sort: 0,
       });
@@ -229,7 +204,6 @@
         rules,
         options,
         formBtnLoading,
-        iconTypes,
         openForm,
         closeForm,
         confirmForm,

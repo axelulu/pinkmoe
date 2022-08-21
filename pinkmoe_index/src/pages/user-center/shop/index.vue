@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:12:12
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 11:52:45
- * @FilePath: /pinkmoe_vitesse/src/pages/user-center/shop/index.vue
+ * @LastEditTime: 2022-08-21 16:18:22
+ * @FilePath: /pinkmoe_index/src/pages/user-center/shop/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -38,7 +38,7 @@ useHead({
         class="w-full mt-3 mb-2 inline-block bg-white dark:bg-gray-700 rounded-md shadow-sm relative"
       >
         <div class="absolute flex justify-center items-center -top-3 text-xs bg-sky-600 px-1.5 py-1 text-white ml-4 cursor-pointer">
-          <i class="inline-block i-ph:paint-brush-broad-fill" />
+          <i class="inline-block i-material-symbols:shopping-bag" />
           <span class="ml-1 select-none">商城</span>
         </div>
         <div class="p-4">
@@ -52,18 +52,18 @@ useHead({
           <div
             class="px-4 py-3 w-full bg-gray-100 dark:bg-gray-800 dark:text-gray-200 mt-2 text-xs text-gray-500"
           >
-            <p class="text-xs py-1">
-              <span class="text-xs">我的积分</span><span class="ml-4 bg-green-400 rounded-xl text-white px-1 py-0.5">
-                <i class="inline-block i-lucide:gem" /> 积分{{ auth.userInfo?.credit }}</span>
+            <p class="text-xs py-1 flex justify-start items-center">
+              <span class="text-xs">我的积分</span><span class="ml-4 bg-green-400 rounded-xl text-white px-1 py-0.5 flex justify-center items-center">
+                <i class="inline-block mr-1 i-lucide:gem" /> 积分{{ auth.userInfo?.credit }}</span>
             </p>
-            <p class="text-xs py-1">
-              <span class="text-xs">我的现金</span><span class="ml-4 bg-red-400 rounded-xl text-white px-1 py-0.5">
-                <i class="inline-block i-lucide:gem" /> 现金{{ auth.userInfo?.cash }}</span>
+            <p class="text-xs py-1 flex justify-start items-center">
+              <span class="text-xs">我的现金</span><span class="ml-4 bg-red-400 rounded-xl text-white px-1 py-0.5 flex justify-center items-center">
+                <i class="inline-block mr-1 i-lucide:gem" /> 现金{{ auth.userInfo?.cash }}</span>
             </p>
-            <p class="text-xs py-1">
+            <p class="text-xs py-1 flex justify-start items-center">
               <span class="text-xs">我的角色</span>
-              <span class="ml-4 bg-pink-400 rounded-xl text-white px-1 py-0.5">
-                <i class="inline-block i-lucide:gem" />
+              <span class="ml-4 bg-pink-400 rounded-xl text-white px-1 py-0.5 flex justify-center items-center">
+                <i class="inline-block mr-1 i-lucide:gem" />
                 {{ auth.userInfo?.authority?.authorityName }}</span>
             </p>
           </div>
@@ -95,7 +95,7 @@ useHead({
           <GreenBtn
             classes="w-full mt-2"
             value="立即购买"
-            icon="bi:cart-plus-fill"
+            icon="i-bi:cart-plus-fill"
             @click="buyShop"
           />
         </div>

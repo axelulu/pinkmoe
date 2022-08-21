@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 11:04:43
- * @FilePath: /pinkmoe_vitesse/src/hooks/header.ts
+ * @LastEditTime: 2022-08-21 15:14:38
+ * @FilePath: /pinkmoe_index/src/hooks/header.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -181,12 +181,12 @@ export const useHeader = () => {
   const headerBarRight = ref([
     {
       name: '夜间模式',
-      icon: 'i-fluent:dark-theme-24-filled',
+      icon: 'i-icon-park-solid:theme',
       type: 'theme',
     },
     {
       name: '语言',
-      icon: 'i-clarity:language-solid',
+      icon: 'i-fa-solid:language',
       type: 'lang',
     },
   ])

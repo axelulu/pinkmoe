@@ -139,7 +139,6 @@ func UpdateGoodsCategory(p model.XdGoodsCategory) (err error) {
 	upDateMap["name"] = p.Name
 	upDateMap["slug"] = p.Slug
 	upDateMap["icon"] = p.Icon
-	upDateMap["icon_type"] = p.IconType
 	upDateMap["sort"] = p.Sort
 
 	if err = global.XD_DB.Transaction(func(tx *gorm.DB) error {

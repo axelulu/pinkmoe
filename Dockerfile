@@ -3,9 +3,9 @@ FROM node:16.16.0
 WORKDIR /
 COPY . .
 
-RUN cd ./pinkmoe_index && yarn && yarn build
+RUN cd ./pinkmoe_index && npm install npm@latest -g && yarn && yarn build
 
-RUN cd ../pinkmoe_admin && yarn && yarn build
+RUN cd ../pinkmoe_admin && npm install npm@latest -g && yarn && yarn build
 
 FROM nginx:alpine
 LABEL MAINTAINER="SliverHorn@sliver_horn@qq.com"

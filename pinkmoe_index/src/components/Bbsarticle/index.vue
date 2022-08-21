@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-24 08:22:26
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 11:41:41
- * @FilePath: /pinkmoe_vitesse/src/components/Bbsarticle/index.vue
+ * @LastEditTime: 2022-08-21 15:27:48
+ * @FilePath: /pinkmoe_index/src/components/Bbsarticle/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -130,7 +130,7 @@ const {
         </div>
         <div class="flex flex-row text-xs">
           <div
-            class="mx-2 cursor-pointer hover:text-pink-400 duration-300"
+            class="mx-2 cursor-pointer hover:text-pink-400 duration-300 flex justify-start items-center"
             :class="isCollect ? 'text-pink-400' : ''"
             @click="isCollect ? unCollect() : collect()"
           >
@@ -141,12 +141,12 @@ const {
           </div>
           <router-link
             :to="`/post/${post?.postId}`"
-            class="mx-2 cursor-pointer hover:text-pink-400 duration-300"
+            class="mx-2 cursor-pointer hover:text-pink-400 duration-300 flex justify-start items-center"
           >
             <i class="mr-1 inline-block i-ant-design:comment-outlined" />
             <span>评论</span>
           </router-link>
-          <div class="mx-2 cursor-pointer hover:text-pink-400 duration-300">
+          <div class="mx-2 cursor-pointer hover:text-pink-400 duration-300 flex justify-start items-center">
             <i class="mr-1 inline-block i-material-symbols:share" />
             <span>分享</span>
           </div>

@@ -28,7 +28,7 @@ func (u *category) TableName() string {
 
 func (u *category) Initialize() error {
 	entities := []model.XdCategory{
-		{Slug: "news", Name: "每日新闻", Icon: "newspaper", IconType: "fas", ParentId: 0, Sort: 0},
+		{Slug: "news", Name: "每日新闻", Icon: "newspaper", ParentId: 0, Sort: 0},
 	}
 	if err := global.XD_DB.Create(&entities).Error; err != nil {
 		return errors.Wrap(err, u.TableName()+"表数据初始化失败!")

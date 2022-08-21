@@ -285,7 +285,7 @@ defineExpose({
           </span>
         </div>
         <div
-          class="bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-700 text-center py-1 cursor-pointer hover:bg-gray-100 duration-300"
+          class="bg-gray-200 flex justify-center items-center py-2 dark:bg-gray-600 dark:hover:bg-gray-700 text-center py-1 cursor-pointer hover:bg-gray-100 duration-300"
           @click="dialog.hide()"
         >
           <i class="inline-block i-carbon:close-filled" />

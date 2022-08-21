@@ -89,7 +89,6 @@ const formParams = reactive({
   name: "",
   slug: "",
   icon: "",
-  iconType: "fas",
   parentId: 0,
   sort: 0
 });

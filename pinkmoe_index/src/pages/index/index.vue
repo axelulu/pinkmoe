@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 22:27:21
- * @FilePath: /pinkmoe_vitesse/src/pages/index/index.vue
+ * @LastEditTime: 2022-08-21 16:38:05
+ * @FilePath: /pinkmoe_index/src/pages/index/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -22,7 +22,7 @@ const { content, recommend, popular, contentRef, loading, data, jump } = useHome
 <template>
   <div class="flex flex-col items-center relative">
     <Popular :popular="popular" :loading="loading" />
-    <Recommend :recommend="recommend" :loading="loading" />{{ data }}
+    <Recommend :recommend="recommend" :loading="loading" />
     <div
       v-if="data?.showBar"
       class="fixed top-20 right-3/11 right-siderBar z-10 bg-white dark:bg-gray-700 dark:text-gray-200 border border-pink-400"
@@ -33,7 +33,7 @@ const { content, recommend, popular, contentRef, loading, data, jump } = useHome
           class="text-xs p-2 cursor-pointer hover:bg-pink-400 hover:text-white dark:text-gray-200 duration-300 flex flex-col"
           @click="jump(index)"
         >
-          <i :class="`text-gray-700 dark:text-gray-200 inline-block i-${item.icon}`" />
+          <i :class="`text-gray-700 dark:text-gray-200 inline-block ${item.icon}`" />
           <span
             :class="data.showIndex === index ? 'block' : 'hidden'"
             style="writing-mode: vertical-lr"
@@ -52,7 +52,7 @@ const { content, recommend, popular, contentRef, loading, data, jump } = useHome
           <div
             class="w-7 h-7 bg-sky-400 rounded-full flex justify-center items-center text-white mr-1"
           >
-            <i :class="`inline-block i-${item.icon}`" />
+            <i :class="`inline-block ${item.icon}`" />
           </div>
           <div class="text-lg">
             {{ item.name }}

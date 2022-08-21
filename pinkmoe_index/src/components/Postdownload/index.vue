@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:22:01
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-20 20:53:56
- * @FilePath: /pinkmoe_vitesse/src/components/Postdownload/index.vue
+ * @LastEditTime: 2022-08-21 15:45:07
+ * @FilePath: /pinkmoe_index/src/components/Postdownload/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -35,7 +35,7 @@ const { postDownload, auth, showLogin, copyText, buyDownload } = usePostDownload
         <GreenBtn
           classes="w-full"
           value="登陆"
-          icon="ic:sharp-arrow-circle-right"
+          icon="i-ic:sharp-arrow-circle-right"
           @click="showLogin"
         />
       </div>
@@ -50,8 +50,8 @@ const { postDownload, auth, showLogin, copyText, buyDownload } = usePostDownload
         </div>
         <div v-if="item.buy" class="flex flex-col">
           <div class="flex flex-row justify-center items-center mb-4">
-            <div class="text-xs text-gray-500 dark:text-gray-200 w-2/12">
-              <i class="inline-block i-teenyicons:unlock-circle-solid" />
+            <div class="text-xs text-gray-500 dark:text-gray-200 w-2/12 flex justify-start items-center">
+              <i class="inline-block i-ic:baseline-vpn-key" />
               <span class="ml-1">提取密码</span>
             </div>
             <div
@@ -59,16 +59,19 @@ const { postDownload, auth, showLogin, copyText, buyDownload } = usePostDownload
             >
               {{ item.extractPwd ? item.extractPwd : '无' }}
             </div>
-            <GreenBtn
-              classes="w-1/12"
-              value=""
-              icon="fluent:copy-24-filled"
-              @click="copyText(item.extractPwd)"
-            />
+            <div
+              class="w-1/12"
+            >
+              <GreenBtn
+                value=""
+                icon="i-fluent:copy-24-filled"
+                @click="copyText(item.extractPwd)"
+              />
+            </div>
           </div>
           <div class="flex flex-row justify-center items-center mb-4">
-            <div class="text-xs text-gray-500 dark:text-gray-200 w-2/12">
-              <i class="inline-block i-teenyicons:unlock-circle-solid" />
+            <div class="text-xs text-gray-500 dark:text-gray-200 w-2/12 flex justify-start items-center">
+              <i class="inline-block i-nimbus:box-unpacked" />
               <span class="ml-1">解压密码</span>
             </div>
             <div
@@ -76,30 +79,37 @@ const { postDownload, auth, showLogin, copyText, buyDownload } = usePostDownload
             >
               {{ item.unpackPwd ? item.unpackPwd : '无' }}
             </div>
-            <GreenBtn
-              classes="w-1/12"
-              value=""
-              icon="fluent:copy-24-filled"
-              @click="copyText(item.unpackPwd)"
-            />
+            <div
+              class="w-1/12"
+            >
+              <GreenBtn
+                value=""
+                icon="i-fluent:copy-24-filled"
+                @click="copyText(item.unpackPwd)"
+              />
+            </div>
           </div>
           <div class="flex flex-row">
             <a class="w-11/12" :href="item.url" target="_blank">
-              <GreenBtn value="下载" icon="la:cloud-download-alt" />
+              <GreenBtn value="下载" icon="i-material-symbols:cloud-download" />
             </a>
-            <GreenBtn
-              classes="w-1/12"
-              value=""
-              icon="fluent:copy-24-filled"
-              @click="copyText(item.url)"
-            />
+            <div
+              class="w-1/12"
+            >
+              <GreenBtn
+                classes="h-7"
+                value=""
+                icon="i-fluent:copy-24-filled"
+                @click="copyText(item.url)"
+              />
+            </div>
           </div>
         </div>
         <div v-else-if="item.buy === 0">
           <GreenBtn
             classes="w-full"
             :value="`使用${item.price}积分购买`"
-            icon="fa6-solid:sack-dollar"
+            icon="i-fa6-solid:sack-dollar"
             @click="buyDownload(item)"
           />
         </div>
