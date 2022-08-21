@@ -6,12 +6,12 @@
  * @FilePath: /pinkmoe_index/src/api/upload/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
- * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 // 权限问题后期增加
-import { get, post } from '/@/utils/http/axios';
-import { ReqFileList, ResFileList } from '/@/api/upload/types';
-import { IResponse } from '/@/utils/http/axios/type';
+import { get, post } from '/@/utils/http/axios'
+import type { ReqFileList, ResFileList } from '/@/api/upload/types'
+import type { IResponse } from '/@/utils/http/axios/type'
 // import axios from 'axios';
 enum URL {
   upload = '/api/Upload/FileUpload',
@@ -23,7 +23,7 @@ const fileList = async (params: ReqFileList) =>
   get<any>({
     url: URL.list,
     params,
-  });
+  })
 
 const upload = async (fd: FormData) =>
   post<IResponse<ResFileList>>(
@@ -32,15 +32,15 @@ const upload = async (fd: FormData) =>
       data: fd,
     },
     true,
-  );
+  )
 
-const deleteFile = async (data) =>
+const deleteFile = async data =>
   post<IResponse>(
     {
       url: URL.delete,
       data,
     },
     true,
-  );
+  )
 
-export { upload, fileList, deleteFile };
+export { upload, fileList, deleteFile }

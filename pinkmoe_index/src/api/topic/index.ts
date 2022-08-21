@@ -2,18 +2,17 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 13:22:29
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:09:18
- * @FilePath: /pinkmoe_index/src/api/topic/index.ts
+ * @LastEditTime: 2022-08-19 15:45:08
+ * @FilePath: /pinkmoe_vitesse/src/api/topic/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
- * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 // 权限问题后期增加
-import { get } from '/@/utils/http/axios';
-import { ReqCategoryPost } from '/@/api/category/types';
-import { ResPage } from '/@/api/common/types';
-import { ResTopicPost } from '/@/api/topic/types';
-// import axios from 'axios';
+import type { ReqCategoryPost } from '/@/api/category/types'
+import type { ResPage } from '/@/api/common/types'
+import type { ResTopicPost } from '/@/api/topic/types'
+import { get } from '/@/utils/http/axios'
 enum URL {
   list = '/api/Post/TopicPost',
 }
@@ -22,5 +21,5 @@ const getTopicPostList = async (params: ReqCategoryPost) =>
   get<ResPage<ResTopicPost>>({
     url: URL.list,
     params,
-  });
-export { getTopicPostList };
+  })
+export { getTopicPostList }

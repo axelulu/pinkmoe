@@ -2,30 +2,30 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:22:01
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-15 22:52:18
- * @FilePath: /pinkmoe_index/src/components/Postdownload/index.vue
+ * @LastEditTime: 2022-08-20 20:53:56
+ * @FilePath: /pinkmoe_vitesse/src/components/Postdownload/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
- * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
 -->
 <script lang="ts" setup name="PostDownload">
-  import GreenBtn from '/@/components/Greenbtn/index.vue';
-  import { usePostDownload } from '/@/hooks/postDownload';
+import GreenBtn from '/@/components/Greenbtn/index.vue'
+import { usePostDownload } from '/@/hooks/postDownload'
 
-  const props = defineProps({
-    postId: {
-      type: String,
-      default: '',
-    },
-  });
-  const { postDownload, auth, showLogin, copyText, buyDownload } = usePostDownload(props);
+const props = defineProps({
+  postId: {
+    type: String,
+    default: '',
+  },
+})
+const { postDownload, auth, showLogin, copyText, buyDownload } = usePostDownload(props)
 </script>
 
 <template>
   <!-- PostDownload -->
   <div>
     <div class="text-xs text-gray-500 dark:text-gray-200 mr-4 mt-4">
-      <font-awesome-icon class="text-gray-700 dark:text-gray-200 mr-1" icon="cloud-download-alt" />
+      <i class="text-gray-700 dark:text-gray-200 mr-1 i-material-symbols:cloud-download" />
       <span class="mr-1">下载链接</span>
     </div>
     <div
@@ -33,23 +33,25 @@
     >
       <div v-if="!auth.isLogin">
         <GreenBtn
-          @click="showLogin"
           classes="w-full"
           value="登陆"
-          :icon="['fas', 'circle-right']"
+          icon="ic:sharp-arrow-circle-right"
+          @click="showLogin"
         />
       </div>
       <div
-        v-else
         v-for="(item, index) in postDownload"
+        v-else
         :key="index"
         class="bg-gray-100 dark:bg-gray-800 pb-2 pt-6 px-4 mt-6 relative"
       >
-        <div class="text-xs bg-green-500 text-white p-1 absolute -top-2">{{ item.name }}</div>
+        <div class="text-xs bg-green-500 text-white p-1 absolute -top-2">
+          {{ item.name }}
+        </div>
         <div v-if="item.buy" class="flex flex-col">
           <div class="flex flex-row justify-center items-center mb-4">
             <div class="text-xs text-gray-500 dark:text-gray-200 w-2/12">
-              <font-awesome-icon :icon="['fas', 'unlock-alt']" />
+              <i class="inline-block i-teenyicons:unlock-circle-solid" />
               <span class="ml-1">提取密码</span>
             </div>
             <div
@@ -58,15 +60,15 @@
               {{ item.extractPwd ? item.extractPwd : '无' }}
             </div>
             <GreenBtn
-              @click="copyText(item.extractPwd)"
               classes="w-1/12"
               value=""
-              :icon="['fas', 'copy']"
+              icon="fluent:copy-24-filled"
+              @click="copyText(item.extractPwd)"
             />
           </div>
           <div class="flex flex-row justify-center items-center mb-4">
             <div class="text-xs text-gray-500 dark:text-gray-200 w-2/12">
-              <font-awesome-icon :icon="['fas', 'unlock-alt']" />
+              <i class="inline-block i-teenyicons:unlock-circle-solid" />
               <span class="ml-1">解压密码</span>
             </div>
             <div
@@ -75,30 +77,30 @@
               {{ item.unpackPwd ? item.unpackPwd : '无' }}
             </div>
             <GreenBtn
-              @click="copyText(item.unpackPwd)"
               classes="w-1/12"
               value=""
-              :icon="['fas', 'copy']"
+              icon="fluent:copy-24-filled"
+              @click="copyText(item.unpackPwd)"
             />
           </div>
           <div class="flex flex-row">
             <a class="w-11/12" :href="item.url" target="_blank">
-              <GreenBtn value="下载" :icon="['fas', 'cloud-download-alt']" />
+              <GreenBtn value="下载" icon="la:cloud-download-alt" />
             </a>
             <GreenBtn
-              @click="copyText(item.url)"
               classes="w-1/12"
               value=""
-              :icon="['fas', 'copy']"
+              icon="fluent:copy-24-filled"
+              @click="copyText(item.url)"
             />
           </div>
         </div>
         <div v-else-if="item.buy === 0">
           <GreenBtn
-            @click="buyDownload(item)"
             classes="w-full"
-            :value="'使用' + item.price + '积分购买'"
-            :icon="['fas', 'sack-dollar']"
+            :value="`使用${item.price}积分购买`"
+            icon="fa6-solid:sack-dollar"
+            @click="buyDownload(item)"
           />
         </div>
       </div>

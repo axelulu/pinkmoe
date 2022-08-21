@@ -3,7 +3,7 @@ FROM node:16.16.0
 WORKDIR /
 COPY . .
 
-RUN cd ./pinkmoe_index && yarn && yarn build:pro
+RUN cd ./pinkmoe_index && npm install -g pnpm && pnpm && pnpm build
 
 RUN cd ../pinkmoe_admin && yarn && yarn build
 

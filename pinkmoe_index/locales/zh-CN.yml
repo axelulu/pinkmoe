@@ -1,0 +1,24 @@
+reverseOrder: 倒序
+positiveSequence: 正序
+more: 更多
+accordingToLatest: 按最新
+accordingToTitle: 按标题
+accordingToAuthor: 按作者
+accordingToView: 按查看
+home:
+  recommendedBar: 推荐栏
+bbs:
+  popularPosts: 热门帖子
+  addTopic: 添加话题
+  openTitle: 开启标题
+  pleaseEnterTitle: 请输入标题
+  pleaseEnterContent: 请输入内容
+  releaseDynamic: 发布动态
+  focus: 关注
+  all: 综合
+  hot: 热门
+  active: 动态
+  post: 文章
+  video: 视频
+  music: 音乐
+  download: 下载

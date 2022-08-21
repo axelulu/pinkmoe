@@ -1,18 +1,32 @@
+<!--
+ * @Author: coderzhaolu && izhaicy@163.com
+ * @Date: 2022-08-08 16:34:38
+ * @LastEditors: coderzhaolu && izhaicy@163.com
+ * @LastEditTime: 2022-08-19 22:36:52
+ * @FilePath: /pinkmoe_vitesse/index.html
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
+ * QQ:2419857357;支付宝:13135986153
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+-->
 <!DOCTYPE html>
-<html
-  lang="en"
-  class="dark [--scroll-mt:9.875rem] lg:[--scroll-mt:6.3125rem] js-focus-visible dark"
-  data-js-focus-visible
->
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <link rel="icon" href="/uploads/file/default/avatar.png"/>
-    <title>粉萌次元</title>
-  </head>
-
-  <body class="antialiased text-slate-500 dark:text-slate-400 bg-white">
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" href="/pwa-192x192.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00aba9">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <script>
+    (function () {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+      const setting = localStorage.getItem('vueuse-color-scheme') || 'auto'
+      if (setting === 'dark' || (prefersDark && setting !== 'light'))
+        document.documentElement.classList.toggle('dark', true)
+    })()
+  </script>
+</head>
+<body class="font-sans">
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
 </html>

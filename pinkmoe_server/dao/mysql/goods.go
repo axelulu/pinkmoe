@@ -44,6 +44,10 @@ func GetCategoryGoodsList(info request.SearchGoodsParams) (err error, list []mod
 
 	var order string
 
+	if len(info.OrderKey) == 0 {
+		info.OrderKey = "updated_at"
+	}
+
 	if info.Desc {
 		order = info.OrderKey + " DESC"
 	} else {

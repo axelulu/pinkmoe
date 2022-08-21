@@ -55,64 +55,33 @@ func GetLoginLogByTime(days int) (total int64) {
 }
 
 func GetLoginLogTrend() (today []int, yesterday []int) {
-	db := global.XD_DB.Model(&model.XdLoginLog{})
-
-	db = db.Where("to_days(now()) - to_days(updated_at) <= ?", 1)
-
-	var logs []model.XdLoginLog
-	if err := db.Find(&logs).Error; err != nil {
+	db := global.XD_DB.Where("to_days(now()) - to_days(updated_at) <= ?", 1)
+	var logs []model.XdOperationLog
+	if err := db.Select("updated_at, ip").Find(&logs).Error; err != nil {
 		return today, yesterday
 	}
+	logs = RemoveRepeatedElement(logs)
 
-	db2 := global.XD_DB.Model(&model.XdLoginLog{})
-
-	db2 = db2.Where("to_days(now()) - to_days(updated_at) <= ?", 1)
-
+	db2 := global.XD_DB.Where("to_days(now()) - to_days(updated_at) <= ?", 1)
 	var logs2 []model.XdLoginLog
-	if err := db2.Find(&logs).Error; err != nil {
+	if err := db2.Find(&logs2).Error; err != nil {
 		return today, yesterday
 	}
-	today = append(today, getTrendNum(0, 6, logs))
-	today = append(today, getTrendNum(6, 7, logs))
-	today = append(today, getTrendNum(7, 8, logs))
-	today = append(today, getTrendNum(8, 9, logs))
-	today = append(today, getTrendNum(9, 10, logs))
-	today = append(today, getTrendNum(10, 11, logs))
-	today = append(today, getTrendNum(11, 12, logs))
-	today = append(today, getTrendNum(12, 13, logs))
-	today = append(today, getTrendNum(13, 14, logs))
-	today = append(today, getTrendNum(14, 15, logs))
-	today = append(today, getTrendNum(15, 16, logs))
-	today = append(today, getTrendNum(16, 17, logs))
-	today = append(today, getTrendNum(17, 18, logs))
-	today = append(today, getTrendNum(18, 19, logs))
-	today = append(today, getTrendNum(19, 20, logs))
-	today = append(today, getTrendNum(20, 21, logs))
-	today = append(today, getTrendNum(21, 22, logs))
-	today = append(today, getTrendNum(22, 23, logs))
 
-	yesterday = append(yesterday, getTrendNum(0, 6, logs2))
-	yesterday = append(yesterday, getTrendNum(6, 7, logs2))
-	yesterday = append(yesterday, getTrendNum(7, 8, logs2))
-	yesterday = append(yesterday, getTrendNum(8, 9, logs2))
-	yesterday = append(yesterday, getTrendNum(9, 10, logs2))
-	yesterday = append(yesterday, getTrendNum(10, 11, logs2))
-	yesterday = append(yesterday, getTrendNum(11, 12, logs2))
-	yesterday = append(yesterday, getTrendNum(12, 13, logs2))
-	yesterday = append(yesterday, getTrendNum(13, 14, logs2))
-	yesterday = append(yesterday, getTrendNum(14, 15, logs2))
-	yesterday = append(yesterday, getTrendNum(15, 16, logs2))
-	yesterday = append(yesterday, getTrendNum(16, 17, logs2))
-	yesterday = append(yesterday, getTrendNum(17, 18, logs2))
-	yesterday = append(yesterday, getTrendNum(18, 19, logs2))
-	yesterday = append(yesterday, getTrendNum(19, 20, logs2))
-	yesterday = append(yesterday, getTrendNum(20, 21, logs2))
-	yesterday = append(yesterday, getTrendNum(21, 22, logs2))
-	yesterday = append(yesterday, getTrendNum(22, 23, logs2))
+	today = append(today, getTrendNumOperationLog(0, 6, logs))
+	for i := 6; i < 23; i++ {
+		today = append(today, getTrendNumOperationLog(i, i+1, logs))
+	}
+
+	yesterday = append(yesterday, getTrendNumLoginLog(0, 6, logs2))
+	for i := 6; i < 23; i++ {
+		yesterday = append(yesterday, getTrendNumLoginLog(i, i+1, logs2))
+	}
+
 	return today, yesterday
 }
 
-func getTrendNum(start int, end int, logs []model.XdLoginLog) (num int) {
+func getTrendNumLoginLog(start int, end int, logs []model.XdLoginLog) (num int) {
 	num = 0
 	for _, log := range logs {
 		if log.UpdatedAt.Hour() > start && log.UpdatedAt.Hour() <= end {
@@ -120,6 +89,33 @@ func getTrendNum(start int, end int, logs []model.XdLoginLog) (num int) {
 		}
 	}
 	return num
+}
+
+func getTrendNumOperationLog(start int, end int, logs []model.XdOperationLog) (num int) {
+	num = 0
+	for _, log := range logs {
+		if log.UpdatedAt.Hour() > start && log.UpdatedAt.Hour() <= end {
+			num++
+		}
+	}
+	return num
+}
+
+func RemoveRepeatedElement(arr []model.XdOperationLog) (newArr []model.XdOperationLog) {
+	newArr = make([]model.XdOperationLog, 0)
+	for i := 0; i < len(arr); i++ {
+		repeat := false
+		for j := i + 1; j < len(arr); j++ {
+			if arr[i].Ip == arr[j].Ip {
+				repeat = true
+				break
+			}
+		}
+		if !repeat {
+			newArr = append(newArr, arr[i])
+		}
+	}
+	return
 }
 
 func CreateLoginLog(p *model.XdLoginLog) (err error) {

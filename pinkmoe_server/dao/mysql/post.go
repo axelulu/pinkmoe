@@ -13,6 +13,7 @@ package mysql
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"server/global"
 	"server/model"
 	"server/model/request"
@@ -64,11 +65,16 @@ func GetCategoryPostList(info request.SearchPostParams) (err error, list []model
 
 	var order string
 
+	if len(info.OrderKey) == 0 {
+		info.OrderKey = "updated_at"
+	}
+	
 	if info.Desc {
 		order = info.OrderKey + " DESC"
 	} else {
 		order = info.OrderKey + " ASC"
 	}
+
 	if info.Category == "0" || info.Category == "" {
 		if err = db.Where("status = ?", "published").Preload("AuthorRelation").Preload("CategoryRelation").Order(order).Limit(limit).Offset(offset).Find(&list).Error; err != nil {
 			return response.ErrorPostListGet, list, 0
@@ -149,6 +155,10 @@ func GetPostList(info request.SearchPostParams, userId string) (err error, post 
 
 	var order string
 
+	if len(info.OrderKey) == 0 {
+		info.OrderKey = "updated_at"
+	}
+
 	if info.Desc {
 		order = info.OrderKey + " DESC"
 	} else {
@@ -204,6 +214,9 @@ func GetPostList(info request.SearchPostParams, userId string) (err error, post 
 	}).Preload("FileRelation").Find(&post).Error; err != nil {
 		return response.ErrorPostListGet, nil, 0
 	}
+	println("-----------------")
+	fmt.Printf("%s", post)
+	println("-----------------")
 	return
 }
 

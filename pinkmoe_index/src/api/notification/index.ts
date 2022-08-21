@@ -9,17 +9,17 @@
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 // 权限问题后期增加
-import { get } from '/@/utils/http/axios';
-import { ResPage } from '/@/api/common/types';
-import { ResComment } from '../post/types';
+import { get } from '/@/utils/http/axios'
+import type { ResPage } from '/@/api/common/types'
+import type { ResComment } from '../post/types'
 // import axios from 'axios';
 enum URL {
   list = '/api/Notification/NotificationList',
 }
 
-const getNotificationList = async (params) =>
+const getNotificationList = async params =>
   get<ResPage<Array<ResComment>>>({
     url: URL.list,
     params,
-  });
-export { getNotificationList };
+  })
+export { getNotificationList }

@@ -22,7 +22,7 @@ func ConsoleGet() (console response.Console, err error) {
 	twoWeek := mysql.GetLoginLogByTime(14)
 	amount := mysql.GetLoginLogByTime(9999)
 
-	// 访问量
+	// 日登陆用户
 	if week == 0 || day == 0 {
 		if day == 0 {
 			console.Visits = response.Visits{
@@ -73,12 +73,38 @@ func ConsoleGet() (console response.Console, err error) {
 		Rise:      123,
 		WeekLarge: 121,
 	}
-	// 成交额
-	console.Volume = response.Volume{
-		Amount:    11,
-		Decline:   111,
-		Rise:      1111,
-		WeekLarge: 1111,
+
+	dayUa := mysql.GetOperationLogByTime(1)
+	twoDayUa := mysql.GetOperationLogByTime(2)
+	weekUa := mysql.GetOperationLogByTime(7)
+	twoWeekUa := mysql.GetOperationLogByTime(14)
+	amountUa := mysql.GetOperationLogByTime(9999)
+
+	// 网站ua
+	if week == 0 || day == 0 {
+		if day == 0 {
+			console.Ua = response.Ua{
+				Amount:   int(amountUa),
+				DayLarge: int(dayUa),
+				Decline:  float64((twoDayUa - weekUa) / weekUa),
+				Rise:     float64((twoDayUa - dayUa) / 1),
+			}
+		}
+		if week == 0 {
+			console.Ua = response.Ua{
+				Amount:   int(amountUa),
+				DayLarge: int(dayUa),
+				Decline:  float64((twoWeekUa - weekUa) / 1),
+				Rise:     float64((twoDayUa - dayUa) / dayUa),
+			}
+		}
+	} else {
+		console.Ua = response.Ua{
+			Amount:   int(amountUa),
+			DayLarge: int(dayUa),
+			Decline:  float64((twoWeekUa - weekUa) / weekUa),
+			Rise:     float64((twoDayUa - dayUa) / dayUa),
+		}
 	}
 
 	today, yesterday := mysql.GetLoginLogTrend()

@@ -9,14 +9,14 @@
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 // 权限问题后期增加
-import { get } from '/@/utils/http/axios';
-import {
+import { get } from '/@/utils/http/axios'
+import type {
   ReqCategoryPost,
   ResCategory,
   ResCategoryGoods,
   ResCategoryPost,
-} from '/@/api/category/types';
-import { ResPage } from '/@/api/common/types';
+} from '/@/api/category/types'
+import type { ResPage } from '/@/api/common/types'
 // import axios from 'axios';
 enum URL {
   list = '/api/Category/CategoryList',
@@ -32,13 +32,13 @@ const getCategoryList = async () =>
       page: 1,
       pageSize: 999,
     },
-  });
+  })
 
 const getCategoryPostList = async (params: ReqCategoryPost) =>
   get<ResPage<ResCategoryPost>>({
     url: URL.post,
     params,
-  });
+  })
 
 const getShopCategoryList = async () =>
   get<ResPage<Array<ResCategory>>>({
@@ -47,11 +47,11 @@ const getShopCategoryList = async () =>
       page: 1,
       pageSize: 999,
     },
-  });
+  })
 
 const getCategoryGoodsList = async (params: ReqCategoryPost) =>
   get<ResPage<ResCategoryGoods>>({
     url: URL.shopPost,
     params,
-  });
-export { getCategoryList, getCategoryPostList, getCategoryGoodsList, getShopCategoryList };
+  })
+export { getCategoryList, getCategoryPostList, getCategoryGoodsList, getShopCategoryList }

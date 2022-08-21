@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-05-02 21:24:47
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-18 22:46:11
+ * @LastEditTime: 2022-08-19 10:47:37
  * @FilePath: /pinkmoe_admin/src/views/dashboard/console/console.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -14,7 +14,56 @@
     <n-grid cols="1 s:2 m:3 l:4 xl:4 2xl:4" responsive="screen" :x-gap="12" :y-gap="8">
       <n-grid-item>
         <NCard
-          title="访问量"
+          title="网站总访问量"
+          :segmented="{ content: 'hard', footer: 'hard' }"
+          size="small"
+          :bordered="false"
+        >
+          <template #header-extra>
+            <n-tag type="error">日</n-tag>
+          </template>
+          <div class="py-1 px-1 flex justify-between">
+            <n-skeleton v-if="loading" :width="100" size="medium" />
+            <CountTo v-else prefix="" :startVal="1" :endVal="ua.dayLarge" class="text-3xl" />
+          </div>
+          <div class="py-1 px-1 flex justify-between">
+            <div class="text-sn">
+              <n-skeleton v-if="loading" :width="100" size="medium" />
+              <template v-else>
+                日同比
+                <CountTo :startVal="1" suffix="%" :endVal="ua.rise" />
+                <n-icon size="12" color="#00ff6f">
+                  <CaretUpOutlined />
+                </n-icon>
+              </template>
+            </div>
+            <div class="text-sn">
+              <n-skeleton v-if="loading" :width="100" size="medium" />
+              <template v-else>
+                日同比
+                <CountTo :startVal="1" suffix="%" :endVal="ua.decline" />
+                <n-icon size="12" color="#ffde66">
+                  <CaretDownOutlined />
+                </n-icon>
+              </template>
+            </div>
+          </div>
+          <template #footer>
+            <div class="flex justify-between">
+              <n-skeleton v-if="loading" :width="100" size="medium" />
+              <template v-else>
+                <div class="text-sn"> 总访问量： </div>
+                <div class="text-sn">
+                  <CountTo prefix="" :startVal="1" :endVal="ua.amount" />
+                </div>
+              </template>
+            </div>
+          </template>
+        </NCard>
+      </n-grid-item>
+      <n-grid-item>
+        <NCard
+          title="登陆用户访问量"
           :segmented="{ content: 'hard', footer: 'hard' }"
           size="small"
           :bordered="false"
@@ -153,55 +202,6 @@
           </template>
         </NCard>
       </n-grid-item>
-      <n-grid-item>
-        <NCard
-          title="成交额"
-          :segmented="{ content: 'hard', footer: 'hard' }"
-          size="small"
-          :bordered="false"
-        >
-          <template #header-extra>
-            <n-tag type="error">月</n-tag>
-          </template>
-          <div class="py-1 px-1 flex justify-between">
-            <n-skeleton v-if="loading" :width="100" size="medium" />
-            <CountTo v-else prefix="￥" :startVal="1" :endVal="volume.weekLarge" class="text-3xl" />
-          </div>
-          <div class="py-1 px-1 flex justify-between">
-            <div class="text-sn">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                月同比
-                <CountTo :startVal="1" suffix="%" :endVal="volume.rise" />
-                <n-icon size="12" color="#00ff6f">
-                  <CaretUpOutlined />
-                </n-icon>
-              </template>
-            </div>
-            <div class="text-sn">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                月同比
-                <CountTo :startVal="1" suffix="%" :endVal="volume.decline" />
-                <n-icon size="12" color="#ffde66">
-                  <CaretDownOutlined />
-                </n-icon>
-              </template>
-            </div>
-          </div>
-          <template #footer>
-            <div class="flex justify-between">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                <div class="text-sn"> 总成交额： </div>
-                <div class="text-sn">
-                  <CountTo prefix="￥" :startVal="1" :endVal="volume.amount" />
-                </div>
-              </template>
-            </div>
-          </template>
-        </NCard>
-      </n-grid-item>
     </n-grid>
 
     <!--导航卡片-->
@@ -258,7 +258,7 @@
   const visits = ref<any>({});
   const saleroom = ref<any>({});
   const orderLarge = ref<any>({});
-  const volume = ref({});
+  const ua = ref<any>({});
 
   // 图标列表
   const iconList = [
@@ -342,7 +342,7 @@
       visits.value = result.visits;
       saleroom.value = result.saleroom;
       orderLarge.value = result.orderLarge;
-      volume.value = result.volume;
+      ua.value = result.ua;
     } else {
       message.error(msg || '获取失败');
     }

@@ -87,7 +87,7 @@ func UpdateMenuAuthority(auth model.XdAuthority) (err error) {
 }
 
 func UpdateAuthority(u model.XdAuthority, AuthorityId string) (err error) {
-	if err = global.XD_DB.Where("authority_id = ?", AuthorityId).First(&model.XdAuthority{}).Updates(&u).Error; err != nil {
+	if err = global.XD_DB.Where("authority_id = ?", AuthorityId).Select("*").Updates(&u).Error; err != nil {
 		return response.ErrorAuthorityUpdate
 	}
 	return err

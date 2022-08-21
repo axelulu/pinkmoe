@@ -56,8 +56,8 @@ func InitRouter() *gin.Engine {
 
 	v1 := r.Group("/api/v1")
 	Bind(v1)
-	v1.Use(middleware.JWTAuthMiddleware())
 	v1.Use(middleware.OperationRecord())
+	v1.Use(middleware.JWTAuthMiddleware())
 	BindAuth(v1)
 
 	r.GET("/", func(context *gin.Context) {

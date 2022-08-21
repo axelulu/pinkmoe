@@ -56,14 +56,25 @@ func OperationRecord() gin.HandlerFunc {
 			}
 			body, _ = json.Marshal(&m)
 		}
-		userId, _ = util.GetCurrentUserID(c)
-		record := model.XdOperationLog{
-			Ip:     c.ClientIP(),
-			Method: c.Request.Method,
-			Path:   c.Request.URL.Path,
-			Agent:  c.Request.UserAgent(),
-			Body:   string(body),
-			UserID: userId,
+		userId, err := util.GetCurrentUserID(c)
+		var record model.XdOperationLog
+		if err != nil {
+			record = model.XdOperationLog{
+				Ip:     c.ClientIP(),
+				Method: c.Request.Method,
+				Path:   c.Request.URL.Path,
+				Agent:  c.Request.UserAgent(),
+				Body:   string(body),
+			}
+		} else {
+			record = model.XdOperationLog{
+				Ip:     c.ClientIP(),
+				Method: c.Request.Method,
+				Path:   c.Request.URL.Path,
+				Agent:  c.Request.UserAgent(),
+				Body:   string(body),
+				UserID: userId,
+			}
 		}
 
 		// 上传文件时候 中间件日志进行裁断操作

@@ -49,6 +49,17 @@ func GetOperationList(info request.SearchOperationParams) (err error, list inter
 	return err, topic, total
 }
 
+func GetOperationLogByTime(days int) (total int64) {
+	db := global.XD_DB.Model(&model.XdOperationLog{})
+
+	db = db.Where("to_days(now()) - to_days(updated_at) <= ?", days)
+
+	if err := db.Distinct("ip").Count(&total).Error; err != nil {
+		return 0
+	}
+	return total
+}
+
 func CreateOperation(p *model.XdOperationLog) (err error) {
 	if err = global.XD_DB.Create(&p).Error; err != nil {
 		return response.ErrorOperationCreate

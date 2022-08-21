@@ -2,177 +2,156 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:13:05
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-11 10:07:42
- * @FilePath: /pinkmoe_index/src/components/Usercenterlayout/index.vue
+ * @LastEditTime: 2022-08-21 11:50:20
+ * @FilePath: /pinkmoe_vitesse/src/components/Usercenterlayout/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
- * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
 -->
 <script lang="ts" setup name="Usercenterlayout">
-  import { useUserStore } from '/@/store';
+import { useUserStore } from '/@/store'
 
-  const auth = useUserStore();
-  const router = useRouter();
-  const route = useRoute();
-  const { proxy } = getCurrentInstance();
-  const setting = ref<any>([
-    {
-      icon: 'paint-brush',
-      iconType: 'fas',
-      name: '文章管理',
-      children: [
-        {
-          icon: 'paint-brush',
-          iconType: 'fas',
-          name: '资源投稿',
-          url: '/user-center/publish',
-          func: null,
+const auth = useUserStore()
+const router = useRouter()
+const route = useRoute()
+const { proxy } = getCurrentInstance()
+const setting = ref<any>([
+  {
+    icon: 'i-ph:paint-brush-broad-fill',
+    name: '文章管理',
+    children: [
+      {
+        icon: 'i-ph:paint-brush-broad-fill',
+        name: '资源投稿',
+        url: '/user-center/publish',
+        func: null,
+      },
+      {
+        icon: 'i-fluent:copy-24-filled',
+        name: '我的帖子',
+        url: '/user-center/posts',
+        func: null,
+      },
+      {
+        icon: 'i-mdi:cards-heart',
+        name: '收藏夹',
+        url: '/user-center/stars',
+        func: null,
+      },
+      {
+        icon: 'i-fa-solid:comments',
+        name: '我的吐槽',
+        url: '/user-center/comments',
+        func: null,
+      },
+    ],
+  },
+  {
+    icon: 'i-ph:bell-fill',
+    name: '消息管理',
+    children: [
+      {
+        icon: 'i-ri:chat-history-fill',
+        name: '消费记录',
+        url: '/user-center/record',
+        func: null,
+      },
+      {
+        icon: 'i-ph:bell-fill',
+        name: '我的提醒',
+        url: '/user-center/notice',
+        func: null,
+      },
+      {
+        icon: 'i-jam:envelope-f',
+        name: '即时通讯',
+        url: '/user-center/im',
+        func: null,
+      },
+    ],
+  },
+  {
+    icon: 'i-fa6-solid:bag-shopping',
+    name: '商城论坛',
+    children: [
+      {
+        icon: 'i-fa-solid:address-card',
+        name: '收货地址',
+        url: '/user-center/home',
+        func: null,
+      },
+      {
+        icon: 'i-fa6-solid:basket-shopping',
+        name: '订单记录',
+        url: '/user-center/follow',
+        func: null,
+      },
+      {
+        icon: 'i-fa6-solid:people-group',
+        name: '关注圈子',
+        url: '/user-center/fans',
+        func: null,
+      },
+    ],
+  },
+  {
+    icon: 'i-mdi:gamepad-square',
+    name: '游戏中心',
+    children: [
+      {
+        icon: 'i-material-symbols:bookmark',
+        name: '我的荣誉',
+        url: '/user-center/medal',
+        func: null,
+      },
+      {
+        icon: 'i-mdi:gift',
+        name: '抽奖',
+        url: '/user-center/lottery',
+        func: null,
+      },
+      {
+        icon: 'i-material-symbols:shopping-bag',
+        name: '商城',
+        url: '/user-center/shop',
+        func: null,
+      },
+    ],
+  },
+  {
+    icon: 'i-material-symbols:settings-applications-rounded',
+    name: '个人设置',
+    children: [
+      {
+        icon: 'i-icon-park-solid:vip-one',
+        name: '我的会员',
+        url: '/user-center/vip',
+        func: null,
+      },
+      {
+        icon: 'i-mdi:cog',
+        name: '我的设置',
+        url: '/user-center/settings',
+        func: null,
+      },
+      {
+        icon: 'i-fa6-solid:power-off',
+        name: '退出登陆',
+        url: '/user-center/publish',
+        func: () => {
+          auth.logout()
+          proxy.$message({
+            type: 'success',
+            msg: '退出登陆成功',
+          })
+          setTimeout(() => {
+            router.push(route.path)
+          }, 1000)
         },
-        {
-          icon: 'copy',
-          iconType: 'fas',
-          name: '我的帖子',
-          url: '/user-center/posts',
-          func: null,
-        },
-        {
-          icon: 'heart',
-          iconType: 'fas',
-          name: '收藏夹',
-          url: '/user-center/stars',
-          func: null,
-        },
-        {
-          icon: 'comments',
-          iconType: 'fas',
-          name: '我的吐槽',
-          url: '/user-center/comments',
-          func: null,
-        },
-      ],
-    },
-    {
-      icon: 'bell',
-      iconType: 'fas',
-      name: '消息管理',
-      children: [
-        {
-          icon: 'history',
-          iconType: 'fas',
-          name: '消费记录',
-          url: '/user-center/record',
-          func: null,
-        },
-        {
-          icon: 'bell',
-          iconType: 'fas',
-          name: '我的提醒',
-          url: '/user-center/notice',
-          func: null,
-        },
-        {
-          icon: 'envelope',
-          iconType: 'fas',
-          name: '即时通讯',
-          url: '/user-center/im',
-          func: null,
-        },
-      ],
-    },
-    {
-      icon: 'bag-shopping',
-      iconType: 'fas',
-      name: '商城论坛',
-      children: [
-        {
-          icon: 'address-card',
-          iconType: 'fas',
-          name: '收货地址',
-          url: '/user-center/home',
-          func: null,
-        },
-        {
-          icon: 'basket-shopping',
-          iconType: 'fas',
-          name: '订单记录',
-          url: '/user-center/follow',
-          func: null,
-        },
-        {
-          icon: 'people-group',
-          iconType: 'fas',
-          name: '关注圈子',
-          url: '/user-center/fans',
-          func: null,
-        },
-      ],
-    },
-    {
-      icon: 'gamepad',
-      iconType: 'fas',
-      name: '游戏中心',
-      children: [
-        {
-          icon: 'bookmark',
-          iconType: 'fas',
-          name: '我的荣誉',
-          url: '/user-center/medal',
-          func: null,
-        },
-        {
-          icon: 'gift',
-          iconType: 'fas',
-          name: '抽奖',
-          url: '/user-center/lottery',
-          func: null,
-        },
-        {
-          icon: 'gift',
-          iconType: 'fas',
-          name: '商城',
-          url: '/user-center/shop',
-          func: null,
-        },
-      ],
-    },
-    {
-      icon: 'address-card',
-      iconType: 'fas',
-      name: '个人设置',
-      children: [
-        {
-          icon: 'address-card',
-          iconType: 'fas',
-          name: '我的会员',
-          url: '/user-center/vip',
-          func: null,
-        },
-        {
-          icon: 'cog',
-          iconType: 'fas',
-          name: '我的设置',
-          url: '/user-center/settings',
-          func: null,
-        },
-        {
-          icon: 'power-off',
-          iconType: 'fas',
-          name: '退出登陆',
-          url: '/user-center/publish',
-          func: () => {
-            auth.logout();
-            proxy.$message({
-              type: 'success',
-              msg: '退出登陆成功',
-            });
-            setTimeout(() => {
-              router.push(route.path);
-            }, 1000);
-          },
-        },
-      ],
-    },
-  ]);
+      },
+    ],
+  },
+])
 </script>
 
 <template>
@@ -183,38 +162,36 @@
         <div
           class="text-xs text-gray-500 dark:text-gray-200 dark:hover:bg-gray-900 flex justify-start items-center px-3 py-1.5 cursor-pointer hover:bg-pink-50 hover:text-pink-400 duration-300"
         >
-          <font-awesome-icon
-            class="p-1.5 rounded-full bg-gray-300 dark:bg-gray-800"
-            :icon="[item.iconType, item.icon]"
-          />
+          <div class="p-1 flex justify-center items-center rounded-full bg-gray-300 dark:bg-gray-800">
+            <i :class="`inline-block ${item.icon}`" />
+          </div>
           <span class="pl-2">{{ item.name }}</span>
         </div>
         <div v-for="(childItem, index) in item.children" :key="index">
           <div
             v-if="childItem.func"
-            @click="childItem.func()"
             class="text-xs text-gray-500 dark:text-gray-200 dark:hover:bg-gray-900 flex justify-start items-center px-3 py-1 cursor-pointer hover:bg-pink-50 hover:text-pink-400 duration-300"
+            @click="childItem.func()"
           >
-            <font-awesome-icon class="p-1.5" :icon="[childItem.iconType, childItem.icon]" />
+            <i :class="`p-1.5 inline-block ${childItem.icon}`" />
             <span class="pl-2">{{ childItem.name }}</span>
           </div>
-          <router-link :to="childItem.url" v-else>
+          <router-link v-else :to="childItem.url">
             <div
               :class="
                 router.currentRoute.value.fullPath === childItem.url
                   ? 'bg-pink-50 dark:bg-gray-900 text-pink-400 border-l-2 border-pink-400'
                   : ''
               "
-              class="text-xs group text-gray-500 dark:text-gray-200 dark:hover:bg-gray-900 flex justify-start items-center px-3 py-1 cursor-pointer hover:bg-pink-50 hover:text-pink-400 duration-300"
+              class="text-xs group py-2 text-gray-500 dark:text-gray-200 dark:hover:bg-gray-900 flex justify-start items-center px-3 py-1 cursor-pointer hover:bg-pink-50 hover:text-pink-400 duration-300"
             >
-              <font-awesome-icon
+              <i
                 class="p-1.5 group-hover:text-pink-400"
                 :class="
                   router.currentRoute.value.fullPath === childItem.url
-                    ? 'text-pink-400'
-                    : 'text-gray-300'
+                    ? `text-pink-400 inline-block ${childItem.icon}`
+                    : `text-gray-300 inline-block ${childItem.icon}`
                 "
-                :icon="[childItem.iconType, childItem.icon]"
               />
               <span class="pl-2">{{ childItem.name }}</span>
             </div>
@@ -223,7 +200,7 @@
       </div>
     </div>
     <div class="w-10/12">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>

@@ -9,8 +9,8 @@
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 // 权限问题后期增加
-import { get } from '/@/utils/http/axios';
-import { ResShopList } from '/@/api/shop/types';
+import { get } from '/@/utils/http/axios'
+import type { ResShopList } from '/@/api/shop/types'
 // import axios from 'axios';
 enum URL {
   list = '/api/Shop/ShopList',
@@ -23,5 +23,5 @@ const getShopList = async () =>
       page: 1,
       pageSize: 999,
     },
-  });
-export { getShopList };
+  })
+export { getShopList }

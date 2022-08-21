@@ -2,22 +2,22 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 09:02:31
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-18 09:45:11
- * @FilePath: /pinkmoe_index/src/hooks/shop/category.ts
+ * @LastEditTime: 2022-08-19 17:48:39
+ * @FilePath: /pinkmoe_vitesse/src/hooks/shop/category.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
-import { useAppStore } from '../../store/modules/app';
-import { getCategoryGoodsList } from '/@/api/category';
-import { ReqCategoryPost, ResCategoryGoods } from '/@/api/category/types';
-import { ResPage } from '/@/api/common/types';
+import { useAppStore } from '../../store/modules/app'
+import { getCategoryGoodsList } from '/@/api/category'
+import type { ReqCategoryPost, ResCategoryGoods } from '/@/api/category/types'
+import type { ResPage } from '/@/api/common/types'
 
 export const useShopCategory = () => {
-  const categoryPostList = ref<ResPage<ResCategoryGoods>>();
-  const title = ref<string>('');
-  const route = useRoute();
-  const { siteBasic } = useAppStore();
+  const categoryPostList = ref<ResPage<ResCategoryGoods>>()
+  const title = ref<string>('')
+  const route = useRoute()
+  const { siteBasic } = useAppStore()
   const sort = ref<any>([
     {
       title: '按最新',
@@ -35,52 +35,53 @@ export const useShopCategory = () => {
       title: '按查看',
       type: 'view',
     },
-  ]);
-  const loading = ref<boolean>(false);
-  const hasMore = ref<boolean>(true);
+  ])
+  const loading = ref<boolean>(false)
+  const hasMore = ref<boolean>(true)
   const formParams: ReqCategoryPost = reactive({
     category: route.params.slug,
     page: 1,
     pageSize: 12,
     orderKey: 'updated_at',
     desc: true,
-  });
+  })
 
   const nextPage = async () => {
     loading.value = true;
-    (formParams.page as number)++;
-    const res = await getCategoryGoodsList(formParams);
-    if (!res.list?.post || res.list?.post.length <= 0) {
-      hasMore.value = false;
-    } else {
-      categoryPostList.value?.list?.post?.push(...res?.list?.post);
-    }
+    (formParams.page as number)++
+    const res = await getCategoryGoodsList(formParams)
+    if (!res.list?.post || res.list?.post.length <= 0)
+      hasMore.value = false
+
+    else
+      categoryPostList.value?.list?.post?.push(...res?.list?.post)
+
     setTimeout(() => {
-      loading.value = false;
-    }, 300);
-  };
+      loading.value = false
+    }, 300)
+  }
 
   const sortPost = async (type: string, descs: boolean) => {
-    formParams.orderKey = type;
-    formParams.desc = descs;
-    formParams.page = 1;
-    getCategoryPost();
-    hasMore.value = true;
-  };
+    formParams.orderKey = type
+    formParams.desc = descs
+    formParams.page = 1
+    getCategoryPost()
+    hasMore.value = true
+  }
 
   // 获取分类文章列表
   const getCategoryPost = async () => {
-    loading.value = true;
-    categoryPostList.value = await getCategoryGoodsList(formParams);
-    title.value = categoryPostList.value.list?.category?.[0].name as string;
+    loading.value = true
+    categoryPostList.value = await getCategoryGoodsList(formParams)
+    title.value = categoryPostList.value.list?.category?.[0].name as string
     setTimeout(() => {
-      loading.value = false;
-    }, 300);
-  };
+      loading.value = false
+    }, 300)
+  }
 
   onMounted(() => {
-    getCategoryPost();
-  });
+    getCategoryPost()
+  })
 
   return {
     categoryPostList,
@@ -93,5 +94,5 @@ export const useShopCategory = () => {
     siteBasic,
     nextPage,
     sortPost,
-  };
-};
+  }
+}

@@ -30,11 +30,11 @@ type Visits struct {
 	Rise      float64 `json:"rise"`
 }
 
-type Volume struct {
-	Amount    int `json:"amount"`
-	Decline   int `json:"decline"`
-	Rise      int `json:"rise"`
-	WeekLarge int `json:"weekLarge"`
+type Ua struct {
+	Amount   int     `json:"amount"`
+	Decline  float64 `json:"decline"`
+	Rise     float64 `json:"rise"`
+	DayLarge int     `json:"dayLarge"`
 }
 
 type FluxTrend struct {
@@ -46,6 +46,6 @@ type Console struct {
 	OrderLarge `json:"orderLarge"`
 	Saleroom   `json:"saleroom"`
 	Visits     `json:"visits"`
-	Volume     `json:"volume"`
+	Ua         `json:"ua"`
 	FluxTrend  `json:"fluxTrend"`
 }

@@ -56,6 +56,7 @@ func UpdateMenuAuthority(p request.UpdateMenuAuthorityInfo) (err error) {
 }
 
 func UpdateAuthority(p model.XdAuthority) (err error) {
+	println(p.VipStart)
 	u := model.XdAuthority{AuthorityName: p.AuthorityName, VipStart: p.VipStart, AuthorityWeight: p.AuthorityWeight, AuthorityColor: p.AuthorityColor}
 	mysql.DeleteAuthorityParams(p.AuthorityId)
 	for _, param := range p.AuthorityParams {

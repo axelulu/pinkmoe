@@ -9,8 +9,8 @@
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 // 权限问题后期增加
-import { get } from '/@/utils/http/axios';
-import { ReqGoodsItem, ResGoodsItem } from './types';
+import { get } from '/@/utils/http/axios'
+import type { ReqGoodsItem, ResGoodsItem } from './types'
 // import axios from 'axios';
 enum URL {
   item = '/api/Goods/GoodsItem',
@@ -20,6 +20,6 @@ const getGoodsItem = async (params: ReqGoodsItem) =>
   get<ResGoodsItem>({
     url: URL.item,
     params,
-  });
+  })
 
-export { getGoodsItem };
+export { getGoodsItem }

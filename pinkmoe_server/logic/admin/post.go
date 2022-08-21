@@ -132,10 +132,10 @@ func GetPostByPostId(p request.SearchPostParams, userId uuid.UUID) (err error, l
 	err, list["authorPosts"], _ = mysql.GetPostList(request.SearchPostParams{
 		Author: post.Author.String(),
 		PageInfo: request.PageInfo{
-			PageSize: 12,
+			PageSize: 6,
 			Page:     1,
 		},
-	}, "0")
+	}, post.Author.String())
 	err, list["users"], _ = mysql.GetUserInfoList(request.SearchUserParams{
 		PageInfo: request.PageInfo{
 			Page:     1,

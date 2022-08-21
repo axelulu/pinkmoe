@@ -2,37 +2,37 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 17:31:23
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 21:05:58
- * @FilePath: /pinkmoe_index/src/pages/author/:author/comment.vue
+ * @LastEditTime: 2022-08-19 17:52:24
+ * @FilePath: /pinkmoe_vitesse/src/pages/author/:author/comment.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
- * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
 -->
 <script lang="ts" setup name="AuthorAuthorComment">
-  import AuthorLayout from '/@/components/Authorlayout/index.vue';
-  import NotFound from '/@/components/NotFound/index.vue';
-  import Spin from '/@/components/Spin/index.vue';
-  import MoreBtn from '/@/components/Morebtn/index.vue';
-  import { useAuthorComment } from '/@/hooks/author/comment';
-  import { useAppStore } from '/@/store/modules/app';
-  import { useHead } from '@vueuse/head';
-  import { useUtil } from '/@/hooks/util';
-  const { formatDate } = useUtil();
+import AuthorLayout from '/@/components/Authorlayout/index.vue'
+import NotFound from '/@/components/NotFound/index.vue'
+import Spin from '/@/components/Spin/index.vue'
+import MoreBtn from '/@/components/Morebtn/index.vue'
+import { useAuthorComment } from '/@/hooks/author/comment'
+import { useAppStore } from '/@/store/modules/app'
+import { useHead } from '@vueuse/head'
+import { useUtil } from '/@/hooks/util'
+const { formatDate } = useUtil()
 
-  const { authorCommentList, loading, hasMore, nextPage } = useAuthorComment();
+const { authorCommentList, loading, hasMore, nextPage } = useAuthorComment()
 
-  const { siteBasic } = useAppStore();
-  useHead({
-    title: `用户评论 - 用户主页`,
-    meta: [
-      { name: 'og:type', content: 'comment' },
-      {
-        name: 'og:title',
-        content: `用户评论 - 用户主页`,
-      },
-      { name: 'og:url', content: siteBasic?.url },
-    ],
-  });
+const { siteBasic } = useAppStore()
+useHead({
+  title: '用户评论 - 用户主页',
+  meta: [
+    { name: 'og:type', content: 'comment' },
+    {
+      name: 'og:title',
+      content: '用户评论 - 用户主页',
+    },
+    { name: 'og:url', content: siteBasic?.url },
+  ],
+})
 </script>
 
 <template>
@@ -50,25 +50,29 @@
         >
           <div class="flex flex-col justify-start">
             <router-link
-              :to="'/post/' + item?.postRelation?.postId"
+              :to="`/post/${item?.postRelation?.postId}`"
               class="text-sm text-gray-500 hover:text-pink-400 dark:text-gray-200 duration-300"
-              >{{ item?.postRelation?.title }}
+            >
+              {{ item?.postRelation?.title }}
             </router-link>
-            <div class="mt-2"
-              ><span
+            <div class="mt-2">
+              <span
                 class="text-xs text-gray-500 dark:text-gray-200 dark:bg-gray-800 bg-gray-100 px-2 py-1"
                 v-html="item.content"
-              ></span
-            ></div>
+              />
+            </div>
           </div>
-          <div class="text-xs">{{ formatDate(item?.UpdatedAt) }}</div>
+          <div class="text-xs">
+            {{ formatDate(item?.UpdatedAt) }}
+          </div>
         </div>
         <div class="w-full py-3 text-gray-500 dark:text-gray-200">
           <MoreBtn v-if="hasMore" @click="nextPage" />
         </div>
       </div>
-      <NotFound v-else /> </Spin
-  ></AuthorLayout>
+      <NotFound v-else />
+    </Spin>
+  </AuthorLayout>
 </template>
 
 <style lang="less" scoped></style>

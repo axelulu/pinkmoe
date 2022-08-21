@@ -2,58 +2,57 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 17:43:49
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 08:59:27
- * @FilePath: /pinkmoe_index/src/components/Publishcategory/index.vue
+ * @LastEditTime: 2022-08-20 12:46:49
+ * @FilePath: /pinkmoe_vitesse/src/components/Publishcategory/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
- * Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
+ * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
 -->
 <script lang="ts" setup name="Publishcategory">
-  import PublishReCategory from '/@/components/Publishrecategory/index.vue';
+import PublishReCategory from '/@/components/Publishrecategory/index.vue'
 
-  defineProps({
-    categoryList: {
-      type: Array,
-      default: null,
-    },
-  });
-  const emit = defineEmits(['chooseCategory']);
-  const dialog = ref();
-  const searchReCategory = ref();
-  const isShow = ref<boolean>(false);
-  const showAnimate = ref<boolean>(false);
-  const children = ref<any>(null);
-  const currentCategory = ref<Object>({
-    slug: '0',
-    type: 'all',
-  });
-  const show = () => {
-    dialog.value.show();
-  };
-  const hide = () => {
-    dialog.value.hide();
-  };
-  const chooseCategory = (item) => {
-    emit('chooseCategory', item);
-  };
+defineProps({
+  categoryList: {
+    type: Array,
+    default: null,
+  },
+})
+const emit = defineEmits(['chooseCategory'])
+const dialog = ref()
+const searchReCategory = ref()
+const isShow = ref<boolean>(false)
+const showAnimate = ref<boolean>(false)
+const children = ref<any>(null)
+const currentCategory = ref<Object>({
+  slug: '0',
+  type: 'all',
+})
+const show = () => {
+  dialog.value.show()
+}
+const hide = () => {
+  dialog.value.hide()
+}
+const chooseCategory = (item) => {
+  emit('chooseCategory', item)
+}
 
-  const getCategoryPost = (item) => {
-    currentCategory.value = item;
-  };
+const getCategoryPost = (item) => {
+  currentCategory.value = item
+}
 
-  const getChildCategory = (item) => {
-    isShow.value = true;
-    children.value = item;
-    currentCategory.value = item;
-    if (searchReCategory.value) {
-      searchReCategory.value.hide();
-    }
-  };
+const getChildCategory = (item) => {
+  isShow.value = true
+  children.value = item
+  currentCategory.value = item
+  if (searchReCategory.value)
+    searchReCategory.value.hide()
+}
 
-  defineExpose({
-    show,
-    hide,
-  });
+defineExpose({
+  show,
+  hide,
+})
 </script>
 
 <template>
@@ -84,7 +83,7 @@
           <div
             class="flex flex-row justify-center items-center text-gray-500 dark:text-gray-200 text-xs ml-4 p-0 rounded-bl-md rounded-br-md overflow-hidden"
           >
-            <font-awesome-icon :icon="['fas', 'bars']" />
+            <i class="inline-block i-codicon:three-bars" />
             <span class="ml-1">选择分类</span>
           </div>
           <div
@@ -96,34 +95,34 @@
             class="text-sm px-4 py-1.5 bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer hover:text-white hover:bg-pink-400 duration-300 rounded-bl-md"
             @click="dialog.hide()"
           >
-            <font-awesome-icon :icon="['fas', 'times']" />
+            <i class="inline-block i-clarity:times-circle-solid" />
           </div>
         </div>
-        <div class="flex flex-row py-6 px-4 overflow-x-auto" v-if="categoryList">
+        <div v-if="categoryList" class="flex flex-row py-6 px-4 overflow-x-auto">
           <div class="bg-gray-200">
             <div
               v-for="(item, index) in categoryList.list"
               :key="index"
-              @click="getChildCategory(item)"
-              @dblclick="chooseCategory(item)"
               :class="
                 currentCategory.slug === item.slug && currentCategory.type !== 'all'
                   ? 'text-white bg-pink-400 dark:bg-pink-400'
                   : 'text-gray-500'
               "
               class="text-xs select-none text-center w-26 py-2 dark:bg-gray-800 dark:hover:bg-pink-400 hover:bg-pink-400 dark:text-gray-200 hover:text-white px-2 py-1 duration-300 cursor-pointer"
+              @click="getChildCategory(item)"
+              @dblclick="chooseCategory(item)"
             >
               {{ item.name }}
-              <font-awesome-icon v-if="item.children" class="mr-1" :icon="['fas', 'caret-right']" />
+              <i v-if="item.children" class="inline-block mr-1 i-fluent:caret-right-12-filled" />
             </div>
           </div>
           <PublishReCategory
-            ref="searchReCategory"
-            @emitCategoryPost="getCategoryPost"
-            @chooseCategory="chooseCategory"
             v-if="isShow"
+            ref="searchReCategory"
             :current-category="currentCategory"
             :item="children"
+            @emitCategoryPost="getCategoryPost"
+            @chooseCategory="chooseCategory"
           />
         </div>
       </form>
