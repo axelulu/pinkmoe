@@ -5,7 +5,7 @@ COPY . .
 
 RUN cd ./pinkmoe_index && npm install npm@latest -g && yarn && yarn build
 
-RUN cd ../pinkmoe_admin && && npm i && npm run build
+RUN cd ../pinkmoe_admin && npm i && npm run build
 
 FROM nginx:alpine
 LABEL MAINTAINER="SliverHorn@sliver_horn@qq.com"
