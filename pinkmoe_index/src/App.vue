@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-08-08 16:34:38
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 11:55:12
- * @FilePath: /pinkmoe_vitesse/src/App.vue
+ * @LastEditTime: 2022-08-21 18:01:20
+ * @FilePath: /pinkmoe_index/src/App.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -29,6 +29,12 @@ const i18n = useI18n()
 const { siteBasic } = useAppStore()
 useHead({
   title: computed(() => `${siteBasic?.title} - ${siteBasic?.desc}`),
+  link: [
+    {
+      rel: 'icon',
+      href: siteBasic?.icon,
+    },
+  ],
   meta: [
     {
       name: 'og:title',
