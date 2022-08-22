@@ -2,19 +2,22 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:50:47
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 17:46:07
- * @FilePath: /pinkmoe_vitesse/src/components/Slidepost/index.vue
+ * @LastEditTime: 2022-08-22 16:50:50
+ * @FilePath: /pinkmoe_index/src/components/Slidepost/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
 -->
 <script lang="ts" setup name="Slidepost">
+import { useUtil } from '/@/hooks/util'
+
 defineProps({
   posts: {
     type: Array,
     default: null,
   },
 })
+const { getThumbnail } = useUtil()
 </script>
 
 <template>
@@ -27,7 +30,7 @@ defineProps({
         <router-link :to="`/post/${item.postId}`">
           <div class="bg-white dark:bg-gray-700 rounded-md overflow-hidden">
             <img
-              v-lazy="item.cover"
+              v-lazy="getThumbnail(item.cover)"
               class="h-28 w-full animate-lazyloaded object-cover cursor-pointer object-cover"
               alt=""
             >

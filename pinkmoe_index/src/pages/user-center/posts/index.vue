@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:34
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 16:14:42
+ * @LastEditTime: 2022-08-22 16:52:01
  * @FilePath: /pinkmoe_index/src/pages/user-center/posts/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -17,7 +17,7 @@ import { useUserCenterPosts } from '/@/hooks/user-center/posts'
 import { useAppStore } from '/@/store/modules/app'
 import { useHead } from '@vueuse/head'
 import { useUtil } from '/@/hooks/util'
-const { formatDate } = useUtil()
+const { formatDate, getThumbnail } = useUtil()
 const { userPostList, nextPage, hasMore, loading } = useUserCenterPosts()
 
 const { siteBasic } = useAppStore()
@@ -93,7 +93,7 @@ useHead({
                 <tr v-for="(item, index) in userPostList?.list" :key="index">
                   <th class="px-2 py-3 flex justify-center items-center">
                     <img
-                      v-lazy="item.cover"
+                      v-lazy="getThumbnail(item.cover)"
                       class="w-10 h-10 animate-lazyloaded object-cover"
                       alt=""
                     >
