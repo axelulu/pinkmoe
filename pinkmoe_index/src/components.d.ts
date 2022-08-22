@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Article: typeof import('./components/Article/index.vue')['default']
+    Artplayer: typeof import('./components/Artplayer/index.vue')['default']
     Authorlayout: typeof import('./components/Authorlayout/index.vue')['default']
     Basicinput: typeof import('./components/Basicinput/index.vue')['default']
     Bbsarticle: typeof import('./components/Bbsarticle/index.vue')['default']

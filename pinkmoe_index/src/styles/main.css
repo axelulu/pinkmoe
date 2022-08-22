@@ -18,8 +18,8 @@ html.dark {
 }
 
 #nprogress .bar {
-  background: rgb(13,148,136);
-  opacity: 0.75;
+    background: rgba(244, 114, 182, 1) !important;
+  opacity: 1;
   position: fixed;
   z-index: 1031;
   top: 0;

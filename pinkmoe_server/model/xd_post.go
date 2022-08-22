@@ -17,8 +17,8 @@ import (
 )
 
 type XdPost struct {
-	CreatedAt        global.XdTime    // 创建时间
-	UpdatedAt        global.XdTime    // 更新时间
+	CreatedAt        global.XdTime    `gorm:"autoCreateTime:false"`                                                 // 创建时间
+	UpdatedAt        global.XdTime    `gorm:"autoCreateTime:false"`                                                 // 更新时间
 	DeletedAt        *global.XdTime   `gorm:"index" json:"-"`                                                       // 删除时间
 	PostId           string           `json:"postId" form:"postId" gorm:"not null;unique;primary_key;comment:文章ID"` // 用户UUID
 	Title            string           `json:"title" form:"title" gorm:"comment:文章标题"`                               // 文章标题

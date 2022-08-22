@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 16:39:40
+ * @LastEditTime: 2022-08-22 12:45:13
  * @FilePath: /pinkmoe_index/src/components/Header/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -130,7 +130,7 @@ const {
                 <div
                   class="bg-white bg-opacity-40 rounded-full w-6 h-6 flex justify-center items-center text-shadow-bg-white"
                 >
-                  <i :class="`text-gray-700 dark:text-gray-200 inline-block ${category.icon}`" />
+                  <span class="iconify text-gray-700 dark:text-gray-200 inline-block " :data-icon="`${category.icon}`" />
                 </div>
                 <div class="text-shadow-bg-white">
                   {{ category.name }}
@@ -150,7 +150,7 @@ const {
                       :to="`/category/${item.slug}`"
                       class="pl-4 py-2 w-32 flex justify-center items-center hover:bg-pink-400 hover:text-white cursor-pointer duration-300"
                     >
-                      <i :class="`inline-block ${item.icon}`" />
+                      <span class="iconify inline-block " :data-icon="`${item.icon}`" />
                       <span class="ml-1 mr-4">{{ item.name }}</span>
                       <i v-if="item.children" class="inline-block i-fluent:caret-right-12-filled" />
                     </router-link>

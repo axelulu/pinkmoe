@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-27 22:00:40
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 16:51:36
+ * @LastEditTime: 2022-08-21 21:14:03
  * @FilePath: /pinkmoe_index/src/components/Postvideo/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -25,7 +25,7 @@ const props = defineProps({
     default: null,
   },
 })
-const { postVideo, buyVideo, videoRef, showLogin, currentVideo, auth, options, changeVideo }
+const { postVideo, buyVideo, showLogin, getInstance, style, currentVideo, auth, options, changeVideo }
     = usePostVideo(props)
 </script>
 
@@ -48,7 +48,7 @@ const { postVideo, buyVideo, videoRef, showLogin, currentVideo, auth, options, c
     </div>
     <div class="flex flex-row w-full" :style="auth.isLogin ? '' : 'filter: blur(6px)'">
       <div class="w-19/24 h-112">
-        <NPlayer ref="videoRef" :options="options" />
+        <Artplayer :option="options" :style="style" @get-instance="getInstance" />
       </div>
       <div
         class="w-5/24 mx-4 py-2 overflow-y-scroll h-112 dark:bg-gray-800 bg-white rounded-md shadow-sm"
@@ -57,7 +57,7 @@ const { postVideo, buyVideo, videoRef, showLogin, currentVideo, auth, options, c
           <div class="flex flex-row">
             <div
               :class="
-                currentVideo === video && options.src === video.url
+                currentVideo === video && options.url === video.url
                   ? 'dark:bg-pink-400 bg-pink-400 text-gray-200'
                   : 'dark:bg-gray-700 bg-gray-200'
               "

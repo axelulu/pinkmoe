@@ -5,38 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9c06589-a528-4508-af15-feb6e80b09c9" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/../Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/api/category/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/api/category/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/api/home/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/api/home/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/api/shop/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/api/shop/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/components/Basicinput/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/components/Basicinput/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/components.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/components/Header/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/components/Header/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/components/Login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/components/Login/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/components/Shopconfirm/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/components/Shopconfirm/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/components/Vipconfirm/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/components/Vipconfirm/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/components/Postvideo/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/components/Postvideo/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/components/Usercenterlayout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/components/Usercenterlayout/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/header.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/header.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/modules/i18n.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/modules/i18n.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/bbs/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/bbs/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/index/components/Recommend/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/index/components/Recommend/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/postVideo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/hooks/postVideo.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/index/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/index/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/post/:id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/post/:id.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/shop/goods/:id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/shop/goods/:id.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/user-center/im/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/user-center/im/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/user-center/publish/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/user-center/publish/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/user-center/settings/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/user-center/settings/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/user-center/shop/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/user-center/shop/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/src/pages/user-center/vip/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/src/pages/user-center/vip/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/vite.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/category.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/category.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/goods_category.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/goods_category.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialize/initDB/category.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/initDB/category.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logic/admin/home.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/admin/home.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logic/admin/shop.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/admin/shop.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/response/home.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/response/home.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/response/shop.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/response/shop.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/response/xd_category.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/response/xd_category.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/xd_category.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/xd_category.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/xd_goods_category.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/xd_goods_category.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/mysql/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/post.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/initialize/initDB/setting.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/initDB/setting.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/request/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/request/post.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/xd_post.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/xd_post.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +68,9 @@
       <recent name="$PROJECT_DIR$/model/response" />
       <recent name="$PROJECT_DIR$/logic/admin" />
       <recent name="$PROJECT_DIR$/model/request" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />

@@ -68,7 +68,7 @@ func GetCategoryPostList(info request.SearchPostParams) (err error, list []model
 	if len(info.OrderKey) == 0 {
 		info.OrderKey = "updated_at"
 	}
-	
+
 	if info.Desc {
 		order = info.OrderKey + " DESC"
 	} else {
@@ -526,6 +526,8 @@ func CreatePost(p request.CreatePostParams) (err error) {
 			DownloadRelation: p.DownloadRelation,
 			CommentStatus:    p.CommentStatus,
 			Status:           p.Status,
+			UpdatedAt:        p.UpdatedAt,
+			CreatedAt:        p.UpdatedAt,
 		}
 	} else {
 		post = model.XdPost{
@@ -541,6 +543,8 @@ func CreatePost(p request.CreatePostParams) (err error) {
 			DownloadRelation: p.DownloadRelation,
 			CommentStatus:    p.CommentStatus,
 			Status:           p.Status,
+			UpdatedAt:        p.UpdatedAt,
+			CreatedAt:        p.UpdatedAt,
 		}
 	}
 	if err = global.XD_DB.Transaction(func(tx *gorm.DB) error {

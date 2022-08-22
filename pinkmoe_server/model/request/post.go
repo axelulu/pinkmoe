@@ -71,6 +71,7 @@ type ReqPost struct {
 
 // CreatePostParams api分页条件查询及排序结构体
 type CreatePostParams struct {
+	UpdatedAt        global.XdTime          // 更新时间
 	PostId           string                 `json:"postId" form:"postId" gorm:"comment:文章ID"`                              // 用户UUID
 	Title            string                 `json:"title" form:"title" gorm:"comment:文章标题"`                                // 文章标题
 	Exerpt           string                 `json:"exerpt" form:"exerpt" gorm:"comment:文章摘要"`                              // 文章摘要

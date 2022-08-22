@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-08-08 16:34:38
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 10:11:52
- * @FilePath: /pinkmoe_vitesse/vite.config.ts
+ * @LastEditTime: 2022-08-22 12:38:04
+ * @FilePath: /pinkmoe_index/vite.config.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -25,6 +25,7 @@ import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
 import Shiki from 'markdown-it-shiki'
 import { presetAttributify, presetIcons, presetUno } from 'unocss'
+import PurgeIcons from 'vite-plugin-purge-icons'
 import proxy from './config/vite/proxy'
 import { VITE_DROP_CONSOLE, VITE_PORT } from './config/constant'
 
@@ -99,6 +100,10 @@ export default defineConfig({
           cdn: 'https://esm.sh/',
         }),
       ],
+    }),
+
+    PurgeIcons({
+      /* PurgeIcons Options */
     }),
 
     // https://github.com/antfu/vite-plugin-vue-markdown
