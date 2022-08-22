@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 10:35:44
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 11:20:53
- * @FilePath: /pinkmoe_vitesse/src/components/Article/index.vue
+ * @LastEditTime: 2022-08-22 16:32:48
+ * @FilePath: /pinkmoe_index/src/components/Article/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -20,7 +20,7 @@ defineProps({
     default: '',
   },
 })
-const { formatDate } = useUtil()
+const { formatDate, getThumbnail } = useUtil()
 </script>
 
 <template>
@@ -34,7 +34,7 @@ const { formatDate } = useUtil()
       <div class="relative">
         <router-link :to="`/post/${post.postId}`">
           <img
-            v-lazy="post.cover"
+            v-lazy="getThumbnail(post.cover)"
             :class="
               `overflow-hidden animate-lazyloaded object-cover ${
                 imgHeight

@@ -2,13 +2,15 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 09:47:06
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 15:30:19
+ * @LastEditTime: 2022-08-22 16:38:03
  * @FilePath: /pinkmoe_index/src/pages/index/components/Popular/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
 -->
 <script lang="ts" setup>
+import { useUtil } from '/@/hooks/util'
+
 defineProps({
   popular: {
     type: Object,
@@ -19,6 +21,7 @@ defineProps({
     default: false,
   },
 })
+const { getThumbnail } = useUtil()
 </script>
 
 <template>
@@ -39,7 +42,7 @@ defineProps({
           class="popular-item after:duration-500 flex-grow flex-initial relative cursor-pointer after:opacity-30"
         >
           <img
-            v-lazy="item.cover"
+            v-lazy="getThumbnail(item.cover)"
             class="h-60 max-w-full min-w-full object-cover animate-lazyloaded"
             alt=""
           >
