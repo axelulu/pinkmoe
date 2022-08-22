@@ -1,16 +1,9 @@
-FROM golang:alpine
+FROM golang:latest
 
 WORKDIR /pinkmoe_server
 COPY . .
 
-RUN go generate && go env && go build -o server .
-
-FROM alpine:latest
-LABEL MAINTAINER="SliverHorn@sliver_horn@qq.com"
-
-WORKDIR /pinkmoe_server
-
-COPY --from=0 /pinkmoe_server ./
+RUN apt-get update -y && apt-get upgrade -y && apt-get install libvips-dev -y && go generate && go env && go build -o server .
 
 EXPOSE 9527
 
