@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-08-08 16:34:38
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-22 12:38:19
+ * @LastEditTime: 2022-08-22 21:09:25
  * @FilePath: /pinkmoe_index/src/main.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -17,7 +17,6 @@ import generatedRoutes from '~pages'
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
 import 'uno.css'
-import '@purge-icons/generated' // <-- This
 
 const routes = setupLayouts(generatedRoutes)
 

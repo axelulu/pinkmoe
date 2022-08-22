@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@iconify/iconify": "^2.2.1",
-    "@iconify/json": "^2.1.95",
+    "@iconify/json": "^2.1.96",
     "@nplayer/danmaku": "^1.0.12",
     "@nplayer/vue": "^1.0.12",
     "@unocss/preset-icons": "^0.45.8",
