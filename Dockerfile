@@ -3,7 +3,7 @@ FROM node:16.16.0
 WORKDIR /
 COPY . .
 
-RUN cd ./pinkmoe_index && npm install npm@latest -g && npm install pm2 -g && yarn && yarn build && pm2 start ecosystem.config.js
+RUN cd ./pinkmoe_index && npm install npm@latest -g && npm install pm2 -g && npm install pnpm -g && pnpm i && pnpm build && pm2 start ecosystem.config.js
 
 RUN cd ../pinkmoe_admin && npm i && npm run build
 
@@ -21,9 +21,9 @@ COPY ./pinkmoe_admin/nginx/admin_pinkmoe_ssl.conf /etc/nginx/conf.d/admin_pinkmo
 COPY ./pinkmoe_admin/nginx/ssl/admin.pinkmoe.key /etc/nginx/admin.pinkmoe.key
 COPY ./pinkmoe_admin/nginx/ssl/admin.pinkmoe.crt /etc/nginx/admin.pinkmoe.crt
 RUN rm -rf /etc/nginx/conf.d/default.conf
-RUN mkdir /usr/share/nginx/html/index
+# RUN mkdir /usr/share/nginx/html/index
 RUN mkdir /usr/share/nginx/html/admin
-COPY --from=0 /pinkmoe_index/dist /usr/share/nginx/html/index
+# COPY --from=0 /pinkmoe_index/dist /usr/share/nginx/html/index
 COPY --from=0 /pinkmoe_admin/dist /usr/share/nginx/html/admin
 RUN cat /etc/nginx/nginx.conf
 # index
