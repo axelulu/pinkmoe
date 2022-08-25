@@ -3,7 +3,7 @@ FROM node:16.16.0
 WORKDIR /
 COPY . .
 
-RUN cd ./pinkmoe_index && npm install npm@latest -g && yarn && yarn build
+RUN cd ./pinkmoe_index && npm install npm@latest -g && npm install pm2 -g && yarn && yarn build && pm2 start ecosystem.config.js
 
 RUN cd ../pinkmoe_admin && npm i && npm run build
 
