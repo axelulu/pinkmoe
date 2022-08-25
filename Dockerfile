@@ -23,7 +23,6 @@ COPY ./pinkmoe_admin/nginx/ssl/admin.pinkmoe.crt /etc/nginx/admin.pinkmoe.crt
 RUN rm -rf /etc/nginx/conf.d/default.conf
 # RUN mkdir /usr/share/nginx/html/index
 RUN mkdir /usr/share/nginx/html/admin
-# COPY --from=0 /pinkmoe_index/dist /usr/share/nginx/html/index
 COPY --from=0 /pinkmoe_admin/dist /usr/share/nginx/html/admin
 RUN cat /etc/nginx/nginx.conf
 # index
