@@ -51,7 +51,7 @@ services:
         network:
           ipv4_address: 223.3.3.12
 
-  pinkmoe_index:
+  index:
       build:
         context: ./pinkmoe_index
         dockerfile: ./Dockerfile
@@ -76,6 +76,7 @@ services:
         - '443:443'
       depends_on:
         - server
+        - index
       command: [ 'nginx-debug', '-g', 'daemon off;' ]
       networks:
         network:
