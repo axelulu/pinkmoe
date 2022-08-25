@@ -1,24 +1,4 @@
 {
-  "cSpell.words": [
-    "antfu",
-    "demi",
-    "iconify",
-    "intlify",
-    "pinia",
-    "pnpm",
-    "unocss",
-    "unplugin",
-    "Vite",
-    "vitejs",
-    "Vitesse",
-    "vitest",
-    "vueuse",
-    "wangeditor"
-  ],
-  "i18n-ally.sourceLanguage": "en",
-  "i18n-ally.keystyle": "nested",
-  "i18n-ally.localesPaths": "locales",
-  "i18n-ally.sortKeys": true,
   "prettier.enable": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
@@ -26,5 +6,6 @@
   "files.associations": {
     "*.css": "postcss"
   },
-  "editor.formatOnSave": false
+  "editor.formatOnSave": false,
+  "nuxt.isNuxtApp": false
 }

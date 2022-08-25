@@ -44,6 +44,7 @@ func InitRouter() *gin.Engine {
 	}
 	//初始化路由
 	r := gin.New()
+	r.Use(middleware.Cors())
 
 	//socket
 	r.GET("/ws", socket.InitSocket)
@@ -69,8 +70,8 @@ func InitRouter() *gin.Engine {
 	// pprof性能测试
 	//pprof.Register(r)
 
-	r.NoRoute(func(context *gin.Context) {
-		context.JSON(http.StatusOK, map[string]interface{}{
+	r.NoRoute(func(c *gin.Context) {
+		c.JSON(http.StatusOK, map[string]interface{}{
 			"msg": "404",
 		})
 	})

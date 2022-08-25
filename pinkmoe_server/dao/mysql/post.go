@@ -13,11 +13,11 @@ package mysql
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"server/global"
 	"server/model"
 	"server/model/request"
 	"server/model/response"
+	"strings"
 
 	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
@@ -214,9 +214,6 @@ func GetPostList(info request.SearchPostParams, userId string) (err error, post 
 	}).Preload("FileRelation").Find(&post).Error; err != nil {
 		return response.ErrorPostListGet, nil, 0
 	}
-	println("-----------------")
-	fmt.Printf("%s", post)
-	println("-----------------")
 	return
 }
 
@@ -560,25 +557,27 @@ func CreatePost(p request.CreatePostParams) (err error) {
 			}
 		}
 		for _, t := range p.Topic {
-			newTopic := model.XdTopic{
-				XD_MODEL: global.XD_MODEL{},
-				Value:    t,
-				Label:    t,
-				Icon:     "https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg",
-				Sort:     0,
-			}
-			var topic model.XdTopic
-			if errors.Is(tx.Where("value = ?", t).First(&topic).Error, gorm.ErrRecordNotFound) { // 判断用户名是否注册
-				err = tx.Create(&newTopic).Error
-				err = tx.Create(&model.XdTopicRelation{
-					XdPostId:  post.PostId,
-					XdTopicId: newTopic.ID,
-				}).Error
-			} else {
-				err = tx.Create(&model.XdTopicRelation{
-					XdPostId:  post.PostId,
-					XdTopicId: topic.ID,
-				}).Error
+			if len(strings.TrimSpace(t)) != 0 {
+				newTopic := model.XdTopic{
+					XD_MODEL: global.XD_MODEL{},
+					Value:    t,
+					Label:    t,
+					Icon:     "https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg",
+					Sort:     0,
+				}
+				var topic model.XdTopic
+				if errors.Is(tx.Where("value = ?", t).First(&topic).Error, gorm.ErrRecordNotFound) { // 判断用户名是否注册
+					err = tx.Create(&newTopic).Error
+					err = tx.Create(&model.XdTopicRelation{
+						XdPostId:  post.PostId,
+						XdTopicId: newTopic.ID,
+					}).Error
+				} else {
+					err = tx.Create(&model.XdTopicRelation{
+						XdPostId:  post.PostId,
+						XdTopicId: topic.ID,
+					}).Error
+				}
 			}
 		}
 		return nil
