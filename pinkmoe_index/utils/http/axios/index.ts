@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-26 09:44:14
+ * @LastEditTime: 2022-08-26 15:45:16
  * @FilePath: /pinkmoe/pinkmoe_index/utils/http/axios/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -24,7 +24,7 @@ axios.defaults.withCredentials = false
 // axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*'
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: BASEURL,
+  // baseURL: BASEURL,
   // transformRequest: [
   //   function (data) {
   //     //由于使用的 form-data传数据所以要格式化

@@ -62,9 +62,9 @@ services:
         - '443:443'
       tty: true
       privileged: true
-      interactive: true
+      # interactive: true
       depends_on:
         - server
       networks:
         network:
-          ipv4_address: 223.3.3.14
+          ipv4_address: 223.3.3.13
