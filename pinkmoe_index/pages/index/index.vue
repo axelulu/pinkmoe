@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 19:19:57
- * @FilePath: /pinkmoe_index/pages/index/index.vue
+ * @LastEditTime: 2022-08-26 12:02:28
+ * @FilePath: /pinkmoe/pinkmoe_index/pages/index/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -21,7 +21,7 @@ import { useI18n } from 'vue-i18n'
 const { content, recommend, popular, contentRef, loading, data, jump } = useHomeList()
 const { siteBasic } = useAppStore()
 useHead({
-  title: siteBasic.title,
+  title: siteBasic?.title,
 })
 const { t } = useI18n()
 </script>
