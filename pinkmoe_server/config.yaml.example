@@ -10,7 +10,7 @@ basicConfig:
 
 # 本站数据库配置
 mysqlConfig:
-  host: "223.3.3.10"
+  host: "localhost"
   port: 3306
   user: "root"
   password: "pinkmoe"
@@ -20,7 +20,7 @@ mysqlConfig:
   maxIdleConns: 0
 
 redisConfig:
-  host: "223.3.3.11"
+  host: "localhost"
   port: 6379
   password: ""
   db: 0

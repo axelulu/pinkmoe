@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 19:46:48
- * @FilePath: /pinkmoe_index/utils/http/axios/index.ts
+ * @LastEditTime: 2022-08-26 09:44:14
+ * @FilePath: /pinkmoe/pinkmoe_index/utils/http/axios/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -78,7 +78,7 @@ axiosInstance.interceptors.request.use(
 
 const request = <T = any>(config: AxiosRequestConfig, result?: boolean): Promise<T> => {
   const conf = config
-  config.url = config.url?.replace(API_BASE_URL, API_BASE_REPLACE_URL)
+  // config.url = config.url?.replace(API_BASE_URL, API_BASE_REPLACE_URL)
   return new Promise((resolve) => {
     if (result) {
       axiosInstance.request<any, AxiosResponse>(conf).then((res: AxiosResponse) => {
