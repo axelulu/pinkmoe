@@ -3,7 +3,7 @@
  # @Author: coderzhaolu && izhaicy@163.com
  # @Date: 2022-08-27 18:40:50
  # @LastEditors: coderzhaolu && izhaicy@163.com
- # @LastEditTime: 2022-08-27 22:32:16
+ # @LastEditTime: 2022-08-27 22:34:37
  # @FilePath: /pinkmoe/install.sh
  # @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  # QQ:2419857357;支付宝:13135986153
@@ -100,7 +100,7 @@ do
         break
     elif [ $num ==  "2" ]
     then
-       cd / && rm -rf /pinkmoe && docker stop pinkmoe_mysql pinkmoe_redis pinkmoe_server pinkmoe_index_admin && docker rm pinkmoe_mysql pinkmoe_redis pinkmoe_server pinkmoe_index_admin && docker rmi pinkmoe_server pinkmoe_index_admin && docker rmi 3147495b3a5c 1319b1eaa0b7 && docker system prune
+       cd / && rm -rf /pinkmoe && docker stop pinkmoe_mysql pinkmoe_redis pinkmoe_server pinkmoe_index_admin && docker rm pinkmoe_mysql pinkmoe_redis pinkmoe_server pinkmoe_index_admin && docker rmi pinkmoe_server pinkmoe_index_admin && docker rmi daff57b7d2d1 1319b1eaa0b7 && docker system prune
         break
     elif [ $num ==  "3" ]
     then
