@@ -2,13 +2,13 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 14:33:05
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 17:48:16
- * @FilePath: /pinkmoe_vitesse/src/hooks/user-center/publish.ts
+ * @LastEditTime: 2022-08-27 14:58:58
+ * @FilePath: /pinkmoe_index/hooks/user-center/publish.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
-import { useUserStore } from '/@/store'
+import { useUserStore } from '/@/store/modules/user';
 import { getCategoryList } from '/@/api/category'
 import { deleteFile, fileList, upload } from '/@/api/upload'
 import type { ReqFileList } from '/@/api/upload/types'

@@ -2,14 +2,13 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-26 20:23:06
+ * @LastEditTime: 2022-08-27 14:54:50
  * @FilePath: /pinkmoe_index/store/modules/app/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 import { defineStore } from 'pinia'
-import piniaStore from '/@/store/index'
 import type { AppState } from './types'
 import { getSiteSetting } from '/@/api/setting'
 import type { ResSiteSetting } from '/@/api/setting/types'
@@ -72,7 +71,3 @@ export const useAppStore = defineStore(
     },
   },
 )
-
-export function useAppOutsideStore() {
-  return useAppStore(piniaStore)
-}

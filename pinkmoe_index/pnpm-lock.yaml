@@ -10,7 +10,7 @@ specifiers:
   '@nuxtjs/axios': ^5.13.6
   '@nuxtjs/color-mode': ^3.1.4
   '@nuxtjs/i18n': ^7.3.0
-  '@pinia/nuxt': ^0.3.1
+  '@pinia/nuxt': ^0.4.0
   '@purge-icons/generated': ^0.9.0
   '@unocss/nuxt': ^0.45.13
   '@vueuse/nuxt': ^9.1.1
@@ -54,7 +54,7 @@ devDependencies:
   '@iconify-json/carbon': 1.1.7
   '@iconify-json/twemoji': 1.1.5
   '@nuxtjs/color-mode': 3.1.4
-  '@pinia/nuxt': 0.3.1_typescript@4.8.2
+  '@pinia/nuxt': 0.4.1_typescript@4.8.2
   '@unocss/nuxt': 0.45.13
   '@vueuse/nuxt': 9.1.1
   eslint: 8.22.0
@@ -1927,8 +1927,8 @@ packages:
       - debug
     dev: false
 
-  /@pinia/nuxt/0.3.1_typescript@4.8.2:
-    resolution: {integrity: sha512-JoDvTolUrJPfe9xEmvHz0jRqd3vYzuStqtt1k3SgwHChIWxxnlZ8hmU1RlXIh51RGL549LeXupSiKGydDIYc2A==}
+  /@pinia/nuxt/0.4.1_typescript@4.8.2:
+    resolution: {integrity: sha512-lxf2r3jaJysGxKuuv5FcoFEd4jQbZu+hMLGEQhDlz06IBJ1U+Dlxv5FklHHS6pa5+4ffaVqhUinhlElI/pknXQ==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.6
       pinia: 2.0.20_typescript@4.8.2

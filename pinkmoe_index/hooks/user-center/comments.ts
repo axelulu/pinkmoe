@@ -2,15 +2,15 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 14:35:57
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 17:48:11
- * @FilePath: /pinkmoe_vitesse/src/hooks/user-center/comments.ts
+ * @LastEditTime: 2022-08-27 14:58:49
+ * @FilePath: /pinkmoe_index/hooks/user-center/comments.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
 import { getUserComment } from '/@/api/comment'
 import type { ReqAuthorPost } from '/@/api/author/types'
-import { useUserStore } from '/@/store'
+import { useUserStore } from '/@/store/modules/user';
 import type { ResPost } from '/@/api/home/types'
 
 export const useUserCenterComments = () => {

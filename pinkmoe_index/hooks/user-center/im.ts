@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-29 18:21:38
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 21:10:30
- * @FilePath: /pinkmoe_vitesse/src/hooks/user-center/im.ts
+ * @LastEditTime: 2022-08-27 14:58:54
+ * @FilePath: /pinkmoe_index/hooks/user-center/im.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -16,7 +16,7 @@ import {
 } from '/@/api/chat'
 import type { ReqChat, ResChat, ResChatRelation } from '/@/api/chat/types'
 import type { ResPage } from '/@/api/common/types'
-import { useUserStore } from '/@/store'
+import { useUserStore } from '/@/store/modules/user';
 import { useSocketStore } from '/@/store/modules/socket'
 
 export const useUserCenterIm = () => {

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 11:30:46
+ * @LastEditTime: 2022-08-27 14:59:35
  * @FilePath: /pinkmoe_index/hooks/post.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -10,12 +10,13 @@
  */
 import { getPostItem, postView } from '/@/api/post'
 import type { ReqPostItem, ResComment, ResPostItem } from '/@/api/post/types'
-import { useAppStore, useUserStore } from '/@/store'
 import { getAuthorPostList } from '/@/api/author'
 import type { ResPost } from '/@/api/home/types'
 import type { ReqPage, ResPage } from '/@/api/common/types'
 import { getCommentList } from '/@/api/comment'
 import type { ReqComment } from '/@/api/comment/types'
+import { useUserStore } from '../store/modules/user'
+import { useAppStore } from '../store/modules/app'
 
 export const usePostItem = async () => {
   const route = useRoute()
