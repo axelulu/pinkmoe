@@ -3,7 +3,7 @@
  # @Author: coderzhaolu && izhaicy@163.com
  # @Date: 2022-08-27 18:40:50
  # @LastEditors: coderzhaolu && izhaicy@163.com
- # @LastEditTime: 2022-08-27 22:34:37
+ # @LastEditTime: 2022-08-27 23:08:28
  # @FilePath: /pinkmoe/install.sh
  # @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  # QQ:2419857357;支付宝:13135986153
@@ -34,7 +34,9 @@ function write_conf()
     echo $headDomain
     sed -i "s/pinkmoe.com www.pinkmoe.com/$headDomain/g" ./pinkmoe_index/nginx/pinkmoe_ssl.conf
     sed -i "s/pinkmoe.com www.pinkmoe.com/$headDomain/g" ./pinkmoe_index/nginx/pinkmoe.conf
-    cp ./pinkmoe_index/constant.ts.example ./pinkmoe_index/constant.ts
+    echo -e "\033[34m 请输入网站主域名(如:pinkmoe.com):\033[0m"
+    read mainDomain
+    echo "export const BASEURL = 'https://${mainDomain}:9527/api/v1'" > ./pinkmoe_index/constant.ts
     echo -e "\033[34m 请输入网站后台域名(多个域名用英文空格隔开,如:pinkmoe.com www.pinkmoe.com):\033[0m"
     read backgroundDomain
     echo $backgroundDomain
