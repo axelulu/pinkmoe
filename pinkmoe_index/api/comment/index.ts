@@ -13,9 +13,9 @@ import { get, post } from '/@/utils/http/axios'
 import type { ReqComment } from '/@/api/comment/types'
 // import axios from 'axios';
 enum URL {
-  create = '/Api/Comment/CommentCreate',
-  list = '/Api/Comment/CommentTreeList',
-  userList = '/Api/Comment/CommentList',
+  create = '/Cms/Comment/CommentCreate',
+  list = '/Cms/Comment/CommentTreeList',
+  userList = '/Cms/Comment/CommentList',
 }
 
 const getCommentList = async (params: ReqComment) =>

@@ -13,7 +13,7 @@ import { get } from '/@/utils/http/axios'
 import type { ResShopList } from '/@/api/shop/types'
 // import axios from 'axios';
 enum URL {
-  list = '/Api/Shop/ShopList',
+  list = '/Cms/Shop/ShopList',
 }
 
 const getShopList = async () =>

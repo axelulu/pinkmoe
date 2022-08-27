@@ -13,7 +13,7 @@ import { get } from '/@/utils/http/axios'
 import type { ResSiteSetting } from '/@/api/setting/types'
 // import axios from 'axios';
 enum URL {
-  list = '/Api/Setting/SiteSetting',
+  list = '/Cms/Setting/SiteSetting',
 }
 
 const getSiteSetting = async () =>

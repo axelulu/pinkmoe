@@ -14,7 +14,7 @@ import type { ResPage } from '/@/api/common/types'
 import type { ResTopicPost } from '/@/api/topic/types'
 import { get } from '/@/utils/http/axios'
 enum URL {
-  list = '/Api/Post/TopicPost',
+  list = '/Cms/Post/TopicPost',
 }
 
 const getTopicPostList = async (params: ReqCategoryPost) =>

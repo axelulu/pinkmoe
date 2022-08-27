@@ -13,7 +13,7 @@ import { get } from '/@/utils/http/axios'
 import type { ReqGoodsItem, ResGoodsItem } from './types'
 // import axios from 'axios';
 enum URL {
-  item = '/Api/Goods/GoodsItem',
+  item = '/Cms/Goods/GoodsItem',
 }
 
 const getGoodsItem = async (params: ReqGoodsItem) =>

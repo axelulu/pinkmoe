@@ -14,7 +14,7 @@ import type { ResPage } from '/@/api/common/types'
 import type { ResComment } from '../post/types'
 // import axios from 'axios';
 enum URL {
-  list = '/Api/Notification/NotificationList',
+  list = '/Cms/Notification/NotificationList',
 }
 
 const getNotificationList = async params =>
