@@ -3,7 +3,7 @@ FROM node:16.16.0
 WORKDIR /
 COPY . .
 
-RUN cd ./pinkmoe_admin && npm i && npm run build
+RUN cd ./pinkmoe_admin && npm install npm@latest -g && npm i && npm run build
 
 FROM centos:centos7
 
