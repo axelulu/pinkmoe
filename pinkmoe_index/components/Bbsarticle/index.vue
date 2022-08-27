@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-24 08:22:26
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-23 19:34:36
- * @FilePath: /pinkmoe_index/src/components/Bbsarticle/index.vue
+ * @LastEditTime: 2022-08-27 11:24:07
+ * @FilePath: /pinkmoe_index/components/Bbsarticle/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -33,27 +33,26 @@ const {
 </script>
 
 <template>
-  <!-- Bbsarticle -->
   <article
     class="p-6 flex flex-row dark:bg-gray-700 dark:text-gray-200 text-gray-500 bg-white rounded-md mb-3"
   >
-    <router-link :to="`/author/${post?.AuthorRelation?.uuid}/userInfo`" class="w-18">
+    <NuxtLink :to="`/author/${post?.AuthorRelation?.uuid}/userInfo`" class="w-18">
       <img
         v-lazy="post?.AuthorRelation?.avatar"
         class="w-12 h-12 animate-lazyloaded rounded-full overflow-hidden"
         alt=""
       >
-    </router-link>
+    </NuxtLink>
     <div class="w-full flex flex-col ml-0">
       <div class="flex justify-between items-center">
         <div class="flex flex-col">
           <div class="flex flex-row justify-center items-center">
-            <router-link
+            <NuxtLink
               :to="`/author/${post?.AuthorRelation?.uuid}/userInfo`"
               class="dark:text-white hover:text-pink-400 duration-300 text-gray-700 text-md"
             >
               {{ post?.AuthorRelation?.nickName }}
-            </router-link>
+            </NuxtLink>
             <span
               :style="`background-color: ${lev?.color};`"
               class="ml-3 select-none cursor-pointer rounded-xl text-xs text-white px-2 py-0.2"
@@ -87,12 +86,12 @@ const {
       </div>
       <div class="mt-2">
         <div v-if="post?.title" class="pb-2 pt-1">
-          <router-link
+          <NuxtLink
             :to="`/post/${post?.postId}`"
             class="text-md font-semibold hover:text-gray-700 duration-300 dark:hover:text-gray-50"
           >
             {{ post?.title }}
-          </router-link>
+          </NuxtLink>
         </div>
         <div
           class="text-sm max-h-36 overflow-hidden"
@@ -119,14 +118,14 @@ const {
       </div>
       <div class="flex justify-between items-start mt-4">
         <div class="flex flex-wrap w-8/12">
-          <router-link
+          <NuxtLink
             v-for="(topic, v) in post?.topic"
             :key="v"
             :to="`/topic/${topic.value}`"
             class="border border-pink-400 text-xs mb-2 text-pink-400 p-1 hover:bg-pink-400 hover:text-white duration-300 cursor-pointer mr-2"
           >
             {{ topic.label }}
-          </router-link>
+          </NuxtLink>
         </div>
         <div class="flex flex-row text-xs">
           <div
@@ -139,13 +138,13 @@ const {
               isCollect ? '已收藏' : '收藏'
             }}</span>
           </div>
-          <router-link
+          <NuxtLink
             :to="`/post/${post?.postId}`"
             class="mx-2 cursor-pointer hover:text-pink-400 duration-300 flex justify-start items-center"
           >
             <i class="mr-1 inline-block i-ant-design:comment-outlined" />
             <span>评论</span>
-          </router-link>
+          </NuxtLink>
           <div class="mx-2 cursor-pointer hover:text-pink-400 duration-300 flex justify-start items-center">
             <i class="mr-1 inline-block i-material-symbols:share" />
             <span>分享</span>

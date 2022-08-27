@@ -16,21 +16,21 @@ import type { IResponse } from '/@/utils/http/axios/type'
 import type { ResPost } from '../home/types'
 // import axios from 'axios';
 enum URL {
-  item = '/api/Post/PostItem',
-  list = '/api/Post/PostList',
-  bbsSilder = '/api/Bbs/BbsSilder',
-  userList = '/api/Post/UserPostList',
-  create = '/api/Post/PostCreate',
-  view = '/api/Post/PostViewUpdate',
-  collect = '/api/Post/PostCollect',
-  collectList = '/api/Post/CollectPost',
-  unCollect = '/api/Post/PostUnCollect',
-  download = '/api/Post/PostItemDownload',
-  downloadBuy = '/api/Post/PostItemDownloadBuy',
-  music = '/api/Post/PostItemMusic',
-  musicBuy = '/api/Post/PostItemMusicBuy',
-  video = '/api/Post/PostItemVideo',
-  videoBuy = '/api/Post/PostItemVideoBuy',
+  item = '/Api/Post/PostItem',
+  list = '/Api/Post/PostList',
+  bbsSilder = '/Api/Bbs/BbsSilder',
+  userList = '/Api/Post/UserPostList',
+  create = '/Api/Post/PostCreate',
+  view = '/Api/Post/PostViewUpdate',
+  collect = '/Api/Post/PostCollect',
+  collectList = '/Api/Post/CollectPost',
+  unCollect = '/Api/Post/PostUnCollect',
+  download = '/Api/Post/PostItemDownload',
+  downloadBuy = '/Api/Post/PostItemDownloadBuy',
+  music = '/Api/Post/PostItemMusic',
+  musicBuy = '/Api/Post/PostItemMusicBuy',
+  video = '/Api/Post/PostItemVideo',
+  videoBuy = '/Api/Post/PostItemVideoBuy',
 }
 
 const getPostItem = async (params: ReqPostItem) =>

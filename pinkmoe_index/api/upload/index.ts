@@ -14,9 +14,9 @@ import type { ReqFileList, ResFileList } from '/@/api/upload/types'
 import type { IResponse } from '/@/utils/http/axios/type'
 // import axios from 'axios';
 enum URL {
-  upload = '/api/Upload/FileUpload',
-  list = '/api/Upload/FileList',
-  delete = '/api/Upload/ImgFileDelete',
+  upload = '/Api/Upload/FileUpload',
+  list = '/Api/Upload/FileList',
+  delete = '/Api/Upload/ImgFileDelete',
 }
 
 const fileList = async (params: ReqFileList) =>

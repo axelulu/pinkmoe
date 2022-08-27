@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:28:28
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 16:28:38
- * @FilePath: /pinkmoe_index/pages/post/:id.vue
+ * @LastEditTime: 2022-08-27 11:31:19
+ * @FilePath: /pinkmoe_index/pages/post/[ID].vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -42,10 +42,11 @@ const {
   comment,
   loadingPost,
 } = await usePostItem()
+
 const { t } = useI18n()
 const { siteBasic } = useAppStore()
 useHead({
-  title: computed(() => `${postItem.value?.post?.title} - 文章页面`),
+  titleTemplate: `${postItem.value?.post?.title} - 文章页面`,
   meta: [
     { name: 'og:type', content: 'post' },
     {
@@ -58,7 +59,6 @@ useHead({
 </script>
 
 <template>
-  <!-- Post -->
   <div class="flex flex-col items-center">
     <PostVideo
       v-if="
@@ -81,24 +81,24 @@ useHead({
             <div
               class="flex flex-row justify-center pt-3 pb-3 border-y border-gray-100 bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
             >
-              <router-link
+              <NuxtLink
                 :to="`/category/${postItem?.post?.CategoryRelation?.slug}`"
                 class="text-xs mr-4 cursor-pointer flex justify-center items-center hover:bg-pink-50 hover:text-pink-400 dark:hover:bg-gray-800 dark:hover:text-pink-400 duration-300"
               >
                 <i class="mr-1 inline-block i-material-symbols:folder-open-rounded" />
                 <span class="mr-1">{{ postItem?.post?.CategoryRelation?.name }}</span>
-              </router-link>
+              </NuxtLink>
               <div class="text-xs mr-4 flex justify-center items-center">
                 <i class="mr-1 inline-block i-material-symbols:nest-clock-farsight-analog-outline-rounded" />
                 <span>{{ formatDate(postItem?.post?.UpdatedAt) }}</span>
               </div>
-              <router-link
+              <NuxtLink
                 :to="`/author/${postItem?.post?.author}/userInfo`"
                 class="text-xs mr-4 cursor-pointer flex justify-center items-center hover:bg-pink-50 hover:text-pink-400 dark:hover:bg-gray-800 dark:hover:text-pink-400 duration-300"
               >
                 <i class="mr-1 inline-block i-bx:bxs-user-circle" />
                 <span>{{ postItem?.post?.AuthorRelation?.nickName }}</span>
-              </router-link>
+              </NuxtLink>
               <div class="text-xs mr-4 flex justify-center items-center">
                 <i class="mr-1 inline-block i-ic:outline-play-circle-filled" />
                 <span>{{ postItem?.post?.view }}</span>
@@ -119,14 +119,14 @@ useHead({
             />
             <div class="flex flex-wrap pb-2">
               <div class="pl-4 pb-2 flex flex-wrap">
-                <router-link
+                <NuxtLink
                   v-for="(topicItem, v) in postItem?.post?.topic"
                   :key="v"
                   :to="`/topic/${topicItem.value}`"
                   class="border border-pink-400 text-xs mb-2 text-pink-400 p-1 hover:bg-pink-400 hover:text-white duration-300 cursor-pointer mr-2"
                 >
                   {{ topicItem.value }}
-                </router-link>
+                </NuxtLink>
               </div>
               <div class="pl-4 pb-2 flex flex-row flex-1">
                 <div
@@ -167,12 +167,12 @@ useHead({
               <ul class="text-xs list-disc ml-4">
                 <li>
                   本作品是由 粉萌次元 会员
-                  <router-link
+                  <NuxtLink
                     class="text-pink-400"
                     :to="`/author/${postItem?.post?.AuthorRelation?.uuid}/userInfo`"
                   >
                     {{ postItem?.post?.AuthorRelation?.nickName }}
-                  </router-link>
+                  </NuxtLink>
                   的投递作品。
                 </li>
                 <li>转载请务请署名并注明出处</li>
@@ -238,13 +238,13 @@ useHead({
               <i class="mr-1 inline-block i-ph:user-fill" />
               <span>Ta的帖子</span>
             </div>
-            <router-link
+            <NuxtLink
               :to="`/author/${postItem?.post?.AuthorRelation?.uuid}/post`"
               class="text-xs text-gray-500 flex justify-center items-center dark:text-gray-200 hover:text-pink-400 cursor-pointer duration-300"
             >
               <span class="mr-1">{{ $t('more') }}</span>
               <i class="mr-1 inline-block i-fluent:caret-right-12-filled" />
-            </router-link>
+            </NuxtLink>
           </div>
           <SlidePost :posts="postItem.authorPosts" />
           <SlideUser :users="postItem.users" />

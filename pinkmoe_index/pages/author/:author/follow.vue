@@ -34,7 +34,6 @@ useHead({
 </script>
 
 <template>
-  <!-- AuthorAuthorFollow -->
   <AuthorLayout>
     <div class="flex justify-start flex-wrap mt-4 animate-fadeIn30">
       <Spin :show="loading" class="flex flex-wrap">
@@ -47,7 +46,7 @@ useHead({
             :key="index"
             class="p-1 text-center cursor-pointer text-gray-500 hover:bg-pink-50 dark:hover:bg-gray-700 hover:text-pink-400"
           >
-            <router-link :to="`/author/${item?.toUidRelation?.uuid}/userInfo`">
+            <NuxtLink :to="`/author/${item?.toUidRelation?.uuid}/userInfo`">
               <img
                 v-lazy="item?.toUidRelation?.avatar"
                 class="rounded-full animate-lazyloaded h-20 w-20 border-2 border-transparent hover:border-pink-400 duration-300 object-cover"
@@ -56,7 +55,7 @@ useHead({
               <div class="text-xs mt-1">
                 {{ item?.toUidRelation?.nickName }}
               </div>
-            </router-link>
+            </NuxtLink>
           </div>
           <div class="w-full p-1.5 text-gray-500">
             <MoreBtn v-if="hasMore" @click="nextPage" />

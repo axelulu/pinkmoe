@@ -13,10 +13,10 @@ import { get, post } from '/@/utils/http/axios'
 import type { IResponse } from '/@/utils/http/axios/type'
 // import axios from 'axios';
 enum URL {
-  list = '/api/Chat/ChatList',
-  listRelation = '/api/Chat/ChatRelationList',
-  createRelation = '/api/Chat/CreateChatRelation',
-  deleteRelation = '/api/Chat/DeleteChatRelation',
+  list = '/Api/Chat/ChatList',
+  listRelation = '/Api/Chat/ChatRelationList',
+  createRelation = '/Api/Chat/CreateChatRelation',
+  deleteRelation = '/Api/Chat/DeleteChatRelation',
 }
 
 const getChatList = async (params: any) =>

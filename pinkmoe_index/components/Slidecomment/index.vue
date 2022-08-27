@@ -20,7 +20,6 @@ const { formatDate } = useUtil()
 </script>
 
 <template>
-  <!-- Slidecomment -->
   <div class="mt-4 animate-fadeIn30">
     <div class="flex flex-row justify-between mx-1">
       <div class="text-xs text-gray-500 flex justify-center items-center dark:text-gray-200">
@@ -33,7 +32,7 @@ const { formatDate } = useUtil()
       :key="index"
       class="flex flex-row h-full w-full p-2 bg-white dark:bg-gray-700 dark:text-gray-200 rounded-md duration-300 my-1 border-2 border-transparent hover:border-pink-400 text-center cursor-pointer text-gray-500 hover:bg-pink-50"
     >
-      <router-link
+      <NuxtLink
         :to="`/author/${item.FormUidRelation.uuid}/userInfo`"
         class="mr-2 w-18 h-full"
       >
@@ -42,15 +41,15 @@ const { formatDate } = useUtil()
           class="rounded-full animate-lazyloaded border-2 border-transparent hover:border-pink-400 duration-300 w-12 h-12 object-cover"
           alt=""
         >
-      </router-link>
+      </NuxtLink>
       <div class="text-xs w-full">
         <div class="flex flex-row justify-between w-full">
-          <router-link
+          <NuxtLink
             :to="`/author/${item.FormUidRelation.uuid}/userInfo`"
             class="text-sm text-pink-400"
           >
             {{ item.FormUidRelation.nickName }}
-          </router-link>
+          </NuxtLink>
           <div>{{ formatDate(item?.UpdatedAt) }}</div>
         </div>
         <div class="text-left mt-1 text-ellipsis text-xs line-clamp-3">

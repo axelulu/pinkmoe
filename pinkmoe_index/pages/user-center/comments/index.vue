@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:10:18
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 18:14:33
+ * @LastEditTime: 2022-08-27 11:25:59
  * @FilePath: /pinkmoe_index/pages/user-center/comments/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -39,7 +39,6 @@ useHead({
 </script>
 
 <template>
-  <!-- UserCenterCommentsIndex -->
   <UserCenterLayout>
     <div class="ml-6">
       <div
@@ -67,9 +66,9 @@ useHead({
                 <div class="flex flex-row justify-center items-center">
                   <div>
                     您对
-                    <router-link class="text-pink-400" :to="`/post/${item.postRelation.postId}`">
+                    <NuxtLink class="text-pink-400" :to="`/post/${item.postRelation.postId}`">
                       《{{ item.postRelation.title }}》
-                    </router-link>
+                    </NuxtLink>
                     进行了一次吐槽：
                     <span v-html="item.content" />
                   </div>

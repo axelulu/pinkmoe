@@ -34,7 +34,6 @@ const { showAnimate, dialog } = useMsgConfirm(props, emit)
 </script>
 
 <template>
-  <!-- Publishcomment -->
   <Dialog
     ref="dialog"
     :hide-fun="

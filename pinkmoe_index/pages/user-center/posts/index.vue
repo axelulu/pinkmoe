@@ -39,7 +39,6 @@ useHead({
 </script>
 
 <template>
-  <!-- UserCenterPostsIndex -->
   <UserCenterLayout>
     <div class="ml-6">
       <div

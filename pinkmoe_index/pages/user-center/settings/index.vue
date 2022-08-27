@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:59
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 18:15:21
+ * @LastEditTime: 2022-08-27 11:26:20
  * @FilePath: /pinkmoe_index/pages/user-center/settings/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -53,7 +53,6 @@ useHead({
 </script>
 
 <template>
-  <!-- UserCenterSettingsIndex -->
   <UserCenterLayout>
     <Spin :show="loading" class="flex flex-wrap">
       <div class="ml-6 columns-2 gap-4">

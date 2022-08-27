@@ -46,7 +46,6 @@ defineExpose({
 </script>
 
 <template>
-  <!-- Publishcomment -->
   <Dialog
     ref="dialog"
     :hide-fun="
@@ -74,14 +73,14 @@ defineExpose({
             class="flex flex-row justify-center items-center text-gray-500 dark:text-gray-200 text-xs ml-4 p-0 rounded-bl-md rounded-br-md overflow-hidden"
           >
             <i class="inline-block i-fa6-solid:comment" />
-            <router-link
+            <NuxtLink
               v-if="commentMetas !== null"
               :to="`/author/${commentMetas.FormUidRelation.uuid}/userInfo`"
               class="ml-1"
             >
               回复
               <span class="text-pink-400">{{ commentMetas.FormUidRelation.nickName }}</span> 的评论
-            </router-link>
+            </NuxtLink>
             <span v-else class="ml-1">发表评论</span>
           </div>
           <div

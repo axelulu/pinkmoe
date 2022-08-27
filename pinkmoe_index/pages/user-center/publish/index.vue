@@ -55,7 +55,6 @@ useHead({
 </script>
 
 <template>
-  <!-- UserCenterPublishIndex -->
   <UserCenterLayout>
     <Spin :show="loading" class="flex flex-wrap">
       <form ref="formPublish" class="ml-6" onsubmit="return false">

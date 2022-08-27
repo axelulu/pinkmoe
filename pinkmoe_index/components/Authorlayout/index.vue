@@ -17,7 +17,6 @@ const { unFollow, follow, lev, menu, userInfo, currentMenu, status, jump }
 </script>
 
 <template>
-  <!-- Authorlayout -->
   <div class="flex flex-col lg:w-3/4 xl:w-5/12 m-auto">
     <div
       class="bg-cover min-h-43 w-full relative"
@@ -64,7 +63,7 @@ const { unFollow, follow, lev, menu, userInfo, currentMenu, status, jump }
       <div
         class="bg-white text-gray-500 dark:bg-gray-700 dark:text-gray-200 opacity-95 px-3 flex flex-row rounded-md justify-around shadow-sm"
       >
-        <router-link
+        <NuxtLink
           v-for="(item, index) in menu"
           :key="index"
           :to="item.url"
@@ -77,7 +76,7 @@ const { unFollow, follow, lev, menu, userInfo, currentMenu, status, jump }
         >
           <i :class="`inline-block text-xs i-${item.icon}`" />
           <span class="ml-1 text-xs">{{ item.name }}</span>
-        </router-link>
+        </NuxtLink>
       </div>
       <slot />
     </div>

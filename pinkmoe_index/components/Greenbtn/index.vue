@@ -30,7 +30,6 @@ defineProps({
 </script>
 
 <template>
-  <!-- Greenbtn -->
   <div
     :class="classes"
     class="w-full flex justify-center items-center select-none py-1.5 cursor-pointer hover:bg-green-600 duration-300 active:bg-green-500 bg-green-500 border-0 border-green-600 text-xs text-white text-center"

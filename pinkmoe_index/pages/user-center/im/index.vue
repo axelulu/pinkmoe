@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:10:55
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 18:14:46
+ * @LastEditTime: 2022-08-27 11:26:06
  * @FilePath: /pinkmoe_index/pages/user-center/im/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -51,7 +51,6 @@ const { formatDate } = useUtil()
 </script>
 
 <template>
-  <!-- UserCenterImIndex -->
   <UserCenterLayout>
     <div class="ml-6">
       <div
@@ -116,21 +115,21 @@ const { formatDate } = useUtil()
                   v-if="k.userIdRelation?.uuid === auth?.userInfo?.uuid"
                   class="flex flex-row w-full items-start w-full pb-2 border-b dark:border-gray-800 border-gray-100"
                 >
-                  <router-link :to="`/author/${k.userIdRelation?.uuid}/userInfo`">
+                  <NuxtLink :to="`/author/${k.userIdRelation?.uuid}/userInfo`">
                     <img
                       v-lazy="`${k.userIdRelation?.avatar}`"
                       class="w-12 h-12 rounded-full m-2"
                       alt=""
                     >
-                  </router-link>
+                  </NuxtLink>
                   <div>
                     <div class="flex flex-row items-start text-xs mt-2">
-                      <router-link
+                      <NuxtLink
                         :to="`/author/${k.userIdRelation?.uuid}/userInfo`"
                         class="mr-4 hover:text-pink-400 duration-300"
                       >
                         {{ k.userIdRelation?.nickName }}
-                      </router-link>
+                      </NuxtLink>
                       <div
                         :style="`background-color: ${k.userIdRelation?.authority?.authorityColor};`"
                         class="mr-4 px-0.5 rounded-md text-white"
@@ -161,12 +160,12 @@ const { formatDate } = useUtil()
                       >
                         {{ k.userIdRelation?.authority?.authorityName }}
                       </div>
-                      <router-link
+                      <NuxtLink
                         :to="`/author/${k.userIdRelation?.uuid}/userInfo`"
                         class="ml-4 hover:text-pink-400 duration-300"
                       >
                         {{ k.userIdRelation?.nickName }}
-                      </router-link>
+                      </NuxtLink>
                     </div>
                     <div class="mt-1 text-right">
                       {{ k.content }}

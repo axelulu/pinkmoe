@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 15:21:34
+ * @LastEditTime: 2022-08-27 11:30:46
  * @FilePath: /pinkmoe_index/hooks/post.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -138,9 +138,11 @@ export const usePostItem = async () => {
     }
   }
 
-  postView({ postId: route.params.id })
-  await getRecommendPost()
-  await getComment()
+  onMounted(() => {
+    postView({ postId: route.params.id })
+    getComment()
+    getRecommendPost()
+  })
   await getPost()
 
   return {
@@ -155,9 +157,9 @@ export const usePostItem = async () => {
     loading,
     loadingPost,
     formParams,
+    getPost,
     share,
     nextPage,
-    getComment,
     showComment,
     refreshComment,
   }

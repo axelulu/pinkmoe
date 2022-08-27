@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 09:55:56
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 17:42:44
- * @FilePath: /pinkmoe_vitesse/src/components/Commentcontent/index.vue
+ * @LastEditTime: 2022-08-27 11:24:11
+ * @FilePath: /pinkmoe_index/components/Commentcontent/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -28,19 +28,18 @@ defineExpose({
 </script>
 
 <template>
-  <!-- Commentcontent -->
   <div v-for="(i, index) in item.children" :key="index">
     <div
       class="flex flex-row justify-between items-center bg-gray-100 dark:bg-gray-800 dark:border-gray-500 pl-2 border-l-2 border-gray-300"
     >
       <div class="text-xs text-gray-500 dark:text-gray-200 py-2 flex flex-row">
-        <router-link :to="`/author/${i.FormUidRelation.uuid}/userInfo`" class="text-pink-400">
+        <NuxtLink :to="`/author/${i.FormUidRelation.uuid}/userInfo`" class="text-pink-400">
           {{ i.FormUidRelation.nickName }}
-        </router-link>
+        </NuxtLink>
         回复
-        <router-link :to="`/author/${i.FormUidRelation.uuid}/userInfo`" class="text-pink-400">
+        <NuxtLink :to="`/author/${i.FormUidRelation.uuid}/userInfo`" class="text-pink-400">
           {{ i.ToUidRelation.nickName }}
-        </router-link>
+        </NuxtLink>
         :
         <div class="flex flex-row" v-html="i.content" />
       </div>

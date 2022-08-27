@@ -15,7 +15,7 @@ import type { ResPost } from '/@/api/home/types'
 import type { ReqSearchPost } from '/@/api/search/types'
 // import axios from 'axios';
 enum URL {
-  list = '/api/Post/SearchPostList',
+  list = '/Api/Post/SearchPostList',
 }
 
 const getSearchPostList = async (params: ReqSearchPost) =>

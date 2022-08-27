@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:32:24
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 16:23:20
+ * @LastEditTime: 2022-08-27 11:25:34
  * @FilePath: /pinkmoe_index/pages/bbs/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -57,7 +57,6 @@ useHead({
 </script>
 
 <template>
-  <!-- Bbs -->
   <div class="flex flex-col items-center">
     <div class="lg:w-3/4 xl:w-5/12 text-gray-500 mt-4 flex flex-row">
       <div class="w-3/24">

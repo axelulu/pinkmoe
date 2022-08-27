@@ -15,7 +15,6 @@ const { scollTop, appStore } = useFooter()
 </script>
 
 <template>
-  <!-- Footer -->
   <div class="relative">
     <div class="bg-white dark:bg-gray-700 dark:text-gray-200 w-full mt-10 flex justify-center">
       <div v-if="appStore.siteFooter" class="lg:w-4/5 xl:w-6/12">

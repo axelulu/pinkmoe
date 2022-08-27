@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-08-11 15:03:50
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 19:00:37
- * @FilePath: /pinkmoe_index/pages/shop/goods/:id.vue
+ * @LastEditTime: 2022-08-27 11:35:51
+ * @FilePath: /pinkmoe_index/pages/shop/goods/[id].vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -41,7 +41,7 @@ const {
 
 const { siteBasic } = useAppStore()
 useHead({
-  title: `${goodsItem.value?.goods?.title} - 商品页面`,
+  titleTemplate: `${goodsItem.value?.goods?.title} - 商品页面`,
   meta: [
     { name: 'og:type', content: 'goods' },
     {
@@ -54,7 +54,6 @@ useHead({
 </script>
 
 <template>
-  <!-- Post -->
   <div class="flex flex-col items-center">
     <div class="flex justify-start flex-wrap lg:w-3/4 xl:w-5/12">
       <div

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 09:47:06
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 16:00:07
+ * @LastEditTime: 2022-08-27 11:25:36
  * @FilePath: /pinkmoe_index/pages/index/components/Popular/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -25,7 +25,6 @@ const { getThumbnail } = useUtil()
 </script>
 
 <template>
-  <!-- Popular -->
   <div
     class="border-y-4 border-pink-400 w-full animate-fadeIn30 min-h-62"
     style="max-height: 480px"
@@ -35,7 +34,7 @@ const { getThumbnail } = useUtil()
         class="popular flex flex-wrap overflow-hidden w-full duration-300"
         style="max-height: 472px"
       >
-        <router-link
+        <NuxtLink
           v-for="(item, index) in popular"
           :key="index"
           :to="`/post/${item.postId}`"
@@ -53,7 +52,7 @@ const { getThumbnail } = useUtil()
           <div class="absolute mb-1 text-sm bottom-1 px-8 w-full text-center text-white text-md">
             {{ item.title }}
           </div>
-        </router-link>
+        </NuxtLink>
       </div>
     </Spin>
   </div>

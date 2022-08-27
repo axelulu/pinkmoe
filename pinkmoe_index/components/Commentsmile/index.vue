@@ -261,7 +261,6 @@ defineExpose({
 </script>
 
 <template>
-  <!-- Commentsmile -->
   <Dialog
     ref="dialog"
     :hide-fun="() => (showAnimate = false)"

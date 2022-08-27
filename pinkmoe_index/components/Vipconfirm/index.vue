@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-29 10:50:39
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 16:05:02
- * @FilePath: /pinkmoe_index/src/components/Vipconfirm/index.vue
+ * @LastEditTime: 2022-08-27 11:25:19
+ * @FilePath: /pinkmoe_index/components/Vipconfirm/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -26,7 +26,6 @@ const { showAnimate, dialog, num, submitVip, changeVip, currentVip } = useVipCon
 </script>
 
 <template>
-  <!-- Publishcomment -->
   <Dialog
     ref="dialog"
     :hide-fun="

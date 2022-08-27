@@ -16,9 +16,9 @@ import type { ReqAuthorFans, ReqAuthorFollow, ReqAuthorPost, ResFollow } from '/
 import type { ResComment } from '/@/api/post/types'
 // import axios from 'axios';
 enum URL {
-  post = '/api/Post/PostList',
-  follow = '/api/Follow/FollowList',
-  comment = '/api/Comment/CommentList',
+  post = '/Api/Post/PostList',
+  follow = '/Api/Follow/FollowList',
+  comment = '/Api/Comment/CommentList',
 }
 
 const getAuthorPostList = async (params: ReqAuthorPost) =>

@@ -25,7 +25,6 @@ const { jumpTo, scrollMenu, shopMenu, keyword, dialog, userSearch } = useSearchD
 </script>
 
 <template>
-  <!-- Search -->
   <Dialog ref="dialog" @hide="close">
     <div class="fixed top-12 left-0 ring-0 flex justify-center w-full pointer-events-none">
       <div class="w-3/6 pointer-events-auto flex flex-col rounded-md overflow-hidden">

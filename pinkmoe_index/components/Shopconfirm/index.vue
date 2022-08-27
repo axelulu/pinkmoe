@@ -26,7 +26,6 @@ const { showAnimate, dialog, num, submitShop, key, currentVip } = useShopConfirm
 </script>
 
 <template>
-  <!-- Publishcomment -->
   <Dialog
     ref="dialog"
     :hide-fun="

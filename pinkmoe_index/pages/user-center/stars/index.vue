@@ -39,7 +39,6 @@ useHead({
 </script>
 
 <template>
-  <!-- UserCenterStarsIndex -->
   <UserCenterLayout>
     <div class="ml-6">
       <div
@@ -98,7 +97,7 @@ useHead({
                     >
                   </th>
                   <th class="px-2 py-3">
-                    <router-link
+                    <NuxtLink
                       :to="`/post/${item?.PostIdRelation?.postId}`"
                       class="cursor-pointer hover:bg-pink-400 hover:text-white duration-300 py-1.5 font-normal"
                     >
@@ -107,7 +106,7 @@ useHead({
                           ? item?.PostIdRelation?.content
                           : item?.PostIdRelation?.title
                       }}</span>
-                    </router-link>
+                    </NuxtLink>
                   </th>
                   <th class="px-2 py-3 font-normal">
                     {{

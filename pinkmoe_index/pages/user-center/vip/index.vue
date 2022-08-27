@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:12:27
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 18:15:30
+ * @LastEditTime: 2022-08-27 11:26:27
  * @FilePath: /pinkmoe_index/pages/user-center/vip/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -36,7 +36,6 @@ useHead({
 </script>
 
 <template>
-  <!-- UserCenterVipIndex -->
   <UserCenterLayout>
     <div class="ml-6">
       <div

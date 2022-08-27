@@ -71,7 +71,6 @@ useHead({
 </script>
 
 <template>
-  <!-- AuthorAuthorUserinfo -->
   <AuthorLayout @userInfo="userInfos">
     <Spin :show="loading" class="flex flex-wrap">
       <div class="mt-4 bg-white w-full dark:bg-gray-700 py-4 animate-fadeIn30 min-h-68">

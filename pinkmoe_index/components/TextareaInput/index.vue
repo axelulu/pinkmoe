@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 21:23:36
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 17:46:17
- * @FilePath: /pinkmoe_vitesse/src/components/TextareaInput/index.vue
+ * @LastEditTime: 2022-08-27 11:25:13
+ * @FilePath: /pinkmoe_index/components/TextareaInput/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -42,7 +42,6 @@ defineProps({
 </script>
 
 <template>
-  <!-- TextareaInput -->
   <div class="relative my-1.5 flex flex-row">
     <textarea
       :class="width"

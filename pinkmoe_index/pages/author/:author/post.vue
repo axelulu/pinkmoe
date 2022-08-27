@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 17:31:17
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 17:52:37
- * @FilePath: /pinkmoe_vitesse/src/pages/author/:author/post.vue
+ * @LastEditTime: 2022-08-27 11:25:30
+ * @FilePath: /pinkmoe_index/pages/author/:author/post.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -34,7 +34,6 @@ useHead({
 </script>
 
 <template>
-  <!-- AuthorAuthorPost -->
   <AuthorLayout>
     <div class="flex justify-start flex-wrap mt-4 animate-fadeIn30">
       <Spin :show="loading">

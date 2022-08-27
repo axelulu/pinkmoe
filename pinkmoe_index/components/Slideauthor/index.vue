@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 18:48:20
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 15:32:19
- * @FilePath: /pinkmoe_index/src/components/Slideauthor/index.vue
+ * @LastEditTime: 2022-08-27 11:25:02
+ * @FilePath: /pinkmoe_index/components/Slideauthor/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -41,27 +41,26 @@ const { unFollow, follow, status, jump, lev } = useSlideAuthor(props)
 </script>
 
 <template>
-  <!-- Slideauthor -->
   <div class="flex flex-row justify-center relative animate-fadeIn30">
     <div
       class="absolute w-full h-30 bg-cover"
       :style="`background-image: url(${author?.headerImg});`"
     />
-    <router-link
+    <NuxtLink
       :to="`/author/${author?.uuid}/userInfo`"
       class="w-36 h-36 rounded-full absolute mt-14 border-4 border-white shadow-2xl cursor-pointer overflow-hidden"
     >
       <img v-lazy="author?.avatar" class="w-36 h-36 object-cover animate-lazyloaded" alt="">
-    </router-link>
+    </NuxtLink>
     <div
       class="w-full bg-white dark:bg-gray-700 pt-24 mt-30 text-center rounded-md overflow-hidden"
     >
-      <router-link
+      <NuxtLink
         :to="`/author/${author?.uuid}/userInfo`"
         class="text-lg text-pink-400 mb-2 hover:text-white hover:bg-pink-400 px-1 py-0.5 duration-300 cursor-pointer"
       >
         {{ author?.nickName }}
-      </router-link>
+      </NuxtLink>
       <div class="p-1 flex flex-row justify-center items-center">
         <span class="text-xs text-white flex justify-center items-center bg-green-500 px-1 py-0.5">
           <i class="mr-1 inline-block i-ph:paw-print-fill" />
@@ -96,34 +95,34 @@ const { unFollow, follow, status, jump, lev } = useSlideAuthor(props)
       <div
         class="flex flex-row text-xs text-gray-500 dark:text-gray-200 bg-gray-50 dark:bg-gray-700"
       >
-        <router-link
+        <NuxtLink
           :to="`/author/${author?.uuid}/follow`"
           class="py-2 flex-1 border-r border-t border-gray-100 dark:border-gray-600 cursor-pointer hover:bg-pink-400 hover:border-pink-400 hover:text-white duration-300"
         >
           <div>{{ followCount }}</div>
           <div>关注</div>
-        </router-link>
-        <router-link
+        </NuxtLink>
+        <NuxtLink
           :to="`/author/${author?.uuid}/fans`"
           class="py-2 flex-1 border-r border-t border-gray-100 dark:border-gray-600 cursor-pointer hover:bg-pink-400 hover:border-pink-400 hover:text-white duration-300"
         >
           <div>{{ fansCount }}</div>
           <div>粉丝</div>
-        </router-link>
-        <router-link
+        </NuxtLink>
+        <NuxtLink
           :to="`/author/${author?.uuid}/post`"
           class="py-2 flex-1 border-r border-t border-gray-100 dark:border-gray-600 cursor-pointer hover:bg-pink-400 hover:border-pink-400 hover:text-white duration-300"
         >
           <div>{{ postCount }}</div>
           <div>帖子</div>
-        </router-link>
-        <router-link
+        </NuxtLink>
+        <NuxtLink
           :to="`/author/${author?.uuid}/comment`"
           class="py-2 flex-1 border-r border-t border-gray-100 dark:border-gray-600 cursor-pointer hover:bg-pink-400 hover:border-pink-400 hover:text-white duration-300"
         >
           <div>{{ commentCount }}</div>
           <div>评论</div>
-        </router-link>
+        </NuxtLink>
       </div>
     </div>
   </div>

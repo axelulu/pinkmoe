@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-24 09:48:39
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-26 12:02:05
- * @FilePath: /pinkmoe/pinkmoe_index/components/Mobile/index.vue
+ * @LastEditTime: 2022-08-27 11:24:34
+ * @FilePath: /pinkmoe_index/components/Mobile/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -16,7 +16,6 @@ const res = useAppStore()
 </script>
 
 <template>
-  <!-- Mobile -->
   <div class="h-full">
     <div class="flex items-center justify-between border border-gray-200">
       <div class="flex justify-center w-full ml-12">

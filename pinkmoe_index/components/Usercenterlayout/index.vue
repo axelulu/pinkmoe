@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:13:05
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-22 11:37:30
- * @FilePath: /pinkmoe_index/src/components/Usercenterlayout/index.vue
+ * @LastEditTime: 2022-08-27 11:25:16
+ * @FilePath: /pinkmoe_index/components/Usercenterlayout/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -156,7 +156,6 @@ const setting = ref<any>([
 </script>
 
 <template>
-  <!-- Usercenterlayout -->
   <div class="flex flex-row mb-2 lg:w-3/4 xl:w-5/12 m-auto mt-4">
     <div class="w-2/12 flex flex-col bg-white dark:bg-gray-700 py-4 rounded-md shadow-sm">
       <div v-for="(item, index) in setting" :key="index">
@@ -177,7 +176,7 @@ const setting = ref<any>([
             <i :class="`p-1.5 inline-block ${childItem.icon}`" />
             <span class="pl-2">{{ childItem.name }}</span>
           </div>
-          <router-link v-else :to="childItem.url">
+          <NuxtLink v-else :to="childItem.url">
             <div
               :class="
                 router.currentRoute.value.fullPath === childItem.url
@@ -196,7 +195,7 @@ const setting = ref<any>([
               />
               <span class="pl-2">{{ childItem.name }}</span>
             </div>
-          </router-link>
+          </NuxtLink>
         </div>
       </div>
     </div>

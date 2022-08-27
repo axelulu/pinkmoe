@@ -102,7 +102,6 @@ function insertCover(cover) {
 </script>
 
 <template>
-  <!-- Wangeditor -->
   <div style="border: 1px solid #ccc; margin-top: 10px">
     <Toolbar
       :editor="editorRef"

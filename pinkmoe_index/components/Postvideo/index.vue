@@ -30,7 +30,6 @@ const { postVideo, buyVideo, showLogin, getInstance, style, currentVideo, auth, 
 </script>
 
 <template>
-  <!-- Postvideo -->
   <div v-if="postVideo" class="flex flex-row w-full h-116 relative">
     <div :style="`background: url('${cover}');background-repeat: no-repeat;background-attachment: local;background-size: cover;filter: blur(8px);`" class="absolute top-0 left-0 w-full h-full" />
     <div class="flex flex-row lg:w-3/4 xl:w-5/12 h-full relative m-auto mt-2">

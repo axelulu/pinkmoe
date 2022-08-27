@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:32:40
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 18:59:12
+ * @LastEditTime: 2022-08-27 11:25:54
  * @FilePath: /pinkmoe_index/pages/shop/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -39,7 +39,6 @@ useHead({
 </script>
 
 <template>
-  <!-- shop -->
   <div class="flex flex-col items-center min-h-86">
     <Swiper
       :slides-per-view="5"
@@ -52,9 +51,9 @@ useHead({
       class="mySwiper"
     >
       <SwiperSlide v-for="(k, v) in popular" :key="v" class="cursor-pointer">
-        <router-link :to="`/shop/category/${k.category}`">
+        <NuxtLink :to="`/shop/category/${k.category}`">
           <img :src="k.cover" alt="">
-        </router-link>
+        </NuxtLink>
       </SwiperSlide>
     </Swiper>
     <div class="text-gray-500 w-full">
@@ -69,7 +68,7 @@ useHead({
           ref="shopMenu"
           class="scrollCat flex flex-nowrap overflow-x-auto justify-start items-center"
         >
-          <router-link
+          <NuxtLink
             v-for="(k, v) in shopCategory"
             :key="v"
             :to="`/shop/category/${k.slug}`"
@@ -82,7 +81,7 @@ useHead({
             >
               {{ k.name }}
             </div>
-          </router-link>
+          </NuxtLink>
         </div>
         <div
           class="hover:text-pink-400 dark:hover:text-pink-400 duration-300 ml-3 cursor-pointer text-xl"
@@ -103,13 +102,13 @@ useHead({
               {{ k.name }}
             </div>
             <div class="flex-1" />
-            <router-link
+            <NuxtLink
               :to="`/shop/category/${k.slug}`"
               class="text-xs text-gray-500 mr-2 flex items-center hover:text-pink-400 dark:text-gray-200 cursor-pointer duration-300"
             >
               {{ $t('more') }}
               <i class="ml-1 i-fluent:caret-right-12-filled" />
-            </router-link>
+            </NuxtLink>
           </div>
           <Spin :show="loading">
             <div

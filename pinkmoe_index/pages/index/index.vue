@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-26 12:02:28
- * @FilePath: /pinkmoe/pinkmoe_index/pages/index/index.vue
+ * @LastEditTime: 2022-08-27 10:30:11
+ * @FilePath: /pinkmoe_index/pages/index/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -65,22 +65,22 @@ const { t } = useI18n()
             {{ item.name }}
           </div>
           <div class="flex flex-row ml-6 flex-1 justify-start items-center">
-            <router-link
+            <NuxtLink
               v-for="(topic, v) in item?.topic"
               :key="v"
               :to="`/topic/${topic.value}`"
               class="h-6 border-2 border-gray-200 dark:hover:border-gray-800 dark:hover:text-gray-200 dark:border-gray-600 dark:text-gray-200 text-xs px-2 py-0.5 mx-0.5 cursor-pointer text-gray-500 hover:text-black hover:border-gray-300 duration-300"
             >
               {{ topic.label }}
-            </router-link>
+            </NuxtLink>
           </div>
-          <router-link
+          <NuxtLink
             :to="`/category/${item.slug}`"
             class="text-xs text-gray-500 mr-2 flex items-center hover:text-pink-400 dark:text-gray-200 cursor-pointer duration-300"
           >
             {{ $t('more') }}
             <i class="ml-1 i-fluent:caret-right-12-filled" />
-          </router-link>
+          </NuxtLink>
         </div>
         <div class="flex justify-start flex-wrap min-h-66">
           <div
@@ -93,9 +93,9 @@ const { t } = useI18n()
           </div>
           <NotFound v-else />
           <div class="w-full p-1.5 text-gray-500">
-            <router-link :to="`/category/${item.slug}`">
+            <NuxtLink :to="`/category/${item.slug}`">
               <MoreBtn />
-            </router-link>
+            </NuxtLink>
           </div>
         </div>
       </div>

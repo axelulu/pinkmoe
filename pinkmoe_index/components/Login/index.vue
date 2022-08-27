@@ -55,7 +55,6 @@ const {
 </script>
 
 <template>
-  <!-- Login -->
   <Dialog
     ref="dialog"
     :hide-fun="() => (showAnimate = false)"

@@ -36,7 +36,6 @@ useHead({
 </script>
 
 <template>
-  <!-- AuthorAuthorComment -->
   <AuthorLayout>
     <Spin :show="loading" class="mt-4">
       <div
@@ -49,12 +48,12 @@ useHead({
           class="flex flex-row justify-between items-center dark:hover:bg-gray-800 bg-white dark:bg-gray-700 px-4 py-2 hover:bg-gray-100 duration-300"
         >
           <div class="flex flex-col justify-start">
-            <router-link
+            <NuxtLink
               :to="`/post/${item?.postRelation?.postId}`"
               class="text-sm text-gray-500 hover:text-pink-400 dark:text-gray-200 duration-300"
             >
               {{ item?.postRelation?.title }}
-            </router-link>
+            </NuxtLink>
             <div class="mt-2">
               <span
                 class="text-xs text-gray-500 dark:text-gray-200 dark:bg-gray-800 bg-gray-100 px-2 py-1"

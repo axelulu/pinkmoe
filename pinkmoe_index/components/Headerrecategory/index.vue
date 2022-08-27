@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 10:59:57
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-22 12:44:24
- * @FilePath: /pinkmoe_index/src/components/Headerrecategory/index.vue
+ * @LastEditTime: 2022-08-27 11:24:27
+ * @FilePath: /pinkmoe_index/components/Headerrecategory/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -45,7 +45,6 @@ defineExpose({
 </script>
 
 <template>
-  <!-- Headerrecategory -->
   <ul
     v-if="item"
     :style="index === 0 ? `top: -12px` : `top: ${32 * index - 12}px`"
@@ -58,14 +57,14 @@ defineExpose({
         class="flex flex-row text-xs"
         @mouseenter="mouseenter(i, index)"
       >
-        <router-link
+        <NuxtLink
           :to="`/category/${i.slug}`"
           class="pl-4 py-2 w-32 hover:bg-pink-400 hover:text-white cursor-pointer duration-300"
         >
           <span class="iconify inline-block " :data-icon="`${i.icon}`" />
           <span class="ml-1 mr-4">{{ i.name }}</span>
           <i v-if="i.children" class="i-fluent:caret-right-12-filled" />
-        </router-link>
+        </NuxtLink>
       </li>
       <HeaderReCategory v-if="isShow" ref="headerReCategory" :item="children" :index="childIndex" />
     </div>

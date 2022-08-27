@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:28:53
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 16:25:06
+ * @LastEditTime: 2022-08-27 10:06:07
  * @FilePath: /pinkmoe_index/pages/topic/:slug.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -40,13 +40,13 @@ useHead({
         <div
           class="flex flex-row bg-white dark:bg-gray-700 dark:text-gray-200 mt-3 rounded-md shadow-sm animate-fadeIn30"
         >
-          <router-link
+          <NuxtLink
             to="/"
             class="text-xs p-3 ml-1 hover:bg-pink-50 cursor-pointer hover:text-pink-400 dark:hover:bg-gray-800 duration-300 flex justify-start items-center"
           >
             <i class="inline-block i-mdi:home-variant" />
-          </router-link>
-          <router-link
+          </NuxtLink>
+          <NuxtLink
             :to="`/topic/${topicPostList.list?.value}`"
             class="flex justify-center items-center"
           >
@@ -55,7 +55,7 @@ useHead({
               class="text-xs py-3 px-2 hover:bg-pink-50 cursor-pointer hover:text-pink-400 dark:hover:bg-gray-800 duration-300"
             >{{ topicPostList.list?.label }}
             </span>
-          </router-link>
+          </NuxtLink>
         </div>
         <div
           class="flex flex-row justify-between bg-white dark:bg-gray-700 mt-3 rounded-md shadow-sm animate-fadeIn30 px-4"

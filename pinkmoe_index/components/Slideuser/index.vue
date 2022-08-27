@@ -18,7 +18,6 @@ defineProps({
 </script>
 
 <template>
-  <!-- Slideuser -->
   <div class="mt-4 animate-fadeIn30">
     <div class="flex flex-row justify-between mx-1">
       <div class="text-xs text-gray-500 dark:text-gray-200 flex justify-center items-center">
@@ -32,7 +31,7 @@ defineProps({
         :key="index"
         class="w-1/3 p-1 text-center cursor-pointer text-gray-500 dark:text-gray-200 hover:bg-pink-50 dark:hover:bg-gray-600 hover:text-pink-400"
       >
-        <router-link :to="`/author/${item.uuid}/userInfo`">
+        <NuxtLink :to="`/author/${item.uuid}/userInfo`">
           <img
             v-lazy="item.avatar"
             class="rounded-full animate-lazyloaded object-cover h-20 w-20 border-2 border-transparent hover:border-pink-400 duration-300"
@@ -41,7 +40,7 @@ defineProps({
           <div class="text-xs mt-1">
             {{ item.nickName }}
           </div>
-        </router-link>
+        </NuxtLink>
       </div>
     </div>
   </div>

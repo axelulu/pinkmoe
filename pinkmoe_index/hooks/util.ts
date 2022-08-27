@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-28 16:34:17
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 14:57:37
+ * @LastEditTime: 2022-08-27 12:57:45
  * @FilePath: /pinkmoe_index/hooks/util.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -62,7 +62,7 @@ export const useUtil = () => {
   }
 
   const getThumbnail = (url: string) => {
-    return `http://localhost:9527/api/v1/Cms/Images/ImageThumbnail?width=${200}&height=${300}&image=${url}`
+    return `/Api/Images/ImageThumbnail?width=${200}&height=${300}&image=${url}`
   }
 
   return { formatDate, getThumbnail, getLevel, checkForm }

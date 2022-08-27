@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:01:30
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 16:24:54
+ * @LastEditTime: 2022-08-27 11:32:35
  * @FilePath: /pinkmoe_index/pages/category/:slug.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -21,7 +21,7 @@ const { loading, hasMore, title, route, categoryPostList, sort, sortPost, nextPa
 
 const { siteBasic } = useAppStore()
 useHead({
-  title: computed(() => `${title.value} - 分类页面`),
+  titleTemplate: `${title.value} - 分类页面`,
   meta: [
     { name: 'og:type', content: 'category' },
     {
@@ -34,19 +34,18 @@ useHead({
 </script>
 
 <template>
-  <!-- Category -->
   <div class="flex flex-col items-center min-h-86">
     <div class="lg:w-3/4 xl:w-5/12 text-gray-500">
       <div
         class="flex flex-row bg-white dark:bg-gray-700 dark:text-gray-200 mt-3 rounded-md shadow-sm animate-fadeIn30"
       >
-        <router-link
+        <NuxtLink
           to="/"
           class="text-xs p-3 ml-1 hover:bg-pink-50 dark:hover:bg-gray-800 cursor-pointer hover:text-pink-400 duration-300 flex justify-start items-center"
         >
           <i class="inline-block i-mdi:home-variant" />
-        </router-link>
-        <router-link
+        </NuxtLink>
+        <NuxtLink
           v-for="(item, index) in categoryPostList?.list?.category"
           :key="index"
           :to="`/category/${item.slug}`"
@@ -56,7 +55,7 @@ useHead({
           <span
             class="text-xs py-3 px-2 hover:bg-pink-50 cursor-pointer hover:text-pink-400 dark:hover:bg-gray-800 duration-300"
           >{{ item.name }}</span>
-        </router-link>
+        </NuxtLink>
       </div>
       <div
         class="flex flex-row justify-between bg-white dark:bg-gray-700 mt-3 rounded-md shadow-sm animate-fadeIn30 px-4"

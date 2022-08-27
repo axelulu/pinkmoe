@@ -19,10 +19,10 @@ import type {
 import type { ResPage } from '/@/api/common/types'
 // import axios from 'axios';
 enum URL {
-  list = '/api/Category/CategoryList',
-  post = '/api/Post/CategoryPostList',
-  shopList = '/api/GoodsCategory/GoodsCategoryList',
-  shopPost = '/api/Goods/CategoryGoodsList',
+  list = '/Api/Category/CategoryList',
+  post = '/Api/Post/CategoryPostList',
+  shopList = '/Api/GoodsCategory/GoodsCategoryList',
+  shopPost = '/Api/Goods/CategoryGoodsList',
 }
 
 const getCategoryList = async () =>

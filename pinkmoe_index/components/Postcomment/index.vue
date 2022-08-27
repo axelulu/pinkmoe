@@ -43,7 +43,6 @@ function showComment(item) {
 </script>
 
 <template>
-  <!-- Postcomment -->
   <div v-if="postComment" class="flex flex-col mt-4 animate-fadeIn30">
     <div class="text-xs text-gray-500 dark:text-gray-200 mr-4 mb-2">
       <i class="mr-1 inline-block i-fa6-solid:comment" />
@@ -67,12 +66,12 @@ function showComment(item) {
             <div class="flex flex-col w-full">
               <div class="flex flex-row justify-between">
                 <div class="flex flex-row justify-center items-center">
-                  <router-link
+                  <NuxtLink
                     :to="`/author/${comment.FormUidRelation.uuid}/userInfo`"
                     class="text-xs h-5 text-pink-400 dark:bg-pink-400 dark:text-gray-200 px-1 flex items-center bg-gray-200 rounded-sm mr-2"
                   >
                     {{ comment.FormUidRelation.nickName }}
-                  </router-link>
+                  </NuxtLink>
                   <div
                     class="text-xs h-5 text-white dark:bg-yellow-500 dark:text-gray-200 bg-yellow-500 px-1 flex items-center rounded-sm mr-2"
                   >
@@ -112,12 +111,12 @@ function showComment(item) {
                     class="flex flex-row justify-between items-center bg-gray-100 dark:bg-gray-800 dark:border-gray-500 pl-2 border-l-2 border-gray-300"
                   >
                     <div class="text-xs text-gray-500 dark:text-gray-200 py-2 flex flex-row">
-                      <router-link
+                      <NuxtLink
                         :to="`/author/${item.FormUidRelation.uuid}/userInfo`"
                         class="text-pink-400"
                       >
                         {{ item.FormUidRelation.nickName }}
-                      </router-link>
+                      </NuxtLink>
                       :
                       <div class="flex flex-row" v-html="item.content" />
                     </div>

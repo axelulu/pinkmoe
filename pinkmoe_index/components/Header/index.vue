@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 18:57:08
+ * @LastEditTime: 2022-08-27 11:24:24
  * @FilePath: /pinkmoe_index/components/Header/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -36,7 +36,6 @@ const {
 </script>
 
 <template>
-  <!--	Header -->
   <div
     class="h-48 bg-blue-200 w-full flex justify-end items-center flex-col bg-cover"
     :style="`background-image: url(${appStore.siteBasic?.background});`"
@@ -47,7 +46,7 @@ const {
           class="flex justify-between items-center pt-2"
           style="text-shadow: 0 0px 2px #fff, 0 0px 5px #fff, 0 0px 10px #fff !important"
         >
-          <router-link
+          <NuxtLink
             v-for="(k, v) in headerBarLeft"
             :key="v"
             :to="`/${k.url}`"
@@ -56,7 +55,7 @@ const {
           >
             <i :class="`text-gray-700 dark:text-gray-200 inline-block ${k.icon}`" />
             <span class="ml-1">{{ i18n.t(k.name) }}</span>
-          </router-link>
+          </NuxtLink>
           <div class="flex-1" />
           <div
             v-for="(k, v) in headerBarRight"
@@ -79,13 +78,13 @@ const {
           </div>
         </div>
         <div class="w-52 h-18 mt-4">
-          <router-link to="/">
+          <NuxtLink to="/">
             <img
               v-lazy="appStore.siteBasic?.logo"
               class="hover:animate-swing30 animate-lazyloaded w-full h-full object-cover"
               alt=""
             >
-          </router-link>
+          </NuxtLink>
         </div>
       </div>
       <div
@@ -106,7 +105,7 @@ const {
           class="flex justify-between lg:w-3/4 xl:w-5/12 m-auto"
         >
           <ul class="flex flex-row justify-start animate-fadeIn30">
-            <router-link
+            <NuxtLink
               to="/"
               class="h-14 pr-3 pl-3 flex justify-center items-center cursor-pointer text-sm hover:bg-black hover:bg-opacity-10 duration-300"
             >
@@ -117,14 +116,14 @@ const {
                   <i class="text-gray-700 dark:text-gray-200 i-mdi:home-variant" />
                 </div>
               </div>
-            </router-link>
+            </NuxtLink>
             <li
               v-for="(category, v) in categoryList"
               :key="v"
               class="relative group"
               @mouseleave="isShow = false"
             >
-              <router-link
+              <NuxtLink
                 :to="`/category/${category.slug}`"
                 class="flex-col h-14 pr-3 pl-3 flex justify-center items-center cursor-pointer text-xs hover:bg-black hover:bg-opacity-10 duration-300"
               >
@@ -136,7 +135,7 @@ const {
                 <div class="text-shadow-bg-white">
                   {{ category.name }}
                 </div>
-              </router-link>
+              </NuxtLink>
               <ul
                 class="group-hover:flex dark:bg-gray-600 bg-opacity-90 flex-col pt-3 pb-3 bg-white absolute top-full left-0 hidden shadow-xl animate-fadeIn30 hover:flex"
               >
@@ -147,14 +146,14 @@ const {
                     class="flex flex-row childCategory text-xs"
                     @mouseenter="mouseenter(item, index)"
                   >
-                    <router-link
+                    <NuxtLink
                       :to="`/category/${item.slug}`"
                       class="pl-4 py-2 w-32 flex justify-center items-center hover:bg-pink-400 hover:text-white cursor-pointer duration-300"
                     >
                       <span class="iconify inline-block " :data-icon="`${item.icon}`" />
                       <span class="ml-1 mr-4">{{ item.name }}</span>
                       <i v-if="item.children" class="inline-block i-fluent:caret-right-12-filled" />
-                    </router-link>
+                    </NuxtLink>
                   </li>
                   <HeaderReCategory
                     v-if="isShow"
@@ -225,14 +224,14 @@ const {
                           <i :class="`inline-block ${childitem.icon}`" />
                           <span class="ml-1">{{ childitem.name }}</span>
                         </div>
-                        <router-link v-else :to="childitem.url">
+                        <NuxtLink v-else :to="childitem.url">
                           <div
                             class="text-xs text-gray-500 flex justify-center items-center dark:text-gray-200 px-2 py-2 cursor-pointer hover:bg-pink-400 w-24 text-center hover:text-white duration-300"
                           >
                             <i :class="`inline-block ${childitem.icon}`" />
                             <span class="ml-1">{{ childitem.name }}</span>
                           </div>
-                        </router-link>
+                        </NuxtLink>
                       </div>
                     </div>
                   </div>

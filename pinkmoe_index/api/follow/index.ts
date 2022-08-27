@@ -14,9 +14,9 @@ import type { ReqFollowStatus } from '/@/api/follow/types'
 import type { IResponse } from '/@/utils/http/axios/type'
 // import axios from 'axios';
 enum URL {
-  create = '/api/Follow/CreateFollow',
-  delete = '/api/Follow/DeleteFollow',
-  status = '/api/Follow/FollowStatus',
+  create = '/Api/Follow/CreateFollow',
+  delete = '/Api/Follow/DeleteFollow',
+  status = '/Api/Follow/FollowStatus',
 }
 
 const createFollow = async (data: ReqFollowStatus) =>

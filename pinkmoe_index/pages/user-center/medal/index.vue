@@ -32,7 +32,6 @@ useHead({
 </script>
 
 <template>
-  <!-- UserCenterMedalIndex -->
   <UserCenterLayout>
     <div class="ml-6">
       <div
