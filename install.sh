@@ -3,7 +3,7 @@
  # @Author: coderzhaolu && izhaicy@163.com
  # @Date: 2022-08-27 18:40:50
  # @LastEditors: coderzhaolu && izhaicy@163.com
- # @LastEditTime: 2022-08-27 23:08:28
+ # @LastEditTime: 2022-08-27 23:46:43
  # @FilePath: /pinkmoe/install.sh
  # @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  # QQ:2419857357;支付宝:13135986153
@@ -50,9 +50,11 @@ function write_ssl()
     read -d$ -p "请输入前台ssl域名的key文件字符串(直接文本打开key文件后复制到这里)，输入$符号退出以完成输入:" pinkmoeKey
     echo "$pinkmoeKey"
     echo "$pinkmoeKey" > ./pinkmoe_index/nginx/ssl/pinkmoe.key
+    echo "$pinkmoeKey" > ./pinkmoe_server/ssl/pinkmoe.key
     read -d$ -p "请输入前台ssl域名的crt文件字符串(直接文本打开crt文件后复制到这里)，输入$符号退出以完成输入:" pinkmoeCrt
     echo "$pinkmoeCrt"
     echo "$pinkmoeCrt" > ./pinkmoe_index/nginx/ssl/pinkmoe.crt
+    echo "$pinkmoeCrt" > ./pinkmoe_server/ssl/pinkmoe.crt
 
     read -d$ -p "请输入后台ssl域名的key文件字符串(直接文本打开key文件后复制到这里)，输入$符号退出以完成输入:" dminPinkmoeKey
     echo "$dminPinkmoeKey"
