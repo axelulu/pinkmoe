@@ -53,7 +53,7 @@ func RunWindowsServer() {
 
 	go func() {
 		// 开启一个goroutine启动服务
-		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		if err := srv.ListenAndServeTLS("./ssl/pinkmoe.crt", "./ssl/pinkmoe.key"); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("listen: %s \n", err)
 		}
 	}()
