@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9c06589-a528-4508-af15-feb6e80b09c9" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/../install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../install.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/nginx/ssl/pinkmoe.crt" beforeDir="false" afterPath="$PROJECT_DIR$/ssl/pinkmoe.crt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/nginx/ssl/pinkmoe.key" beforeDir="false" afterPath="$PROJECT_DIR$/ssl/pinkmoe.key" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_admin/nginx/admin_pinkmoe_ssl.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_admin/nginx/admin_pinkmoe_ssl.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/nginx/pinkmoe_ssl.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/nginx/pinkmoe_ssl.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialize/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/server.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
