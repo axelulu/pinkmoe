@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 16:26:28
+ * @LastEditTime: 2022-08-28 16:50:36
  * @FilePath: /pinkmoe_index/components/Header/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -167,14 +167,14 @@ const {
           </ul>
           <div class="flex flex-row">
             <div
-              v-show="!auth.isLogin"
+              v-show="auth.isLogin === false"
               class="hover:animate-jello100 relative flex shadow-md shadow-gray-300 hover:shadow-gray-400 select-none bg-pink-400 rounded-2xl justify-center items-center px-3 cursor-pointer text-white text-sm duration-300"
               @click="showLogin"
             >
               <span class="loginBtn bg-pink-400">登陆</span>
             </div>
             <div
-              v-show="auth.isLogin" class="flex flex-row"
+              v-show="auth.isLogin === true" class="flex flex-row"
             >
               <div
                 :class="auth.checkInStatus ? 'opacity-30 cursor-not-allowed' : ''"

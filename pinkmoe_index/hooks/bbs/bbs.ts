@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-24 08:40:11
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:58:45
+ * @LastEditTime: 2022-08-28 16:31:36
  * @FilePath: /pinkmoe_index/hooks/bbs/bbs.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -14,7 +14,7 @@ import type { ResPage } from '/@/api/common/types'
 import type { ResPost } from '/@/api/home/types'
 import { createPost, getBbsSilder, getPostList } from '/@/api/post'
 import type { ReqBbsActive, ReqBbsPost, ResBbsSilder } from '/@/api/post/types'
-import { useUserStore } from '/@/store/modules/user';
+import { useUserStore } from '/@/store/modules/user'
 
 export const useBbs = () => {
   const postList = ref<ResPage<Array<ResPost>>>()
@@ -192,20 +192,17 @@ export const useBbs = () => {
       return
     }
     if (checkForm(postFormParams.content, '[\\s\\S]{1,50}$', '请输入正确的内容格式')) {
-      const { code, message } = await createPost(postFormParams)
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '发布成功',
-        })
-        getPost()
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '发布失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '发布成功',
+        failedMsg: '发布失败',
+        loadFun: async () => {
+          const { code, message } = await createPost(postFormParams)
+          return { code, message }
+        },
+      }).then((res) => {
+        if (res.code === 200)
+          getPost()
+      })
     }
   }
 

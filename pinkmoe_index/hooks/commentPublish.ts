@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 10:47:46
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:59:10
+ * @LastEditTime: 2022-08-28 17:03:14
  * @FilePath: /pinkmoe_index/hooks/commentPublish.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -10,7 +10,7 @@
  */
 import { useUtil } from './util'
 import { createComment } from '/@/api/comment'
-import { useUserStore } from '/@/store/modules/user';
+import { useUserStore } from '/@/store/modules/user'
 
 export const useCommentPublish = (props, emit) => {
   const dialog = ref()
@@ -61,24 +61,22 @@ export const useCommentPublish = (props, emit) => {
       formParams.toUid = commentMetas.value ? commentMetas.value.FormUidRelation.uuid : null
       formParams.parentId = commentMetas.value ? commentMetas.value.ID : 0
       formParams.type = commentType.value
-      const { code, message } = await createComment(formParams)
-      if (code === 200) {
-        commentContent.value = ''
-        proxy.$message({
-          type: 'success',
-          msg: '评论成功',
-        })
-        setTimeout(() => {
-          dialog.value.hide()
-          emit('getPostComment')
-        }, 1000)
-      }
-      else {
-        proxy.$message({
-          type: 'success',
-          msg: message || '评论失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '评论成功',
+        failedMsg: '评论失败',
+        loadFun: async () => {
+          const { code, message } = await createComment(formParams)
+          return { code, message }
+        },
+      }).then((res) => {
+        if (res.status === 200) {
+          commentContent.value = ''
+          setTimeout(() => {
+            dialog.value.hide()
+            emit('getPostComment')
+          }, 1000)
+        }
+      })
     }
   }
 

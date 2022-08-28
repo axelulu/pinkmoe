@@ -2,12 +2,13 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 18:26:27
+ * @LastEditTime: 2022-08-28 14:32:51
  * @FilePath: /pinkmoe_index/utils/http/axios/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
+import https from 'https'
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import axios from 'axios'
 import { TokenPrefix, getToken } from '../../auth'
@@ -36,6 +37,7 @@ axiosInstance.interceptors.response.use(
   },
   // 请求失败
   (error: any) => {
+    console.log(error)
     const { response } = error
     if (response) {
       // 请求已发出，但是不在2xx的范围

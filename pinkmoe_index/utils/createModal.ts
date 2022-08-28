@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-24 12:50:52
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 11:53:11
- * @FilePath: /pinkmoe_vitesse/src/utils/createModal.ts
+ * @LastEditTime: 2022-08-28 16:44:48
+ * @FilePath: /pinkmoe_index/utils/createModal.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -11,7 +11,7 @@
 import type { Component } from 'vue'
 import { createApp } from 'vue'
 
-export function createModal(modalConstructor: Component, options?: any) {
+export function createModal(modalConstructor: Component, options?: any, resolve = null) {
   // 这里使用promise的方式，使我们在以函数的方式调用组件时，可以异步处理
   let app: any = null
   const container = document.createElement('div')
@@ -24,8 +24,10 @@ export function createModal(modalConstructor: Component, options?: any) {
   }
 
   // 定义close方法，通过props传递给组件
-  function close() {
+  function close(val) {
     destroyNodes()
+    if (val)
+      resolve(val)
   }
 
   // 定义ok方法，通过props传递给组件

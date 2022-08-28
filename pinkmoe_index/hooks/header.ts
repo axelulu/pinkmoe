@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:59:25
+ * @LastEditTime: 2022-08-28 16:38:37
  * @FilePath: /pinkmoe_index/hooks/header.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -159,7 +159,12 @@ export const useHeader = () => {
             auth.logout()
             proxy.$message({
               type: 'success',
-              msg: '退出登陆成功',
+              successMsg: '退出登陆成功',
+              failedMsg: '退出登陆失败',
+              loadFun: async () => {
+                const code = 200
+                return { code }
+              },
             })
             setTimeout(() => {
               router.push(route.path)
@@ -240,21 +245,15 @@ export const useHeader = () => {
     }
   }
 
-  const checkInUser = async () => {
-    const { code, message } = await checkIn()
-    if (code === 200) {
-      proxy.$message({
-        type: 'success',
-        msg: '签到成功',
-      })
-      await auth.checkIn()
-    }
-    else {
-      proxy.$message({
-        type: 'warning',
-        msg: message || '签到失败',
-      })
-    }
+  const checkInUser = () => {
+    proxy.$message({
+      successMsg: '签到成功',
+      failedMsg: '签到失败',
+      loadFun: async () => {
+        const { code, message, result } = await checkIn()
+        return { code, message, result }
+      },
+    })
   }
 
   const mouseenter = (item, index) => {

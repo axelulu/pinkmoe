@@ -2,13 +2,13 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 14:33:05
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:58:58
+ * @LastEditTime: 2022-08-28 17:03:24
  * @FilePath: /pinkmoe_index/hooks/user-center/publish.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
-import { useUserStore } from '/@/store/modules/user';
+import { useUserStore } from '/@/store/modules/user'
 import { getCategoryList } from '/@/api/category'
 import { deleteFile, fileList, upload } from '/@/api/upload'
 import type { ReqFileList } from '/@/api/upload/types'
@@ -110,22 +110,20 @@ export const useUserCenterPublish = () => {
     fd.append('file', event.target.files[0])
     fd.append('uuid', auth.userInfo?.uuid as string)
     fd.append('type', 'post_temporary')
-    const { code, message, result } = await upload(fd)
-    if (code === 200) {
-      proxy.$message({
-        type: 'success',
-        msg: '上传成功',
-      })
-      formParams.postImg?.push(result.file!)
-      if (formParams.cover?.length === 0)
-        formParams.cover = formParams.postImg?.[0].url
-    }
-    else {
-      proxy.$message({
-        type: 'warning',
-        msg: message || '上传失败',
-      })
-    }
+    proxy.$message({
+      successMsg: '上传成功',
+      failedMsg: '上传失败',
+      loadFun: async () => {
+        const { code, message, result } = await upload(fd)
+        return { code, message, result }
+      },
+    }).then(async (res) => {
+      if (res.status === 200) {
+        formParams.postImg?.push(res.result.file!)
+        if (formParams.cover?.length === 0)
+          formParams.cover = formParams.postImg?.[0].url
+      }
+    })
     event.target.value = ''
   }
 
@@ -134,25 +132,22 @@ export const useUserCenterPublish = () => {
   }
 
   async function deletePostImg(index: any) {
-    const { code, message } = await deleteFile({
-      url: formParams.postImg?.[index].url,
+    proxy.$message({
+      successMsg: '删除成功',
+      failedMsg: '删除失败',
+      loadFun: async () => {
+        const { code, message } = await deleteFile({
+          url: formParams.postImg?.[index].url,
+        })
+        return { code, message }
+      },
+    }).then(async (res) => {
+      if (res.status === 200) {
+        if (formParams.postImg?.[index].url === formParams.cover)
+          formParams.cover = formParams.postImg?.[0].url
+        formParams.postImg?.splice(index, 1)
+      }
     })
-    if (code === 200) {
-      if (formParams.postImg?.[index].url === formParams.cover)
-        formParams.cover = formParams.postImg?.[0].url
-
-      formParams.postImg?.splice(index, 1)
-      proxy.$message({
-        type: 'success',
-        msg: '删除成功',
-      })
-    }
-    else {
-      proxy.$message({
-        type: 'warning',
-        msg: message || '删除失败',
-      })
-    }
   }
 
   async function publishPost() {
@@ -161,22 +156,20 @@ export const useUserCenterPublish = () => {
       && checkForm(formParams.exerpt, '[\\s\\S]{2,120}$', '请输入正确的文章摘要格式')
       && checkForm(formParams.content, '[\\s\\S]{2,120000}$', '请输入正确的文章内容格式')
     ) {
-      const { code, message } = await createPost(formParams)
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '发布成功',
-        })
-        setTimeout(() => {
-          router.push('/user-center/posts')
-        }, 1000)
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '发布失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '发布成功',
+        failedMsg: '发布失败',
+        loadFun: async () => {
+          const { code, message } = await createPost(formParams)
+          return { code, message }
+        },
+      }).then(async (res) => {
+        if (res.status === 200) {
+          setTimeout(() => {
+            router.push('/user-center/posts')
+          }, 1000)
+        }
+      })
     }
   }
 

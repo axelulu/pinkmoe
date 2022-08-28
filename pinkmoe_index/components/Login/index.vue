@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 08:13:00
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-21 15:54:58
- * @FilePath: /pinkmoe_index/src/components/Login/index.vue
+ * @LastEditTime: 2022-08-28 17:13:17
+ * @FilePath: /pinkmoe_index/components/Login/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -62,7 +62,7 @@ const {
     @hide="close"
   >
     <div
-      :class="showAnimate ? 'animate-pinkZoomInUp30' : 'animate-pinkZoomOutDown30'"
+      :class="showAnimate ? 'animate-pinkTipZoomInUp30' : 'animate-pinkTipZoomOutDown30'"
       class="fixed top-0 bottom-0 left-0 ring-0 flex justify-center items-center h-full w-full pointer-events-none"
     >
       <div

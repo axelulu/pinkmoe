@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-29 18:21:38
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:58:54
+ * @LastEditTime: 2022-08-28 16:20:00
  * @FilePath: /pinkmoe_index/hooks/user-center/im.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -16,7 +16,7 @@ import {
 } from '/@/api/chat'
 import type { ReqChat, ResChat, ResChatRelation } from '/@/api/chat/types'
 import type { ResPage } from '/@/api/common/types'
-import { useUserStore } from '/@/store/modules/user';
+import { useUserStore } from '/@/store/modules/user'
 import { useSocketStore } from '/@/store/modules/socket'
 
 export const useUserCenterIm = () => {
@@ -68,30 +68,32 @@ export const useUserCenterIm = () => {
     else {
       proxy.$message({
         type: 'warning',
-        msg: '请选择用户',
+        successMsg: '请选择用户',
+        loadFun: async () => {
+          const code = 200
+          return { code }
+        },
       })
     }
   }
 
   async function addChatRelation() {
-    const { code, message } = await createChatRelationList({
-      sendId: relationChat.value,
+    proxy.$message({
+      successMsg: '添加成功',
+      failedMsg: '添加失败',
+      loadFun: async () => {
+        const { code, message } = await createChatRelationList({
+          sendId: relationChat.value,
+        })
+        return { code, message }
+      },
+    }).then(async (res) => {
+      if (res === 200) {
+        await getChatRelation()
+        formParams.sendId = relationChat.value
+        getChat()
+      }
     })
-    if (code === 200) {
-      proxy.$message({
-        type: 'success',
-        msg: '添加成功',
-      })
-      await getChatRelation()
-      formParams.sendId = relationChat.value
-      getChat()
-    }
-    else {
-      proxy.$message({
-        type: 'warning',
-        msg: message || '添加失败',
-      })
-    }
   }
 
   async function addChat(sendId) {

@@ -2,14 +2,14 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:13:05
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:58:10
+ * @LastEditTime: 2022-08-28 16:18:33
  * @FilePath: /pinkmoe_index/components/Usercenterlayout/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
 -->
 <script lang="ts" setup name="Usercenterlayout">
-import { useUserStore } from '/@/store/modules/user';
+import { useUserStore } from '/@/store/modules/user'
 
 const auth = useUserStore()
 const router = useRouter()
@@ -143,7 +143,12 @@ const setting = ref<any>([
           auth.logout()
           proxy.$message({
             type: 'success',
-            msg: '退出登陆成功',
+            successMsg: '退出登陆成功',
+            failedMsg: '退出登陆失败',
+            loadFun: async () => {
+              const code = 200
+              return { code }
+            },
           })
           setTimeout(() => {
             router.push(route.path)

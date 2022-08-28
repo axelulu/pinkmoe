@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-28 16:34:17
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 18:25:35
+ * @LastEditTime: 2022-08-28 16:18:53
  * @FilePath: /pinkmoe_index/hooks/util.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -53,7 +53,11 @@ export const useUtil = () => {
     if (!email.test(<string>value)) {
       proxy.$message({
         type: 'warning',
-        msg,
+        successMsg: msg,
+        loadFun: async () => {
+          const code = 200
+          return { code }
+        },
       })
       return false
     }

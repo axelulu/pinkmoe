@@ -2,13 +2,13 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 11:01:04
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:58:36
+ * @LastEditTime: 2022-08-28 16:05:50
  * @FilePath: /pinkmoe_index/hooks/slideAuthor.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
-import { useUserStore } from '/@/store/modules/user';
+import { useUserStore } from '/@/store/modules/user'
 import type { ReqFollowStatus } from '/@/api/follow/types'
 import { createFollow, deleteFollow, followStatus } from '/@/api/follow'
 import { useUtil } from './util'
@@ -40,20 +40,17 @@ export const useSlideAuthor = (props) => {
       })
     }
     else {
-      const { code, message } = await deleteFollow(formParams)
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '取消关注成功',
-        })
-        await getFollowStatus()
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '取消关注失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '取消关注成功',
+        failedMsg: '取消关注失败',
+        loadFun: async () => {
+          const { code, message } = await deleteFollow(formParams)
+          return { code, message }
+        },
+      }).then(async (res) => {
+        if (res === 200)
+          await getFollowStatus()
+      })
     }
   }
 
@@ -66,20 +63,17 @@ export const useSlideAuthor = (props) => {
       })
     }
     else {
-      const { code, message } = await createFollow(formParams)
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '关注成功',
-        })
-        await getFollowStatus()
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '关注失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '关注成功',
+        failedMsg: '关注失败',
+        loadFun: async () => {
+          const { code, message } = await createFollow(formParams)
+          return { code, message }
+        },
+      }).then(async (res) => {
+        if (res === 200)
+          await getFollowStatus()
+      })
     }
   }
 

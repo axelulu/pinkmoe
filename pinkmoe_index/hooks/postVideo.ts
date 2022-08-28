@@ -2,13 +2,13 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-27 22:05:52
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:58:33
+ * @LastEditTime: 2022-08-28 16:31:29
  * @FilePath: /pinkmoe_index/hooks/postVideo.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
-import { useUserStore } from '/@/store/modules/user';
+import { useUserStore } from '/@/store/modules/user'
 import { buyPostVideo, getPostVideo } from '/@/api/post'
 import MsgConfirm from '/@/components/Msgconfirm/index.vue'
 import { createDialogModal } from '../utils/createModal'
@@ -171,7 +171,11 @@ export const usePostVideo = async (props) => {
     if (video.url === '') {
       proxy.$message({
         type: 'warning',
-        msg: '商品未购买！',
+        successMsg: '商品未购买！',
+        loadFun: async () => {
+          const code = 200
+          return { code }
+        },
       })
       return
     }
@@ -198,23 +202,20 @@ export const usePostVideo = async (props) => {
         })
         return
       }
-      const { code, message } = await buyPostVideo({
-        postId: props.postId,
-        videoId: item.ID,
+      proxy.$message({
+        successMsg: '购买成功',
+        failedMsg: '购买失败',
+        loadFun: async () => {
+          const { code, message } = await buyPostVideo({
+            postId: props.postId,
+            videoId: item.ID,
+          })
+          return { code, message }
+        },
+      }).then((res) => {
+        if (res.code === 200)
+          getVideo()
       })
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '购买成功',
-        })
-        getVideo()
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '购买失败',
-        })
-      }
     }
   }
 

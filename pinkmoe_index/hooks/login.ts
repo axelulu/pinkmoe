@@ -2,13 +2,13 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:58:23
+ * @LastEditTime: 2022-08-28 17:32:30
  * @FilePath: /pinkmoe_index/hooks/login.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
-import { useUserStore } from '/@/store/modules/user';
+import { useUserStore } from '/@/store/modules/user'
 import type { LoginData, RegData } from '/@/api/user'
 import { getCaptcha, updateUserEmailCaptcha } from '/@/api/user'
 import type { ReqUserEmailCaptcha } from '../api/user/types'
@@ -66,34 +66,36 @@ export const useLogin = (props) => {
     if (!email.test(<string>regFormParams.emailCode)) {
       proxy.$message({
         type: 'warning',
-        msg: '请输入正确的邮箱格式',
+        successMsg: '请输入正确的邮箱格式',
+        loadFun: async () => {
+          const code = 200
+          return { code }
+        },
       })
       return
     }
     if (sendCaptcha.value) {
       emailFormParams.emailType = type
       emailFormParams.emailCode = regFormParams.emailCode
-      const { code, message } = await updateUserEmailCaptcha(emailFormParams)
-      if (code == 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '发送成功',
-        })
-        sendCaptcha.value = false
-        const timer = setInterval(() => {
-          captchaTimer.value--
-          if (captchaTimer.value < 1) {
-            clearInterval(timer)
-            sendCaptcha.value = true
-          }
-        }, 1000)
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '发送失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '发送成功',
+        failedMsg: '发送失败',
+        loadFun: async () => {
+          const { code, message } = await updateUserEmailCaptcha(emailFormParams)
+          return { code, message }
+        },
+      }).then((res) => {
+        if (res.status === 200) {
+          sendCaptcha.value = false
+          const timer = setInterval(() => {
+            captchaTimer.value--
+            if (captchaTimer.value < 1) {
+              clearInterval(timer)
+              sendCaptcha.value = true
+            }
+          }, 1000)
+        }
+      })
     }
   }
 
@@ -113,24 +115,27 @@ export const useLogin = (props) => {
     ) {
       formParams.captchaId = captcha.value.captchaId
       formParams.captchaCode = formParams.captchaCode.toString()
-      const { result, code, message } = await auth.login(formParams)
-      if (code === 200 && result?.token) {
-        props.close()
-        proxy.$message({
-          type: 'success',
-          msg: '登陆成功',
-        })
-        setTimeout(() => {
-          props.router.push(`${props.route.path}?t=${Date.parse(new Date().toString())}`)
-        }, 1000)
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '登陆失败',
-        })
-        getCaptchas()
-      }
+      proxy.$message({
+        successMsg: '登陆成功',
+        failedMsg: '登陆失败',
+        loadFun: async () => {
+          const { code, message } = await auth.login(formParams)
+          const result = props
+          return { code, message, result }
+        },
+      }).then((res: any) => {
+        if (res.status === 200) {
+          setTimeout(() => {
+            dialog.value.hide()
+          }, 300)
+          setTimeout(() => {
+            res.data.router.push(`${res.data.route.path}?t=${Date.parse(new Date().toString())}`)
+          }, 300)
+        }
+        else {
+          getCaptchas()
+        }
+      })
     }
   }
 
@@ -155,23 +160,23 @@ export const useLogin = (props) => {
       )
     ) {
       regFormParams.captchaCode = regFormParams.captchaCode?.toString()
-      const { code, message } = await auth.reg(regFormParams)
-      if (code == 200) {
-        props.close()
-        proxy.$message({
-          type: 'success',
-          msg: '注册成功',
-        })
-        setTimeout(() => {
-          props.router.push(`${props.route.path}?t=${Date.parse(new Date().toString())}`)
-        }, 1000)
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '注册失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '注册成功',
+        failedMsg: '注册失败',
+        loadFun: async () => {
+          const { code, message } = await auth.reg(regFormParams)
+          return { code, message }
+        },
+      }).then((res) => {
+        if (res.status === 200) {
+          setTimeout(() => {
+            dialog.value.hide()
+          }, 300)
+          setTimeout(() => {
+            res.data.router.push(`${res.data.route.path}?t=${Date.parse(new Date().toString())}`)
+          }, 300)
+        }
+      })
     }
   }
 
@@ -196,23 +201,23 @@ export const useLogin = (props) => {
     ) {
       regFormParams.captchaCode = regFormParams.captchaCode?.toString()
       regFormParams.captchaType = 'forget'
-      const { code, message } = await auth.forget(regFormParams)
-      if (code == 200) {
-        props.close()
-        proxy.$message({
-          type: 'success',
-          msg: '修改密码成功',
-        })
-        setTimeout(() => {
-          props.router.push(`${props.route.path}?t=${Date.parse(new Date().toString())}`)
-        }, 1000)
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '修改密码失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '修改成功',
+        failedMsg: '修改失败',
+        loadFun: async () => {
+          const { code, message } = await auth.forget(regFormParams)
+          return { code, message }
+        },
+      }).then((res) => {
+        if (res.status === 200) {
+          setTimeout(() => {
+            dialog.value.hide()
+          }, 300)
+          setTimeout(() => {
+            res.data.router.push(`${res.data.route.path}?t=${Date.parse(new Date().toString())}`)
+          }, 300)
+        }
+      })
     }
   }
 

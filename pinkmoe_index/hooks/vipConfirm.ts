@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-29 11:00:23
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 17:47:29
- * @FilePath: /pinkmoe_vitesse/src/hooks/vipConfirm.ts
+ * @LastEditTime: 2022-08-28 16:31:34
+ * @FilePath: /pinkmoe_index/hooks/vipConfirm.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -43,20 +43,17 @@ export const useVipConfirm = (props) => {
       formParams.authorityParamValue = currentVip.value.authorityParamValue
       formParams.authorityParamDay = currentVip.value.authorityParamDay
       formParams.authorityNum = num.value
-      const { code, message } = await buyVip(formParams)
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '购买成功',
-        })
-        dialog.value.hide()
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '购买失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '购买成功',
+        failedMsg: '购买失败',
+        loadFun: async () => {
+          const { code, message } = await buyVip(formParams)
+          return { code, message }
+        },
+      }).then((res) => {
+        if (res.code === 200)
+          dialog.value.hide()
+      })
     }
   }
 

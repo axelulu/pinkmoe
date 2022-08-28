@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-24 09:00:58
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-22 22:50:24
- * @FilePath: /pinkmoe_index/src/hooks/bbs/bbsArticle.ts
+ * @LastEditTime: 2022-08-28 16:10:05
+ * @FilePath: /pinkmoe_index/hooks/bbs/bbsArticle.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -51,20 +51,17 @@ export const useBbsArticle = (post) => {
       })
     }
     else {
-      const { code, message } = await deleteFollow(formParams)
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '取消关注成功',
-        })
-        await getFollowStatus()
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '取消关注失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '取消关注成功',
+        failedMsg: '取消关注失败',
+        loadFun: async () => {
+          const { code, message } = await deleteFollow(formParams)
+          return { code, message }
+        },
+      }).then(async (res) => {
+        if (res === 200)
+          await getFollowStatus()
+      })
     }
   }
 
@@ -77,20 +74,17 @@ export const useBbsArticle = (post) => {
       })
     }
     else {
-      const { code, message } = await createFollow(formParams)
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '关注成功',
-        })
-        await getFollowStatus()
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '关注失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '关注成功',
+        failedMsg: '关注失败',
+        loadFun: async () => {
+          const { code, message } = await createFollow(formParams)
+          return { code, message }
+        },
+      }).then(async (res) => {
+        if (res === 200)
+          await getFollowStatus()
+      })
     }
   }
 
@@ -103,21 +97,19 @@ export const useBbsArticle = (post) => {
       })
     }
     else {
-      const { code, message } = await collectPost({ postId: post.postId })
-      if (code === 200) {
-        isCollect.value = true
-        proxy.$message({
-          type: 'success',
-          msg: '收藏成功',
-        })
-        await getFollowStatus()
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '收藏失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '收藏成功',
+        failedMsg: '收藏失败',
+        loadFun: async () => {
+          const { code, message } = await collectPost({ postId: post.postId })
+          return { code, message }
+        },
+      }).then(async (res) => {
+        if (res === 200) {
+          isCollect.value = true
+          await getFollowStatus()
+        }
+      })
     }
   }
 
@@ -130,21 +122,19 @@ export const useBbsArticle = (post) => {
       })
     }
     else {
-      const { code, message } = await unCollectPost({ postId: post.postId })
-      if (code === 200) {
-        isCollect.value = false
-        proxy.$message({
-          type: 'success',
-          msg: '取消收藏成功',
-        })
-        await getFollowStatus()
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '取消收藏失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '取消收藏成功',
+        failedMsg: '取消收藏失败',
+        loadFun: async () => {
+          const { code, message } = await unCollectPost({ postId: post.postId })
+          return { code, message }
+        },
+      }).then(async (res) => {
+        if (res === 200) {
+          isCollect.value = false
+          await getFollowStatus()
+        }
+      })
     }
   }
 

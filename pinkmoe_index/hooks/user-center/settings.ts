@@ -2,13 +2,13 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 14:24:31
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:59:01
+ * @LastEditTime: 2022-08-28 17:03:31
  * @FilePath: /pinkmoe_index/hooks/user-center/settings.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
  */
-import { useUserStore } from '/@/store/modules/user';
+import { useUserStore } from '/@/store/modules/user'
 import {
   updateUserAvatar,
   updateUserDetail,
@@ -67,36 +67,26 @@ export const useUserCenterSettings = () => {
       checkForm(detailFormParams.nickName?.toString(), '[\\s\\S]{1,7}$', '请输入正确的昵称格式')
       && checkForm(detailFormParams.desc?.toString(), '[\\s\\S]{3,100}$', '请输入正确的描述格式')
     ) {
-      const { code, message } = await updateUserDetail(detailFormParams)
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '更新成功',
-        })
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '更新失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '更新成功',
+        failedMsg: '更新失败',
+        loadFun: async () => {
+          const { code, message } = await updateUserDetail(detailFormParams)
+          return { code, message }
+        },
+      })
     }
   }
 
   async function updateAvatar() {
-    const { code, message } = await updateUserAvatar(avatarFormParams)
-    if (code === 200) {
-      proxy.$message({
-        type: 'success',
-        msg: '更新成功',
-      })
-    }
-    else {
-      proxy.$message({
-        type: 'warning',
-        msg: message || '更新失败',
-      })
-    }
+    proxy.$message({
+      successMsg: '更新成功',
+      failedMsg: '更新失败',
+      loadFun: async () => {
+        const { code, message } = await updateUserAvatar(avatarFormParams)
+        return { code, message }
+      },
+    })
   }
 
   async function getEmailCaptcha() {
@@ -106,31 +96,33 @@ export const useUserCenterSettings = () => {
       if (!email.test(<string>emailCaptchaFormParams.emailCode)) {
         proxy.$message({
           type: 'warning',
-          msg: '请输入正确的邮箱格式',
+          successMsg: '请输入正确的邮箱格式',
+          loadFun: async () => {
+            const code = 200
+            return { code }
+          },
         })
         return
       }
-      const { code, message } = await updateUserEmailCaptcha(emailCaptchaFormParams)
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '获取成功',
-        })
-        sendCaptcha.value = false
-        const timer = setInterval(() => {
-          captchaTimer.value--
-          if (captchaTimer.value < 1) {
-            clearInterval(timer)
-            sendCaptcha.value = true
-          }
-        }, 1000)
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '获取失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '获取成功',
+        failedMsg: '获取失败',
+        loadFun: async () => {
+          const { code, message } = await updateUserEmailCaptcha(emailCaptchaFormParams)
+          return { code, message }
+        },
+      }).then(async (res) => {
+        if (res.status === 200) {
+          sendCaptcha.value = false
+          const timer = setInterval(() => {
+            captchaTimer.value--
+            if (captchaTimer.value < 1) {
+              clearInterval(timer)
+              sendCaptcha.value = true
+            }
+          }, 1000)
+        }
+      })
     }
   }
 
@@ -148,19 +140,14 @@ export const useUserCenterSettings = () => {
       )
     ) {
       emailFormParams.emailCaptcha = emailFormParams.emailCaptcha?.toString()
-      const { code, message } = await updateUserEmail(emailFormParams)
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '更新成功',
-        })
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '更新失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '更新成功',
+        failedMsg: '更新失败',
+        loadFun: async () => {
+          const { code, message } = await updateUserEmail(emailFormParams)
+          return { code, message }
+        },
+      })
     }
   }
 
@@ -185,23 +172,22 @@ export const useUserCenterSettings = () => {
       if (pwdFormParams.password !== pwdFormParams.reNewPwd) {
         proxy.$message({
           type: 'warning',
-          msg: '二次密码不一样',
+          successMsg: '二次密码不一样',
+          loadFun: async () => {
+            const code = 200
+            return { code }
+          },
         })
         return
       }
-      const { code, message } = await updateUserPwd(pwdFormParams)
-      if (code === 200) {
-        proxy.$message({
-          type: 'success',
-          msg: '更新成功',
-        })
-      }
-      else {
-        proxy.$message({
-          type: 'warning',
-          msg: message || '更新失败',
-        })
-      }
+      proxy.$message({
+        successMsg: '更新成功',
+        failedMsg: '更新失败',
+        loadFun: async () => {
+          const { code, message } = await updateUserPwd(pwdFormParams)
+          return { code, message }
+        },
+      })
     }
   }
 
@@ -218,7 +204,11 @@ export const useUserCenterSettings = () => {
     else {
       proxy.$message({
         type: 'warning',
-        msg: message || '更新失败',
+        successMsg: message || '更新失败',
+        loadFun: async () => {
+          const code = 200
+          return { code }
+        },
       })
     }
     event.target.value = ''

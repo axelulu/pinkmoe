@@ -27,6 +27,9 @@ func Reverse(s interface{}) {
 }
 
 func GetPageCount(total int64, PageSize int) (tt int64) {
+	if PageSize == 0 {
+		return 1
+	}
 	if int(total)%PageSize == 0 {
 		return int64(int(total) / PageSize)
 	} else {

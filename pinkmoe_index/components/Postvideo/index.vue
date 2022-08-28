@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-27 22:00:40
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 15:29:58
+ * @LastEditTime: 2022-08-28 14:47:39
  * @FilePath: /pinkmoe_index/components/Postvideo/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -47,11 +47,12 @@ const { postVideo, buyVideo, showLogin, getInstance, style, currentVideo, auth, 
           />
         </div>
       </div>
-      <div class="flex flex-row w-full" :style="auth.isLogin ? '' : 'filter: blur(6px)'">
+      <div class="flex flex-row w-full">
         <div class="w-19/24 h-112">
           <Artplayer :option="options" :style="style" @get-instance="getInstance" />
         </div>
         <div
+          v-if="auth.isLogin"
           class="w-5/24 mx-4 py-2 overflow-y-scroll h-112 dark:bg-gray-800 bg-white rounded-md shadow-sm"
         >
           <div v-for="(video, v) in postVideo" :key="v" class="px-2 py-1 w-full">
