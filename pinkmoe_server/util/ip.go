@@ -16,6 +16,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
+	"net"
 	"net/http"
 
 	"golang.org/x/text/encoding/simplifiedchinese"
@@ -59,4 +61,16 @@ func GetCityByIp(ip string) string {
 	} else {
 		return ""
 	}
+}
+
+func GetOutboundIP() string {
+	conn, err := net.Dial("udp", "8.8.8.8:80")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer conn.Close()
+
+	localAddr := conn.LocalAddr().(*net.UDPAddr)
+	fmt.Println(localAddr.String())
+	return localAddr.IP.String()
 }

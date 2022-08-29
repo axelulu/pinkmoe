@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:42
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-25 18:15:01
+ * @LastEditTime: 2022-08-28 20:00:33
  * @FilePath: /pinkmoe_index/pages/user-center/publish/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -491,7 +491,7 @@ useHead({
                         ? 'text-gray-500 dark:text-gray-300'
                         : 'text-gray-300 dark:text-gray-500 cursor-not-allowed'
                     "
-                    class="i-ion:md-trash absolute right-1 top-2 p-2 cursor-pointer dark:active:bg-gray-600 active:bg-gray-100 duration-300"
+                    class="i-ion:md-trash absolute inline-block right-1 top-2 p-2 cursor-pointer dark:active:bg-gray-600 active:bg-gray-100 duration-300"
                     @click="formParams.topic?.length! > 1 ? formParams.topic?.splice(index, 1) : ''"
                   />
                 </div>

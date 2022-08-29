@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 10:30:11
+ * @LastEditTime: 2022-08-28 19:58:52
  * @FilePath: /pinkmoe_index/pages/index/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -79,7 +79,7 @@ const { t } = useI18n()
             class="text-xs text-gray-500 mr-2 flex items-center hover:text-pink-400 dark:text-gray-200 cursor-pointer duration-300"
           >
             {{ $t('more') }}
-            <i class="ml-1 i-fluent:caret-right-12-filled" />
+            <i class="ml-1 inline-block i-fluent:caret-right-12-filled" />
           </NuxtLink>
         </div>
         <div class="flex justify-start flex-wrap min-h-66">

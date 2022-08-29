@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-24 09:48:39
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:58:01
+ * @LastEditTime: 2022-08-28 19:57:15
  * @FilePath: /pinkmoe_index/components/Mobile/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -10,7 +10,7 @@
 -->
 <script lang="ts" setup name="Mobile">
 import src from '/@/assets/images/mobile.png'
-import { useAppStore } from '/@/store/modules/app';
+import { useAppStore } from '/@/store/modules/app'
 
 const res = useAppStore()
 </script>

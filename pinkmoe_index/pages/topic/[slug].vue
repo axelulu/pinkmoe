@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:28:53
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 10:06:07
- * @FilePath: /pinkmoe_index/pages/topic/:slug.vue
+ * @LastEditTime: 2022-08-28 19:59:39
+ * @FilePath: /pinkmoe_index/pages/topic/[slug].vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -50,7 +50,7 @@ useHead({
             :to="`/topic/${topicPostList.list?.value}`"
             class="flex justify-center items-center"
           >
-            <i class="text-xs py-3 px-2 ml-1 i-fluent:caret-right-12-filled" />
+            <i class="text-xs py-3 px-2 inline-block ml-1 i-fluent:caret-right-12-filled" />
             <span
               class="text-xs py-3 px-2 hover:bg-pink-50 cursor-pointer hover:text-pink-400 dark:hover:bg-gray-800 duration-300"
             >{{ topicPostList.list?.label }}

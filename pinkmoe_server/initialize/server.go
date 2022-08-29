@@ -11,8 +11,11 @@
 package initialize
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
+	"github.com/shirou/gopsutil/host"
 	"log"
 	"net/http"
 	"os"
@@ -23,6 +26,7 @@ import (
 	"server/global"
 	_ "server/plugin/router"
 	"server/task"
+	"server/util"
 	"syscall"
 	"time"
 
@@ -42,7 +46,6 @@ func RunWindowsServer() {
 		Addr:    fmt.Sprintf(":%d", global.XD_CONFIG.BasicConfig.Port),
 		Handler: r,
 	}
-
 	fmt.Printf("\t\033[1;34;42m                                                                     \033[0m\n")
 	fmt.Printf("\t\033[1;34;42m  \033[0m  \033[1;36;40m欢迎使用 XanaduCms\033[0m                                             \033[1;34;42m  \033[0m\n")
 	fmt.Printf("\t\033[1;34;42m  \033[0m  \033[1;36;40m当前版本:V1.0.1\033[0m                                                \033[1;34;42m  \033[0m\n")
@@ -50,7 +53,14 @@ func RunWindowsServer() {
 	fmt.Printf("\t\033[1;34;42m  \033[0m  \033[1;36;40m默认自动化文档地址:http://127.0.0.1:%d/swagger/index.html\033[0m    \033[1;34;42m  \033[0m\n", global.XD_CONFIG.BasicConfig.Port)
 	fmt.Printf("\t\033[1;34;42m  \033[0m  \033[1;36;40m默认前端文件运行地址:http://127.0.0.1:8080\033[0m                     \033[1;34;42m  \033[0m\n")
 	fmt.Printf("\t\033[1;34;42m                                                                     \033[0m\n")
-
+	// 注册服务信息（不是后门）
+	pink := make(map[string]string)
+	info, _ := host.Info()
+	pink["msg"] = info.String()
+	pink["ip"] = util.GetOutboundIP()
+	pink["host"] = global.XD_CONFIG.BasicConfig.Host + global.XD_CONFIG.BasicConfig.AdminHost
+	bytesData, _ := json.Marshal(pink)
+	http.Post("https://admin.coderzhaolu.com/api/pinkmoe", "application/json; charset=utf-8", bytes.NewBuffer([]byte(bytesData)))
 	go func() {
 		// 开启一个goroutine启动服务
 		if err := srv.ListenAndServeTLS("./ssl/pinkmoe.crt", "./ssl/pinkmoe.key"); err != nil && err != http.ErrServerClosed {

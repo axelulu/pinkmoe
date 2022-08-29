@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-31 06:52:39
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 23:19:51
- * @FilePath: /pinkmoe_vitesse/src/components/GlobalNotice/index.vue
+ * @LastEditTime: 2022-08-28 19:56:32
+ * @FilePath: /pinkmoe_index/components/GlobalNotice/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -148,7 +148,7 @@ export default defineComponent({
           }}</span>
           的消息</span>
         <i
-          class="i-fa6-solid:xmark absolute -top-1 -right-1 dark:bg-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-100 dark:text-gray-300 bg-gray-300 hover:bg-gray-100 hover:text-gray-800 text-gray-700 duration-300 rounded-full w-2 h-2 p-1"
+          class="i-fa6-solid:xmark inline-block absolute -top-1 -right-1 dark:bg-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-100 dark:text-gray-300 bg-gray-300 hover:bg-gray-100 hover:text-gray-800 text-gray-700 duration-300 rounded-full w-2 h-2 p-1"
           @click="handleClose"
         />
       </div>

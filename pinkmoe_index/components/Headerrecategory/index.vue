@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 10:59:57
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 11:24:27
+ * @LastEditTime: 2022-08-28 19:55:30
  * @FilePath: /pinkmoe_index/components/Headerrecategory/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -63,7 +63,7 @@ defineExpose({
         >
           <span class="iconify inline-block " :data-icon="`${i.icon}`" />
           <span class="ml-1 mr-4">{{ i.name }}</span>
-          <i v-if="i.children" class="i-fluent:caret-right-12-filled" />
+          <i v-if="i.children" class="inline-block i-fluent:caret-right-12-filled" />
         </NuxtLink>
       </li>
       <HeaderReCategory v-if="isShow" ref="headerReCategory" :item="children" :index="childIndex" />

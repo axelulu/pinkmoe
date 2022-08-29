@@ -3,8 +3,8 @@
  # @Author: coderzhaolu && izhaicy@163.com
  # @Date: 2022-08-27 18:40:50
  # @LastEditors: coderzhaolu && izhaicy@163.com
- # @LastEditTime: 2022-08-28 17:57:24
- # @FilePath: /pinkmoe_index/Users/zhaolu/Desktop/project/go_vue_gin/pinkmoe/install.sh
+ # @LastEditTime: 2022-08-29 19:04:42
+ # @FilePath: /system-main/Users/zhaolu/Desktop/project/go_vue_gin/pinkmoe/install.sh
  # @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  # QQ:2419857357;支付宝:13135986153
  # Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -30,6 +30,7 @@ function docker_install()
 function write_conf()
 {
     echo -e "\033[34m 请输入网站前台域名(多个域名用英文空格隔开,如:pinkmoe.com www.pinkmoe.com;直接回车默认为pinkmoe.com www.pinkmoe.com):\033[0m"
+    cp ./pinkmoe_server/config.yaml.example ./pinkmoe_server/config.yaml
     read headDomain
     if [ -z $headDomain ]
     then
@@ -45,6 +46,7 @@ function write_conf()
         mainDomain="pinkmoe.com"
     fi
     echo $mainDomain
+    sed -i "s/pinkmoe.com/$mainDomain/g" ./pinkmoe_server/config.yaml
     echo "export const BASEURL = 'https://${mainDomain}:9527/api/v1'" > ./pinkmoe_index/constant.ts
     echo -e "\033[34m 请输入网站后台域名(多个域名用英文空格隔开,如:admin.pinkmoe.com;直接回车默认为admin.pinkmoe.com):\033[0m"
     read backgroundDomain
@@ -53,9 +55,9 @@ function write_conf()
         backgroundDomain="admin.pinkmoe.com"
     fi
     echo $backgroundDomain
+    sed -i "s/admin.pinkmoe.com/$backgroundDomain/g" ./pinkmoe_server/config.yaml
     sed -i "s/admin.pinkmoe.com/$backgroundDomain/g" ./pinkmoe_admin/nginx/admin_pinkmoe_ssl.conf
     sed -i "s/admin.pinkmoe.com/$backgroundDomain/g" ./pinkmoe_admin/nginx/admin_pinkmoe.conf
-    cp ./pinkmoe_server/config.yaml.example ./pinkmoe_server/config.yaml
 }
 
 function write_ssl()

@@ -1,60 +1,10 @@
 #### 演示站点:https://pinkmoe.com
 
-#### 1. 连接linux服务器终端（本教程暂时适用于centos7机器，其他机器没有测试过）
+### 脚本一键安装：
 
-使用sftp这类软件连接到服务器终端后更新软件源
+`wget https://github.com/Coder-ZhaoLu/pinkmoe/releases/download/%E8%84%9A%E6%9C%AC/install.sh && bash install.sh`
 
-`sudo yum update -y`
-
-##### 2. 安装docker
-
-`curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun`
-
-#### 3. 设置开机自启
-
-`systemctl enable docker`
-
-#### 4. 启动docker
-
-`systemctl start docker`
-
-#### 5. 安装docker-compose
-
-`curl -L "https://github.com/docker/compose/releases/download/v2.7.0/docker-compose-$(uname -s)-$(uname -m)" > /usr/bin/docker-compose`
-
-`chmod +x /usr/bin/docker-compose`
-
-#### 6. 下载本程序到您服务器的root目录中
-
-1. 直接在您网站运行`yum install git -y && git clone https://github.com/Coder-ZhaoLu/pinkmoe && cd pinkmoe/ && cp ./pinkmoe_server/config.yaml.example ./pinkmoe_server/config.yaml && ls`（此方法克隆到您网站之后需要使用sftp等软件进行下面步骤的文件修改）
-
-2. 直接下载文件到您本地，然后进行下面步骤文件修改后上传到您网站服务器
-
-#### 7. 修改网站前端配置文件
-
-编辑首页文件：/pinkmoe_index/nginx/pinkmoe_ssl.conf和/pinkmoe_index/nginx/pinkmoe.conf
-
-编辑后台文件：/pinkmoe_admin/nginx/admin_pinkmoe_ssl.conf和/pinkmoe_admin/nginx/admin_pinkmoe_ssl.conf
-
-修改server_name后面的域名为你自己的域名，每个域名以英文空格隔开
-
-#### 8. 修改网站后端配置文件
-
-复制/pinkmoe_server/config.yaml.example为config.yaml到/pinkmoe_server/目录中，按需编辑config.yaml中的配置为您网站的后台配置
-
-#### 9. 替换ssl文件为你自己的文件
-
-替换/pinkmoe_index/nginx/ssl与/pinkmoe_admin/nginx/ssl中的文件为你自己网站的ssl文件（注意：替换的文件名称一定要与ssl文件夹中的名称一致）
-
-#### 10. 启动docker服务进行安装
-
-`docker-compose up -d`
-
-如果中途没有报错即表示安装成功，访问域名即可
-
-(根目录执行)一键执行安装脚本：`sudo yum update -y && curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun && systemctl enable docker && systemctl start docker && curl -L "https://github.com/docker/compose/releases/download/v2.7.0/docker-compose-$(uname -s)-$(uname -m)" > /usr/bin/docker-compose && chmod +x /usr/bin/docker-compose && yum install git -y && git clone https://github.com/Coder-ZhaoLu/pinkmoe && cd pinkmoe/ && cp ./pinkmoe_server/config.yaml.example ./pinkmoe_server/config.yaml && ls && docker-compose up -d`
-
-(根目录执行)一键执行卸载脚本：`cd / && rm -rf /pinkmoe && docker stop pinkmoe_mysql pinkmoe_redis pinkmoe_server pinkmoe_index_admin && docker rm pinkmoe_mysql pinkmoe_redis pinkmoe_server pinkmoe_index_admin && docker rmi pinkmoe_server pinkmoe_index_admin && docker rmi 3147495b3a5c 1319b1eaa0b7 && docker system prune`
+ssh链接服务器，回车执行脚本开始安装（执行脚本的时候注意看提示信息，填错了就要全部重新开始装）
 
 #### 常见问题:
 

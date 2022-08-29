@@ -23,6 +23,8 @@ type AppConfig struct {
 type BasicConfig struct {
 	Name          string `mapstructure:"name" json:"name"`
 	Mode          string `mapstructure:"mode" json:"mode"`
+	Host          string `mapstructure:"host" json:"host"`
+	AdminHost     string `mapstructure:"adminHost" json:"adminHost"`
 	Version       string `mapstructure:"version" json:"version"`
 	VideoSize     int64  `mapstructure:"videoSize" json:"videoSize"`
 	PicSize       int64  `mapstructure:"picSize" json:"picSize"`

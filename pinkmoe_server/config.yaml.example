@@ -1,6 +1,8 @@
 # 仅仅初始化server使用
 basicConfig:
   mode: "dev"
+  host: "pinkmoe.com"
+  adminHost: "admin.pinkmoe.com"
   logConfig:
     level: "debug"
     filename: "logs/pinkMoe.log"

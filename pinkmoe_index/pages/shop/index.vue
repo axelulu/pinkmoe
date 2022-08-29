@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:32:40
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 11:25:54
+ * @LastEditTime: 2022-08-28 19:59:11
  * @FilePath: /pinkmoe_index/pages/shop/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -96,7 +96,7 @@ useHead({
             <div
               class="w-7 h-7 bg-sky-400 rounded-full flex justify-center items-center text-white mr-1"
             >
-              <i :class="`i-${k.icon}`" />
+              <i :class="`inline-block i-${k.icon}`" />
             </div>
             <div class="text-lg">
               {{ k.name }}
@@ -107,7 +107,7 @@ useHead({
               class="text-xs text-gray-500 mr-2 flex items-center hover:text-pink-400 dark:text-gray-200 cursor-pointer duration-300"
             >
               {{ $t('more') }}
-              <i class="ml-1 i-fluent:caret-right-12-filled" />
+              <i class="ml-1 inline-block i-fluent:caret-right-12-filled" />
             </NuxtLink>
           </div>
           <Spin :show="loading">

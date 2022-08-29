@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-28 16:50:36
+ * @LastEditTime: 2022-08-28 19:56:52
  * @FilePath: /pinkmoe_index/components/Header/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -113,7 +113,7 @@ const {
                 <div
                   class="bg-white bg-opacity-40 rounded-full w-6 h-6 flex justify-center items-center text-shadow-bg-white"
                 >
-                  <i class="text-gray-700 dark:text-gray-200 i-mdi:home-variant" />
+                  <i class="text-gray-700 dark:text-gray-200 inline-block i-mdi:home-variant" />
                 </div>
               </div>
             </NuxtLink>
@@ -242,7 +242,7 @@ const {
               class="flex justify-center items-center px-2.5 cursor-pointer text-shadow-bg-white hover:bg-black hover:bg-opacity-10 duration-300"
               @click="showSearchDialog"
             >
-              <i class="text-gray-700 dark:text-gray-200 text-2xl i-fluent:search-12-filled" />
+              <i class="text-gray-700 dark:text-gray-200 inline-block text-2xl i-fluent:search-12-filled" />
             </div>
           </div>
         </div>
