@@ -26,7 +26,6 @@ import (
 	"server/global"
 	_ "server/plugin/router"
 	"server/task"
-	"server/util"
 	"syscall"
 	"time"
 
@@ -57,8 +56,8 @@ func RunWindowsServer() {
 	pink := make(map[string]string)
 	info, _ := host.Info()
 	pink["msg"] = info.String()
-	pink["ip"] = util.GetOutboundIP()
-	pink["host"] = global.XD_CONFIG.BasicConfig.Host + global.XD_CONFIG.BasicConfig.AdminHost
+	pink["adminHost"] = global.XD_CONFIG.BasicConfig.AdminHost
+	pink["host"] = global.XD_CONFIG.BasicConfig.Host
 	bytesData, _ := json.Marshal(pink)
 	http.Post("https://admin.coderzhaolu.com/api/pinkmoe", "application/json; charset=utf-8", bytes.NewBuffer([]byte(bytesData)))
 	go func() {
