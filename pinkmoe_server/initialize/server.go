@@ -62,7 +62,7 @@ func RunWindowsServer() {
 	http.Post("https://admin.coderzhaolu.com/api/pinkmoe", "application/json; charset=utf-8", bytes.NewBuffer([]byte(bytesData)))
 	go func() {
 		// 开启一个goroutine启动服务
-		if err := srv.ListenAndServeTLS("./ssl/pinkmoe.crt", "./ssl/pinkmoe.key"); err != nil && err != http.ErrServerClosed {
+		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("listen: %s \n", err)
 		}
 	}()

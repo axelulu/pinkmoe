@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-29 19:46:40
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-22 22:51:50
- * @FilePath: /pinkmoe_index/src/store/modules/socket/index.ts
+ * @LastEditTime: 2022-08-30 10:22:14
+ * @FilePath: /pinkmoe_index/store/modules/socket/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -47,12 +47,6 @@ export const useSocketStore = defineStore({
             },
           }),
         )
-        // this.heartCheck.serverTimeoutObj = setTimeout(() => {
-        //   console.log(111);
-        //   console.log(this.socket);
-        //   this.socket.close();
-        //   // createWebSocket();
-        // }, this.heartCheck.timeout);
       }, this.heartCheck.timeout)
     },
     closeSocket() {
