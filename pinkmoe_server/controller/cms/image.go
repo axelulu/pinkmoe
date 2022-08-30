@@ -25,9 +25,15 @@ func (images *Images) ImageThumbnailGet(c *gin.Context) {
 		response.FailWithMessage(response.CodeInvalidParam.Msg(), c)
 		return
 	}
-	res, _ := http.Get(p.Image)
-	data, _ := ioutil.ReadAll(res.Body)
-	newImage, _ := bimg.NewImage(data).SmartCrop(p.Width, p.Height)
-	img := bimg.NewImage(newImage).Image()
-	c.Writer.WriteString(string(img))
+	if p.Image != "" {
+		res, _ := http.Get(p.Image)
+		data, _ := ioutil.ReadAll(res.Body)
+		newImage, _ := bimg.NewImage(data).SmartCrop(p.Width, p.Height)
+		img := bimg.NewImage(newImage).Image()
+		c.Writer.WriteString(string(img))
+	} else {
+		newImage, _ := bimg.NewImage([]byte("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")).SmartCrop(p.Width, p.Height)
+		img := bimg.NewImage(newImage).Image()
+		c.Writer.WriteString(string(img))
+	}
 }

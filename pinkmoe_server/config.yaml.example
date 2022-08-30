@@ -15,7 +15,7 @@ mysqlConfig:
   host: "223.3.3.10"
   port: 3306
   user: "root"
-  password: "pinkmoe"
+  password: "pinkmoe_mysql_pwd"
   dbname: "pinkMoe"
   config: "charset=utf8mb4&parseTime=True&loc=Local"
   maxOpenConns: 0

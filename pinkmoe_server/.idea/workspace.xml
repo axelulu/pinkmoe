@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9c06589-a528-4508-af15-feb6e80b09c9" name="变更" comment="">
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../install.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/assets/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/assets/styles/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/components/Header/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/components/Header/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/hooks/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/hooks/category.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/hooks/footer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/hooks/footer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/hooks/post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/hooks/post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/pages/category/[slug].vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/pages/category/[slug].vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/pages/post/[id].vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/pages/post/[id].vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/plugins/nprogress.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/plugins/nprogress.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.yaml.example" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/cms/image.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/cms/image.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/mysql/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/post.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/initialize/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/initialize/server.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -3,8 +3,8 @@
  # @Author: coderzhaolu && izhaicy@163.com
  # @Date: 2022-08-27 18:40:50
  # @LastEditors: coderzhaolu && izhaicy@163.com
- # @LastEditTime: 2022-08-30 10:39:11
- # @FilePath: /pinkmoe_index/Users/zhaolu/Desktop/project/go_vue_gin/pinkmoe/install.sh
+ # @LastEditTime: 2022-08-30 16:16:33
+ # @FilePath: /pinkmoe/install.sh
  # @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  # QQ:2419857357;支付宝:13135986153
  # Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -29,8 +29,19 @@ function docker_install()
 
 function write_conf()
 {
-    echo -e "\033[34m 请输入网站前台域名(多个域名用英文空格隔开,如:pinkmoe.com www.pinkmoe.com;直接回车默认为pinkmoe.com www.pinkmoe.com):\033[0m"
+    ip=$(curl ifconfig.me)
+    export DOCKER_GATEWAY_HOST=$ip
     cp ./pinkmoe_server/config.yaml.example ./pinkmoe_server/config.yaml
+    echo -e "\033[34m 请输入网站mysql密码(直接回车默认为pinkmoe_mysql_pwd):\033[0m"
+    read passwordMysql
+    if [ -z $passwordMysql ]
+    then
+        passwordMysql="pinkmoe_mysql_pwd"
+    fi
+    echo $passwordMysql
+    sed -i "s/pinkmoe_mysql_pwd/$passwordMysql/g" ./docker-compose.yaml
+    sed -i "s/pinkmoe_mysql_pwd/$passwordMysql/g" ./pinkmoe_server/config.yaml
+    echo -e "\033[34m 请输入网站前台域名(多个域名用英文空格隔开,如:pinkmoe.com www.pinkmoe.com;直接回车默认为pinkmoe.com www.pinkmoe.com):\033[0m"
     sed -i "s/ListenAndServe()/ListenAndServeTLS(\".\/ssl\/pinkmoe.crt\", \".\/ssl\/pinkmoe.key\")/g" ./pinkmoe_server/initialize/server.go
     read headDomain
     if [ -z $headDomain ]

@@ -16,7 +16,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: pinkmoe
       MYSQL_DATABASE: pinkMoe
-      MYSQL_PASSWORD: pinkmoe
+      MYSQL_PASSWORD: pinkmoe_mysql_pwd
     ports:
       - "3306:3306"
     networks:

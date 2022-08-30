@@ -30,14 +30,14 @@ func GetTopicPostList(info request.SearchTopicParams) (err error, list model.XdT
 	if info.Desc {
 		if err = db.Where("value = ?", info.Value).Preload("PostRelations", func(db *gorm.DB) *gorm.DB {
 			err = db.Count(&total).Error
-			return db.Where("status = ?", "published").Order(info.OrderKey + " DESC").Preload("CategoryRelation").Limit(limit).Offset(offset)
+			return db.Where("status = ?", "published").Order(info.OrderKey + " DESC").Preload("CategoryRelation").Preload("AuthorRelation").Limit(limit).Offset(offset)
 		}).First(&list).Error; err != nil {
 			return response.ErrorPostListGet, list, 0
 		}
 	} else {
 		if err = db.Where("value = ?", info.Value).Preload("PostRelations", func(db *gorm.DB) *gorm.DB {
 			err = db.Count(&total).Error
-			return db.Where("status = ?", "published").Order(info.OrderKey + " ASC").Preload("CategoryRelation").Limit(limit).Offset(offset)
+			return db.Where("status = ?", "published").Order(info.OrderKey + " ASC").Preload("CategoryRelation").Preload("AuthorRelation").Limit(limit).Offset(offset)
 		}).First(&list).Error; err != nil {
 			return response.ErrorPostListGet, list, 0
 		}

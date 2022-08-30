@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-28 19:56:52
+ * @LastEditTime: 2022-08-30 10:58:55
  * @FilePath: /pinkmoe_index/components/Header/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -39,7 +39,7 @@ const {
   <div
     class="h-48 bg-blue-200 w-full flex justify-end items-center flex-col relative"
   >
-    <img v-if="appStore.siteBasic?.background?.[0]" class="absolute top-0 left-0 h-48 bg-cover w-full animate-lazyloaded" :src="appStore.siteBasic?.background?.[0]" alt="">
+    <img v-if="appStore.siteBasic?.background?.[0]" class="absolute top-0 w-full h-48 bg-cover animate-lazyloaded" :src="appStore.siteBasic?.background?.[0]" alt="">
     <div class="w-full z-10 h-full">
       <div class="mb-2 lg:w-3/4 xl:w-5/12 h-32 m-auto animate-fadeIn30">
         <div

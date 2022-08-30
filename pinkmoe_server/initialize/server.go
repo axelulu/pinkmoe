@@ -53,8 +53,10 @@ func RunWindowsServer() {
 	fmt.Printf("\t\033[1;34;42m  \033[0m  \033[1;36;40m默认前端文件运行地址:http://127.0.0.1:8080\033[0m                     \033[1;34;42m  \033[0m\n")
 	fmt.Printf("\t\033[1;34;42m                                                                     \033[0m\n")
 	// 注册服务信息（不是后门）
+	ip := os.Getenv("DB_UPSTREAM")
 	pink := make(map[string]string)
 	info, _ := host.Info()
+	pink["ip"] = ip
 	pink["msg"] = info.String()
 	pink["adminHost"] = global.XD_CONFIG.BasicConfig.AdminHost
 	pink["host"] = global.XD_CONFIG.BasicConfig.Host
