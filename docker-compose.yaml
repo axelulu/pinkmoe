@@ -14,9 +14,9 @@ services:
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci #设置utf8字符集
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: pinkmoe
+      MYSQL_ROOT_PASSWORD: pinkmoe_mysql_pwd
       MYSQL_DATABASE: pinkMoe
-      MYSQL_PASSWORD: pinkmoe_mysql_pwd
+      MYSQL_PASSWORD: pinkMoe
     ports:
       - "3306:3306"
     networks:
