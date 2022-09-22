@@ -29,6 +29,7 @@ require (
 	github.com/swaggo/files v0.0.0-20220610200504-28940afbdbfe
 	github.com/swaggo/gin-swagger v1.5.2
 	github.com/tencentyun/cos-go-sdk-v5 v0.7.19
+	github.com/trim21/go-phpserialize v0.0.15
 	go.uber.org/zap v1.22.0
 	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4
 	golang.org/x/text v0.3.7

@@ -204,8 +204,14 @@ func GetPostList(info request.SearchPostParams, userId string) (err error, post 
 		return response.ErrorPostListGet, nil, 0
 	}
 	if err = db.Limit(limit).Offset(offset).Order(order).Preload("CollectRelation", func(db *gorm.DB) *gorm.DB {
-		return db.Where("uuid = ?", userId)
-	}).Preload("AuthorRelation").Preload("AuthorRelation.Authority").Preload("TopicRelations").Preload("CategoryRelation").Preload("PostImg").Preload("MusicRelation", func(db *gorm.DB) *gorm.DB {
+		return db.Select("post_id", "uuid").Where("uuid = ?", userId)
+	}).Preload("AuthorRelation", func(db *gorm.DB) *gorm.DB {
+		return db.Select("uuid", "nick_name", "avatar")
+	}).Preload("AuthorRelation.Authority").Preload("TopicRelations", func(db *gorm.DB) *gorm.DB {
+		return db.Select("value", "label", "icon")
+	}).Preload("CategoryRelation", func(db *gorm.DB) *gorm.DB {
+		return db.Select("name", "slug")
+	}).Preload("PostImg").Preload("MusicRelation", func(db *gorm.DB) *gorm.DB {
 		return db.Select("post_id", "price", "price_type", "name")
 	}).Preload("VideoRelation", func(db *gorm.DB) *gorm.DB {
 		return db.Select("post_id", "price", "price_type", "name")

@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 11:41:28
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-19 23:18:52
- * @FilePath: /pinkmoe_vitesse/src/components/Footer/index.vue
+ * @LastEditTime: 2022-09-21 17:12:14
+ * @FilePath: /pinkmoe_index/components/Footer/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -40,25 +40,19 @@ const { scollTop, appStore } = useFooter()
             <div class="text-xs mt-6">
               网站申明
             </div>
-            <div class="text-xs mt-2">
-              {{ appStore.siteFooter.notice }}
-            </div>
+            <div class="text-xs mt-2" v-html="appStore.siteFooter.notice" />
           </div>
           <div class="w-1/4 pr-8">
             <div class="text-xs mt-6">
               联系我们
             </div>
-            <div class="text-xs mt-2">
-              {{ appStore.siteFooter.contact }}
-            </div>
+            <div class="text-xs mt-2" v-html="appStore.siteFooter.contact" />
           </div>
           <div class="w-1/4 pr-8">
             <div class="text-xs mt-6">
               关于小站
             </div>
-            <div class="text-xs mt-2">
-              {{ appStore.siteFooter.about }}
-            </div>
+            <div class="text-xs mt-2" v-html="appStore.siteFooter.about" />
           </div>
         </div>
         <div class="mb-8">

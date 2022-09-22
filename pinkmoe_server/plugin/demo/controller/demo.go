@@ -21,15 +21,281 @@ func init() {
 
 type Demo struct{}
 
-type Postss struct { //带结构标签，反引号来包围字符串
-	Title     string `json:"title"`
-	Cover     string `json:"cover"`
-	Expert    string `json:"expert"`
-	Tag       string `json:"tags"`
-	Content   string `json:"content"`
-	Download  string `json:"download"`
-	UpdatedAt string `json:"updated_at"`
-}
+//
+//type Postss struct { //带结构标签，反引号来包围字符串
+//	Title     string `json:"title"`
+//	Cover     string `json:"cover"`
+//	Expert    string `json:"expert"`
+//	Tag       string `json:"tags"`
+//	Content   string `json:"content"`
+//	Download  string `json:"download"`
+//	UpdatedAt string `json:"updated_at"`
+//}
+//
+//type pinkPost struct {
+//	ID          string `json:"ID"`
+//	PostTitle   string `json:"post_title"`
+//	PostContent string `json:"post_content"`
+//	PostExcerpt string `json:"post_excerpt"`
+//	MenuOrder   string `json:"menu_order"`
+//}
+//
+//type resPinkPost struct {
+//	ID          string                 `json:"ID"`
+//	PostTitle   string                 `json:"post_title"`
+//	PostContent string                 `json:"post_content"`
+//	PostExcerpt string                 `json:"post_excerpt"`
+//	MenuOrder   string                 `json:"menu_order"`
+//	Cover       string                 `json:"cover"`
+//	Menu        string                 `json:"menu"`
+//	Downloads   []model.XdPostDownload `json:"downloads"`
+//	Tag         []string               `json:"tag"`
+//}
+//
+//type termRelationships struct {
+//	TermTaxonomyId string `json:"term_taxonomy_id"`
+//	ObjectId       string `json:"object_id"`
+//}
+//
+//type termTaxonomy struct {
+//	TermTaxonomyId string `json:"term_taxonomy_id"`
+//	TermId         string `json:"term_id"`
+//	Taxonomy       string `json:"taxonomy"`
+//}
+//
+//type terms struct {
+//	TermId string `json:"term_id"`
+//	Name   string `json:"name"`
+//}
+//
+//type downloads struct {
+//	Name   string `json:"name"`
+//	Credit string `json:"credit"`
+//	Link   string `json:"link"`
+//	Pwd    string `json:"pwd"`
+//	Pwd2   string `json:"pwd2"`
+//}
+//
+//type download struct {
+//	MetaValue string `json:"meta_value"`
+//}
+//
+//func (demo *Demo) ExchangeGet(c *gin.Context) {
+//	mysqlConfig := my.Config{
+//		DSN:                       "root:pinkmoe" + "@tcp(localhost:3306)/pinkacg?charset=utf8mb4&parseTime=True&loc=Local", // DSN data source name
+//		DefaultStringSize:         191,                                                                                      // string 类型字段的默认长度
+//		SkipInitializeWithVersion: false,                                                                                    // 根据版本自动配置
+//	}
+//	if db, err := gorm.Open(my.New(mysqlConfig), &gorm.Config{}); err != nil {
+//		os.Exit(0)
+//	} else {
+//		numssss := 0
+//		numssss2 := 0
+//		var PinkPost []pinkPost
+//		var ResPinkPost []resPinkPost
+//		db.Table("wp_posts").Where("post_type = 'post' OR post_type = 'revision'").Where("ID < ? AND ID > ?", 60000, 39999).Find(&PinkPost)
+//		for i, post := range PinkPost {
+//			var down download
+//			var dss []downloads
+//			var downs []model.XdPostDownload
+//			db.Table("wp_postmeta").Where("post_id = ?", post.ID).Where("meta_key = 'ghost_download'").First(&down)
+//			phpserialize.Unmarshal([]byte(down.MetaValue), &dss)
+//			for i := 0; i < len(dss); i++ {
+//				downs = append(downs, model.XdPostDownload{
+//					Price:      20,
+//					PriceType:  "credit",
+//					Name:       post.PostTitle,
+//					Url:        dss[i].Link,
+//					ExtractPwd: dss[i].Pwd,
+//					UnpackPwd:  dss[i].Pwd2,
+//				})
+//			}
+//			post.PostContent = strings.Replace(post.PostContent, "https://img.catacg.cn/", "https://pinkmoe.coderzhaolu.com/", -1)
+//			var imgRE = regexp.MustCompile(`<img[^>]+\bsrc=["']([^"']+)["']`)
+//			imgs := imgRE.FindAllStringSubmatch(post.PostContent, -1)
+//			if len(imgs) > 0 {
+//				var po = resPinkPost{
+//					ID:          post.ID,
+//					PostTitle:   post.PostTitle,
+//					PostContent: post.PostContent,
+//					PostExcerpt: post.PostExcerpt,
+//					Cover:       imgs[0][1],
+//					Downloads:   downs,
+//				}
+//				var TermRelationships []termRelationships
+//				db.Table("wp_term_relationships").Where("object_id = ?", po.ID).Find(&TermRelationships)
+//				if len(TermRelationships) == 0 {
+//					continue
+//				}
+//				for _, relationship := range TermRelationships {
+//					// 标签
+//					var TermTaxonomy []termTaxonomy
+//					db.Table("wp_term_taxonomy").Where("term_taxonomy_id = ?", relationship.TermTaxonomyId).Where("taxonomy = 'post_tag'").Find(&TermTaxonomy)
+//					for _, taxonomy := range TermTaxonomy {
+//						var Terms terms
+//						db.Table("wp_terms").Where("term_id = ?", taxonomy.TermId).First(&Terms)
+//						po.Tag = append(po.Tag, Terms.Name)
+//					}
+//					// 分类
+//					var TermTaxonomyCat []terms
+//					db.Table("wp_term_taxonomy").Where("term_taxonomy_id = ?", relationship.TermTaxonomyId).Where("taxonomy = 'category'").Find(&TermTaxonomyCat)
+//					var Termss []terms
+//					if len(TermTaxonomyCat) > 0 {
+//						db.Table("wp_terms").Where("term_id = ?", TermTaxonomyCat[0].TermId).Find(&Termss)
+//						po.Menu = Termss[0].Name
+//					}
+//				}
+//				currentTime := time.Now()
+//				rand.Seed(time.Now().Unix() * int64(i))
+//				num := rand.Int31n(2) + 1
+//				num2 := rand.Int31n(3) + 1
+//				oldTime2 := currentTime.AddDate(0, 0, -int(int(num)+i))
+//				oldTime := oldTime2.Add(time.Hour * time.Duration(num2))
+//				uid, _ := uuid.FromString("7587adf5-faee-4097-9e82-1424ec818047")
+//				numssss2++
+//				if po.Menu == "番剧" {
+//					numssss++
+//					var cate = "japanAnime"
+//					mysql.CreatePost(request.CreatePostParams{
+//						Title:            po.PostTitle,
+//						Exerpt:           po.PostExcerpt,
+//						Content:          strings.TrimSpace(po.PostContent),
+//						Category:         cate,
+//						Author:           uid,
+//						Cover:            po.Cover,
+//						Type:             "post",
+//						From:             "",
+//						CommentStatus:    "true",
+//						Status:           "published",
+//						Topic:            po.Tag,
+//						UpdatedAt:        global.XdTime{Time: oldTime},
+//						DownloadRelation: downs,
+//					})
+//				}
+//				if po.Menu == "OST" || po.Menu == "OP" || po.Menu == "ED" {
+//					numssss++
+//					var cate = "musicDownload"
+//					mysql.CreatePost(request.CreatePostParams{
+//						Title:            po.PostTitle,
+//						Exerpt:           po.PostExcerpt,
+//						Content:          strings.TrimSpace(po.PostContent),
+//						Category:         cate,
+//						Author:           uid,
+//						Cover:            po.Cover,
+//						Type:             "post",
+//						From:             "",
+//						CommentStatus:    "true",
+//						Status:           "published",
+//						Topic:            po.Tag,
+//						UpdatedAt:        global.XdTime{Time: oldTime},
+//						DownloadRelation: downs,
+//					})
+//				}
+//				if po.Menu == "美影" {
+//					numssss++
+//					var cate = "europeMovie"
+//					mysql.CreatePost(request.CreatePostParams{
+//						Title:            po.PostTitle,
+//						Exerpt:           po.PostExcerpt,
+//						Content:          strings.TrimSpace(po.PostContent),
+//						Category:         cate,
+//						Author:           uid,
+//						Cover:            po.Cover,
+//						Type:             "post",
+//						From:             "",
+//						CommentStatus:    "true",
+//						Status:           "published",
+//						Topic:            po.Tag,
+//						UpdatedAt:        global.XdTime{Time: oldTime},
+//						DownloadRelation: downs,
+//					})
+//				}
+//				if po.Menu == "美剧" {
+//					numssss++
+//					var cate = "USATv"
+//					mysql.CreatePost(request.CreatePostParams{
+//						Title:            po.PostTitle,
+//						Exerpt:           po.PostExcerpt,
+//						Content:          strings.TrimSpace(po.PostContent),
+//						Category:         cate,
+//						Author:           uid,
+//						Cover:            po.Cover,
+//						Type:             "post",
+//						From:             "",
+//						CommentStatus:    "true",
+//						Status:           "published",
+//						Topic:            po.Tag,
+//						UpdatedAt:        global.XdTime{Time: oldTime},
+//						DownloadRelation: downs,
+//					})
+//				}
+//				if po.Menu == "日剧" || po.Menu == "韩剧" || po.Menu == "影视" {
+//					numssss++
+//					var cate = "japanTv"
+//					mysql.CreatePost(request.CreatePostParams{
+//						Title:            po.PostTitle,
+//						Exerpt:           po.PostExcerpt,
+//						Content:          strings.TrimSpace(po.PostContent),
+//						Category:         cate,
+//						Author:           uid,
+//						Cover:            po.Cover,
+//						Type:             "post",
+//						From:             "",
+//						CommentStatus:    "true",
+//						Status:           "published",
+//						Topic:            po.Tag,
+//						UpdatedAt:        global.XdTime{Time: oldTime},
+//						DownloadRelation: downs,
+//					})
+//				}
+//				if po.Menu == "轻小说" || po.Menu == "其他转载" {
+//					numssss++
+//					var cate = "lightNovelDownload"
+//					mysql.CreatePost(request.CreatePostParams{
+//						Title:            po.PostTitle,
+//						Exerpt:           po.PostExcerpt,
+//						Content:          strings.TrimSpace(po.PostContent),
+//						Category:         cate,
+//						Author:           uid,
+//						Cover:            po.Cover,
+//						Type:             "post",
+//						From:             "",
+//						CommentStatus:    "true",
+//						Status:           "published",
+//						Topic:            po.Tag,
+//						UpdatedAt:        global.XdTime{Time: oldTime},
+//						DownloadRelation: downs,
+//					})
+//				}
+//				if po.Menu == "游戏" || po.Menu == "pc" {
+//					numssss++
+//					var cate = "steamPc"
+//					mysql.CreatePost(request.CreatePostParams{
+//						Title:            po.PostTitle,
+//						Exerpt:           po.PostExcerpt,
+//						Content:          strings.TrimSpace(po.PostContent),
+//						Category:         cate,
+//						Author:           uid,
+//						Cover:            po.Cover,
+//						Type:             "post",
+//						From:             "",
+//						CommentStatus:    "true",
+//						Status:           "published",
+//						Topic:            po.Tag,
+//						UpdatedAt:        global.XdTime{Time: oldTime},
+//						DownloadRelation: downs,
+//					})
+//				}
+//				ResPinkPost = append(ResPinkPost, po)
+//			}
+//		}
+//		println("-----------------------------------")
+//		println(numssss)
+//		println("-----------------------------------")
+//		println(numssss2)
+//		response.OkWithData(ResPinkPost, c)
+//	}
+//}
 
 //func (demo *Demo) ExchangeGet(c *gin.Context) {
 //global.XD_DB.Where("price_type = ?", "").Where("name = ?", "").Where("url = ?", "").Delete(&model.XdPostDownload{})

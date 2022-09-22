@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-07 21:34:36
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:24:40
+ * @LastEditTime: 2022-09-11 09:31:44
  * @FilePath: /pinkmoe_admin/src/views/monitor/operation/columns.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -15,6 +15,7 @@ export const columns = [
   {
     title: '操作用户',
     key: 'userId',
+    width: 350,
   },
   {
     title: '请求IP',
@@ -54,6 +55,7 @@ export const columns = [
   {
     title: 'api路径',
     key: 'path',
+    width: 300,
   },
   {
     title: '请求',

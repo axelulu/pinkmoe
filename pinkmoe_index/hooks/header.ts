@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-21 14:16:37
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-28 16:38:37
+ * @LastEditTime: 2022-09-10 16:45:56
  * @FilePath: /pinkmoe_index/hooks/header.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -12,10 +12,11 @@
 import { getCategoryList } from '/@/api/category'
 import type { ResCategory } from '/@/api/category/types'
 import { useDark, useToggle } from '@vueuse/core'
-import { checkIn } from '/@/api/user'
+import { checkIn, checkInStatus } from '/@/api/user'
 import { useI18n } from 'vue-i18n'
 import { useAppStore } from '../store/modules/app'
 import { useUserStore } from '../store/modules/user'
+import { isLogin } from '../utils/auth'
 
 export const useHeader = () => {
   const categoryList = ref<Array<ResCategory>>()
@@ -251,6 +252,8 @@ export const useHeader = () => {
       failedMsg: '签到失败',
       loadFun: async () => {
         const { code, message, result } = await checkIn()
+        const { result: checkStatus } = await checkInStatus()
+        auth.setCheckIn(checkStatus)
         return { code, message, result }
       },
     })
@@ -268,16 +271,13 @@ export const useHeader = () => {
     // 获取cookie
     const langages = useCookie('lang')
     // 获取state值， composables下的文件是自动导入，不需要额外的引入
-    const userLang = userLangeages()
     if (i18n.locale.value === 'cn') {
       i18n.locale.value = 'jp' // 文字显示切换
       langages.value = 'jp' // 更新cookie
-      userLang.value = 'jp' // 更新state
     }
     else {
       i18n.locale.value = 'cn' // 文字显示切换
       langages.value = 'cn' // 更新cookie
-      userLang.value = 'cn' // 更新state
     }
   }
 
@@ -312,7 +312,10 @@ export const useHeader = () => {
   onMounted(async () => {
     scrollHandler()
     await getCategory()
-    await auth.checkIn()
+    if (isLogin()) {
+      const { result: checkStatus } = await checkInStatus()
+      auth.setCheckIn(checkStatus)
+    }
     window.addEventListener('onmessageWS', getSocketData)
   })
 

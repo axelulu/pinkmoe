@@ -2,15 +2,15 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 17:31:00
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-23 21:54:12
- * @FilePath: /pinkmoe_index/src/pages/author/:author/userinfo.vue
+ * @LastEditTime: 2022-09-10 15:45:43
+ * @FilePath: /pinkmoe_index/pages/author/:author/userinfo.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
 -->
 <script lang="ts" setup name="AuthorAuthorUserinfo">
 import { useHead } from '@vueuse/head'
-import AuthorLayout from '/@/components/Authorlayout/index.vue'
+import { getUserInfo } from '/@/api/user'
 import { useAppStore } from '/@/store/modules/app'
 const detail = ref()
 const loading = ref(false)
@@ -18,39 +18,45 @@ function userInfos(res) {
   detail.value = [
     {
       key: '昵称',
-      value: res.value?.nickName,
+      value: res?.nickName,
       icon: [],
     },
     {
       key: 'UID',
-      value: res.value?.uuid,
+      value: res?.uuid,
       icon: [],
     },
     {
       key: '描述',
-      value: res.value?.desc,
+      value: res?.desc,
       icon: [],
     },
     {
       key: '积分',
-      value: res.value?.credit,
+      value: res?.credit,
       icon: [],
     },
     {
       key: '经验',
-      value: res.value?.exp,
+      value: res?.exp,
       icon: [],
     },
     {
       key: '性别',
-      value: res.value?.sex === 1 ? '保密' : res.value?.sex === 2 ? '女' : '男',
+      value: res?.sex === 1 ? '保密' : res?.sex === 2 ? '女' : '男',
       icon: [],
     },
   ]
 }
 
-onMounted(() => {
+onMounted(async () => {
   loading.value = true
+  const route = useRoute()
+  const userInfo = await getUserInfo({
+    uuid: route.params.author,
+  })
+  console.log(userInfo)
+  userInfos(userInfo)
   setTimeout(() => {
     loading.value = false
   }, 300)
@@ -68,30 +74,32 @@ useHead({
     { name: 'og:url', content: siteBasic?.url },
   ],
 })
+
+definePageMeta({
+  layout: 'author',
+})
 </script>
 
 <template>
-  <AuthorLayout @userInfo="userInfos">
-    <Spin :show="loading" class="flex flex-wrap">
-      <div class="mt-4 bg-white w-full dark:bg-gray-700 py-4 animate-fadeIn30 min-h-68">
-        <div
-          v-for="(item, index) in detail"
-          :key="index"
-          class="px-4 py-3 flex flex-row hover:bg-gray-100 dark:hover:bg-gray-800 duration-300"
-        >
-          <div class="text-xs text-gray-500 dark:text-gray-200 w-28 font-semibold">
-            {{
-              item.key
-            }}
-          </div>
-          <div class="text-xs text-gray-500 dark:text-gray-200">
-            <i
-              v-if="item.icon.length > 0" :class="`text-gray-700 dark:text-gray-200 text-xs inline-block i-${item.icon}`"
-            />
-            <span class="ml-1">{{ item.value }}</span>
-          </div>
+  <Spin :show="loading" class="flex flex-wrap">
+    <div class="mt-4 bg-white w-full dark:bg-gray-700 py-4 animate-fadeIn30 min-h-68">
+      <div
+        v-for="(item, index) in detail"
+        :key="index"
+        class="px-4 py-3 flex flex-row hover:bg-gray-100 dark:hover:bg-gray-800 duration-300"
+      >
+        <div class="text-xs text-gray-500 dark:text-gray-200 w-28 font-semibold">
+          {{
+            item.key
+          }}
+        </div>
+        <div class="text-xs text-gray-500 dark:text-gray-200">
+          <i
+            v-if="item.icon.length > 0" :class="`text-gray-700 dark:text-gray-200 text-xs inline-block i-${item.icon}`"
+          />
+          <span class="ml-1">{{ item.value }}</span>
         </div>
       </div>
-    </Spin>
-  </AuthorLayout>
+    </div>
+  </Spin>
 </template>

@@ -33,7 +33,6 @@ specifiers:
   eslint-plugin-vue: ^7.20.0
   esno: ^0.7.3
   gh-pages: ^3.2.3
-  husky: ^6.0.0
   jest: ^27.5.1
   less: ^4.1.2
   less-loader: ^9.1.0
@@ -118,7 +117,6 @@ devDependencies:
   eslint-plugin-vue: 7.20.0_eslint@7.32.0
   esno: 0.7.3
   gh-pages: 3.2.3
-  husky: 6.0.0
   jest: 27.5.1
   less: 4.1.2
   less-loader: 9.1.0_less@4.1.2
@@ -4428,11 +4426,6 @@ packages:
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
-    dev: true
-
-  /husky/6.0.0:
-    resolution: {integrity: sha512-SQS2gDTB7tBN486QSoKPKQItZw97BMOd+Kdb6ghfpBc0yXyzrddI0oDV5MkDAbuB4X2mO3/nj60TRMcYxwzZeQ==}
-    hasBin: true
     dev: true
 
   /i18next/20.6.1:

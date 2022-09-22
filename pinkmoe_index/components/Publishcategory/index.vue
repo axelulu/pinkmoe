@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 17:43:49
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 11:24:49
+ * @LastEditTime: 2022-09-10 23:37:07
  * @FilePath: /pinkmoe_index/components/Publishcategory/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -98,7 +98,7 @@ defineExpose({
           </div>
         </div>
         <div v-if="categoryList" class="flex flex-row py-6 px-4 overflow-x-auto">
-          <div class="bg-gray-200">
+          <div class="bg-gray-200 dark:bg-gray-800">
             <div
               v-for="(item, index) in categoryList.list"
               :key="index"

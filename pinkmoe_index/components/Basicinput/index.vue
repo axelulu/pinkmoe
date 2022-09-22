@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 08:18:03
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 11:24:02
+ * @LastEditTime: 2022-09-10 16:33:42
  * @FilePath: /pinkmoe_index/components/Basicinput/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -70,10 +70,7 @@ defineProps({
       :value="value"
       @input="
         $emit(
-          'update:value',
-          type === 'number'
-            ? parseInt(($event.target as HTMLTextAreaElement).value)
-            : ($event.target as HTMLTextAreaElement).value,
+          'update:value', ($event.target as HTMLTextAreaElement).value,
         )
       "
     >

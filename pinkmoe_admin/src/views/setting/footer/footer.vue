@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-04 16:20:06
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-08 16:12:39
+ * @LastEditTime: 2022-09-21 17:08:27
  * @FilePath: /pinkmoe_admin/src/views/setting/footer/footer.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -104,23 +104,11 @@
 
 <script lang="ts" setup>
 import { useMessage } from "naive-ui";
-import { useGlobSetting } from "@/hooks/setting";
-import { onMounted, reactive, ref } from "vue";
-import { ACCESS_TOKEN } from "@/store/mutation-types";
-import { createStorage } from "@/utils/Storage";
+import { onMounted, ref } from "vue";
 import { ResultEnum } from "@/enums/httpEnum";
 import { getSetting, updateSetting } from "@/api/setting/setting";
 import { GlobeOutline } from "@vicons/ionicons5";
 import { array } from "vue-types";
-
-const globSetting = useGlobSetting();
-const { uploadUrl } = globSetting;
-const Storage = createStorage({ storage: localStorage });
-const uploadHeaders = reactive({
-  platform: "miniPrograms",
-  timestamp: new Date().getTime(),
-  Authorization: "Bearer " + Storage.get(ACCESS_TOKEN, "")
-});
 
 const rules = {
   links: {
@@ -133,19 +121,19 @@ const rules = {
     required: true,
     trigger: "blur",
     message: "请输入2到100位（字母,汉字,数字,下划线）",
-    pattern: /^[a-zA-Z0-9.\-,:。 \n，!：；、_\u4e00-\u9fa5]{2,100}$/ //验证菜单名称 2到100位（字母,汉字,数字,下划线）
+    // pattern: /^[a-zA-Z0-9.\-,:。 \n，!：；、_\u4e00-\u9fa5]{2,100}$/ //验证菜单名称 2到100位（字母,汉字,数字,下划线）
   },
   contact: {
     required: true,
     trigger: "blur",
     message: "请输入2到100位（字母,汉字,数字,下划线）",
-    pattern: /^[a-zA-Z0-9.\-,:。 \n，!：；、_\u4e00-\u9fa5]{2,100}$/ //验证菜单名称 2到100位（字母,汉字,数字,下划线）
+    // pattern: /^[a-zA-Z0-9.\-,:。 \n，!：；、_\u4e00-\u9fa5]{2,100}$/ //验证菜单名称 2到100位（字母,汉字,数字,下划线）
   },
   about: {
     required: true,
     trigger: "blur",
     message: "请输入2到100位（字母,汉字,数字,下划线）",
-    pattern: /^[a-zA-Z0-9.\-,:。 \n，!：；、_\u4e00-\u9fa5]{2,100}$/ //验证菜单名称 2到100位（字母,汉字,数字,下划线）
+    // pattern: /^[a-zA-Z0-9.\-,:。 \n，!：；、_\u4e00-\u9fa5]{2,100}$/ //验证菜单名称 2到100位（字母,汉字,数字,下划线）
   },
   friendsLinks: {
     required: true,

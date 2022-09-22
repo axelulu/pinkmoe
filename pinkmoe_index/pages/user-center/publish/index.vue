@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:11:42
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-28 20:00:33
+ * @LastEditTime: 2022-09-10 23:33:19
  * @FilePath: /pinkmoe_index/pages/user-center/publish/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -37,6 +37,7 @@ const {
 
 definePageMeta({
   middleware: ['user-auth'],
+  layout: 'user-center',
 })
 
 const isSSR = process.client
@@ -55,7 +56,7 @@ useHead({
 </script>
 
 <template>
-  <UserCenterLayout>
+  <div>
     <Spin :show="loading" class="flex flex-wrap">
       <form ref="formPublish" class="ml-6" onsubmit="return false">
         <div
@@ -713,5 +714,5 @@ useHead({
       :category-list="categoryList"
       @chooseCategory="chooseCategory"
     />
-  </UserCenterLayout>
+  </div>
 </template>

@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:01:30
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-30 11:01:58
+ * @LastEditTime: 2022-09-10 23:17:29
  * @FilePath: /pinkmoe_index/pages/category/[slug].vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -30,6 +30,10 @@ useHead({
     },
     { name: 'og:url', content: siteBasic?.url },
   ],
+})
+
+definePageMeta({
+  layout: 'home',
 })
 </script>
 

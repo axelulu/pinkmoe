@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-27 14:54:50
+ * @LastEditTime: 2022-09-10 15:28:34
  * @FilePath: /pinkmoe_index/store/modules/app/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -30,11 +30,6 @@ export const useAppStore = defineStore(
     },
     getters: {},
     actions: {
-      // 获取用户信息
-      async settings() {
-        const siteSetting = await getSiteSetting()
-        this.setInfo(siteSetting)
-      },
       // 设置用户的信息
       setInfo(siteSetting: ResSiteSetting) {
         this.siteBasic = JSON.parse(siteSetting.basic?.value)

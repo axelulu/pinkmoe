@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 10:47:46
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-28 16:07:00
+ * @LastEditTime: 2022-09-10 15:41:13
  * @FilePath: /pinkmoe_index/hooks/author/layout.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -14,16 +14,16 @@ import type { ReqFollowStatus } from '/@/api/follow/types'
 import { createFollow, deleteFollow, followStatus } from '/@/api/follow'
 import { useUtil } from '../util'
 
-export const useAuthorLayout = (emit) => {
-  const currentMenu = computed(() =>
-    route.path.split('/')[3] ? route.path.split('/')[3] : 'userInfo',
-  )
+export const useAuthorLayout = () => {
   const { proxy } = getCurrentInstance()
   const { getLevel } = useUtil()
   const lev = ref<any>()
   const route = useRoute()
   const router = useRouter()
   const userInfo = ref()
+  const currentMenu = computed(() =>
+    route.path.split('/')[3] ? route.path.split('/')[3] : 'userInfo',
+  )
 
   // 获取作者信息
   const getAuthor = async () => {
@@ -31,7 +31,6 @@ export const useAuthorLayout = (emit) => {
       uuid: route.params.author,
     })
     lev.value = getLevel(userInfo.value?.exp)
-    emit('userInfo', userInfo)
   }
 
   const menu = [

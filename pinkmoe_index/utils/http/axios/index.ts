@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-30 10:21:58
+ * @LastEditTime: 2022-09-10 22:10:14
  * @FilePath: /pinkmoe_index/utils/http/axios/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
@@ -50,10 +50,11 @@ axiosInstance.interceptors.response.use(
 // axios实例拦截请求
 axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const token = getToken()
-    if (token && config.headers)
-      config.headers.Authorization = `${TokenPrefix}${token}`
-
+    if (process.client) {
+      const token = getToken()
+      if (token && config.headers)
+        config.headers.Authorization = `${TokenPrefix}${token}`
+    }
     return config
   },
   (error: any) => {

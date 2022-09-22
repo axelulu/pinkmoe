@@ -2,8 +2,8 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-18 21:44:07
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-22 22:55:33
- * @FilePath: /pinkmoe_index/src/store/modules/user/index.ts
+ * @LastEditTime: 2022-09-10 15:21:05
+ * @FilePath: /pinkmoe_index/store/modules/user/index.ts
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  * QQ:2419857357;支付宝:13135986153
  * Copyright (c) 2022 by coderzhaolu, All Rights Reserved.
@@ -16,7 +16,6 @@ import type {
 import {
   checkInStatus,
   forget,
-  getUserProfile,
   reg,
   login as userLogin,
   logout as userLogout,
@@ -38,9 +37,8 @@ export const useUserStore = defineStore('user', {
     },
   },
   actions: {
-    async checkIn() {
-      const { result } = await checkInStatus()
-      this.checkInStatus = result
+    setCheckIn(checkInStatus: any) {
+      this.checkInStatus = checkInStatus
     },
     // 设置用户的信息
     setInfo(userInfo: ResAuthor) {
@@ -54,11 +52,6 @@ export const useUserStore = defineStore('user', {
     resetInfo() {
       this.$reset()
     },
-    // 获取用户信息
-    async info() {
-      const result = await getUserProfile()
-      this.setInfo(result?.userInfo)
-    },
     // 异步登录并存储token
     async login(loginForm: LoginData) {
       const { code, result, message } = await userLogin(loginForm)
@@ -67,7 +60,8 @@ export const useUserStore = defineStore('user', {
         setToken(token)
         this.setLogin(true)
       }
-      await this.checkIn()
+      const { result: checkStatus } = await checkInStatus()
+      this.setCheckIn(checkStatus)
       return { result, code, message }
     },
     async reg(regForm: RegData) {
