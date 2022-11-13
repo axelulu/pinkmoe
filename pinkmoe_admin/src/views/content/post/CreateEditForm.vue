@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-04 15:46:56
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-11-13 15:33:52
+ * @LastEditTime: 2022-11-13 18:19:12
  * @FilePath: /pinkmoe_admin/src/views/content/post/CreateEditForm.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
  * 问题反馈qq群:749150798
@@ -86,7 +86,7 @@
       </n-form-item>
       <n-form-item label="下载" path="download">
         <n-dynamic-input v-model:value="formParams.downloadRelation" show-sort-button
-                         :on-create="onCreateMusic">
+                         :on-create="onCreateDownload">
           <template #create-button-default> 请填写下载信息</template>
           <template #default="{ value }">
             <div style="display: flex; align-items: center; width: 100%">
@@ -116,7 +116,7 @@
                   maxlength="30"
                   show-count
                   placeholder="请输入提取密码"
-                  v-model:value="value.extracPwd"
+                  v-model:value="value.extractPwd"
                   type="text"
                 />
               </div>
@@ -391,12 +391,12 @@ export default defineComponent({
       cover: "",
       postImg: [],
       type: "post",
-      view: 0,
+      view: "0",
       videoRelation: [],
       musicRelation: [],
       from: "original",
       downloadRelation: [],
-      status: "draft",
+      status: "published",
       topic: [] as string[],
     });
     const renderAuthorSelectTag: SelectRenderTag = ({ option }) => {
@@ -627,14 +627,26 @@ export default defineComponent({
       };
     }
 
-    function onCreateVideo() {
-      return {
-        postId: state.formParams.postId,
-        name: "",
-        subtitles: "",
-        url: ""
-      };
-    }
+function onCreateVideo() {
+  return {
+    postId: state.formParams.postId,
+    name: "",
+    subtitles: "",
+    url: ""
+  };
+}
+
+function onCreateDownload() {
+  return {
+    postId: state.formParams.postId,
+    name: "",
+    url: "",
+    extractPwd: "",
+    unpackPwd: "",
+    priceType: "credit",
+    price: 20,
+  };
+}
 
     function setCover(img: any) {
       state.formParams.cover = img.url;
@@ -708,6 +720,7 @@ export default defineComponent({
       GlobeOutline,
       onCreateMusic,
       onCreateVideo,
+      onCreateDownload,
       renderAuthorLabel,
       renderAuthorSelectTag,
       renderTopicLabel,

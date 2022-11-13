@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-04 15:47:44
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-17 13:46:37
+ * @LastEditTime: 2022-11-13 18:14:14
  * @FilePath: /pinkmoe_admin/src/views/content/post/post.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
  * 问题反馈qq群:749150798
@@ -152,13 +152,14 @@ let formParams = reactive({
   author: null,
   cover: "",
   postImg: [],
-  type: "",
+  type: "post",
+  view: 0,
   videoRelation: [],
   musicRelation: [],
   from: "original",
   downloadRelation: [],
   topic: [],
-  status: "",
+  status: "published",
 });
 
 const params = ref({

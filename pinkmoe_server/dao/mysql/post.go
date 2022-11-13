@@ -4,7 +4,7 @@
  * @LastEditors: coderzhaolu && izhaicy@163.com
  * @LastEditTime: 2022-08-07 09:01:16
  * @FilePath: /pinkmoe_server/dao/mysql/post.go
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * xanaduCms程序上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -530,6 +530,8 @@ func CreatePost(p request.CreatePostParams) (err error) {
 			MusicRelation:    p.MusicRelation,
 			DownloadRelation: p.DownloadRelation,
 			CommentStatus:    p.CommentStatus,
+			From:             p.From,
+			View:             p.View,
 			Status:           p.Status,
 			UpdatedAt:        p.UpdatedAt,
 			CreatedAt:        p.UpdatedAt,
@@ -547,6 +549,8 @@ func CreatePost(p request.CreatePostParams) (err error) {
 			MusicRelation:    p.MusicRelation,
 			DownloadRelation: p.DownloadRelation,
 			CommentStatus:    p.CommentStatus,
+			From:             p.From,
+			View:             p.View,
 			Status:           p.Status,
 			UpdatedAt:        p.UpdatedAt,
 			CreatedAt:        p.UpdatedAt,
@@ -656,6 +660,7 @@ func UpdatePost(p request.CreatePostParams) (err error) {
 			Cover:         p.Cover,
 			Type:          p.Type,
 			From:          p.From,
+			View:          p.View,
 			CommentStatus: p.CommentStatus,
 			Status:        p.Status,
 		}).Error; err != nil {

@@ -4,7 +4,7 @@
  * @LastEditors: coderzhaolu && izhaicy@163.com
  * @LastEditTime: 2022-08-07 08:53:45
  * @FilePath: /pinkmoe_server/model/request/post.go
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * xanaduCms程序上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -90,6 +90,7 @@ type CreatePostParams struct {
 	Cover            string                 `json:"cover" form:"cover" gorm:"comment:文章封面"`                                // 文章封面
 	Type             string                 `json:"type" form:"type" gorm:"comment:文章类型"`                                  // 文章类型
 	From             string                 `json:"from" form:"from"`                                                      // 文章来源
+	View             int                    `json:"view" form:"view" gorm:"comment:文章查看"`                                  // 文章查看
 	CommentStatus    string                 `json:"commentStatus" form:"commentStatus" gorm:"comment:评论状态;default:'open'"` // 评论状态
 	Status           string                 `json:"status" form:"status" gorm:"comment:文章状态"`                              // 文章状态
 	Topic            []string               `json:"topic" form:"topic"`

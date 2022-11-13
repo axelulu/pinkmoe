@@ -4,7 +4,7 @@
  * @LastEditors: coderzhaolu && izhaicy@163.com
  * @LastEditTime: 2022-08-07 09:01:31
  * @FilePath: /pinkmoe_server/dao/mysql/upload.go
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * xanaduCms程序上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -62,6 +62,7 @@ func GetFileList(info request.XdUploadFileParams) (err error, list interface{}, 
 func UploadFile(header *multipart.FileHeader, noSave string, postId string, goodsId string, uuids string, uploadType string) (err error, file model.XdUploadFile) {
 	oss := upload.NewOss()
 	filePath, key, uploadErr := oss.UploadFile(header)
+	println(filePath)
 	uuidd, err := uuid.FromString(uuids)
 	if err != nil {
 		return err, model.XdUploadFile{}
