@@ -3,8 +3,8 @@
  # @Author: coderzhaolu && izhaicy@163.com
  # @Date: 2022-08-27 18:40:50
  # @LastEditors: coderzhaolu && izhaicy@163.com
- # @LastEditTime: 2022-08-30 16:16:33
- # @FilePath: /pinkmoe/install.sh
+ # @LastEditTime: 2022-11-13 22:42:38
+ # @FilePath: /pinkmoe_index/Users/zhaolu/Desktop/project/go_vue_gin/pinkmoe/install.sh
  # @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  # QQ:2419857357;支付宝:13135986153
  # Copyright (c) 2022 by coderzhaolu, All Rights Reserved. 
@@ -109,10 +109,11 @@ echo -e "\033[32m ##############################################################
 echo -e "\033[32m ##                         欢迎使用PinkMoe程序                         ##\033[0m"
 echo -e "\033[32m ##                                                                     ##\033[0m"
 echo -e "\033[32m ##                         1. 开始安装程序                             ##\033[0m"
-echo -e "\033[32m ##                         2. 重新安装                                 ##\033[0m"
-echo -e "\033[32m ##                         3. 卸载程序                                 ##\033[0m"
-echo -e "\033[32m ##                         4. 清除docker残余镜像                       ##\033[0m"
-echo -e "\033[32m ##                         5. 退出命令                                 ##\033[0m"
+echo -e "\033[32m ##                         2. 重启后台                                 ##\033[0m"
+echo -e "\033[32m ##                         3. 重新安装                                 ##\033[0m"
+echo -e "\033[32m ##                         4. 卸载程序                                 ##\033[0m"
+echo -e "\033[32m ##                         5. 清除docker残余镜像                       ##\033[0m"
+echo -e "\033[32m ##                         6. 退出命令                                 ##\033[0m"
 echo -e "\033[32m ##                                                                     ##\033[0m"
 echo -e "\033[32m #########################################################################\033[0m"
 while true
@@ -132,6 +133,17 @@ do
         break
     elif [ $num ==  "2" ]
     then
+        # 开始重启后台
+        echo -e "\033[32m 开始重启后台...\033[0m"
+        docker restart pinkmoe_server
+        if [ $? -eq  0 ]; then
+            echo -e "\033[32m 恭喜你重启成功!!!\033[0m"
+        else
+            echo -e "\033[31m 重启失败!\033[0m"
+        fi
+        break
+    elif [ $num ==  "3" ]
+    then
         cd / && rm -rf /pinkmoe && docker system prune
         install
         # 开始安装
@@ -143,15 +155,15 @@ do
             echo -e "\033[31m 安装失败!\033[0m"
         fi
         break
-    elif [ $num ==  "3" ]
+    elif [ $num ==  "4" ]
     then
        cd / && rm -rf /pinkmoe && docker stop pinkmoe_mysql pinkmoe_redis pinkmoe_server pinkmoe_index_admin && docker rm pinkmoe_mysql pinkmoe_redis pinkmoe_server pinkmoe_index_admin && docker rmi pinkmoe_server pinkmoe_index_admin && docker rmi daff57b7d2d1 1319b1eaa0b7 && docker system prune
         break
-    elif [ $num ==  "4" ]
+    elif [ $num ==  "5" ]
     then
         docker system prune
         break
-    elif [ $num ==  "5" ]
+    elif [ $num ==  "6" ]
     then
         break
     else
