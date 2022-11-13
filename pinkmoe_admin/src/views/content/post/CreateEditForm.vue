@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-04 15:46:56
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-17 14:07:43
+ * @LastEditTime: 2022-11-13 15:33:52
  * @FilePath: /pinkmoe_admin/src/views/content/post/CreateEditForm.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
  * 问题反馈qq群:749150798
@@ -116,7 +116,7 @@
                   maxlength="30"
                   show-count
                   placeholder="请输入提取密码"
-                  v-model:value="value.extract_pwd"
+                  v-model:value="value.extracPwd"
                   type="text"
                 />
               </div>
@@ -125,12 +125,12 @@
                   maxlength="30"
                   show-count
                   placeholder="请输入解压密码"
-                  v-model:value="value.unpack_pwd"
+                  v-model:value="value.unpackPwd"
                   type="text"
                 />
               </div>
               <div class="w-1/12 pr-1">
-                <n-select v-model:value="value.price_type" :options="[
+                <n-select v-model:value="value.priceType" :options="[
                 {
                   'label': '现金',
                   'value': 'cash',

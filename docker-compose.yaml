@@ -9,7 +9,7 @@ networks:
 
 services:
   mysql:
-    image: "mysql:5.7"
+    image: mysql:8
     container_name: pinkmoe_mysql
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci #设置utf8字符集
     restart: always
@@ -24,7 +24,7 @@ services:
         ipv4_address: 223.3.3.10
 
   redis:
-    image: redis:6.0.6
+    image: redis:6.2.7
     container_name: pinkmoe_redis # 容器名
     restart: always
     ports:

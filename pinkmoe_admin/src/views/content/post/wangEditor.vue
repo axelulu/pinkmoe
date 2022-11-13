@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-04 12:07:03
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-07 09:23:05
+ * @LastEditTime: 2022-11-05 15:53:57
  * @FilePath: /pinkmoe_admin/src/views/content/post/wangEditor.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
  * 问题反馈qq群:749150798
@@ -80,11 +80,11 @@ export default defineComponent({
       // alert(`【自定义提示】${type} - ${info}`)
     };
     const customPaste = (editor, event, callback) => {
-      // const html = event.clipboardData.getData("text/html"); // 获取粘贴的 html
-      const text = event.clipboardData.getData("text/plain"); // 获取粘贴的纯文本
+      const html = event.clipboardData.getData("text/html"); // 获取粘贴的 html
+      // const text = event.clipboardData.getData("text/plain"); // 获取粘贴的纯文本
       // const rtf = event.clipboardData.getData('text/rtf') // 获取 rtf 数据（如从 word wsp 复制粘贴）
       // 自定义插入内容
-      editor.insertText(text);
+      editor.inserHtml(html);
 
       // 返回值（注意，vue 事件的返回值，不能用 return）
       callback(false); // 返回 false ，阻止默认粘贴行为
