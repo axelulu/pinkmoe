@@ -2,9 +2,9 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:01:30
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-09-10 15:38:15
+ * @LastEditTime: 2022-11-13 22:35:52
  * @FilePath: /pinkmoe_index/pages/shop/category/[slug].vue
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * PinkMoe主题上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -24,12 +24,20 @@ const { loading, hasMore, route, title, categoryPostList, sort, sortPost, nextPa
 const { siteBasic } = useAppStore()
 useHead({
   titleTemplate: `${title.value} - 商品分类页面`,
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: `${siteBasic?.icon}` },
+  ],
   meta: [
     { name: 'og:type', content: 'shopCategory' },
     {
       name: 'og:title',
       content: `${route.params.slug} - ${siteBasic?.title}`,
     },
+    {
+      name: 'og:keywords',
+      content: `${siteBasic?.keywords}`,
+    },
+    { name: 'og:description', content: siteBasic?.desc },
     { name: 'og:url', content: siteBasic?.url },
   ],
 })

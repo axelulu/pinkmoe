@@ -2,9 +2,9 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-20 20:32:40
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-09-10 15:38:03
+ * @LastEditTime: 2022-11-13 22:35:55
  * @FilePath: /pinkmoe_index/pages/shop/index.vue
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * PinkMoe主题上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -29,12 +29,20 @@ const { t } = useI18n()
 const { siteBasic } = useAppStore()
 useHead({
   title: `商城 - ${siteBasic?.title}`,
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: `${siteBasic?.icon}` },
+  ],
   meta: [
     { name: 'og:type', content: 'bbs' },
     {
       name: 'og:title',
       content: `商城 - ${siteBasic?.title}`,
     },
+    {
+      name: 'og:keywords',
+      content: `${siteBasic?.keywords}`,
+    },
+    { name: 'og:description', content: siteBasic?.desc },
     { name: 'og:url', content: siteBasic?.url },
   ],
 })

@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c111014f-9cf7-4178-a4bb-c44dabe3c7f5" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_admin/src/views/content/post/CreateEditForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_admin/src/views/content/post/CreateEditForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_admin/src/views/content/post/post.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_admin/src/views/content/post/post.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/upload.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/request/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/request/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moqu001.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/upload/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/upload/upload.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

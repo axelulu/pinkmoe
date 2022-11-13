@@ -2,9 +2,9 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-23 09:12:12
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-09-10 16:50:32
+ * @LastEditTime: 2022-11-13 22:37:32
  * @FilePath: /pinkmoe_index/pages/user-center/shop/index.vue
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * PinkMoe主题上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -26,6 +26,9 @@ const { siteBasic } = useAppStore()
 const { auth, currentIndex, userShop, loading, buyShop } = useUserCenterShop()
 useHead({
   title: '商城 - 用户中心',
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: `${siteBasic?.icon}` },
+  ],
   meta: [
     { name: 'og:type', content: 'shop' },
     {
