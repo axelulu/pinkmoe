@@ -34,7 +34,7 @@ useHead({
     },
     {
       name: 'og:keywords',
-      content: `${siteBasic?.keywords}`,
+      content: `${siteBasic?.keyword}`,
     },
     { name: 'og:description', content: siteBasic?.desc },
     { name: 'og:url', content: siteBasic?.url },

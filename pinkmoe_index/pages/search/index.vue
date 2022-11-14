@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-07-22 09:46:34
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-11-13 22:35:48
+ * @LastEditTime: 2022-11-14 00:03:31
  * @FilePath: /pinkmoe_index/pages/search/index.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
@@ -52,7 +52,7 @@ useHead({
     },
     {
       name: 'og:keywords',
-      content: `${siteBasic?.keywords}`,
+      content: `${siteBasic?.keyword}`,
     },
     { name: 'og:description', content: siteBasic?.desc },
     { name: 'og:url', content: siteBasic?.url },
