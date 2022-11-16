@@ -4,7 +4,7 @@
  * @LastEditors: coderzhaolu && izhaicy@163.com
  * @LastEditTime: 2022-08-07 08:51:34
  * @FilePath: /pinkmoe_server/util/upload/aliyun_oss.go
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * xanaduCms程序上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -17,6 +17,7 @@ import (
 	"errors"
 	"mime/multipart"
 	"server/global"
+	"server/model/response"
 	"time"
 
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
@@ -25,8 +26,8 @@ import (
 
 type AliyunOSS struct{}
 
-func (*AliyunOSS) UploadFile(file *multipart.FileHeader) (string, string, error) {
-	bucket, err := NewBucket()
+func (*AliyunOSS) UploadFile(file *multipart.FileHeader, uploadConfig response.UploadConfig) (string, string, error) {
+	bucket, err := NewBucket(uploadConfig)
 	if err != nil {
 		global.XD_LOG.Error("function AliyunOSS.NewBucket() Failed", zap.Any("err", err.Error()))
 		return "", "", errors.New("function AliyunOSS.NewBucket() Failed, err:" + err.Error())
@@ -41,7 +42,7 @@ func (*AliyunOSS) UploadFile(file *multipart.FileHeader) (string, string, error)
 	defer f.Close() // 创建文件 defer 关闭
 	// 上传阿里云路径 文件名格式 自己可以改 建议保证唯一性
 	// yunFileTmpPath := filepath.Join("uploads", time.Now().Format("2006-01-02")) + "/" + file.Filename
-	yunFileTmpPath := global.XD_CONFIG.UploadConfig.AliyunOssConfig.BucketName + "/" + "uploads" + "/" + time.Now().Format("2006-01-02") + "/" + file.Filename
+	yunFileTmpPath := uploadConfig.AliyunOssConfig.BucketName + "/" + "uploads" + "/" + time.Now().Format("2006-01-02") + "/" + file.Filename
 
 	// 上传文件流。
 	err = bucket.PutObject(yunFileTmpPath, f)
@@ -50,11 +51,11 @@ func (*AliyunOSS) UploadFile(file *multipart.FileHeader) (string, string, error)
 		return "", "", errors.New("function formUploader.Put() Failed, err:" + err.Error())
 	}
 
-	return global.XD_CONFIG.UploadConfig.AliyunOssConfig.BucketPoint + "/" + yunFileTmpPath, yunFileTmpPath, nil
+	return uploadConfig.AliyunOssConfig.BucketPoint + "/" + yunFileTmpPath, yunFileTmpPath, nil
 }
 
-func (*AliyunOSS) DeleteFile(key string) error {
-	bucket, err := NewBucket()
+func (*AliyunOSS) DeleteFile(key string, uploadConfig response.UploadConfig) error {
+	bucket, err := NewBucket(uploadConfig)
 	if err != nil {
 		global.XD_LOG.Error("function AliyunOSS.NewBucket() Failed", zap.Any("err", err.Error()))
 		return errors.New("function AliyunOSS.NewBucket() Failed, err:" + err.Error())
@@ -71,15 +72,15 @@ func (*AliyunOSS) DeleteFile(key string) error {
 	return nil
 }
 
-func NewBucket() (*oss.Bucket, error) {
+func NewBucket(uploadConfig response.UploadConfig) (*oss.Bucket, error) {
 	// 创建OSSClient实例。
-	client, err := oss.New(global.XD_CONFIG.UploadConfig.AliyunOssConfig.Endpoint, global.XD_CONFIG.UploadConfig.AliyunOssConfig.AccessKeyId, global.XD_CONFIG.UploadConfig.AliyunOssConfig.AccessKeySecret)
+	client, err := oss.New(uploadConfig.AliyunOssConfig.Endpoint, uploadConfig.AliyunOssConfig.AccessKeyId, uploadConfig.AliyunOssConfig.AccessKeySecret)
 	if err != nil {
 		return nil, err
 	}
 
 	// 获取存储空间。
-	bucket, err := client.Bucket(global.XD_CONFIG.UploadConfig.AliyunOssConfig.BucketName)
+	bucket, err := client.Bucket(uploadConfig.AliyunOssConfig.BucketName)
 	if err != nil {
 		return nil, err
 	}

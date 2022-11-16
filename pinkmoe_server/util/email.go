@@ -4,7 +4,7 @@
  * @LastEditors: coderzhaolu && izhaicy@163.com
  * @LastEditTime: 2022-08-07 08:51:29
  * @FilePath: /pinkmoe_server/util/email.go
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * xanaduCms程序上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -18,6 +18,7 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
+	"github.com/jordan-wright/email"
 	"math/rand"
 	"net/smtp"
 	"server/dao/redis"
@@ -27,7 +28,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jordan-wright/email"
 	"gorm.io/gorm"
 )
 
@@ -76,11 +76,16 @@ func getEmailContent(emailType string, emailCode string) (title string, err erro
 	}
 }
 
-func SendEmailCaptcha(emailCode string, emailType string) (err error) {
+func SendEmailCaptcha(emailCode string, emailType string, emailConfig response.EmailConfig) (err error) {
 	var user model.XdUser
 	if emailType == "reg" {
 		if !errors.Is(global.XD_DB.Where("email = ?", emailCode).First(&user).Error, gorm.ErrRecordNotFound) { // 判断用户名是否注册
 			return response.ErrorEmailExist
+		}
+	}
+	if emailType == "forget" {
+		if errors.Is(global.XD_DB.Where("email = ?", emailCode).First(&user).Error, gorm.ErrRecordNotFound) { // 判断用户名是否注册
+			return response.ErrorEmailNotExist
 		}
 	}
 	title, err := getEmailTitle(emailType)
@@ -91,17 +96,17 @@ func SendEmailCaptcha(emailCode string, emailType string) (err error) {
 	if err != nil {
 		return err
 	}
-	err = SendEmail(emailCode, title, content)
+	err = SendEmail(emailCode, title, content, emailConfig)
 	return
 }
 
-func SendEmail(emailCode string, title string, content string) (err error) {
-	from := global.XD_CONFIG.EmailConfig.User
-	nickname := global.XD_CONFIG.EmailConfig.Username
-	secret := global.XD_CONFIG.EmailConfig.Password
-	host := global.XD_CONFIG.EmailConfig.Host
-	port := global.XD_CONFIG.EmailConfig.Port
-	isSSL := global.XD_CONFIG.EmailConfig.IsSSL
+func SendEmail(emailCode string, title string, content string, emailConfig response.EmailConfig) (err error) {
+	from := emailConfig.User
+	nickname := emailConfig.Username
+	secret := emailConfig.Password
+	host := emailConfig.Host
+	port := emailConfig.Port
+	isSSL := emailConfig.IsSSL
 
 	auth := smtp.PlainAuth("", from, secret, host)
 	e := email.NewEmail()

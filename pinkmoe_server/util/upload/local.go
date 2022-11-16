@@ -4,7 +4,7 @@
  * @LastEditors: coderzhaolu && izhaicy@163.com
  * @LastEditTime: 2022-08-07 08:51:38
  * @FilePath: /pinkmoe_server/util/upload/local.go
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * xanaduCms程序上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -22,6 +22,7 @@ import (
 	"os"
 	"path"
 	"server/global"
+	"server/model/response"
 	"strings"
 	"time"
 
@@ -45,7 +46,7 @@ func MD5V(str []byte, b ...byte) string {
 //@param: file *multipart.FileHeader
 //@return: string, string, error
 
-func (*Local) UploadFile(file *multipart.FileHeader) (string, string, error) {
+func (*Local) UploadFile(file *multipart.FileHeader, uploadConfig response.UploadConfig) (string, string, error) {
 	// 读取文件后缀
 	ext := path.Ext(file.Filename)
 	// 读取文件名并加密
@@ -54,13 +55,13 @@ func (*Local) UploadFile(file *multipart.FileHeader) (string, string, error) {
 	// 拼接新文件名
 	filename := name + "_" + time.Now().Format("20060102150405") + ext
 	// 尝试创建此路径
-	mkdirErr := os.MkdirAll(global.XD_CONFIG.UploadConfig.LocalConfig.Path, os.ModePerm)
+	mkdirErr := os.MkdirAll(uploadConfig.LocalConfig.Path, os.ModePerm)
 	if mkdirErr != nil {
 		global.XD_LOG.Error("function os.MkdirAll() Filed", zap.Any("err", mkdirErr.Error()))
 		return "", "", errors.New("function os.MkdirAll() Filed, err:" + mkdirErr.Error())
 	}
 	// 拼接路径和文件名
-	p := global.XD_CONFIG.UploadConfig.LocalConfig.Path + "/" + filename
+	p := uploadConfig.LocalConfig.Path + "/" + filename
 
 	f, openError := file.Open() // 读取文件
 	if openError != nil {
@@ -94,9 +95,9 @@ func (*Local) UploadFile(file *multipart.FileHeader) (string, string, error) {
 //@param: key string
 //@return: error
 
-func (*Local) DeleteFile(key string) error {
-	p := global.XD_CONFIG.UploadConfig.LocalConfig.Path + "/" + key
-	if strings.Contains(p, global.XD_CONFIG.UploadConfig.LocalConfig.Path) {
+func (*Local) DeleteFile(key string, uploadConfig response.UploadConfig) error {
+	p := uploadConfig.LocalConfig.Path + "/" + key
+	if strings.Contains(p, uploadConfig.LocalConfig.Path) {
 		if err := os.Remove(p); err != nil {
 			return errors.New("本地文件删除失败, err:" + err.Error())
 		}

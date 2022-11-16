@@ -4,7 +4,7 @@
  * @LastEditors: coderzhaolu && izhaicy@163.com
  * @LastEditTime: 2022-08-07 09:02:39
  * @FilePath: /pinkmoe_server/controller/router.go
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * xanaduCms程序上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -51,7 +51,7 @@ func InitRouter() *gin.Engine {
 	//socket
 	r.GET("/ws", socket.InitSocket)
 
-	r.StaticFS(global.XD_CONFIG.UploadConfig.LocalConfig.Path, http.Dir(global.XD_CONFIG.UploadConfig.LocalConfig.Path)) // 为用户头像和文件提供静态地址
+	r.StaticFS(global.XD_CONFIG.BasicConfig.UploadPath, http.Dir(global.XD_CONFIG.BasicConfig.UploadPath)) // 为用户头像和文件提供静态地址
 	r.Use(util.GinLogger(), util.GinRecovery(true), middleware.RateLimitMiddleware(time.Duration(global.XD_CONFIG.BasicConfig.RateLimitTime)*time.Second, global.XD_CONFIG.BasicConfig.RateLimitNum))
 
 	// swagger文档地址
@@ -118,7 +118,7 @@ func Register(controller interface{}) bool {
 }
 
 // Bind 绑定路由 m是方法GET POST等
-//绑定基本路由
+// 绑定基本路由
 func Bind(e *gin.RouterGroup) {
 	for _, route := range Routes {
 		if route.HttpMethod == "GET" && !route.Auth {
@@ -141,7 +141,7 @@ func BindAuth(e *gin.RouterGroup) {
 	}
 }
 
-//根据path匹配对应的方法
+// 根据path匹配对应的方法
 func match(path string, route Route) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		fields := strings.Split(path, "/")

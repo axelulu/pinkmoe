@@ -15,22 +15,22 @@ package upload
 
 import (
 	"mime/multipart"
-	"server/global"
+	"server/model/response"
 )
 
 // OSS 对象存储接口
 // Author [SliverHorn](https://github.com/SliverHorn)
 // Author [ccfish86](https://github.com/ccfish86)
 type OSS interface {
-	UploadFile(file *multipart.FileHeader) (string, string, error)
-	DeleteFile(key string) error
+	UploadFile(file *multipart.FileHeader, uploadConfig response.UploadConfig) (string, string, error)
+	DeleteFile(key string, uploadConfig response.UploadConfig) error
 }
 
 // NewOss OSS的实例化方法
 // Author [SliverHorn](https://github.com/SliverHorn)
 // Author [ccfish86](https://github.com/ccfish86)
-func NewOss() OSS {
-	switch global.XD_CONFIG.UploadConfig.OssType {
+func NewOss(uploadConfig response.UploadConfig) OSS {
+	switch uploadConfig.OssType {
 	case "local":
 		return &Local{}
 	case "qiniu":

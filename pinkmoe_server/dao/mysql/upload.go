@@ -13,6 +13,7 @@
 package mysql
 
 import (
+	"encoding/json"
 	"mime/multipart"
 	"server/global"
 	"server/model"
@@ -60,9 +61,11 @@ func GetFileList(info request.XdUploadFileParams) (err error, list interface{}, 
 }
 
 func UploadFile(header *multipart.FileHeader, noSave string, postId string, goodsId string, uuids string, uploadType string) (err error, file model.XdUploadFile) {
-	oss := upload.NewOss()
-	filePath, key, uploadErr := oss.UploadFile(header)
-	println(filePath)
+	_, ossCon := GetSettingItem(model.XdSetting{Slug: "system_oss"})
+	var uploadConfig response.UploadConfig
+	json.Unmarshal([]byte(ossCon.Value), &uploadConfig)
+	oss := upload.NewOss(uploadConfig)
+	filePath, key, uploadErr := oss.UploadFile(header, uploadConfig)
 	uuidd, err := uuid.FromString(uuids)
 	if err != nil {
 		return err, model.XdUploadFile{}

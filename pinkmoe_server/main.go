@@ -4,7 +4,7 @@
  * @LastEditors: coderzhaolu && izhaicy@163.com
  * @LastEditTime: 2022-10-04 22:34:39
  * @FilePath: /pinkmoe/pinkmoe_server/main.go
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * xanaduCms程序上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -59,12 +59,8 @@ func main() {
 	}
 
 	// 初始化数据库config配置项
-	_, oss := mysql.GetSettingItem(model.XdSetting{Slug: "system_oss"})
-	json.Unmarshal([]byte(oss.Value), &global.XD_CONFIG.UploadConfig)
 	_, site := mysql.GetSettingItem(model.XdSetting{Slug: "system_site"})
 	json.Unmarshal([]byte(site.Value), &global.XD_CONFIG.BasicConfig)
-	_, email := mysql.GetSettingItem(model.XdSetting{Slug: "system_email"})
-	json.Unmarshal([]byte(email.Value), &global.XD_CONFIG.EmailConfig)
 
 	// 初始化Redis连接
 	global.XD_REDIS = initialize.RedisInit()

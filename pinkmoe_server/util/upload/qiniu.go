@@ -4,7 +4,7 @@
  * @LastEditors: coderzhaolu && izhaicy@163.com
  * @LastEditTime: 2022-08-07 08:51:46
  * @FilePath: /pinkmoe_server/util/upload/qiniu.go
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * xanaduCms程序上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -18,6 +18,7 @@ import (
 	"errors"
 	"fmt"
 	"mime/multipart"
+	"server/model/response"
 	"time"
 
 	"server/global"
@@ -38,11 +39,11 @@ type Qiniu struct{}
 //@param: file *multipart.FileHeader
 //@return: string, string, error
 
-func (*Qiniu) UploadFile(file *multipart.FileHeader) (string, string, error) {
-	putPolicy := storage.PutPolicy{Scope: global.XD_CONFIG.UploadConfig.QiniuConfig.Bucket}
-	mac := qbox.NewMac(global.XD_CONFIG.UploadConfig.QiniuConfig.AccessKey, global.XD_CONFIG.UploadConfig.QiniuConfig.SecretKey)
+func (*Qiniu) UploadFile(file *multipart.FileHeader, uploadConfig response.UploadConfig) (string, string, error) {
+	putPolicy := storage.PutPolicy{Scope: uploadConfig.QiniuConfig.Bucket}
+	mac := qbox.NewMac(uploadConfig.QiniuConfig.AccessKey, uploadConfig.QiniuConfig.SecretKey)
 	upToken := putPolicy.UploadToken(mac)
-	cfg := qiniuConfig()
+	cfg := qiniuConfig(uploadConfig)
 	formUploader := storage.NewFormUploader(cfg)
 	ret := storage.PutRet{}
 	putExtra := storage.PutExtra{Params: map[string]string{"x:name": "github logo"}}
@@ -60,7 +61,7 @@ func (*Qiniu) UploadFile(file *multipart.FileHeader) (string, string, error) {
 		global.XD_LOG.Error("function formUploader.Put() Filed", zap.Any("err", putErr.Error()))
 		return "", "", errors.New("function formUploader.Put() Filed, err:" + putErr.Error())
 	}
-	return global.XD_CONFIG.UploadConfig.QiniuConfig.ImgPath + "/" + ret.Key, ret.Key, nil
+	return uploadConfig.QiniuConfig.ImgPath + "/" + ret.Key, ret.Key, nil
 }
 
 //@author: [piexlmax](https://github.com/piexlmax)
@@ -72,11 +73,11 @@ func (*Qiniu) UploadFile(file *multipart.FileHeader) (string, string, error) {
 //@param: key string
 //@return: error
 
-func (*Qiniu) DeleteFile(key string) error {
-	mac := qbox.NewMac(global.XD_CONFIG.UploadConfig.QiniuConfig.AccessKey, global.XD_CONFIG.UploadConfig.QiniuConfig.SecretKey)
-	cfg := qiniuConfig()
+func (*Qiniu) DeleteFile(key string, uploadConfig response.UploadConfig) error {
+	mac := qbox.NewMac(uploadConfig.QiniuConfig.AccessKey, uploadConfig.QiniuConfig.SecretKey)
+	cfg := qiniuConfig(uploadConfig)
 	bucketManager := storage.NewBucketManager(mac, cfg)
-	if err := bucketManager.Delete(global.XD_CONFIG.UploadConfig.QiniuConfig.Bucket, key); err != nil {
+	if err := bucketManager.Delete(uploadConfig.QiniuConfig.Bucket, key); err != nil {
 		global.XD_LOG.Error("function bucketManager.Delete() Filed", zap.Any("err", err.Error()))
 		return errors.New("function bucketManager.Delete() Filed, err:" + err.Error())
 	}
@@ -89,12 +90,12 @@ func (*Qiniu) DeleteFile(key string) error {
 //@description: 根据配置文件进行返回七牛云的配置
 //@return: *storage.Config
 
-func qiniuConfig() *storage.Config {
+func qiniuConfig(uploadConfig response.UploadConfig) *storage.Config {
 	cfg := storage.Config{
-		UseHTTPS:      global.XD_CONFIG.UploadConfig.QiniuConfig.UseHTTPS,
-		UseCdnDomains: global.XD_CONFIG.UploadConfig.QiniuConfig.UseCdnDomains,
+		UseHTTPS:      uploadConfig.QiniuConfig.UseHTTPS,
+		UseCdnDomains: uploadConfig.QiniuConfig.UseCdnDomains,
 	}
-	switch global.XD_CONFIG.UploadConfig.QiniuConfig.Zone { // 根据配置文件进行初始化空间对应的机房
+	switch uploadConfig.QiniuConfig.Zone { // 根据配置文件进行初始化空间对应的机房
 	case "ZoneHuadong":
 		cfg.Zone = &storage.ZoneHuadong
 	case "ZoneHuabei":

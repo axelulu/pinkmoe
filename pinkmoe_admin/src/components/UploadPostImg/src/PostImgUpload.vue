@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-02 21:34:55
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-17 14:10:37
+ * @LastEditTime: 2022-11-16 19:03:03
  * @FilePath: /pinkmoe_admin/src/components/UploadPostImg/src/PostImgUpload.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
  * 问题反馈qq群:749150798
@@ -141,9 +141,9 @@ export default defineComponent({
     loadImg();
 
     //预览
-    function preview(url: string) {
+    function preview(item: any) {
       state.showModal = true;
-      state.previewUrl = url;
+      state.previewUrl = item.url;
     }
 
     function deleteImg(index) {

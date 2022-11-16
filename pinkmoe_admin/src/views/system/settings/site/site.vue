@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-05-06 22:25:04
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-08-10 09:40:07
+ * @LastEditTime: 2022-11-16 17:19:55
  * @FilePath: /pinkmoe_admin/src/views/system/settings/site/site.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
  * 问题反馈qq群:749150798
@@ -35,8 +35,11 @@
           <n-form-item path="mode" label="server启动模式">
             <n-input v-model:value="formParams.mode" />
           </n-form-item>
-          <n-form-item path="fileVideoSize" label="server的api端口">
+          <n-form-item path="port" label="server的api端口">
             <n-input-number v-model:value="formParams.port" />
+          </n-form-item>
+          <n-form-item path="uploadPath" label="上传文件默认路径">
+            <n-input v-model:value="formParams.uploadPath" />
           </n-form-item>
           <n-form-item path="fileVideoSize" label="文件上传大小">
             <n-input-number v-model:value="formParams.videoSize" />
@@ -95,7 +98,7 @@
           <n-row :gutter="[0, 24]">
             <n-col :span="24">
               <div style="display: flex; justify-content: flex-end">
-                <n-button type="primary" @click="handleSubmit"> 提交 </n-button>
+                <n-button type="primary" @click="handleSubmit"> 提交(需要重启后台) </n-button>
               </div>
             </n-col>
           </n-row>
@@ -125,6 +128,7 @@
     mode: 'dev',
     version: 'v1.0.1',
     port: 9527,
+    uploadPath: 'uploads/file',
     videoSize: 100,
     picSize: 1,
     startTime: '2006-01-02',
