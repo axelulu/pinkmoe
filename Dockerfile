@@ -3,7 +3,7 @@ FROM node:16.16.0
 WORKDIR /
 COPY . .
 
-RUN export NODE_OPTIONS=--max-old-space-size=8192 && cd ./pinkmoe_admin && npm install npm@latest -g && npm i && npm run build
+RUN export NODE_OPTIONS=--max-old-space-size=3072 && cd ./pinkmoe_admin && npm install npm@latest -g && npm i && npm run build
 
 FROM centos:centos7
 
@@ -16,7 +16,7 @@ RUN wget -P /tmp/ http://nginx.org/download/nginx-1.23.1.tar.gz
 RUN cd /tmp/;tar xzf nginx-1.23.1.tar.gz;cd nginx-1.23.1;sed -i -e 's/1.23.1//g' -e 's/nginx\//WS/g' -e 's/"NGINX"/"WS"/g' src/core/nginx.h
 RUN cd /tmp/nginx-1.23.1;./configure --prefix=/usr/local/nginx --with-http_v2_module --with-http_stub_status_module --with-http_ssl_module;make;make install
 
-RUN cd /pinkmoe_index && npm install npm@latest -g && npm install pnpm -g && pnpm i && pnpm build
+RUN export NODE_OPTIONS=--max-old-space-size=3072 && cd /pinkmoe_index && npm install npm@latest -g && npm install pnpm -g && pnpm i && pnpm build
 
 RUN mkdir /usr/local/nginx/conf.d
 RUN rm -rf /usr/local/nginx/conf/nginx.conf
