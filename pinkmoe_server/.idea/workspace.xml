@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c111014f-9cf7-4178-a4bb-c44dabe3c7f5" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/model/response/xd_email.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pinkmoe_admin/src/views/system/settings/site/site.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_admin/src/views/system/settings/site/site.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/admin/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/admin/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/cms/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/cms/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/upload.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/response/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/response/errors.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/response/xd_upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/response/xd_upload.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/email.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/email.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/upload/aliyun_oss.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/upload/aliyun_oss.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/upload/local.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/upload/local.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/upload/obs.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/upload/obs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/upload/qiniu.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/upload/qiniu.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/upload/tencent_cos.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/upload/tencent_cos.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/upload/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/upload/upload.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

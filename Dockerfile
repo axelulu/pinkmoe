@@ -3,20 +3,20 @@ FROM node:16.16.0
 WORKDIR /
 COPY . .
 
-RUN export NODE_OPTIONS=--max-old-space-size=8192 && cd ./pinkmoe_admin && npm install npm@latest -g && npm i && npm run build
+RUN export NODE_OPTIONS=--max-old-space-size=8192 && cd ./pinkmoe_admin && npm install pnpm -g && pnpm i && pnpm build
 
 FROM centos:centos7
 
 WORKDIR /
 COPY . .
 
-RUN yum update -y && curl -fsSL https://rpm.nodesource.com/setup_16.x | bash - && yum install -y nodejs && node --version && npm --version
+RUN curl -fsSL https://rpm.nodesource.com/setup_16.x | bash - && yum install -y nodejs && node --version && npm --version
 RUN rpm --rebuilddb;yum install make wget tar gzip passwd openssh-server gcc pcre-devel openssl-devel net-tools vim -y
 RUN wget -P /tmp/ http://nginx.org/download/nginx-1.23.1.tar.gz
 RUN cd /tmp/;tar xzf nginx-1.23.1.tar.gz;cd nginx-1.23.1;sed -i -e 's/1.23.1//g' -e 's/nginx\//WS/g' -e 's/"NGINX"/"WS"/g' src/core/nginx.h
 RUN cd /tmp/nginx-1.23.1;./configure --prefix=/usr/local/nginx --with-http_v2_module --with-http_stub_status_module --with-http_ssl_module;make;make install
 
-RUN cd /pinkmoe_index && npm install npm@latest -g && npm install pnpm -g && pnpm i && pnpm build
+RUN cd /pinkmoe_index && npm install pnpm -g && pnpm i && pnpm build
 
 RUN mkdir /usr/local/nginx/conf.d
 RUN rm -rf /usr/local/nginx/conf/nginx.conf
