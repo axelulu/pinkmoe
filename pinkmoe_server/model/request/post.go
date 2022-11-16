@@ -35,13 +35,6 @@ type SearchPostParams struct {
 	Desc          bool   `json:"desc" form:"desc"`                   // 排序方式:升序false(默认)|降序true
 }
 
-// ImageParams api分页条件查询及排序结构体
-type ImageParams struct {
-	Image  string `json:"image" form:"image"`   // 用户UUID
-	Width  int    `json:"width" form:"width"`   // 文章标题
-	Height int    `json:"height" form:"height"` // 文章作者
-}
-
 type ReqDownloadBuy struct {
 	PostId     string `json:"postId" form:"postId"`         // 文章ID
 	DownloadId int    `json:"downloadId" form:"downloadId"` // 下载ID

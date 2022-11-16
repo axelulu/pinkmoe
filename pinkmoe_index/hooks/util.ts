@@ -4,7 +4,7 @@
  * @LastEditors: coderzhaolu && izhaicy@163.com
  * @LastEditTime: 2022-08-28 16:18:53
  * @FilePath: /pinkmoe_index/hooks/util.ts
- * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
+ * @Description: https://github.com/Coder-ZhaoLu/pinkmoe
  * 问题反馈qq群:749150798
  * PinkMoe主题上所有内容(包括但不限于 文字，图片，代码等)均为指针科技原创所有，采用请注意许可
  * 请遵循 “非商业用途” 协议。商业网站或未授权媒体不得复制内容，如需用于商业用途或者二开，请联系作者捐助任意金额即可，我们将保存所有权利。
@@ -69,7 +69,7 @@ export const useUtil = () => {
   }
 
   const getThumbnail = (url: string) => {
-    return `${BASEURL}/Cms/Images/ImageThumbnail?width=${200}&height=${300}&image=${url}`
+    return `${url}?x-oss-process=style/pinkmoe_cover`
   }
 
   return { formatDate, getThumbnail, getLevel, checkForm }

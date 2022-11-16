@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c111014f-9cf7-4178-a4bb-c44dabe3c7f5" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/../Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pinkmoe_index/hooks/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pinkmoe_index/hooks/util.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/cms/image.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/request/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/request/post.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/images.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
