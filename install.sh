@@ -3,7 +3,7 @@
  # @Author: coderzhaolu && izhaicy@163.com
  # @Date: 2022-08-27 18:40:50
  # @LastEditors: coderzhaolu && izhaicy@163.com
- # @LastEditTime: 2022-11-17 12:13:42
+ # @LastEditTime: 2022-11-17 12:14:58
  # @FilePath: /pinkmoe_admin/Users/zhaolu/Desktop/project/go_vue_gin/pinkmoe/install.sh
  # @Description: https://github.com/Coder-ZhaoLu/pinkmoe   (如需用于商业用途或者二开，请联系作者捐助任意金额即可)
  # QQ:2419857357;支付宝:13135986153
@@ -140,9 +140,9 @@ do
         fi
         read -p "请输入分配内存大小(GB):" swapNum
         echo "$swapNum GB"
-        swapGB=`expr $swapNum * 1024000`
+        swapNum=`expr $swapNum \* 1024000`
         echo -e "\033[32m 开始申请swap内存...\033[0m"
-        dd if=/dev/zero of=/var/swap bs=1024 count=$swapGB && mkswap -f /var/swap && swapon /var/swap
+        dd if=/dev/zero of=/var/swap bs=1024 count=$swapNum && mkswap -f /var/swap && swapon /var/swap
         if [ $? -eq  0 ]; then
             echo -e "\033[32m 恭喜你申请成功!!!\033[0m"
         else
