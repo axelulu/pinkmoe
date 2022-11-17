@@ -2,7 +2,7 @@
  * @Author: coderzhaolu && izhaicy@163.com
  * @Date: 2022-06-04 15:46:56
  * @LastEditors: coderzhaolu && izhaicy@163.com
- * @LastEditTime: 2022-11-16 19:09:11
+ * @LastEditTime: 2022-11-17 11:40:26
  * @FilePath: /pinkmoe_admin/src/views/content/post/CreateEditForm.vue
  * @Description: https://github.com/Coder-ZhaoLu/pinkmoe 
  * 问题反馈qq群:749150798
@@ -292,14 +292,14 @@ const rules = {
   title: {
     required: true,
     trigger: "blur",
-    message: "请输入2到50位标题内容",
-    pattern: /^[\s\S]{2,50}$/ //验证菜单路径 2到50位（字母）
+    message: "请输入2到200位标题内容",
+    pattern: /^[\s\S]{2,200}$/ //验证菜单路径 2到50位（字母）
   },
   exerpt: {
     required: true,
     trigger: "blur",
-    message: "请输入2到100位摘要内容",
-    pattern: /^[\s\S]{2,100}$/ //验证菜单路径 2到100位（字母）
+    message: "请输入2到500位摘要内容",
+    pattern: /^[\s\S]{2,500}$/ //验证菜单路径 2到100位（字母）
   },
   content: {
     required: true,
