@@ -8,7 +8,7 @@
 
 2. 将您的主域名与后台域名解析到您服务器的ip
 
-3. 输入`curl -L https://github.com/Coder-ZhaoLu/pinkmoe/releases/download/pinkmoe/install.sh -o /etc/pinkmoe && echo "alias pinkmoe='bash /etc/pinkmoe'" > ~/.bashrc && source ~/.bashrc`执行程序安装命令
+3. 输入`curl -L https://github.com/kvannew/pinkmoe/releases/download/pinkmoe/install.sh -o /etc/pinkmoe && echo "alias pinkmoe='bash /etc/pinkmoe'" > ~/.bashrc && source ~/.bashrc`执行程序安装命令
 
 4. 输入`pinkmoe`开始安装系统
 
